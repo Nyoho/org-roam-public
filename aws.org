@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       3A2A75F3-D36E-4942-85C7-C0EBEE1F258D
+:END:
+#+title: AWS memo
+#+date: <2018-10-20 00:20:40>
+
+Console: https://console.aws.amazon.com/
+
+* IAM
+- [[https://recipe.kc-cloud.jp/archives/809][Amazon IAM編～IAMを使ってみよう！パート①～ – ナレコムAWSレシピ | AIに強い情報サイト]]
+
+
+IAMのユーザを作るときに「IAM identity Centerを有効にする」でIdentity Centerでユーザを指定することができる。
+
+「IAMユーザーを作成します」も選択できる。
+
+
+
+* Ruby gem aws-sdk
+
+- [[http://akasata.com/articles/292][aws-sdk-rubyを使ってAmazon S3を操作してみた - 平凡なエンジニアの独り言]]
+
+* S3
+** Static hosting
+static hosting するとき
+1. S3 のバケットのプロパティでそう選択するだけでなく、
+2. さらに permission を設定する
+   - bucket policy を Sample Bucket Policies ([[https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html][Bucket Policy Examples]]) から an Anonymous User の設定をコピペしてくる。
+
+
+* CloudFormation
+[[https://aws.amazon.com/jp/cloudformation/][AWS CloudFormation （設定管理とオーケストレーション） | AWS]]
+
+* Cloud9
+[[https://aws.amazon.com/jp/cloud9/][AWS Cloud9（ブラウザのみでコードを記述、実行できるクラウドIDE）｜AWS]]
+
+* Key Management Service (KMS)
+[[https://aws.amazon.com/jp/kms/][AWS Key Management Service (暗号化キーを簡単に作成・管理 - KMS）| AWS]]
+
+キーを暗号化するやつ
+
+* 資料
+- [[https://aws.amazon.com/jp/builders-library/?cards-body.sort-by=item.additionalFields.sortDate&cards-body.sort-order=desc&awsf.filter-content-category=*all&awsf.filter-content-type=*all&awsf.filter-content-level=*all][The Amazon Builders' Library]]

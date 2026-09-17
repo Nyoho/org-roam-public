@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       DDE115EF-1E10-48BD-AEED-3DC4A0882E53
+:END:
+#+title: SystemRescueCD
+#+date: <2018-05-23 10:36:07 +0900>
+
+https://www.system-rescue-cd.org/
+
+CdではなくSystemRescueになっていた。
+[[https://www.system-rescue.org/][SystemRescue - System Rescue Homepage]]
+
+* Download
+https://www.system-rescue-cd.org/Download
+
+** version 
+#+BEGIN_SRC sh
+cat /root/version
+#+END_SRC
+
+* macOSでUSBメモリに入れる
+
+USBメモリが /dev/diskなんぼ なのかを見る。
+
+disk22 だとしよう。
+
+#+begin_src sh
+  diskutil eraseDisk MS-DOS FOOBAR /dev/disk22
+  diskutil unmountDisk /dev/disk22
+  sudo dd if=/who/who/who/systemrescue-12.01-amd64.iso of=/dev/rdisk22 bs=16m
+#+end_src
+
+* grub2上での操作
+=ls (hd2)= などとして確かめて、
+(hd2) にUSBメモリが見えた場合
+
+#+BEGIN_SRC 
+linux (hd2)/isolinux/rescue32
+initrd (hd2)/isolinux/initram.igz
+boot
+#+END_SRC
+
+これで起動した。

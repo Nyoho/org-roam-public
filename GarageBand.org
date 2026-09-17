@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       A91FDE57-CF26-4971-86E8-BD9A686F64DD
+:END:
+
+
+* Keyboard shortcuts
+[[https://support.apple.com/kb/PH24957?locale=ja_JP][MacのためのGarageBand: キーボードショートカット]]
+
+- 進む :: .
+- 戻る :: ,
+- 縮小 :: command + ←
+- 拡大 :: command + →

@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       4C13050A-2C2F-4B42-B269-C0320EDB41B9
+:END:
+#+title: After Effects
+
+* 操作
+
+** ショートカット
+- -, ^ :: タイムラインの拡大縮小
+- J, K :: キーフレーム間移動
+- P :: position
+- S :: scale
+- R :: rotation
+- E :: effect
+- T :: transparency
+- [ :: in点
+- ] :: out点
+- command + shift + d :: カミソリ
+- shift + -/^ :: レイヤーの描画モードを変更
+
+cf. [[https://helpx.adobe.com/jp/after-effects/using/keyboard-shortcuts-reference.html][After Effects キーボードショートカットリファレンス]]
+
+** キーフレーム関連
+- U :: キーフレームがあるプロパティのみ表示
+- opt + shift + [PSRET] :: そのプロパティ(P, S, R, E, T)にキーフレームを追加する
+- F9 :: anchor の ease
+- 時計マークをalt + クリック :: スクリプトが打てる。transform のところに ~wiggle(100,10);~ などと打つ。
+
+- [[https://helpx.adobe.com/jp/after-effects/how-to/aftereffects-add-adjust-keyframes-cc.html][After Effectsでのキーフレームの追加と調整 | Adobe After Effects CCチュートリアル]]
+
+* Expression
+ScriptはExpressionという。
+
+* Illustrator のデータを読み込む
+1. Illustrator でレイヤわけしておく
+2. After Effects で .ai ファイルを読み込む。読み込みの種類「コンポジション」、フッテージのサイズ: 「レイヤーサイズ」とする。
+3. プロジェクトにレイヤ分けされたものが入る。それをおもむろにコンポジションに drag and drop
+4. タイムラインにIllustratorのデータを入れたレイヤは連続ラスタライズを on にしておく (じゃないとぼやける)
+
+* 「動くプレゼン素材作成入門」学生向けF3S講習会 <2015-11-20 Fri>
+- After Effects, Premiere
+- ガー・レイノルズのビデオの復習
+- 文字はビデオに埋め込まない方がいい。
+  - Keynoteなどで文字を入れた方が任意のタイミングで出せるしきれい
+- ループを作る
+  - Premiere
+  - 適当に似たようなところを見つけて切ってしまい、command + D でディゾルブをかける。
+    - 結構それで切れ目のわからないループになる
+  - グラデーション
+    - グラデーションのファイルを作っておく
+    - 合成モードを適当に使う。乗算など。
+  - 書き出しは「シーケンスと一致」にする。
+
+**  After Effects 実習
+- brain.mp4 が完成品
+- Illustrator で部品をばらばらにレイヤに分けておく。
+- ウインドウ -> 「ワークスペース」を「アニメーション」に設定
+
+* Links
+- [[https://helpx.adobe.com/jp/after-effects/how-to/jp-1min-feature-3Dtracking.html][3Dトラッキングで浮遊感のある文字を登場させよう | Adobe After Effects チュートリアル]]

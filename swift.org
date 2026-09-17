@@ -1,0 +1,76 @@
+:PROPERTIES:
+:ID:       C2B6F32D-4250-4B30-87F3-03245F91AC52
+:END:
+#+title: Swift
+#+date: <2019-05-17 13:38:49 +0900>
+
+Swift の学習
+
+* 基本文法
+** switch, case
+where で条件が書けるのが便利そうです。
+
+#+BEGIN_SRC swift
+let a = "aaa"
+switch a {
+case let a where a.hasHoge("mp4"):
+  let b = "mp4"
+case "fuga":
+  let b = "fuga"
+default:
+  let b = "hoka"
+}
+#+END_SRC
+
+** optionalValue
+
+#+BEGIN_SRC swift
+if (response as? NSHTTPURLResponse)?.statusCode >= 400 {
+}
+#+END_SRC
+
+** unwrapping
+#+BEGIN_SRC swift
+guard let a = item["key"] as? String else { continue }
+#+END_SRC
+で a が String になる。
+
+* associatedtype
+protocolの中に指定する型。「今はまだ決められないけど準拠時に決めてね」という型
+(cf. [[https://qiita.com/akeome/items/78e650f27a4c53e1406a][【Swift】associatedtypeの使いどころ - Qiita]])
+
+そのプロトコルに準拠したstructなどを定義するときに
+~typealias SonoType = GutaitekiType~
+と定義する。
+
+* テスト
+- [[https://github.com/typelift/SwiftCheck][typelift/SwiftCheck: QuickCheck for Swift]]
+
+* Compiler
+- [[https://qiita.com/rintaro/items/3ad640e3938207218c20][Swift コンパイラのアーキテクチャ - Qiita]]
+- [[https://qiita.com/rintaro/items/2047a9b88d9249459d9a][Swiftコンパイラ開発環境構築 - Qiita]]
+- [[https://qiita.com/omochimetaru/items/fd485185bcd07c21b49f][Swiftコンパイラ開発用の環境構築 - Qiita]]
+- [[https://qiita.com/omochimetaru/items/6e712bae4d86d72d1a1e][Swiftコンパイラ開発におけるテスト - Qiita]]
+- [[https://blog.waft.me/2017/08/01/swift-type-system-01/][Swiftの型システムを読む その1 – ukitaka – iOS開発とかのメモ]]
+- [[https://blog.waft.me/2018/01/09/swift-sil-1/][Swiftの中間言語SILを読む その1 - SILに入門するための準備 – ukitaka – iOS開発とかのメモ]]
+- [[https://medium.com/swift-in-sil-jp][SwiftをSILで読んでみる – Medium]]
+
+From [[https://iosdiscord.connpass.com/][iOS Discord - connpass]]
+
+* ライブラリ学習
+
+** [["https://github.com/antitypical/Stream][antitypical/Stream]]
+Haskell の遅延評価ありリストを作り出す。
+
+参考: 肝は遅延評価。Haskellとの違いは、最初の要素がStream作成時に評価されてしまう点。http://twitter.com/norio_nomura/status/597254365460594688
+#+BEGIN_SRC sh
+git clone https://github.com/antitypical/Stream.git
+cd Stream
+carthage update --no-use-binaries
+#+END_SRC
+
+** KDTree
+[[https://gist.github.com/fferri/38a564b3bf304b3cddf6][KDTree.swift]]
+
+* Links
+- [[https://www.swiftlangjp.com/][The Swift Programming Language(日本語版)]]

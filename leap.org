@@ -1,0 +1,81 @@
+:PROPERTIES:
+:ID:       985D6A3E-C5DE-4992-9004-CDCC91EFEA9E
+:END:
+Leap Motion
+
+* LEAP SDK 2.0 が出ている
+2.0 から骨組みトラッキング (the Skeletal Tracking Model) になった(?)
+https://developer.leapmotion.com/documentation/skeletal/objc/devguide/Intro_Skeleton_API.html#the-new-tracking-api-in-proglang
+
+* Objective-C でのやり方
+- libLeap.dylib を Build Phases で Link Binary だけでなく Copy Files の Executables に入れる。
+- Leap/Leap.h, LeapMath.h, LeapObjectiveC.h, LeapObjectiveC.mm を放り込む。
+
+* Unityでのやり方
+- [[https://developer.leapmotion.com/getting-started/unity][Getting Started | Leap Motion Developers]]
+- [[https://developer.leapmotion.com/downloads][Latest Developer Downloads < Downloads | Leap Motion Developers]]
+- [[http://tips.hecomi.com/entry/20130723/1374598279][Leap Motion が届いたので Unity で動かしてみた - 凹みTips]]
+- [[https://developer.leapmotion.com/documentation/csharp/index.html][C# SDK Documentation — Leap Motion C# and Unity SDK v1.2 documentation]]
+
+** 無料版 Unity (standard version) でも使える。
+- [[https://developer.leapmotion.com/documentation/csharp/devguide/Project_Setup.html][Setting Up a Project — Leap Motion C# and Unity SDK v1.2 documentation]]
+Mac は
+libLeapCSharp.dylib
+libLeap.dylib
+をプロジェクトのルートに、
+LeapCSharp.NET.3.5.dll
+を Assets フォルダに入れる。
+
+
+* JavaScript
+
+** Examples
+v1 [[https://developer.leapmotion.com/leapjs/examples][LeapJS | Examples | Leap Motion Developers]]
+
+v2 は https://developer.leapmotion.com/gallery
+
+* API
+** Objective-C の API
+[[https://developer.leapmotion.com/documentation/skeletal/objc/api/Leap_Classes.html][API Reference — Leap Motion Objective-C SDK v2.0 Beta documentation]]
+- LeapHand class
+- LeapBone
+- LeapFinger
+- LeapGesture
+
+** Unity の API
+[[https://developer.leapmotion.com/documentation/skeletal/csharp/index.html][C# SDK Documentation — Leap Motion C# and Unity SDK v2.0 Beta documentation]]
+
+手のひらの回転
+#+BEGIN_SRC 
+float pitch = hand.Direction.Pitch;
+float yaw = hand.Direction.Yaw;
+float roll = hand.PalmNormal.Roll;
+
+object.transform.rotation = Quaternion.Euler (new Vector3(-pitch * 180 / Mathf.PI, yaw * 180 / Mathf.PI, roll * 180 / Mathf.PI));
+#+END_SRC
+
+
+* NDA
+
+* Minimum system requirements
+https://www.leapmotion.com/setup
+** Mac
+- Mac® OS X 10.7 Lion
+- Intel® Core™ i3
+- 2 GB RAM
+- USB 2.0 Port
+- Internet Connection  
+** Windows
+- Windows® 7 or Windows® 8
+- AMD Phenom™ II or Intel® Core™ i3
+- 2 GB RAM
+- USB 2.0 Port
+- Internet Connection  
+** Linux
+- Ubuntu 12
+- AMD Phenom™ II or Intel® Core™ i3
+- 2 GB RAM
+- USB 2.0 Port
+- Internet Connection
+* Links
+- [[https://developer.leapmotion.com/gallery][Gallery | Leap Motion Developers]]

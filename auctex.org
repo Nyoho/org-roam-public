@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       1F8C5F59-8E39-4D74-9B80-CCE1E4532E8D
+:END:
+#+title: AUCTeX
+#+tag: emacs TeX
+
+AUCTeXについて
+
+* ショートカット
+
+- `p :: \phi
+- `i :: \in
+- `a :: \alpha
+- `\ :: \setminus
+
+とか
+
+- C-c C-f C-b :: \textbf{}
+- C-c C-f C-e :: \emph{}
+
+とか
+
+- C-c _ :: TeX-master-file-ask 分割しているときに master ファイルを聞いてくれて、末尾にローカル変数をつけてくれる。
+#+BEGIN_SRC tex
+  %%% Local Variables:
+  %%% mode: latex
+  %%% TeX-master: "2010MAIN"
+  %%% End:
+#+END_SRC
+
+- C-c = :: toc
+- C-c - :: toc
+- C-c ( :: 
+- C-c ) :: 
+
+- C-c C-e :: いろんな環境を挿入
+
+- ショートカット例: [[http://ochiailab.blogspot.jp/2013/01/auctex-reftex.html][Ochiailab Tips: AUCTex + RefTexで快適論文作成]]
+
+** 参考
+- [[ftp://ftp.gnu.org/gnu/auctex/11.90-extra/tex-ref.pdf][AUCTeX Reference Card]]
+- [[https://tex.stackexchange.com/questions/20843/useful-shortcuts-or-key-bindings-or-predefined-commands-for-emacsauctex][Useful shortcuts or key bindings or predefined commands for emacs+AUCTeX - TeX - LaTeX Stack Exchange]]

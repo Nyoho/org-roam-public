@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       99B042BD-E680-48A4-A491-81FF69705E6B
+:END:
+
+Storage
+- [[http://kakaku.com/item/K0000040301/spec/#tab][価格.com - SEAGATE ST31000520AS (1TB SATA300 5900) スペック・仕様]]
+- [[http://kakaku.com/item/05302515791/spec/#tab][価格.com - WESTERN DIGITAL WD5000AAKS (500G SATA300 7200) スペック・仕様]]

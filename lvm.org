@@ -1,0 +1,105 @@
+:PROPERTIES:
+:ID:       88981E9D-BF73-4DF1-8DD7-2D1D01E9C4A8
+:END:
+#+title: Logical Volume Manager (LVM)
+
+Logical Volume Manager (LVM)
+
+* 用語
+- 物理ボリューム (physical volume, PV) :: 物理ディスク
+- ボリュームグループ (volume group, VG) :: PVの集合
+- 論理ボリューム (logical volumes, LV) :: ボリュームグループから作成。これを通常のものとして使う。
+
+* 操作
+#+BEGIN_SRC sh
+fdisk /dev/sda (などでパーティションを作成して Linux LVM (8e) にしておく)
+
+pvcreate /dev/sda1
+
+pvscan # できたかかくにん
+
+vgcreate Volume1 /dev/sda1
+
+vgscan # できたかかくにん
+
+lvcreate -L 128M -n LogVol1 Volume1
+
+lvscan # できたかかくにん
+lvdisplay
+# /dev/Volume1/LogVol1 ができた
+
+
+# format
+mkfs.ext4 /dev/Volume1/LogVol1 
+#+END_SRC
+
+** snapshot
+参考: [[https://qiita.com/TsutomuNakamura/items/a68377952d07397db448][LVMでスナップショットの作成と状態の復元 - Qiita]]
+
+スナップショットのやり方
+
+/dev/sdb1 をスナップショット領域にする。
+#+BEGIN_SRC sh
+fdisk /dev/sdb (Linux LVMに)
+pvcreate /dev/sdb1
+vgextend Volume1 /dev/sdb1 # 上の Volume1 グループを拡張
+#+END_SRC
+
+: lvcreate --snapshot -l 100%FREE -n snap0 /dev/Volume1/LogVol1
+
+や
+
+: lvcreate --snapshot --size=1G --name snap0 /dev/Volume1/LogVol1
+
+
+: lvdisplay /dev/Volume1/LogVol1 
+: lvdisplay /dev/Volume1/snap0  
+
+など。
+
+[[https://qiita.com/TsutomuNakamura/items/a68377952d07397db448][参考記事]]にしたがってスナップショットをマウントして確認してみる。
+
+: mount -o ro /dev/Volume1/snap /mnt/snap
+
+マージは umount しておいてから
+
+: lvconvert --merge /dev/Volume/snap0
+
+とする。
+mount中だと保留される。umountして
+
+: lvchange -an /dev/.../LogialVolume1
+: lvchange -ay /dev/.../LogialVolume1
+
+で一度 deactivate/activate すると merging が再開される。
+
+やっぱりsnapshotを削除するときも、lvchange で -an にしてから lvremove する。
+
+** dump コマンドでバックアップ
+
+#+BEGIN_SRC sh
+dump 0uf /dev/st0 /dev/volgrp0/snap0
+#+END_SRC
+
+#+BEGIN_SRC sh
+pvdisplay /dev/sda1
+vgdisplay Volume1
+lvdisplay Volume1
+#+END_SRC
+
+* 削除方法
+unmount
+
+lvを削除
+
+: lvremove VGname(volume) lvname
+
+vg削除
+
+: vgremove VG
+
+pv削除
+
+: pvremove /dev/hoge
+
+lvs, vgs, pvs でそれぞれ確認

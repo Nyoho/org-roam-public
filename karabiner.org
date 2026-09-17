@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       40772951-191E-4E71-BB30-00559B40D93D
+:END:
+#+title: Karabiner-Elements
+#+date: <2018-09-30 Tue>
+
+* Tips
+** f と j 同時押しでsemicolon
+
+#+BEGIN_SRC json
+  {
+    "description": "f と j 同時押しでsemicolon",
+    "manipulators": [
+      {
+        "type": "basic",
+        "from": {
+          "simultaneous": [
+            { "key_code": "f" },
+            { "key_code": "j" }
+          ],
+          "modifiers": {
+            "optional": [ "any" ]
+          }
+        },
+        "to": [
+          { "key_code": "semicolon" }
+        ]
+      }
+    ]
+  }
+#+END_SRC
+

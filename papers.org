@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       322EB886-82C3-42FA-9F44-F8952247A6B0
+:END:
+#+title: Papers 3
+#+date: [2026-03-25 Wed 20:32]
+
+Papers 3というアプリ。もう開発されていない。
+
+~~/Library/Application Support/Papers3/Library_Data~ にデータがある。
+
+

@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       22006C0F-09D2-472B-8978-DEDF8B9AFBCA
+:END:
+#+title: Foursquare
+#+date: <2019-03-13 10:45:47 +0900>
+
+Foursquareのメモ
+
+- [[https://ja.foursquare.com/info/editguidelines][編集ガイドラインとベストプラクティス Foursquare]]
+- [[https://support.foursquare.com/hc/en-us/articles/201064960-What-is-the-style-guide-for-adding-and-editing-places][What is the style guide for adding and editing places? – Help Center]]
+- [[https://ja.foursquare.com/info/houserules][House Rule Foursquare]]
+
+- [[http://www10.atwiki.jp/4sqcat/pages/14.html][Foursquare 日本語カテゴリー @wiki - カテゴリ一覧]]
+- [[https://ja.foursquare.com/edit/][スーパーユーザーのツール - Foursquare]]
+- https://developer.foursquare.com

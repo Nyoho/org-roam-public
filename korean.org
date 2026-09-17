@@ -1,0 +1,4 @@
+#+title: 韓国語 朝鮮語
+
+* Links
+- [[https://www.tohoho-web.com/ot/hangug.html][韓国語・ハングル入門 - とほほのWWW入門 - とほほのWWW入門]]

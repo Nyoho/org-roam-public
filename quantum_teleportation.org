@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       A9BA811A-645A-47DF-A0C6-8D97B7201FFB
+:END:
+#+title: 量子テレポーテーション quantum teleportation
+#+date: [2023-05-12 Fri 00:36]
+
+量子テレポーテーション
+
+- [[https://mhotta.hatenablog.com/entry/2014/05/24/060626][量子テレポーテーションは、本当はテレポーテーションではないのか。 - Quantum Universe]]

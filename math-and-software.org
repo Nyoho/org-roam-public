@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       455EBCF0-E6BF-4186-8539-619C61837C0F
+:END:
+#+title: 数学とソフトウェア
+#+tags: mathematics software
+#+date: <2014-03-14 Fri>
+
+メモ

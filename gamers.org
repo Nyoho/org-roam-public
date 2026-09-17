@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       29E3AF23-3068-4F15-9A45-C4054DFB114C
+:END:
+#+title: gamers
+#+date: [2023-07-26 Wed 16:31]
+
+プロゲーマー
+- [[https://www.twitch.tv/sudetakin][sudetakin - Twitch]]

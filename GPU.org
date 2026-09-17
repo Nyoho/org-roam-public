@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       809EF8BA-A4B5-4DA4-8BAA-C5B8B6E151D7
+:END:
+#+title: GPU memo
+
+
+#+begin_src sh
+nvidia-smi -l
+nvidia-smi dmon -s pu -d 5
+#+end_src
+
+[[https://qiita.com/sao_rio/items/4ef5604d685f04669f74][GPU関連でよく使うコマンドまとめ - Qiita]]
+
+* NVIDIA
+- QUADRO RTX 8000 3年持つ。8枚4枚OK
+- Geforce RTX 2080Ti
+  

@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       8B5C11A4-ADCB-42DA-A9C1-A2C4DD2E4B0D
+:END:
+#+title: OpenCV
+#+date: <2020-07-19 20:20:37 +0900>
+
+cv::Mat*
+
+iOS で使うには
+pod 'OpenCV'
+が簡単。
+
+cap_ios.h というヘッダファイルに、
+CvVideoCamera など便利なクラスが定義されている。
+
+http://stackoverflow.com/questions/14206014/opencv-2-4-3-symbol-not-found-objc-setproperty-nonatomic-on-ios-5
+
+** ChangeLog
+- 4.4.0 [[https://github.com/opencv/opencv/wiki/ChangeLog#version440][ChangeLog · opencv/opencv Wiki]] Add Yolo v4, EfficientDet
+
+* 参考になるプロジェクト
+- https://github.com/mjp/FaceRecognition
+- [[https://towardsdatascience.com/checkbox-table-cell-detection-using-opencv-python-332c57d25171][Checkbox/Table cell detection using OpenCV-Python | by Sreekiran A R | Towards Data Science]] 表を認識する
+

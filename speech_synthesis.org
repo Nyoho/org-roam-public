@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       B96EAAD1-F900-49F8-A231-E12933591176
+:ROAM_ALIASES: "speech synthesis"
+:END:
+#+title: 音声合成
+#+date: [2022-05-08 Sun 14:23]
+
+
+* Softwares
+- [[https://www.ah-soft.com/voice/6nare/][VOICEPEAK 商用可能 6ナレーターセット｜製品情報｜AHS(AH-Software)]]
+- [[https://voicevox.hiroshiba.jp/][VOICEVOX]]
+- [[https://voicevox.su-shiki.com/#try][WEB版VOICEVOX]]

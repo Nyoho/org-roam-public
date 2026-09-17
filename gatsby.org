@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       DB1AA461-981B-4D1E-BC96-23B257BC5A51
+:END:
+
+gatsby-telemetry@1.0.11
+こんなん出ていた。
+
+#+BEGIN_QUOTE
+╔════════════════════════════════════════════════════════════════════════╗
+║                                                                        ║
+║   Gatsby has started collecting anonymous usage analytics              ║
+║   to help improve Gatsby for all users.                                ║
+║                                                                        ║
+║   If you'd like to opt-out, you can use `gatsby telemetry --disable`   ║
+║   To learn more, checkout https://gatsby.dev/telemetry                 ║
+║                                                                        ║
+╚════════════════════════════════════════════════════════════════════════╝
+#+END_QUOTE

@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       A5705A6F-6C33-4700-BB84-92AD3DAA9B38
+:END:
+#+title: perl
+#+tags: perl
+#+date: <2013-03-29 Fri>
+
+* cpanm
+[[https://github.com/miyagawa/cpanminus][miyagawa/cpanminus · GitHub]] を見ながらインストールした。といっても、
+#+begin_src sh
+cd ~/bin
+curl -LO http://xrl.us/cpanm
+chmod +x cpanm
+#+end_src
+をしただけです。
+
+
+* GrowthForecast
+[[http://hatyuki.hatenablog.jp/entry/20120403/1333435826][GrowthForecast つかってみた - はちゅにっき]] を見ながらインストールする。
+#+begin_src sh
+cpanm -l extlib --installdeps .
+#+end_src
+まだできない。
+
+[[http://ataka.hatenablog.com/entry/2012/09/16/125317][LionにGrowthForecastインストールするメモ - sandbox]]
+
+
+* one-liner
+** options
+- =-e= :: script実行
+- -l :: 入力から改行を除き、出力結果も改行する。
+- -n :: 1行ずつ while で処理する場合。1行ずつ =$_= に入ってくる。
+
+** 16-adic dump
+#+BEGIN_SRC sh
+$ echo -n おはようござ Emacs | perl -E '@x=map { unpack("H*")  } split //, <>;say "@x"'
+e3 81 8a e3 81 af e3 82 88 e3 81 86 e3 81 94 e3 81 96 20 45 6d 61 63 73
+#+END_SRC
+
+** time
+#+BEGIN_SRC sh
+perl -MPOSIX -E 'say"".localtime((mktime(0,0,0,1,0,113)+3* mktime(0,0,0,1,0,114))/4)'
+#+END_SRC

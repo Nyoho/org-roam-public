@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       F53EBAFB-82AF-4CDE-8643-AE1793246B06
+:END:
+#+title: AR
+
+
+* AR.js
+A-Frameで使える。
+
+AR.js studioというのができていた。
+https://ar-js-org.github.io/studio/
+
+* Links
+- [[https://github.com/jcmellado/js-aruco][jcmellado/js-aruco: JavaScript library for Augmented Reality applications]]
+

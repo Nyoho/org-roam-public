@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       2022B043-4A23-4D99-8336-C779BD865D1C
+:END:
+#+title: food 食文化
+#+date: [2023-11-19 Sun 22:37]
+
+
+* 甘いもの
+
+- [[https://mr-cheesecake.com/][Mr. CHEESECAKE]]
+- [[https://www.beardpapa.jp/][beard papa]]
+- [[http://www.rikuro.co.jp][りくろーおじさんの店]] 焼きたてケーキ
+- [[https://www.giontsujiri.co.jp/store/saryotsujiri-honten/][茶寮都路里 祇園本店]] 抹茶パフェ
+- [[https://ginnomori.jp/][銀の森]] クッキーに未来はある
+
+* トンカツ
+- [[https://mai-sen.com/shop/hiroshima/][まい泉]]
+- [[https://tonkatsukawamura.owst.jp/][とんかつ河むら]]
+
+* 北海道函館市
+- [[https://www.hasesuto.co.jp/][函館名物やきとり弁当 | ハセガワストア]]
+- [[https://luckypierrot.jp/][函館ラッキーピエロ]]
+- 大門横町
+- 金森倉庫
+* 仙台
+- [[https://www.sankaku-age.jp/index.html][定義とうふ店TopPage of 定義とうふ店]] 三角あぶらあげ
+   
+* 福井県
+- ソースカツ丼
+   

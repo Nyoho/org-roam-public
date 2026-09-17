@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       281E3AB4-44B6-4274-9421-3EDFE74C5584
+:END:
+
+Firebase Hosting
+
+#+BEGIN_SRC sh
+npm install -g firebase-tools
+#+END_SRC
+
+コンソール https://console.firebase.google.com/ でプロジェクトを作っておく。
+
+#+BEGIN_SRC sh
+firebase login
+firebase init
+#+END_SRC
+
+[[https://firebase.google.com/docs/cli/?hl=ja][Firebase CLI リファレンス  |  Firebase]]

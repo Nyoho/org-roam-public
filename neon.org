@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       3B726208-EE49-4730-8660-CDE4C389D1DA
+:END:
+#+title: neon
+#+date: [2022-09-29 Thu 16:08]
+
+armのNEON
+
+- https://developer.arm.com/architectures/instruction-sets/intrinsics/
+- [[https://www.slideshare.net/fixstars/armneon-250012965][いまさら聞けないarmを使ったNEONの基礎と活用事例]]
+- [[https://www.slideshare.net/fixstars/arm-cpusimd][ARM CPUにおけるSIMDを用いた高速計算入門]]
+
+
+リバースする命令 [[https://developer.arm.com/documentation/dui0472/k/Using-NEON-Support/NEON-intrinsics-for-reversing-vector-elements--swap-endianness-][ARM Compiler armcc User Guide Version 5.05]]
+  vrev64_u8 など

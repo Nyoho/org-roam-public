@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       2D177EDC-AA02-49DF-A2B8-F4F8292E2259
+:END:
+#+TITLE: Googleカスタム検索エンジン Google Custom Search Engine (CSE)
+
+[[https://cse.google.com/][Googleカスタム検索エンジン (Google Custom Search Engine (CSE))]]
+
+=cx= (Custom search engine ID) の見つけ方
+[[http://ryutamaki.hatenablog.com/entry/2014/01/18/171640][google custom search engine(CSE)を使って、検索結果をjsonで取得する - ryutamaki]]
+によると、詳細の「検索エンジン ID」をポチッとすると出る。
+
+#+BEGIN_SRC 
+https://www.googleapis.com/customsearch/v1?key={APIキー}&cx={ここにcxをかく}&q=cat
+#+END_SRC
+
+いつも通り https://console.cloud.google.com/iam-admin/projects でプロジェクトを作成して API key をゲットだぜする。
+
+- [[https://developers.google.com/custom-search/json-api/v1/reference/cse/list][JSON/Atom API Reference]]

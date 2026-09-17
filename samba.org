@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       8C1E4EE1-60E3-449C-94E5-52A67108B435
+:END:
+#+title: Samba
+#+date: <2019-04-23 07:14:42 +0900>
+
+smb.conf で
+
+#+BEGIN_SRC conf
+security = user
+#+END_SRC
+
+とすると、ユーザレベルで認証される。
+UNIXアカウント david を作成しておき、
+#+BEGIN_SRC sh
+pdbedit -a david
+#+END_SRC
+とすると登録される。
+
+#+BEGIN_SRC sh
+firewall-cmd --add-service=samba --permanent
+firewall-cmd --reload
+#+END_SRC
+
+まだ認証がうまくいかない。
+
+
+ローカルから接続できるかチェック。
+#+begin_src sh
+  smbclient //127.0.0.1/MountName -U username
+#+end_src
+これで入れるかチェックできる。
+
+それができて外からアクセスできない場合は別の原因があるとわかる。
+
+昔は /MountName なしでもserviceのリストが得られていたような気がするのだが? <2022-06-26 Sun>
+
+* Links
+- [[https://virment.com/config-sambaserver/][sambaサーバによるファイル共有環境の構築手順メモ | virtualiment]]
+- [[http://d.hatena.ne.jp/bluerepliroid/20071212/1158114992][sambaによるLinuxとWindowsのファイル共有 - intrinsic feeling]]
+

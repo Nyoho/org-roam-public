@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       13FC66CC-382F-49A8-8D45-B0530E5155C3
+:END:
+#+title: macOSの日本語入力でAZIK
+#+date: <2018-04-23 16:07:57 +0900>
+
+macOSの日本語入力で[[id:EB7A4D09-5377-417E-8CE6-FD9BC6B4889B][AZIK]]したい。
+
+* ありか
+** El CapitanのJapaneseIM
+
+=/System/Library/Input Methods/JapaneseIM.app/Contents/Resources/RomajiRule_Default.txt=
+
+** High Sierra
+=/System/Library/Input Methods/JapaneseIM.app/Contents/PlugIns/JapaneseIM.appex/Contents/Resources=
+に
+=RomajiRule_....txt= がある。
+
+* 参考
+- [[http://qiita.com/Saqoosha/items/83622981fe1fec6bb5e0][El Capitan の日本語入力で DvorakJP - Qiita]]

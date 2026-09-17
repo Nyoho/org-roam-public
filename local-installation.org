@@ -1,0 +1,152 @@
+:PROPERTIES:
+:ID:       30989DD3-38F8-4E57-9D0D-579DBBD4D19D
+:END:
+
+Memo to install locally
+
+* zsh
+#+BEGIN_SRC sh
+./configure --prefix=$HOME/local --enable-cflags="-I$HOME/local/include" --enable-cppflags="-I$HOME/local/include" --enable-ldflags="-L$HOME/local/lib" --enable-multibyte --enable-locale --with-tcsetpgrp
+#+END_SRC
+
+- [[http://qiita.com/sifue/items/1dd6c01f9e3a333cf3f0][root権限のないLinuxサーバーの/home下にzsh5.0.2とvim7.4をローカルインストールする - Qiita]]
+
+
+* ncurses
+#+BEGIN_SRC sh
+ ./configure --prefix=$HOME/local --with-shared --without-debug --enable-widec
+
+ ./configure --prefix=$HOME/local --without-debug --enable-widec
+
+ ./configure --prefix=$HOME/local --enable-shared --with-shared --without-debug
+#+END_SRC
+
+* htop
+#+BEGIN_SRC sh
+CFLAGS="-I$HOME/local/include" LIBS="-L$HOME/local/lib" ./configure --prefix=$HOME/local --disable-unicode 
+#+END_SRC
+
+
+* cmake
+#+BEGIN_SRC sh
+#+END_SRC
+
+
+* OpenCV
+#+BEGIN_SRC sh
+mkdir release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=$HOME/local ..
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=$HOME/local -DCMAKE_SIZEOF_VOID_P=8 ..
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=$HOME/local \
+      -D WITH_EIGEN=ON \
+      -D OPENCV_EXTRAMODELUES_PATH="<path/to/opencv_contrib>/modules" \
+      ..
+#+END_SRC
+
+- [[http://qiita.com/emakryo/items/5e2c79c2a18e60dd212f][OpenCV3 インストールバトル - Qiita]]
+
+* cpanm
+
+#+BEGIN_SRC sh
+wget http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Test-Harness-3.36.tar.gz
+tar xvf Test-Harness-3.36.tar.gz
+cd Test-Harness-3.36
+perl Makefile.PL
+
+wget http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-7.10.tar.gz
+tar xvf ExtUtils-MakeMaker-7.10.tar.gz 
+cd ExtUtils-MakeMaker-7.10
+perl Makefile.PL
+
+wget http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/ExtUtils-Manifest-1.70.tar.gz
+
+curl -L http://cpanmin.us | perl - App::cpanminus
+cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+cpanm --local-lib=~/perl5 local::lib
+#+END_SRC
+
+#+BEGIN_SRC bash
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5/)"
+#+END_SRC
+
+
+* plenv
+
+[[https://github.com/tokuhirom/plenv][tokuhirom/plenv: Perl binary manager]]
+
+#+BEGIN_SRC sh
+git clone https://github.com/tokuhirom/plenv.git ~/.plenv
+git clone https://github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build/
+
+echo 'export PATH="$HOME/.plenv/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(plenv init -)"' >> ~/.bash_profile
+echo 'eval "$(plenv init - zsh)"' >> ~/.zshrc
+#+END_SRC
+
+
+* git
+#+BEGIN_SRC sh
+git clone https://github.com/git/git
+cd git
+autoconf
+CFLAGS="-I$HOME/include" LDFLAGS="-L$HOME/local/lib" ./configure --prefix=$HOME/local --with-perl="`which perl`" --with-curl
+make
+make install
+#+END_SRC
+
+#+BEGIN_SRC sh
+make configure
+env CPPFLAGS="-I$HOME/local/include" CFLAGS="-I$HOME/include" LDFLAGS="-L$HOME/local/lib" ./configure --prefix=$HOME/local --with-perl="`which perl`" # --with-curl
+make
+make install
+#+END_SRC
+
+#+BEGIN_SRC 
+undefined reference to `Curl_ssl_init'
+#+END_SRC
+
+
+* Emacs
+#+BEGIN_SRC sh
+wget http://ftp.jaist.ac.jp/pub/GNU/emacs/emacs-24.5.tar.gz
+tar xvf emacs-24.5.tar.gz
+cd emacs-24.5
+CFLAGS="-I$HOME/local/include" LDFLAGS="-L$HOME/local/lib" ./configure --prefix=$HOME/local --without-x
+make
+make install
+#+END_SRC
+
+#+BEGIN_SRC sh
+wget http://ftp.gnu.org/gnu/termcap/termcap-1.3.1.tar.gz
+tar xvf termcap-1.3.1.tar.gz
+cd termcap-1.3.1/           
+./configure --prefix=$HOME/local 
+make
+make install
+#+END_SRC
+
+* libcurl
+[[https://curl.haxx.se/libcurl/][libcurl - the multiprotocol file transfer library]]
+
+#+BEGIN_SRC sh
+env CPPFLAGS="-I$HOME/local/include" CFLAGS="-I$HOME/local/include" LDFLAGS="-L$HOME/local/lib" ./configure --prefix=$HOME/local --with-ssl=$HOME/local --without-cyassl
+make
+make install
+#+END_SRC
+
+* OpenSSL
+[[https://github.com/openssl/openssl][openssl/openssl: TLS/SSL and crypto library]]
+#+BEGIN_SRC sh
+git clone https://github.com/openssl/openssl.git
+cd openssl
+./config --prefix=$HOME/local shared zlib
+#+END_SRC
+
+
+* pyenv
+#+BEGIN_SRC sh
+
+#+END_SRC

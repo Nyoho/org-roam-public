@@ -1,0 +1,250 @@
+:PROPERTIES:
+:ID:       ED248594-46E4-4F1C-8B9E-89B6EC3E0B41
+:END:
+#+title: Linux memo
+#+date: <2021-02-16 18:02:19 +0900>
+
+* Tips
+** リンク状況を調べる
+
+#+BEGIN_SRC sh
+nm something.so
+ldd something.so
+#+END_SRC
+
+** lscpu
+もう =/proc/cpuinfo= を見るだけじゃない。
+
+* chroot するとき
+rescue linux などにより起動して元のボリュームのシステムに chroot するとき、次のようにする。
+
+sda1 の /root にLinuxのボリュームがある場合。
+#+BEGIN_SRC sh
+  mkdir /h
+  mount /dev/sda1 /h
+  mount --bind /proc /h/root/proc
+  mount --bind /dev /h/root/dev
+  mount --bind /sys /h/root/sys
+  chroot /h/root
+#+END_SRC
+
+あるいは
+ 
+#+BEGIN_SRC sh
+  mkdir /h
+  mount /dev/sda1 /h
+  for f in proc dev sys
+  do
+      mount --rbind /$f /h/root/$f
+  done
+  chroot /h/root
+#+END_SRC
+
+などとする。
+(run var は f から外した)
+
+#+begin_sh
+grub2-install /dev/sda1
+grub2-install: error: cannot find a device for / (is /dev mounted?).
+#+end_sh
+
+というエラーが出たとき
+
+#+begin_sh
+mount /dev/sda1 /
+grub2-install /dev/sda
+#+end_sh
+
+とした。
+
+* openSUSE 12.3
+~mkinitrd~ で、
+=-d= を =/dev/disk/by-id= でつけたらうまくいかない。ext3 で作られる。
+=-d /dev/sda1= としたらうまくいった。謎
+
+#+BEGIN_SRC sh
+mkinitrd -d /dev/sda1
+#+END_SRC
+
+- [[http://linux.derkeiler.com/Mailing-Lists/SuSE/2009-03/msg02161.html][Re: {opensuse} Bug in mkinitrd if using md raid]]
+- mkinitrd "root device"  "not found" [[https://www.google.co.jp/search?client%3Dsafari&rls%3Den&q%3Dmkinitrd%2Broot%2Bdevice%2Bnot%2Bfound%2Bopensuse&ie%3DUTF-8&oe%3DUTF-8&redir_esc%3D&ei%3DNZNuUZHXDYiZkAWA_4CwDw#safe%3Doff&client%3Dsafari&hl%3Dja&rls%3Den&sclient%3Dpsy-ab&q%3Dmkinitrd%2B%2522root%2Bdevice%2522%2B%2B%2522not%2Bfound%2522&oq%3Dmkinitrd%2B%2522root%2Bdevice%2522%2B%2B%2522not%2Bfound%2522&gs_l%3Dserp.3..35i39j0i30.7147.9709.0.9855.4.4.0.0.0.1.164.408.3j1.4.0...0.0...1c.1.9.psy-ab.iNg6qOygS64&pbx%3D1&fp%3D1&biw%3D1000&bih%3D778&cad%3Db&bav%3Don.2,or.r_cp.r_qf.&sei%3DPK92UcnmMeuSiAfm6YCQBA][mkinitrd "root device" "not found" - Google 検索]]
+
+** ブート時に /dev/sda1 が見えなくなった?
+initrd が出来てない上に、作ってもブート時に
+
+#+BEGIN_SRC 
+resume device /dev/sda1 not found ignoring
+waiting for device /dev/root to apear ..... could not find /dev/root
+#+END_SRC
+と出てしまった。
+
+#+BEGIN_SRC sh
+depmod 3.7.10-1.40-default
+mkinitrd -d /dev/sda1
+#+END_SRC
+
+* GRUB2
+
+#+BEGIN_SRC sh
+grub2-install /dev/sda
+grub2-mkconfig -o /boot/grub2/grub.cfg
+#+END_SRC
+
+* depmod
+#+BEGIN_SRC sh
+depmod [version_name]
+#+END_SRC
+とすると `uname -r` ではなく、version というバージョンの /lib/modules/version をいじってくれる。
+
+* Squid
+: auth_param digest program /usr/sbin/digest_pw_auth /etc/squid/digpass
+
+は
+
+: auth_param digest program /usr/sbin/digest_file_auth /etc/squid/digpass
+
+に。
+
+* Systemd
+: journalctl -n
+
+: journalctl --disk-usage
+
+: journalctl --verify
+
+** データ
+=/var/log/journal= にデータがある。
+
+** 適当に削除するには
+100MBぐらい削除するには
+: journalctl --vacuum-size=100M
+
+過去の10日削除するには
+: journalctl --vacuum-time=10d
+
+* terminal tech
+#+BEGIN_SRC sh
+\ls
+#+END_SRC
+こうすると alias ls でたくさん設定していても一時的に no option 状態にできる。
+
+* mount
+** vfat を mount
+日本語の vfat のファイルシステムをマウントしよう。
+#+BEGIN_SRC sh
+mount -t vfat -o codepage=932,iocharset=utf8 /dev/sdc1 /mnt/hoge
+#+END_SRC
+
+* swapを作る
+
+#+BEGIN_SRC sh
+f=swapfile
+sudo fallocate -l 2G /$f
+sudo chmod 600 /$f
+sudo mkswap /$f
+sudo swapon /$f
+#+END_SRC
+
+fstabに
+#+BEGIN_SRC 
+/swapfile   none    swap    sw    0   0
+#+END_SRC
+を記入しておく。
+
+** swappiness
+#+BEGIN_SRC sh
+sudo sysctl vm.swappiness=10
+#+END_SRC
+ぐらいもいいらしい。
+[[https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04][How To Add Swap on Ubuntu 14.04 | DigitalOcean]]
+
+* dkms
+Dynamic Kernel Module Support Framework
+
+カーネルアップデートのたびにカーネルもージュールを手動でビルドして入れる代わりに自動でやってくれる。
+
+例。modulename というモジュールの 0.0.0 を登録する。
+
+
+/usr/src/modulename-0.0.0 というディレクトリを作ってその中にソースと =dkms.conf= を入れる。
+
+書き方は =man dkms= 。
+
+kms.conf
+#+BEGIN_SRC conf
+PACKAGE_NAME="modulename"
+PACKAGE_VERSION="0.0.0"
+BUILD_MODULE_NAME="some_driver"
+DEST_MODULE_LOCATION="/kernel/drivers/nantoka"
+MAKE="make"
+CLEAN="make clean"
+AUTOINSTALL="yes"
+REMAKE_INITRD="yes"
+#+END_SRC
+
+のように。
+そして、
+
+: dkms add -m modulename -v 0.0.0
+
+で登録。
+
+: dkms status
+
+で状況確認ができる。
+
+: dkms autoinstall
+
+で全部ビルドしてインストールしてくれる。
+
+* rpm
+** preinstall, postinstall script を確認する
+
+#+begin_src sh
+rpm -qp --scripts kernel-default-*****.x86_64.rpm
+#+end_src
+
+* Console のモニタ制御
+: setterm -blank 10 -powerdown 15
+これでできるのかあとでチェック <2018-12-15 Sat>
+[[https://superuser.com/questions/206622/turn-off-monitor-energy-saving-while-in-text-console-mode-in-linux][display - Turn off monitor (energy saving) while in text console mode (in Linux) - Super User]]
+
+* dracut
+dracutがvia82cxxxを見つけられずに失敗する
+ときに
+=/etc/sysconfig/kernel= の =INITRD_MODULES= から外した。
+
+jdb, ide_pci_generic
+
+#+begin_src txt
+dracut-install: Failed to find module 'via82cxxx'
+dracut: FAILED: /usr/lib/dracut/dracut-install -D /var/tmp/dracut.edc2Ic/initramfs -N ^i2o_scsi$ --kerneldir /lib/modules/6.2.1-1-default/ -m ********** via82cxxx *************
+dracut: installkernel failed in module suse-initrd  
+#+end_src
+
+* オブジェクトファイルのシンボル
+
+#+begin_sh
+readelf -s objectfile
+#+end_sh
+
+readelf を使う。
+
+nm では出てこないことがある。
+
+
+* 謎のメモ
+** resume device no found (ignoring)
+Waiting for device /dev/sda1 to appear ....
+とかなって止まっていた。kernel を一つ戻したらうまくいった(?)
+[[https://www.google.co.jp/search?client=safari&rls=en&q=resume+device+no+found+(ignoring)+waiting+for+device+/dev/+to+appear&ie=UTF-8&oe=UTF-8&gws_rd=cr&ei=Rv8zUtDgDcWOige8h4GICQ]]
+
+** boot しない
+openSUSE 13.2 にしたらおかしくなった。<2015-03-30 Mon>
+boot "failed to start Load kernel modules" systemctl status systemd-modules-load.service
+
+** mrtg
+crontabに昔設定していた。
+#+begin_src crontab
+*/5 * * * * root /usr/bin/mrtg /etc/mrtg/mrtg.cfg 2>&1 /dev/null
+#+end_src

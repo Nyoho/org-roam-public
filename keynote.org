@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       8CD4087E-012A-498F-B425-3DDB04FC3E9A
+:END:
+#+title: Keynote
+#+tags: keynote
+#+date: <2014-07-15 Tue>
+
+Keynote メモです。
+
+* ashortcuts
+
+- x :: 発表者ディスプレイを入れ換える
+- w :: white out
+- b :: black out
+
+* リンクを作る
+ctrl + click して「リンクを追加」
+

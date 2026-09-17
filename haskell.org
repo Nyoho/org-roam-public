@@ -1,0 +1,78 @@
+:PROPERTIES:
+:ID:       3173F5A1-7A52-41C4-B3FF-80CE806C553F
+:END:
+#+title: Haskell
+#+tags: Haskell
+#+date: <2014-06-01 Sun>
+
+Haskellのメモ
+
+- [[https://zenn.dev/mod_poppo/articles/haskell-setup-2023][Haskellの環境構築2023]]
+   
+* stack
+#+BEGIN_SRC sh
+brew install haskell-stack
+stack install hlint ghc-mod haskell-docs
+#+END_SRC
+([[http://qiita.com/eielh/items/f121fbd2def8c887405f][IntelliJでHaskell - Qiita]])
+
+
+#+BEGIN_SRC sh
+cabal install hogehoge
+#+END_SRC
+は、
+#+BEGIN_SRC sh
+stack install hogehoge
+#+END_SRC
+
+
+: stack new
+
+: stack init
+
+: stack build
+
+: stack exec nantoka 
+
+* cabal
+cabal で uninstall コマンドをつける
+#+BEGIN_SRC sh
+cabal install cabal-uninstall
+#+END_SRC
+
+#+BEGIN_SRC sh
+ghc-pkg unregister hoge-0.0.1
+#+END_SRC
+
+* Functional reactive programming (FRP)
+** libraries
+*** euphoria
+[[https://github.com/tsurucapital/euphoria][tsurucapital/euphoria]]
+
+[[http://www.kotha.net/misc/fpm2012/frptalk.html][関数リアクティブプログラミングの実践]]
+共通の中間結果を memorized できる。
+
+*** [[http://www.haskell.org/haskellwiki/Netwire][Netwire]]
+ネットワーク用。arrow な FRP 実装
+[[http://hackage.haskell.org/package/netwire-1.2.6/docs/FRP-NetWire.html][FRP.NetWire]]
+
+*** Yampa
+[[http://www.haskell.org/haskellwiki/Yampa][Yampa - HaskellWiki]]
+
+*** Sodium
+
+*** Reactive-banana
+
+- (slide) [[http://www.slideshare.net/faithandbrave/frp-tutorial][frp tutorial]]
+
+* 演算子
+- =$= :: 1
+
+* GHC 言語拡張
+
+[[https://downloads.haskell.org/ghc/latest/docs/html/users_guide/lang.html][9. GHC Language Features — Glasgow Haskell Compiler 8.10.1 User's Guide]]
+
+* links
+- [[https://stevekrouse.com/hs.js/][λ Lessons]]
+- [[http://lotz84.github.io/haskell/tutorial][Haskell入門 | haskell]] いろんなHaskell学習材のリンク集
+- [[https://wiki.haskell.jp/Links][Haskell-jp wiki - Links]]

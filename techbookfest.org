@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       B34E34A2-99B0-4E96-AA0F-B3E43AAF80B9
+:END:
+#+title: 技術書典
+#+date: <2018-04-20 16:01:32>
+
+[[https://techbookfest.org/][技術書典]] メモ
+
+* [[https://techbookfest.org/event/tbf04][技術書典4]]
+- Btrfs
+- Julia
+- ジャストシステム

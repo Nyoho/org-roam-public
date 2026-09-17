@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       C9A75507-BA8F-49B2-A9B0-D87CE5A06068
+:END:
+#+title: rsync
+#+date: <2019-03-16 Sat>
+
+* Usage
+よくやるのが
+
+#+begin_src sh
+rsync -avz [source] [target]
+#+end_src
+
+である。
+
+他にもMacで便利な、ハードリンクを保ってくれる ~-H~ を用いた ~-Hax~ (~-x~ はデバイスをまたがない)
+
+macOS同士でやる ~-E~ (~-auvzE~) copy extended attributes, resource forks
+
+* options
+
+- ~a~ :: archive mode
+- ~v~ :: verbose
+- ~z~ :: compress
+- ~H~ :: preserve hard links
+- ~E~ :: copy extended attributes, resource forks
+- ~--progress~ :: 速度とか進捗状況が出る
+- --dry-run (-n) :: dry-runする
+- ~--delete~ :: 元になくて、転送先にある場合、その転送先にあるファイルは削除する
+
+* Links
+- [[https://www.server-memo.net/tips/rsync/rsync.html][rsyncの使い方 | server-memo.net]]

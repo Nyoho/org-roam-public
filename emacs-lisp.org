@@ -1,0 +1,272 @@
+:PROPERTIES:
+:ID:       8C5D1FAF-A4E9-43D6-9878-2F23BD4F0FDD
+:END:
+#+title: Emacs Lisp
+#+tags: lisp, emacs lisp, elisp
+#+date: <2013-10-10 Thu>
+
+Emacs Lisp の学習
+
+* Debugging
+
+- C-h f 関数名 :: 定義を表示したりソースコードに飛べる。
+- C-h k キー入力 :: 「キー入力」がやる関数を教えてくれる。定義にジャンプしてもOK
+
+** edebug
+https://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Edebug
+- C-u C-M-x :: その関数を読んだときに止まる。 =edebug-stop= でその引っかけが止まる。
+
+** debug-on-message
+変数 =debug-on-message= に文字列(正規表現)を *入れて* おくと、それが ~message~ として出力された時点で止まってedebugできる。
+
+** debug-on-error
+変数 =debug-on-error= の値を =t= にしておくとエラーが出たときにbacktraceが出る。
+
+** デバッガモードに入ったら全バッファを出力 (3秒待ちつき)
+
+デバッガモードに入ったら全バッファを出力する技 (3秒待ちつき)
+
+#+begin_src emacs-lisp :lexical no
+  (add-hook 'debugger-mode-hook (lambda () (run-with-idle-timer 3 nil (lambda ()
+  (let ((dir user-emacs-directory)
+            (coding-system-for-write 'raw-text))
+        (cl-loop
+         for buffer
+         in (buffer-list)
+         do (ignore-errors
+              (with-temp-file
+                  (expand-file-name
+                   (format "buffer-%s.txt" (url-hexify-string (buffer-name buffer)))
+                   dir)
+                (insert-buffer-substring-no-properties buffer)))))
+  ))))
+#+end_src
+
+* Testing
+単体テストに =ert= を使う。
+
+=M-x ert RET t= で全部テストできます。
+
+* eval-after-load
+
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load "magit"
+    '(define-key magit-status-mode-map (kbd "C-c C-a") 'magit-just-amend))
+#+END_SRC
+
+http://whattheemacsd.com/setup-magit.el-05.html
+
+* Macro と quote や backquote や comma
+- [[http://www.asahi-net.or.jp/~kc7k-nd/onlispjhtml/macros.html][On Lisp --- マクロ]]
+- [[http://www.asahi-net.or.jp/~kc7k-nd/onlispjhtml/whenToUseMacros.html][On Lisp --- いつマクロを使うべきか]]
+- [[https://qiita.com/snmsts@github/items/ef625bd6be7e685843ca]['`'と',' - Qiita]]
+
+クオート「'」は ~quote~ と等価。評価しない。
+
+バッククオート「`」 は ~list~ と等価。
+
+バッククオートの中で、評価して欲しいところにカンマを付ける。
+#+begin_src lisp
+  `(+ 1 2 ,(+ 3 4))
+  ;; ->(+ 1 2 7)
+#+end_src
+
+シャープ・クオート「#'」は ~function~ 。 ~#'foo~ は ~(function foo)~ 。
+
+カンマアットマーク「,@」は splice。 JavaScriptの ... みたいなもの。
+
+#+begin_src lisp
+  (let* ((x '(a b c)))
+    `(x ,x ,@x foo ,(cadr x) bar ,(cdr x) baz ,@(cdr x)))
+  ;; => (x (a b c) a b c foo b bar (b c) baz b c)
+#+end_src
+(from [[https://stackoverflow.com/questions/21463925/meaning-of-at-sign-in-lisp][Meaning of @ (at-sign) in Lisp? - Stack Overflow]])
+
+- ~'expr~ は ~(quote expr)~
+- ~#'expr~ は ~(function expr)~
+
+** leafの展開
+
+#+begin_src emacs-lisp
+  (ppp-macroexpand-all
+   (leaf pkg1 :after dependent1 :require t
+     :config
+     (leaf pkg2 :after dependent2 :require t
+       :config
+       (leaf pkg3 :after dependent3 :require t))))
+#+end_src
+
+を評価すると次が出てくる。
+
+#+RESULTS:
+#+begin_src emacs-lisp
+(prog1 'pkg1
+  (condition-case err
+      (progn
+        (eval-after-load 'dependent1
+          #'(lambda nil
+              (progn
+                (require 'pkg1)
+                (prog1 'pkg2
+                  (condition-case err
+                      (progn
+                        (eval-after-load 'dependent2
+                          #'(lambda nil
+                              (progn
+                                (require 'pkg2)
+                                (prog1 'pkg3
+                                  (condition-case err
+                                      (progn
+                                        (eval-after-load 'dependent3
+                                          #'(lambda nil
+                                              (progn
+                                                (require 'pkg3)))))
+
+                                    (error
+                                     (display-warning 'leaf
+                                                      (format "Error in `pkg3' block.  Error msg: %s"
+                                                              (error-message-string err))))))))))
+
+                    (error
+                     (display-warning 'leaf
+                                      (format "Error in `pkg2' block.  Error msg: %s"
+                                              (error-message-string err))))))))))
+
+    (error
+     (display-warning 'leaf
+                      (format "Error in `pkg1' block.  Error msg: %s"
+                              (error-message-string err))))))
+#+end_src
+
+** thread-first, thread-last
+
+#+begin_src emacs-lisp
+  (defmacro foo () 
+    (declare (indent 1))
+    `(thread-first 2
+                   (+ 3)
+                   (/ 2)))
+  (foo)
+#+end_src
+
+#+RESULTS:
+| thread-first | 2 | (+ 3) | (/ 2) |
+
+
+* Tips
+** 変数の型
+変数の型は ~type-of~ で調べる。
+
+#+begin_src emacs-lisp
+(type-of buffer-file-coding-system) ; => symbol
+#+end_src
+
+** 日付
+#+BEGIN_SRC emacs-lisp
+(format-time-string "%Y-%m-%d %H:%M:%S" (current-time))
+#+END_SRC
+
+** lexical scope (Emacs 24から)
+Emacs 24 から lexical scope が使えるようになった。
+
+ファイルの先頭に、
+
+#+BEGIN_SRC emacs-lisp
+;;; -*- lexical-binding: t -*-
+#+END_SRC 
+
+と書くと有効になる。
+
+** home directory 展開
+
+環境変数をとる方法
+: (concat (getenv "HOME") "/bin")
+
+展開させる方法
+: (expand-file-name "~/bin")
+
+** 存在
+関数が定義されているか
+#+begin_src emacs-lisp
+(fboundp 'a-function)
+#+end_src
+
+変数が定義されているか
+#+begin_src emacs-lisp
+(boundp 'a)
+#+end_src
+
+パッケージがロードされているか
+#+begin_src emacs-lisp
+(featurep 'ibuffer)
+#+end_src
+
+** eval-expression
+~M-:~ (~eval-expression) でそのバッファの状態でS式評価ができる。
+
+** file-expand-wildcards
+
+=file-expand-wildcards=. ワイルドカードの =*= を展開してくれる。結果がリスト出帰ってくるのでとりあえず =car= で先頭だけを採用した。
+
+#+begin_src elisp
+(setq org-plantuml-jar-path (car (file-expand-wildcards "/usr/local/Cellar/plantuml/*/libexec/plantuml.jar")))
+#+end_src
+
+(plantumlをHomebrewで入れていて、とりあえず org-plantuml-jar-path をバージョン決め打ちにしていたら、バージョンアップしたらだめになったのでよしワイルドカードして見ようと思って調べた。)
+
+** defvar
+
+lexical-binding t のときにグローバルバインディングしたいときは
+defbar を使う。
+=(defvar a hoge)=
+
+** dynamic scope
+#+begin_src emacs-lisp
+  (let ((defualt-directory "/tmp"))
+    (shell-command-to-string "cd"))
+#+end_src
+
+** funarg問題
+#+begin_src emacs-lisp
+  (setq lexical-binding t)
+  (setq lexical-binding nil)
+
+  (setq msg "bbb")
+
+  (defun f1 ()
+    msg)
+
+  (let ((msg "aaa"))
+    (f1))
+
+  (defun f2 (msg)
+    (lambda () msg))
+
+  (let ((g (f2 "hogehoge"))
+        (msg "fugafuga"))
+    (funcall g))
+
+
+  ;; lexical-binding t でないとエラーになる
+  (defun make-counter (init)
+    (lambda ()
+      (prog1 init
+        (setq init (1+ init)))))
+
+  (setq counter (make-counter 1))
+
+  (funcall counter)
+#+end_src
+
+** 環境変数を全部出力する
+
+#+begin_src emacs-lisp :lexical no
+  (with-output-to-temp-buffer "*Environment Variables*"
+  (dolist (env process-environment)
+    (princ env)
+    (princ "\n")))
+#+end_src
+
+* Links
+- [[https://www.youtube.com/watch?v=gjiAjtGzC64][XahTV 2020-08-26 lisp keyboards, arrow key history, emacs dash problem, open source problem - YouTube]]
+- [[https://qiita.com/kawabata@github/items/9a1a1e211c57a56578d8][Emacs Lispの汎変数 #Emacs - Qiita]]

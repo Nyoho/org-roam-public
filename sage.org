@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       A2781C88-3FBD-48F8-9D7F-33266AF4ADDB
+:END:
+#+title: Sage
+#+date: <2020-05-28 15:45:44 +0900>
+
+Sage
+
+* Tips
+SageMathCloud は CoCalc になった。
+
+https://github.com/sagemathinc/cocalc/wiki/CoCalc
+
+** 代数的整数論
+[[https://doc.sagemath.org/html/en/reference/number_fields/sage/rings/qqbar.html][Field of Algebraic Numbers - Algebraic Numbers and Number Fields]]
+
+** 圏の使い方
+例えば https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-implementing-algebraic-structures.html
+
+圏にどんなメソッドが optional か required か尋ねることができる。
+
+#+begin_src python
+abstract_methods_of_class(AlgebrasWithBasis(QQ).element_class)
+#+end_src
+
+代数 ~A~ などを ~category=hogehoge~ で作った後に
+~TestSuite(A).run(verbose=True)~ することでその圏の仮定を満たすかどうかテストできる。
+
+** 整多面体
+- [[http://hep.itp.tuwien.ac.at/~kreuzer/CY/CYpalp.html][PALP]] a Package for Analyzing Lattice Polytopes
+- [[https://porta.zib.de/][PORTA]] POlyhedron Representation Transformation Algorithm
+
+* ドキュメント・チュートリアル
+- https://doc.sagemath.org/pdf/ja/tutorial/tutorial-jp.pdf
+- [[https://www.youtube.com/playlist?list=PLnrOCYZpQUuJlnQbQ48zgGk-Ks1t145Yw][Manifolds in SageMath - YouTube]]
+
+** いろんな言語でのSageのチートシート
+[[https://wiki.sagemath.org/quickref][quickref - Sage Wiki]] より
+  - [[https://wiki.sagemath.org/quickref?action=AttachFile&do=view&target=quickref-ja.pdf][attachment:quickref-ja.pdf of quickref - Sage Wiki]] Sage Quick Reference
+  - [[https://wiki.sagemath.org/quickref?action=AttachFile&do=view&target=quickref-pythonsyntax-ja.pdf][Python文法 (日本語)]]
+  - [[https://wiki.sagemath.org/quickref?action=AttachFile&do=view&target=sage-quickref-ja.pdf][attachment:sage-quickref-ja.pdf of quickref - Sage Wiki]] 基本的な数学
+  - [[https://wiki.sagemath.org/quickref?action=AttachFile&do=view&target=quickref-calc-ja.pdf][attachment:quickref-calc-ja.pdf of quickref - Sage Wiki]] 微積
+  - [[https://wiki.sagemath.org/quickref?action=AttachFile&do=view&target=quickref-linalg-ja.pdf][attachment:quickref-linalg-ja.pdf of quickref - Sage Wiki]] 線形代数
+  - [[https://wiki.sagemath.org/quickref?action=AttachFile&do=view&target=quickref-nt-ja.pdf][attachment:quickref-nt-ja.pdf of quickref - Sage Wiki]] 初等数論
+  - [[https://wiki.sagemath.org/quickref?action=AttachFile&do=view&target=quickref-graphtheory-ja.pdf][attachment:quickref-graphtheory-ja.pdf of quickref - Sage Wiki]] グラフ理論
+
+
+* SageMath.app
+macOS の SageMath-x.x.app
+
+=~/.sage/sage_notebook.sagenb/home/admin/=
+
+
+* Development
+- [[http://doc.sagemath.org/html/en/developer/index.html][Welcome to the Sage Developer’s Guide! — Sage Developer's Guide v8.5]]
+- [[https://trac.sagemath.org/roadmap][Roadmap – Sage]]

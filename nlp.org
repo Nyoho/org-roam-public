@@ -1,0 +1,73 @@
+:PROPERTIES:
+:ID:       6B64E7E6-EC9A-4562-B07E-0548A1BBB6C5
+:END:
+自然言語処理の勉強
+
+* 音声認識
+** Julius
+音声認識して文字起こしするやつ
+
+Macでのインストール
+
+[[http://qiita.com/uetchy/items/1236b91b15d077e03525][HomebrewでOSXに音声解析エンジンJuliusを入れる - Qiita]] を参考にしてみよう。<2016-12-26 Mon>
+
+#+BEGIN_SRC sh
+brew tap uetchy/nlp
+brew install julius julius-dictation-kit
+#+END_SRC
+
+monoなWAVEファイルを作る。切り出すのは =-ss 100 -t 30= とかで。
+
+#+BEGIN_SRC sh
+ffmpeg -i hoge.aiff -acodec pcm_s16le -ar 16000 -ac 1 mono.wav
+#+END_SRC
+またはsoxで
+
+#+BEGIN_SRC sh
+sox hoge.aiff -r 16000 mono.wav
+#+END_SRC
+など。
+
+#+BEGIN_SRC sh
+julius.dSYM -C `brew --prefix julius-dictation-kit`/share/main.jconf -C `brew --prefix julius-dictation-kit`/share/am-gmm.jconf -input rawfile
+#+END_SRC
+
+dictation-kitをダウンロードしてきてもだいたい動く。
+
+=run-linux-dnn.sh= などのファイルが入っているので参考にすればOK。
+
+#+BEGIN_SRC sh
+./bin/linux/julius -C main.jconf -C am-dnn.jconf -demo -dnnconf julius.dnnconf -cutsilence -input file
+#+END_SRC
+
+=-cutsilence= で無音部分で文を区切る。長い音声ファイルもこれで連続して食わせることができる。
+
+
+: ./bin/linux/julius -C main.jconf -C am-gmm.jconf -demo -dnnconf julius.dnnconf -cutsilence -input file
+* 形態素解析
+** MeCab
+よく使う。
+
+** nagisa
+
+[[https://github.com/taishi-i/nagisa][taishi-i/nagisa: A Japanese tokenizer based on recurrent neural networks]]
+RNNによる。
+
+[[https://twitter.com/Py2K4/status/1041899061375160321][nadareさんのツイート: "形態素解析ライブラリ「nagisa」のポスター pip一つでインストールできる手軽さと 一単語として認識したい単語を簡単に追加できる便利さがあって mecabより小回りの効く分析ツールって感じ 後で試したい #PyConJP… "]]
+
+: pip install nagisa
+
+確かに簡単じゃ。
+
+#+BEGIN_SRC python
+import nagisa
+
+#+END_SRC
+
+* Deep learning
+
+- [[https://www.slideshare.net/techblogyahoo/word2vecbert-gpt3][深層学習による自然言語処理入門: word2vecからBERT, GPT-3まで]]
+
+* 未分類
+- [[https://dl.acm.org/doi/10.1145/365628.365657][Contextual correlates of synonymy | Communications of the ACM]]
+   

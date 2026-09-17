@@ -1,0 +1,592 @@
+:PROPERTIES:
+:ID:       D89DF367-84D2-40F0-924F-55EF8CEF0C65
+:END:
+#+title: Mastodon
+#+date: <2021-06-20 00:16:42 +0900>
+
+Mastodonについて。
+
+* Installation
+** setup and run with Docker
+#+BEGIN_SRC sh
+  docker-compose build
+
+  # 3 times, and paste to .env.production
+  docker-compose run --rm web rake secret
+
+  docker-compose run --rm web rails db:migrate
+  docker-compose run --rm web rails assets:precompile
+  docker-compose up
+#+END_SRC
+
+** Without Docker
+[[https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Production-guide.md#running-in-production-without-docker][documentaftion/Production-guide.md at master · tootsuite/documentation]]
+
+as root,
+#+BEGIN_SRC sh
+  apt-get install imagemagick ffmpeg libpq-dev libxml2-dev libxslt1-dev nodejs file git curl \
+          redis-server redis-tools \
+          postgresql postgresql-contrib \
+          pkg-config libprotoc-dev protobuf-compiler
+
+  apt-get install nodejs
+  # or
+  curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+
+  apt install npm
+  npm install -g yarn
+
+  apt-get install -y libreadline-dev
+  apt install nginx
+#+END_SRC
+
+as user
+#+BEGIN_SRC sh
+bundle install --deployment --without development test
+yarn install --pure-lockfile
+#+END_SRC
+
+
+nginx 設定
+
+あと
+#+BEGIN_SRC sh
+letsencrypt certonly --webroot -w -w /var/www/$VHOSTNAME -d $VHOSTNAME
+#+END_SRC
+
+=crontab -l=
+#+BEGIN_SRC
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 5 * * 1 certbot renew --webroot && service nginx restart > /dev/null
+#+END_SRC
+
+PostgreSQL の設定 /etc/postgresql/9.5/main/pg_hba.conf 
+user
+
+pg_hba.conf の local の下に host を付けたら
+#+begin_src conf
+local   all             postgres                                peer
+host    all     all     127.0.0.1/32    trust
+#+end_src
+こうなる。
+
+最初にdbを作る。
+
+: RAILS_ENV=production bundle exec rails db:setup
+
+dbが更新されていたら、
+
+: RAILS_ENV=production bundle exec rails db:migrate
+
+mastodonのサーバ群を手動で立ち上げるなら
+
+: time RAILS_ENV=production bundle exec rails assets:precompile
+
+してから
+
+#+begin_src sh
+env RAILS_ENV=production bundle exec puma -C config/puma.rb -p 3000
+env NODE_ENV=production PORT=4000 npm run start
+env RAILS_ENV=production DB_POOL=5 bundle exec sidekiq -c 5 -q default -q mailers -q pull -q push
+#+end_src
+
+
+管理者設定
+
+: RAILS_ENV=production bundle exec rails mastodon:make_admin USERNAME=Nyoho
+
+* 開発
+
+開発用の admin アカウント情報
+
+#+begin_quote
+You can log in as the default admin user with the username admin@mastodon.local and the password mastodonadmin.
+#+end_quote
+from: https://github.com/mastodon/documentation/blob/035e49f13bc667be239780f2a1e9949afb3f496f/content/en/dev/setup.md
+
+- admin@localhost:3000
+- mastodonadmin
+
+** without Vagrant
+開発用のPostgreSQL準備
+Homebrewでは =brew install postgresql@14= としておいて
+
+#+begin_src 
+initdb postgres14
+#+end_src
+
+でローカルユーザでデータベースが作られる。
+
+#+begin_src sh
+brew services restart postgresql@14
+#+end_src
+
+または
+
+#+begin_src sh
+pg_ctl -D postgres14 -l logfile start
+#+end_src
+
+でdb起動。
+
+#+begin_quote
+---- FATAL:  could not create shared memory segment: Cannot allocate memory
+---- DETAIL:  Failed system call was shmget(key=103633930, size=56, 03600).
+---- HINT:  This error usually means that PostgreSQL's request for a shared memory segment exceeded your kernel's SHMALL parameter.  You might need to reconfigure the kernel with larger SHMALL.
+	The PostgreSQL documentation contains more information about shared memory configuration.
+---- LOG:  database system is shut down
+#+end_quote
+
+上のようなエラーが出て起動できないときは、次が必要かも。
+
+#+begin_src
+sudo sysctl -w kern.sysv.shmall=4096
+#+end_src
+
+[[https://postgresapp.com][Postgres.app]] を使う方法もある (長らくこれを使っていた)。
+
+本体立ち上げ
+#+BEGIN_SRC sh
+redis-server &
+RAILS_ENV=development foreman start
+open http://localhost:3000
+#+END_SRC
+http://localhost:3000
+
+** よくあるアップデート作業
+
+For development (local etc.)
+#+BEGIN_SRC sh
+bundle install
+yarn install
+RAILS_ENV=development bundle exec rails db:migrate
+RAILS_ENV=development bundle exec rails assets:precompile
+#+END_SRC
+
+For production, non-Docker
+#+BEGIN_SRC sh
+bundle install
+yarn install
+env RAILS_ENV=production bundle exec rails db:migrate
+env RAILS_ENV=production bundle exec rails assets:precompile
+#+END_SRC
+
+For production, with Docker
+#+BEGIN_SRC fish
+docker-compose pull
+docker-compose build
+docker-compose run --rm web rails db:migrate
+docker-compose run --rm web rails assets:precompile
+docker-compose stop; and docker-compose up -d
+#+END_SRC
+
+*** マージ作業
+~origin~ の タグ(ブランチ) ~foo~ をマージするとき、次にするとdry-run的にできる。
+
+一旦マージ用のブランチを作る。
+
+#+begin_src sh
+git switch -c merge-origin-foo
+#+end_src
+
+#+begin_src sh
+  git fetch origin
+  git merge --no-commit --no-ff foo
+#+end_src
+
+#+begin_src sh
+yarn install
+bundle install
+#+end_src
+
+git tag vfoo-m とリリース用のタグを付けたら、次でタグをプッシュする。
+
+git push --tags
+
+タグが付いているとGitHub Actionでdocker buildが走ります。
+新しいバージョンのマージ作業として、
+git switch -c merge-orign-v0.0.0
+git merge v0.0.0
+して、conflictを解消して、
+yarn install
+bundle install
+してgit commit (C1)できました。
+このGitHubにpushするときはまずこのブランチmerge-origin-v0.0.0をプッシュしてpull requestを作成してマージ。マージした後のコミットに対してtagを付けます。
+
+例
+
+#+begin_src sh
+git switch mathtodon
+git pull --ff-only myrepo mathtodon
+git tag v0.0.0-m
+git push myrepo v0.0.0-m
+#+end_src
+
+
+** test
+
+#+begin_src sh
+  RAILS_ENV=test bundle exec rails assets:precompile
+#+end_src
+
+
+#+begin_src sh
+  RAILS_ENV=test bundle exec rspec
+  yarn run test
+#+end_src
+
+** 翻訳作業
+#+begin_src shell
+git switch l10n_main
+git pull origin l10n_main
+#+end_src
+
+* Tips
+
+** アクティブユーザを調べる
+rails console で
+
+#+BEGIN_SRC ruby
+# 期間を指定する
+t = Time.now - 3.days
+Account.all.map{|a| [a.username, a.statuses.select{|s| s.created_at > t }.length] }
+
+Account.select{|a| a.domain == nil}.map{|a| [a.username, a.display_name, a.statuses.select{|s| s.created_at > t }.length] }
+#+END_SRC
+
+つぶやいている人のランキング
+
+#+BEGIN_SRC ruby
+Account.select{|a| !a.domain }.map{|a| [a.username, a.display_name, a.statuses.select{|s| s.created_at > t }.length] }.sort{|a,b| a[2] <=> b[2] }.reverse
+# 全ローカルユーザ数
+Account.select{|a| !a.domain }.length
+#+END_SRC
+
+1度でもつぶやいている人
+#+BEGIN_SRC ruby
+ranking = Account.select{|a| !a.domain }.map{|a| [a.username, a.display_name, a.statuses.select{|s| s.created_at > t }.length] }.select{|x| x[2] > 0}.sort{|a,b| a[2] <=> b[2] }
+
+ranking.length
+#+END_SRC
+
+** PostgreSQL を pg_rman でバックアップ
+pg_rman の設定をする。
+
+postgres ユーザの crontab にこれを設定。
+#+BEGIN_SRC 
+PGDATA=/var/lib/postgresql/9.5/main
+BACKUP_PATH=/var/lib/postgresql/backup
+ARCLOG_PATH=/var/lib/postgresql/9.5/arclog
+PATH=/usr/lib/postgresql/9.5/bin:/usr/local/bin:/usr/bin:/bin
+
+# min hour day mon weekday   command
+35  4   *   *   *     pg_rman backup --backup-mode=full --with-serverlog > /dev/null
+30  */4  *   *   *     find $ARCLOG_PATH -type f -mtime +3 -exec rm -f {} \; > /dev/null && pg_rman delete $(date -d '1 day ago' +\%Y-\%m-\%d) > /dev/null
+20  */1  *   *   *     pg_rman backup --backup-mode=incremental > /dev/null && pg_rman validate > /dev/null
+#+END_SRC
+
+#+BEGIN_SRC sh
+gsutil -m rsync -d -r /var/lib/postgresql/backup gs://mathtodon-db-backup/backup
+gsutil -m rsync -d -r /var/lib/postgresql/9.5/arclog gs://mathtodon-db-backup/9.5/arclog
+#+END_SRC
+
+** PostgreSQL を wal-e でバックアップ
+[[https://github.com/tootsuite/documentation/blob/master/Maintaining-Mastodon/Backups-Guide.md]] に書いてある。
+
+** tasks
+
+: RAILS_ENV=production bundle exec bin/tootctl media remove --days=1
+
+: RAILS_ENV=production bundle exec bin/tootctl media remove
+
+Dockerなら
+
+#+begin_src sh
+docker-compose run --rm web bin/tootctl media remove
+#+end_src
+
+である。
+
+容量を空けるには、(fishでは)次のようにするとよいかもしれない。
+#+begin_src fish
+docker rm -f (docker ps -a -q)
+docker rmi (docker images -q)
+#+end_src
+
+media usage コマンドで現在の使用量がわかる。
+
+
+次は古い。
+
+: env RAILS_ENV=production bundle exec rake mastodon:media:remove_remote
+
+old crontab
+#+begin_src 
+RAILS_ENV=production
+@daily cd /path/to/mastodon && hogehoge/.rbenv/shims/bundle exec rake mastodon:daily > /dev/null
+@daily cd /path/to/mastodon && hogehoge/.rbenv/shims/bundle exec rake mastodon:media:remove_remote > /dev/null
+#+end_src
+
+** アイコン
+https://github.com/tootsuite/mastodon/pull/4306/files?diff=unified
+
+** public/system を S3 系へ
+public/system が多くなってきたのでS3などのオブジェクトストレージへ移す。
+
+*** GCPで
+
+まずまるごとコピーする。
+#+begin_src sh
+gsutil -m rsync -d -r /path/to/mastodon/public/system gs://mathtodon-public-system/system
+#+end_src
+
+1. Google Cloud Storage (GCS) で「設定」➡「相互運用ストレージ アクセスキー」
+2. 「ブラウザ」➡バケツ➡右の縦の3点 ➡ 「バケットの権限を編集」
+   * allUsers に「Storage Legacy Object Reader」の権限を付与
+
+=Aws::S3::InvalidArgument= が出てうまくいかない
+
+[[https://mstdn.cygnan.com/about/more][mstdn.cygnan.com - mstdn.cygnan.com]] ではうまくいっているみたい?
+[[https://mlny.info/2018/03/build-personal-mastodon-instance/][おひとりさま用のMastodonインスタンスを作る | microjournal]] には「すでに2018年9月の時点でこの記事の内容は全く参考にならなくなっています(例えば、すでにGoogle Cloud Storageは使えなくなりました)。」と書かれている。
+
+- [[https://github.com/tootsuite/mastodon/issues/7120][Paperclip 6.0 might break Google Cloud Storage · Issue #7120 · tootsuite/mastodon]]
+
+この記事はできている: [[https://justinribeiro.com/chronicle/2019/09/27/setting-up-mastodon-on-google-cloud-platform/][Setting Up Mastodon on Google Cloud Platform - Justin Ribeiro]]
+
+*** wasabiも安い
+- [[https://wasabi.com/][Cloud Object Storage by Wasabi | 1/5th the price & 6x the speed | Wasabi]]
+- [[https://qiita.com/mecaota/items/365fa9330366e74f756a#%25E3%2582%25AA%25E3%2583%2596%25E3%2582%25B8%25E3%2582%25A7%25E3%2582%25AF%25E3%2583%2588%25E3%2582%25B9%25E3%2583%2588%25E3%2583%25AC%25E3%2583%25BC%25E3%2582%25B8wasabi%25E5%25B0%258E%25E5%2585%25A5%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%2584%25E3%2581%25A6][Mastodon移住の話からMastodonメディアをwasabiという安いオブジェクトストレージに移管した話まで - Qiita]]
+- [[https://diary.akane.blue/2021/11/23/goodbye-s3-hello-wasabi/][メディアをWasabiに移行しました | 茜の鯖缶日誌]]
+
+*** ConoHa
+- [[https://support.conoha.jp/v/objectstorage-mastodon/][Mastodonをオブジェクトストレージと連携する｜ConoHa VPSサポート]]
+- [[https://www.conoha.jp/objectstorage/][オブジェクトストレージ｜レンタルサーバーならConoHa]] 100GBあたり月額495円
+
+*** その他の比較
+- [[https://www.qualeed.com/ja/qbackup/cloud-storage-comparison/][オブジェクトストレージの料金比較 - qBackup]]
+- [[https://www.linode.com/docs/products/storage/object-storage/][Linode]]
+
+比較の上 Spaces on DigitalOcean に移行された方の記事
+[[https://diary.akane.blue/2019/06/05/move-media-to-object-storage/][メディアをオブジェクトストレージに移行しました | 茜の鯖缶日誌]]
+
+- BackBlaze B2
+- BackBlaze B2 + Cloudflare
+- iDrive e2 storage bucket
+- Scaleway [[https://stanislas.blog/2019/11/object-storage-migrate-wasabi-to-scaleway-rclone/][Object storage: migrating from Wasabi to Scaleway with rclone - Stan's blog]]
+- [[https://blog.noellabo.jp/entry/wasabi-public-access][Wasabiのパブリックアクセスが使えなくなった件（対応の仕方） - noellabo's tech blog]]
+
+** backup
+- [[https://docs.joinmastodon.org/admin/backups/][Backing up your server - Mastodon documentation]]
+- [[https://blog.potproject.net/2017/04/18/mastodon-instance][小規模Mastodonインスタンスを運用するコツ | blog.potproject.net]]
+
+ディレクトリまるごとコピーする方法
+#+begin_src sh
+docker cp live_db_1:/var/lib/postgresql/data ../backup/postgresql
+#+end_src
+
+pg_dump でフルバックアップする方法
+#+begin_src shell
+  docker exec live_db_1 pg_dump -Fc -U postgres postgres > db_backup_2022.dump
+#+end_src
+
+** PostgreSQLをアップグレード
+
+イメージ =tianon/postgres-upgrade= が便利。
+
+これで 9.6 から 14 になる。
+
+#+begin_src sh
+  docker run --rm \
+         -v ~/live/postgres:/var/lib/postgresql/9.6/data \
+         -v ~/live/postgres14:/var/lib/postgresql/14/data \
+         tianon/postgres-upgrade:9.6-to-14
+#+end_src
+
+dbが動いていると "There seems to be a postmaster servicing the old cluster. Please shutdown that postmaster and try again." とかどうのこうのと言われるので ~docker-compose down~ してからやる。
+
+[[https://github.com/mastodon/mastodon/pull/16947][[Docker-Compose] [Breaking] Postgres 9.6 is EOL (11th Nov 2021) - Migrate to 14 Stable by shleeable · Pull Request #16947 · mastodon/mastodon]] とても丁寧
+
+** サーバーのルール参考資料
+- [[https://fedibird.com/about/more][fedibird.com - Fedibird]]
+- [[https://mathstodon.xyz/about][概要 - Mathstodon]]
+
+* Links
+- [[https://docs.joinmastodon.org/][Mastodon documentation]] ([[https://github.com/tootsuite/documentation][repository]])
+- [[https://instances.social/list/old][Mastodon instances]]
+- [[https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Elasticsearch-guide.md][documentation/Elasticsearch-guide.md at master · tootsuite/documentation]] 全文検索できるようになった。(v2.3より)
+- [[https://docs.joinmastodon.org/admin/migrating/][Migrating to a new machine - Mastodon documentation]]
+- [[https://www.howtoforge.com/how-to-install-mastodon-social-network-with-docker-on-ubuntu-1804/#step-install-docker][How to install Mastodon Social Network with Docker on Ubuntu 18.04 LTS]]
+- [[https://blog.aoirint.com/entry/2020/mastodon_docker/][Mastodonをdocker-composeで立てる（Ubuntu 18.04） - えやみぐさ]]
+- [[https://github.com/qnighy/mastodon-boost-from-bookmark][qnighy/mastodon-boost-from-bookmark]]
+
+* Versions
+本家 Mastodon の変更わしわし的注目点メモ
+
+** v2.4.0
+https://github.com/tootsuite/mastodon/releases/tag/v2.4.0
+- オフラインで遊べる
+- ボットを作っている人に朗報。ボットバッジが付けられるように
+
+** v2.4.1
+https://github.com/tootsuite/mastodon/releases/tag/v2.4.1
+- new 絵文字
+- Public timelines now have a tab bar for choosing between all toots and only ones that contain media attachments (#7598)
+
+** v2.4.2
+https://github.com/tootsuite/mastodon/releases/tag/v2.4.2
+- Allow selecting default posting language instead of auto-detect (#7828)
+
+** v2.4.3
+https://github.com/tootsuite/mastodon/releases/tag/v2.4.3
+- Follow recommendations API (#7918) 今は API のみ。今度UIができるかもしれん
+
+** v2.4.4 脆弱性
+
+** v2.4.5 a backport release
+
+** v2.5.0
+https://github.com/tootsuite/mastodon/releases/tag/v2.5.0
+- federation relay という semi-centralized server なシステムができるらしい。
+- UI変更
+- bin/tootctl という CLI が!
+
+** v2.5.1, v2.5.2
+⚠️ Vulnerability patch ⚠️
+
+** v2.6
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.6.0][v2.6.0]]
+  - CLI のサブコマンドが充実してきた
+  - 設定画面とかにフォームがよくなった
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.6.1][v2.6.1]]
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.6.2][v2.6.2]]
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.6.3][v2.6.3]]
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.6.4][v2.6.4]]
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.6.5][v2.6.5]]
+
+** v2.7
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.7.0][v2.7.0]]
+ 
+** v2.8
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.8.0][v2.8.0]]
+
+** v2.9
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.9.0][v2.9.0]]
+  - Add single-column mode in web UI
+  - Change default layout to single column in web UI
+  - Change light
+  - Change preferences page into appearance, notifications, and other
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.9.1][v2.9.1]]
+  - Audio uploads
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.9.2][v2.9.2]]
+- [[https://github.com/tootsuite/mastodon/releases/tag/v2.9.3][v2.9.3]]
+  - GIF and WebP support for custom emojis
+
+** v3.0
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.0.0][v3.0.0]]
+  - Add audio player in web UI
+  - Add option to disable real-time updates in web UI ("slow mode")
+  - Change single-column mode to scroll the whole page
+  - Remove WebP support
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.0.1][v3.0.1]]
+
+** v3.1
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.1.0][v3.1.0]]
+  - Add bookmarks
+  - Add announcements
+  - Allow support for Accept/Reject activities with a non-embedded object
+  - Add "Show thread" button to public profiles
+  - The minimum supported Node.js version has been bumped from 8 to 10.
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.1.2][v3.1.2]]
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.1.3][v3.1.3]]
+  - polls のUIが変わった
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.1.4][v3.1.4]]
+  - Add separate cache directory for non-local uploads
+  - federated timeline で remote only ができるように
+  
+** v3.2
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.2.0][v3.2.0]]
+  - personal notes for accounts アカウントに個人的なメモを付けられるようになった。
+  - Add customizable thumbnails for audio and video attachments
+  - Add color extraction for thumbnails
+  - Change design of audio players in web UI
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.2.1][v3.2.1]]
+- [[https://github.com/tootsuite/mastodon/releases/tag/v3.2.2][v3.2.2]]
+
+** v3.3
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.3.0][v3.3.0]]
+  - 動画などのショートカットキー (space, k, m, f, j, l, ".", ",")
+  - mediaのモーダルUIの見た目が変わった
+
+** v3.4
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.4.0][v3.4.0]]
+  - 「サーバのルール」が書けるようになった。
+  - 名詞としてのtootとstatusはpostに変更された。(ただし、投稿ボタンは "Toot!" のままにしてある)
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.4.1][v3.4.1]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.4.2][v3.4.2]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.4.3][v3.4.3]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.4.4][v3.4.4]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.4.5][v3.4.5]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.4.6][v3.4.6]]
+** v3.5
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.0][v3.5.0]]
+  - モデレータの決定に対してappealができるようになった。
+  - explorerタブ(ページ)ができた。
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.1][v3.5.1]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.2][v3.5.2]]
+  - DMでの警告がもっとわかりやすく
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.3][v3.5.3]]
+  - 投稿フォームに language dropdown
+  - limited account
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.4][v3.5.4]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.5][v3.5.5]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.6][v3.5.6]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.7][v3.5.7]]
+  - ウェブUIに言語属性
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.8][v3.5.8]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.9][v3.5.9]]
+  - セキュリティイシューなおし
+- [[https://github.com/mastodon/mastodon/releases/tag/v3.5.10][v3.5.10]]
+  - セキュリティイシューなおし
+
+** v4.0
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.0.0][v4.0.0]]
+  - 翻訳機能を付けられる。(Mathtodonでは未導入<2023-11-14 Tue>)
+  - WebP, AVIF, HEICがアップロードできるように
+  - リモートキャッシュを一定時間で消せるように
+- v4.0.1-6
+  - 特になし
+- v4.0.15
+  - セキュリティイシューなおし
+
+** v4.1
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.0][v4.1.0]]
+  - フォローされたハッシュタグのリスト
+  - アカウントヘッダにフォローリクエストバナーが[[https://github.com/mastodon/mastodon/pull/20785][ついた]]
+  - 12時間投票オプションがついた。
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.1][v4.1.1]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.2][v4.1.2]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.3][v4.1.3]] security release
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.4][v4.1.4]] security release
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.5][v4.1.5]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.6][v4.1.6]] security release
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.7][v4.1.7]]
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.8][v4.1.8]] security release
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.9][v4.1.9]] security release
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.1.10][v4.1.10]] security release
+- v4.1.11
+- v4.1.12
+- v4.1.13 security issue
+- v4.1.14 security issue
+- v4.1.15
+- v4.1.16
+- v4.1.17
+- v4.1.18
+- v4.1.19
+
+** v4.2
+- [[https://github.com/mastodon/mastodon/releases/tag/v4.2.0][v4.2.0]]
+  - Ruby 3.0以上。
+  - Node.js 16以上必須に。
+  - PostgreSQL 10以上必須に。4.3.0は10, 11はサポートされない。
+  - オプトインで、パブリック投稿のフルテキスト検索が可能に

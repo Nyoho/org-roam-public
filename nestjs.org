@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       C46584BE-E433-4B15-A7A0-0F3ABB796A4D
+:END:
+#+title: NestJS
+#+date: [2022-02-19 Sat 11:05]
+
+* 公式サイト
+https://nestjs.com
+
+* 始め方
+
+#+begin_src shell
+  $ npm i -g @nestjs/cli
+  $ nest new project-name
+#+end_src
+
+* メモ
+** DTO
+data transfer object (DTO)
+レイヤ(ドメイン層やUI層)をまたぐ値の詰め替えに使う。
+複数の情報をDTOに入れて渡す。
+
+* Links
+- [[https://zenn.dev/hakushun/articles/0b0443ac6fd8d7][NestJS入門~NestJSの基本構造を理解しよう~]]
+- [[https://zenn.dev/naonao70/articles/a91d8835f1832b][TypeScript +NestJSをプロジェクトで導入したら素晴らしかった件]]
+  - SQLiteを使う例。TypeORM
+- [[https://zenn.dev/waddy/books/graphql-nestjs-nextjs-bootcamp][GraphQL スターターパック | Prisma + NestJS + Next.JS製 個人ブログサイトをCloud Runで運用しよう]]
+- [[https://qiita.com/G-awa/items/3e15f954c42c86aec659][NestJSで始めるGraphQLサーバ開発（コードファースト編） - Qiita]]

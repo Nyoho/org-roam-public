@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       050628E1-A9D3-40D8-B11A-8FF8FD18ECBB
+:END:
+YouTube Live 
+
+Server URL:
+rtmp://a.rtmp.youtube.com/live2
+
+
+* Softwares
+
+- Camtwist
+
+- CocoaSplit
+
+参考:
+- [[https://gist.github.com/norio-nomura/285adfa572a983be3373][How I stream from iPad to Twitch and Ustream.]] (norio-nomura)
+
+
+** OBS Studio
+https://obsproject.com/
+
+source: [[https://github.com/obsproject/obs-studio][obsproject/obs-studio: OBS Studio - Free and open source software for live streaming and screen recording]]
+
+* Frameworks
+- [[http://cocoadocs.org/docsets/Kickflip/1.2/index.html][CocoaDocs.org - Kickflip Reference]]
+- [[https://github.com/jgh-/VideoCore][GitHub - jgh-/VideoCore: An audio and video manipulation pipeline]]
+

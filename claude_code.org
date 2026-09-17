@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       F75EACA9-D3FA-4B37-A111-D3D7FC13A74C
+:END:
+#+title: Claude Code
+#+date: [2026-01-06 Tue 16:48]
+
+* Skills
+** Fontend
+- [[https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md][claude-code/plugins/frontend-design/skills/frontend-design/SKILL.md at main · anthropics/claude-code]]
+- [[https://github.com/Dammyjay93/claude-design-skill][Dammyjay93/claude-design-skill: A Claude Code skill for crafted, enterprise-grade UI design]]
+- [[https://github.com/BehiSecc/awesome-claude-skills][BehiSecc/awesome-claude-skills: A curated list of Claude Skills.]]
+** Playwright
+
+Playwrightのcliを使うととてもいいらしい。
+
+[[https://github.com/microsoft/playwright-cli][microsoft/playwright-cli: CLI for common Playwright actions. Record and generate Playwright code, inspect selectors and take screenshots.]]
+
+* Tools
+- [[https://github.com/sirmalloc/ccstatusline][sirmalloc/ccstatusline: 🚀 Beautiful highly customizable statusline for Claude Code CLI with powerline support, themes, and more.]]

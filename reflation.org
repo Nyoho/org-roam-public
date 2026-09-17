@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       5F652F5E-CCD2-42B0-81E3-CB07F46B54E4
+:END:
+#+title: reflation
+#+date: [2022-07-27 Wed 11:31]
+
+reflationについてのメモ
+
+- [[https://seesaawiki.jp/w/reflation/][リフレ政策ポータルWiki]]

@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       3C931919-39B9-401C-A7B8-1169D9E60F37
+:END:
+#+title: ghostscript
+#+date: [2023-02-22 Wed 16:40]
+
+* Tips
+
+** PDFの各ページを同じサイズに整頓する
+
+PDFの各ページを同じサイズに整頓する方法。
+
+[[https://stackoverflow.com/questions/7446552/resizing-a-pdf-using-ghostscript][resize - Resizing a PDF using Ghostscript - Stack Overflow]] に書いてあったものを[[https://bugs.ghostscript.com/show_bug.cgi?id=705187][705187 – Ghostscript 9.56 removes hidden (e.g. OCR) text layers when refrying with NEWPDF=true]]により少し修正。
+
+  #+begin_src shell
+    gs \
+        -o output.pdf \
+        -sDEVICE=pdfwrite \
+        -sPAPERSIZE=a4 \
+        -dFIXEDMEDIA \
+        -dPDFFitPage \
+        -dCompatibilityLevel=1.6 \
+        -dEmbedAllFonts=true \
+        -dNEWPDF=false \
+        input.pdf
+  #+end_src

@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       017E2A1A-DAF8-4E44-BD08-DAE0E7E618E3
+:END:
+#+title: seo
+#+date: [2025-05-07 Wed 10:29]
+
+- [[https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=ja#optimize][Google 公式 SEO スターター ガイド | Google 検索セントラル  |  Documentation  |  Google for Developers]]
+

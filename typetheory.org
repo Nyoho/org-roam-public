@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       F84972AC-7E02-4685-AA67-5E6249BC45CC
+:ROAM_ALIASES: "Type theory"
+:END:
+#+title: 型理論
+#+date: <2021-11-22 Mon>
+
+型理論 type theory について
+
+* 型理論
+- [[https://ncatlab.org/nlab/show/type+theory][type theory in nLab]]
+
+* 依存型とは
+- [[https://zenn.dev/blackenedgold/books/introduction-to-idris/viewer/what-is-idris#%E4%BE%9D%E5%AD%98%E5%9E%8B%E3%81%A8%E3%81%AF][Idrisってどんな言語？｜プログラング言語Idrisに入門させたい（v0.9）]]
+- [[https://keens.github.io/blog/2020/11/30/idristtedonnagengo_/][依存型のあるHaskellことIdrisってどんな言語？ | κeenのHappy Hacκing Blog]]
+- [[https://ja.wikipedia.org/wiki/%E4%BE%9D%E5%AD%98%E5%9E%8B][依存型 - Wikipedia]]
+- [[https://staff.aist.go.jp/tanaka-akira/pub/2018-09-02-deptype-proofsummit2018.pdf][依存型の話 (田中 哲 産業技術総合研究所) (PDF)]]
+- [[https://blog.miz-ar.info/2017/07/type-system/#_dependent_types][型システムの勉強 | 雑記帳]]
+
+* Links
+- [[https://uemurax.github.io/][Taichi Uemura | Taichi Uemura does type theory and category theory.]]
+   

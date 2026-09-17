@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       5A5A29DD-A491-4126-97C3-C1FC82AEEF0E
+:END:
+#+title: Google Cloud Storage (GCS)
+
+Google Cloud Platform の Google Cloud Storage。
+
+- [[https://cloud.google.com/storage/docs/gsutil_install#deb][gsutil をインストールする]]
+- [[https://cloud.google.com/storage/docs/quickstart-gsutil?hl=ja][クイックスタート: gsutil ツールの使用]]
+- [[https://cloud.google.com/storage/pricing][Google Cloud Storage の料金体系]]
+
+* gsutil コマンド
+** バケツを作る (make a bucket)
+
+: gsutil mb gs://my-bucket/
+
+** =/var/lib/postgresql/backup= をバックアップする
+
+: gsutil -m cp -r /var/lib/postgresql/backup gs://バケットの名前
+
+** ls する
+
+: gsutil ls -l gs://バケットの名前/pathname/
+
+
+** rsync
+
+: gsutil rsync -d -r gs://mybucket/data data
+
+https://cloud.google.com/storage/docs/gsutil/commands/rsync

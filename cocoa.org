@@ -1,0 +1,96 @@
+:PROPERTIES:
+:ID:       B16E527D-F48E-4569-9F9D-5EE7843D8D82
+:END:
+#+title: Cocoa
+#+tags: cocoa Objective-C Xcode
+#+date: <2021-05-15 18:30:21 +0900>
+
+* Xcode
+** Add Symbolic Breakpoint
+1. Run
+2. Pause
+3. ブレイクコマンド入力
+4. Continue
+
+* LLVM
+** 【課題】lldb用のデバッグシンボルをclass-dumpから作れるようにしてください。
+
+* Auto Layout
+- [[http://stackoverflow.com/questions/8156799/how-to-make-a-custom-view-resize-with-the-window-with-cocoa-auto-layout][How to make a custom view resize with the window with Cocoa Auto Layout? - Stack Overflow]]
+
+* Responder Chain
+NSView などで keyDown: したときに beep がなるときは performKeyEquivalent: を上書きして YES を返せばよい。
+
+* View-based NSTableView
+View-based NSTableView を学ぶのにちょうどいいビデオを発見
+- [["https://www.youtube.com/watch?v%3D5bzEA0FuivY][Cocoa Programming L51 - View-Based NSTableView - YouTube]]
+- [[https://www.youtube.com/watch?v%3DSHo6MkF1kk8][Cocoa Programming L52 - View-Based NSTableView 2 - YouTube]]
+
+** swipe to delete
+NSTableView now supports a new feature dubbed “Swipe To Delete”. The delegate can implement tableView:rowActionsForRow:edge: and return an array of NSTableViewRowAction objects that represent buttons. Typically these buttons are used to delete a row, or show more information. See NSTableView’s header, and NSTableViewRowAction.h for more information.
+
+** カスタムセパレータ
+- - (void)drawSeparatorInRect:(NSRect)dirtyRect;
+- [[https://developer.apple.com/documentation/appkit/nstablerowview/1525167-drawseparator][drawSeparator(in:) | Apple Developer Documentation]]
+
+* El Capitan でも http でアクセス
+1. Info.plist に
+2. NSAppTransportSecurity 辞書を作って
+3. NSAllowsArbitraryLoads を YES に
+
+
+* AppIcon
+#+BEGIN_SRC sh
+function mac-appicons-convert {
+for size in 16 32 128 256 512
+do
+echo $size
+convert $1 -geometry ${size}x${size} appicon-${size}x${size}.png
+done
+}
+#+END_SRC
+
+* animation
+#+BEGIN_SRC swift
+NSAnimationContext.runAnimationGroup({ context in
+context.duration = 0.3
+self.progressIndicator.animator().alphaValue = 0
+}, completionHandler: nil)
+#+END_SRC
+
+* カメラ
+[[https://stackoverflow.com/questions/30057972/recording-an-ios-devices-screen-from-an-osx-cocoa-app-with-a-lightning-cable][macos - Recording an iOS device's screen from an OSX cocoa app with a lightning cable - Stack Overflow]]
+
+* Grand Central Dispatch
+#+BEGIN_SRC swift
+DispatchQueue.main.async(execute: {
+// Something
+})
+#+END_SRC
+* tmp
+
+WWDC
+Main Controllers/Playback/Slides/PDFWindowController.swift
+#+BEGIN_SRC swift
+    override func keyDown(theEvent: NSEvent) {
+        switch theEvent.keyCode {
+        case 35: // p
+            pdfView.goToPreviousPage(self)
+        case 45: // n
+            pdfView.goToNextPage(self)
+        default:
+            super.keyDown(theEvent)
+            break
+        }
+    }
+#+END_SRC
+
+* OS X Yosemite 10.10
+
+** Multipeer Connectivity (MultipeerConnectivity.framework). The Multipeer Connectivity framework brings OS X to parity with iOS and allows cross-platform connections between devices running iOS 7, iOS 8, and OS v10.10.
+
+* WWDC 2014 Session Videos
+** 227 Creating Modern Cocoa Apps
+** 204 What's new in Cocoa
+Extension は Cocoa にもある
+テンプレートもある

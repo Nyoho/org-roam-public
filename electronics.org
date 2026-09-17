@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       349F905B-8DA5-4F64-9066-9BA4CC4514FB
+:END:
+#+title: 電気系 electronics
+#+date: [2022-03-05 Sat 11:42]
+#+filetags: 電気
+
+電気系のメモ
+
+
+* 交流
+** 三相交流
+- [[https://www.k-tls.co.jp/overhead-tml/ac3phase.html][三相交流とは｜架空送電線（がくうそうでんせん）の話｜produced by 株式会社タワーライン・ソリューション]]
+- [[https://towatowa.net/sanso-koryu/][三相交流とは？メリットや単相交流との違いを分かりやすく解説！ | とはとは.net]]

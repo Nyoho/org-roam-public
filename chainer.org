@@ -1,0 +1,142 @@
+:PROPERTIES:
+:ID:       9205AE56-25F8-48DF-92EC-BF4D3DB70BF6
+:END:
+
+
+[[http://chainer.org/][Chainer]]
+
+#+BEGIN_SRC sh
+  # pyenv install 3.5.1
+  # pyenv global 3.5.1
+  pyenv global 2.7.11
+#+END_SRC
+
+
+#+BEGIN_SRC sh
+  brew tap homebrew/science
+  brew install opencv
+  export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+  cd ~/.pyenv/versions/2.7.11/lib/python2.7/site-packages 
+  # cd ~/.pyenv/versions/3.5.1/lib/python3.5/site-packages
+  ln -s /usr/local/Cellar/opencv/2.4.12_2/lib/python2.7/site-packages/cv.py .
+  ln -s /usr/local/Cellar/opencv/2.4.12_2/lib/python2.7/site-packages/cv2.so .
+
+  brew install matplotlib
+  brew install homebrew/science/hdf5
+
+  echo "backend: TkAgg" >>  ~/.matplotlib/matplotlibrc
+
+  pip install cython
+  LDFLAGS="-F/Library/Frameworks -framework CUDA" pip install --no-cache-dir chainer -vvvv
+  # pip install pycuda
+  # pip install chainer-cuda-deps
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib
+  export CPATH=$CPATH:/usr/local/cuda/include
+  export CUDA_INC_DIR=/usr/local/cuda/bin:$CUDA_INC_DIR
+
+  export PATH=/Developer/NVIDIA/CUDA-7.5/bin:$PATH
+  export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.5/lib:$DYLD_LIBRARY_PATH
+ 
+  export CUDA_ROOT=/Developer/NVIDIA/CUDA-7.5/
+  export PATH=$PATH:/Developer/NVIDIA/CUDA-7.5/bin
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Developer/NVIDIA/CUDA-7.5/lib
+  export CPATH=$CPATH:/Developer/NVIDIA/CUDA-7.5/include
+  export CUDA_INC_DIR=/Developer/NVIDIA/CUDA-7.5/bin:$CUDA_INC_DIR
+  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Developer/NVIDIA/CUDA-7.5
+#+END_SRC
+
+LD_LIBRARY_PATH=/usr/local/cuda/lib:$LD_LIBRARY_PATH python
+
+
+#+BEGIN_SRC sh
+  pip install --upgrade pip
+  # pip install scikit-learn
+  pip install scipy
+  # pip install numpy
+  pip install chainer
+  CUDA_PATH=/usr/local/cuda pip install chainer
+  pip install cv2
+  pip install matplotlib
+  pip install h5py
+  easy_install --upgrade matplotlib
+#+END_SRC
+
+
+* Linux
+pip install -U cython
+pip install scikit-learn
+
+ImportError: No module named cv2
+と出たら、
+
+* sample
+
+#+BEGIN_SRC sh
+wget -O- https://github.com/pfnet/chainer/archive/v1.7.2.tar.gz | tar xvf -
+#+END_SRC
+
+Command_Line_Tools_OS_X_10.11_for_Xcode_7.2.dmg
+を入れた。<2016-04-06 Wed>
+
+
+#+BEGIN_SRC sh
+pip uninstall chainer
+LDFLAGS="-rpath /usr/local/cuda/lib/ -F/Library/Frameworks -framework CUDA" pip install --no-cache-dir chainer
+#+END_SRC
+
+
+** ucs2
+
+[[http://qiita.com/sigmalogneko/items/b5c15f5229387bbfd53a][{エラー} Symbol not found: _PyUnicodeUCS2_Compare - Qiita]]
+
+出た出た。 Symbol not found: _PyUnicodeUCS2_Compare
+
+#+BEGIN_SRC sh
+PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs2" pyenv install 2.7.11
+#+END_SRC
+
+* deeppose
+#+BEGIN_SRC sh
+PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs2" pyenv install 2.7.11
+pip install --upgrade pip
+
+pip install scipy
+# pip install chainer
+CUDA_PATH=/usr/local/cuda pip install chainer
+
+pip install cv2
+cd ~/.pyenv/versions/2.7.11/lib/python2.7/site-packages 
+ln -s /usr/local/Cellar/opencv/2.4.12_2/lib/python2.7/site-packages/cv.py .
+ln -s /usr/local/Cellar/opencv/2.4.12_2/lib/python2.7/site-packages/cv2.so .
+
+pip install matplotlib
+pip install h5py
+easy_install --upgrade matplotlib
+
+#+END_SRC
+
+** resume
+#+BEGIN_SRC sh
+python scripts/train.py --gpu -1 --resume_model results/AlexNet_flic_2016-04-07_18-25-33/epoch-110.model --resume_opt results/AlexNet_flic_2016-04-07_18-25-33/epoch-110.state --epoch_offset 110
+#+END_SRC
+
+** evaluate
+#+BEGIN_SRC sh
+python scripts/evaluate_flic.py --model results/AlexNet_flic_2016-04-14_13-57-17/AlexNet_flic.py --param results/AlexNet_flic_2016-04-14_13-57-17/epoch-200.model --datadir data/FLIC-full --gpu -1 --batchsize 128 --mode test
+
+python scripts/evaluate_flic.py --model results/AlexNet_flic_2016-04-14_13-57-17/AlexNet_flic.py --param results/AlexNet_flic_2016-04-14_13-57-17/epoch-320.model --datadir data/FLIC-full --gpu -1 --batchsize 128 --mode test
+#+END_SRC
+
+* 学習
+to_gpuしたときにどのぐらいGPUメモリが足りないのかわからん。
+
+* CUDA 9.0 のときに macOS で
+
+From [[https://github.com/pytorch/pytorch/issues/3047][Mac OSX 10.13, CUDA 9.0, got nvcc error · Issue #3047 · pytorch/pytorch]]
+
+- Download Command Line Tool for 8.3.2 from https://developer.apple.com/download/more/
+- Run 'sudo xcode-select --switch /Library/Developer/CommandLineTools'
+- Test clang --version:
+
+* 参考文献
+- [[http://qiita.com/ichiroex/items/e0486a6dea1f14c2cfc2][深層学習フレームワークChainerの勉強に役立つページのまとめ - Qiita]]

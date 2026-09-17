@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       7DBCFB0D-B493-47E5-BFCA-D32FEC8E44D3
+:END:
+#+title: neural compute stick
+#+date: [2022-08-19 Fri 12:54]
+
+IntelのNeural Compute Stick 2を使いたい。
+
+
+openvinoが
+ #+begin_src sh
+   pip install openvino-dev[pytorch]==2022.1.0
+ #+end_src
+でうまく入らなかった。
+
+#+begin_src sh
+pip install openvino-arm
+#+end_src
+
+で入った。
+
+- [[https://github.com/openvinotoolkit/openvino/issues/11554][Apple silicon (M1) prebuilt openvino with arm plugin wheels released on PyPI · Issue #11554 · openvinotoolkit/openvino]]
+
+
+でもこう書かれている。
+
+#+begin_quote
+With the OpenVINO™ 2020.4 release, Intel® Movidius™ Neural Compute Stick powered by the Intel® Movidius™ Myriad™ 2 is no longer supported.
+#+end_quote
+
+[[https://docs.openvino.ai/nightly/openvino_docs_OV_UG_supported_plugins_VPU.html#doxid-openvino-docs-i-e-d-g-supported-plugins-v-p-u][VPU Devices — OpenVINO™ documentation — Version(nightly)]]
+
+Myriad Xならまだ大丈夫なのかな。
+
+
+[[https://openvino.jp/configuration-macos/][環境構築（MacOS編） | OpenVINO]] にmacOSでの記述があった。

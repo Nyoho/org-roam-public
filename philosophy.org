@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       3A776BD7-750E-470F-BB5E-C5FDA918D198
+:END:
+#+TITLE: 哲学
+
+* 理解もしていないことを書いちゃう哲学者の親玉ラカン
+
+- [[https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%BC%E3%82%AB%E3%83%AB%E4%BA%8B%E4%BB%B6][ソーカル事件 - Wikipedia]]
+- [[https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A3%E3%83%83%E3%82%AF%E3%83%BB%E3%83%A9%E3%82%AB%E3%83%B3][ジャック・ラカン - Wikipedia]]
+

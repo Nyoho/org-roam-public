@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       98DEF0E4-BFD2-405D-967B-98B1736108AE
+:END:
+
+Easy network monitoring
+
+
+
+Create a database
+
+: vnstat -u -i eth0
+
+Just command
+
+: vnstat
+
+Weekly:
+
+: vnstat -w

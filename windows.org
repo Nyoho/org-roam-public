@@ -1,0 +1,74 @@
+:PROPERTIES:
+:ID:       0E34BD3A-24AC-4526-978B-7A913AA79724
+:END:
+
+頼まれてWindowsをいじることもあるんです……ぐぶっ
+
+
+* Windows keyremap
+
+- DvorakJ (USにしたりいろいろできる)
+- Xkeymacs 任意のレイアウトにしたりできる。Masui special にできた。
+  ただし、regedit しないと[[http://kakakikikeke.blogspot.jp/2012/04/xkeymacswindows7.html][いけない]]。
+
+* 勝手に広告が出る
+10分ぐらい使用していないと、McAfee SECURE, Microsoft Partner とともに
+「スパイウェアが発見されました」などと出ることがあるらしい。
+
+- [[http://matome.naver.jp/odai/2136287207712618201][【スパイウェアが発見されました】詐欺広告がYouTubeやブラウザに出現した場合の削除方法 - NAVER まとめ]]
+- [[http://matome.naver.jp/odai/2137205708658398701][http://www.buildathome.info~を【削除】する方法 - NAVER まとめ]]
+- [[http://www.yahoo-help.jp/app/answers/detail/p/533/a_id/43879][Yahoo! JAPANヘルプセンター - キャッシュ（インターネット一時ファイル）の削除方法]]
+- [[http://pc.cocorodesign.net/article/76384479.html][ad.yieldmanager.comのポップアップ広告(あし@設置ブログ)をブロックする方法: 技術のタマゴ]]
+- [[http://www.geocities.co.jp/Playtown-Yoyo/6130/notes/regclean-pro.htm][詐欺まがいで評判 RegClean Pro削除ｱﾝｲﾝｽﾄｰﾙ方法 【エラー表示迷惑ソフト】]]
+- ? Ismagent.exe とは何か、その修復方法は？ウイルス？それとも安全？ - http://www.solvusoft.com/ja/files/%E3%82%A8%E3%83%A9%E3%83%BC-%E3%82%A6%E3%82%A4%E3%83%AB%E3%82%B9/exe/windows/intel-corporation/intel-services-manager/ismagent-exe/
+- 悪代官の伏魔殿掲示板 - http://akudaikan-0.bbs.fc2.com/?act=reply&tid=5262986
+- http://d.hatena.ne.jp/TipsMemo+computer-technology/20140827/p1
+- AwdCleaner http://www.bleepingcomputer.com/download/adwcleaner/
+
+** ismagent.exe
+http://answers.microsoft.com/en-us/windows/forum/windows_7-system/my-laptop-has-been-getting-the-error-message/52352dfe-d061-4510-b3a9-b42e944a88b6
+Intel AppUp(SM) center から uninstall できる。
+
+* Windows Update
+** Windows Updateが始まらない
+[[https://freesoft.tvbok.com/win8/windows81_not_end_update.html][Windows 10/8.1 でWindows Updateが止まる･終わらない場合の対処法 - ぼくんちのTV 別館]] を見て、Microsoftが配布しているトラブルシューティングツールを実行してみる。
+
+[[https://hidekatsu.com/craft/archives/8127][Windows Updateが「更新プログラムを確認しています…」のまま終わらない！ - DTM、After Effects、web関連のメモ クリエイター 中山英克]]
+「ディスククリーンアップ」をする。
+
+「Windows Updateプログラムを手動でインストール」
+https://www.catalog.update.microsoft.com/Search.aspx?q=KB3172614
+これでうまくいった。
+
+* Remote Desktop
+- [[https://apps.apple.com/jp/app/microsoft-remote-desktop/id1295203466?mt=12][‎Microsoft Remote Desktop (Mac App Store)]]
+
+* バージョン情報
+
+スタート → 設定 → システム → バージョン情報
+
+[[https://support.microsoft.com/ja-jp/windows/%E4%BD%BF%E7%94%A8%E4%B8%AD%E3%81%AE-windows-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B-628bec99-476a-2c13-5296-9dd081cdd808#WindowsVersion=Windows_10][使用中の Windows オペレーティング システムのバージョンを確認する - Microsoft サポート]]
+
+* 「管理者権限でコマンドプロンプトを開く」
+
+「管理者権限でコマンドプロンプトを開く」には。
+
+1. Windowsキー を押してスタートメニューを出し、「cmd」と入力
+2. 検索結果に「コマンドプロンプト」が表示されたら、右クリック → 「管理者として実行」 を選択
+3. ユーザーアカウント制御（UAC）の確認画面が出たら、「はい」をクリック
+
+* Disk Checkのようなもの 
+
+いろいろある。
+
+#+begin_src sh
+dism /online /cleanup-image /checkhealth
+
+dism /online /cleanup-image /scanhealth
+
+dism /online /cleanup-image /restorehealth
+
+sfc /scannow
+
+chkdsk c: /f
+#+end_src

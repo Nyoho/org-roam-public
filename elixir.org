@@ -1,0 +1,119 @@
+:PROPERTIES:
+:ID:       3B60FB74-3BDC-48A5-87A2-4E8CEB075659
+:END:
+Elixir
+
+
+- [[http://etc9.hatenablog.com/entry/2015/08/04/004748][Elixir のはじめ方 - A Memorandum]]
+- [[https://hex.pm/][Hex]]
+
+* ハンズオン
+- [[https://qiita.com/piacere_ex/items/6714e1440e3f25fb46a1][Excelから関数型言語マスター1回目：データ行の”並べ替え”と”絞り込み” - Qiita]]
+- [[https://qiita.com/piacere_ex/items/7cd1162ce6d66a334a07][Excelから関数型言語マスター7回目： Vue.js＋内部API（更新編） - Qiita]]
+
+#+begin_src elixir
+  IOS.puts "Elixiroshima"
+
+  IO.inspect [ "Elixiroshima" , "fukuoka.ex" ]
+
+  [ %{ "community" => "Elixiroshima", "place" => "hiroshima" }, %{ "community" => "fukuoka.ex", "place" => "fukuoka" } ] 
+
+  # 束縛 bind
+  m = [ %{ "community" => "Elixiroshima", "place" => "hiroshima" }, %{ "community" => "fukuoka.ex", "place" => "fukuoka" } ] 
+
+IO.inspect m
+inspect m
+
+# Document
+h
+
+h Enum.map
+#+end_src
+
+~h~ 
+
+https://hexdocs.pm/elixir/
+
+「mix hex publish」
+
+#+begin_src elixir
+Enum.sort [ 24, -4, 1729]
+#+end_src
+
+大文字で始まるものはモジュール
+
+#+begin_src elixir
+Enum.sort [ X, B, A, "hoge" ]
+#+end_src
+
+パイプ演算子
+#+begin_src elixir
+[ 234, 245, 80 ] |> Enum.sort
+
+[ 234, 245, 80 ] |> Enum.sort |> Enum.map ( & &1 + 10 )
+
+[ 234, 245, 80 ] |> Enum.sort |> Enum.map ( fn n -> n + 10 end )
+#+end_src
+
+
+* Mix
+はじめる
+
+: mix new hoge
+
+: cd hoge
+
+~iex -S mix~ で dependency も含めて ~iex~ できる。
+
+: mix help
+
+: mix deps.get
+
+* パイプライン演算子
+#+begin_src elixir
+  1..1_000_000
+  |> Enum.map(foo)
+  |> Enum.map(bar)
+#+end_src
+
+#+begin_src elixir
+  1..1_000_000 |> Enum.map(fn x -> 2 * x + 1 end) |> Enum.reduce(0, fn x, acc -> x + acc end)
+#+end_src
+
+* LSP
+
+[[https://github.com/elixir-lsp/elixir-ls][elixir-lsp/elixir-ls]] を導入してEmacsで使う。
+
+まず elixir-ls を導入する。clone して
+#+begin_src sh
+mix local.hex # 必要なら
+mix deps.get
+mix compile
+mix elixir_ls.release -o [my/release_dir]
+#+end_src
+
+
+* 並列処理
+** Hastega 
+
+* Phoenix
+ウェブフレームワーク
+[[https://qiita.com/mizchi/items/e38d3f0461fe316021f7][リアルタイムウェブな観点からElixir / Phoenix について - Qiita]]
+
+: mix archive.install hex phx_new 1.4.0
+
+* Static site generators
+- [[https://elixircasts.io/static-site-with-elixir][Static Site with Elixir - ElixirCasts]]
+- [[https://github.com/Dalgona/Serum][Serum]]
+- [[https://github.com/pablomartinezalvarez/glayu][glayu]]
+
+* Twitter
+- [[https://github.com/parroty/extwitter][parroty/extwitter: Twitter client library for elixir.]]
+
+* Meetups
+- [[https://www.meetup.com/ja-JP/Elixir-London/][Elixir London (ロンドン, イギリス) | Meetup]]
+
+* Links
+- [[https://elixirstatus.com/][Elixir news and status updates from the community for Elixir and Phoenix]]
+- [[https://qiita.com/Yoosuke/items/46c057f9f44f08c9dfce][言語処理100本ノックにElixirでチャレンジ！　１−４まで - Qiita]]
+- [[https://extips.blackode.in/][Killer Elixir-Tips - elixir-tips]]

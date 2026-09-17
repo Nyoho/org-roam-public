@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       CD1727C3-5F29-4BEA-8721-92E9FDF73D46
+:END:
+#+TITLE: three.js
+
+- 公式: [[https://threejs.org/][three.js - Javascript 3D library]]
+  - [[https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene][documentation]]
+  - [[https://threejs.org/examples/][examples]]
+- [[https://github.com/alvarosabu/modern-three][alvarosabu/modern-three: Modern ThreeJS boilerplate powered by Vite & Typescript.]]
+- [[https://threejsroadmap.com/assets/threejs-water-pro][Three.js Water Pro | Three.js Roadmap]]
+
+* React Three Fiber
+- [[https://note.com/npaka/n/n1a506a2ae73d][react-three-fiber のはじめ方｜npaka]]
+* 作例
+- [[https://r3f.docs.pmnd.rs/getting-started/examples][Examples - React Three Fiber]]
+  - https://codesandbox.io/p/sandbox/bst0cy モニタにぼやっとしたエフェクト。綺麗。
+- [[https://codepen.io/VoXelo/pen/xbgpJre][Bioelectric consciousness engine]] かっこいい。

@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       9A759592-F7D9-450F-A852-1FB2FE492B17
+:END:
+#+title: presentation anti-pattern
+#+date: [2023-11-11 Sat 11:49]
+
+* 口癖
+** という話
+「という話です」「という話があります」
+は省いてもいい。
+
+
+

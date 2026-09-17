@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       BAF726DC-6656-45A2-8987-82A08D2D2A36
+:END:
+#+title: Draw Things
+#+date: [2026-06-07 Sun 19:16]
+
+
+モデルをFooocus Inpaint SDXL v2.6で
+適当に生成したビール瓶を用意して、ラベル部分をマウスでマスク作成しました。
+
+コントロールのmoodboardにロゴ画像を設定しました。
+ControlをIP Adapter Plus (SDXL Base)にし、コントロールの重要度を「コントロール」に。
+重みを100%
+開始終了を0%-100%
+プロンプトに
+premium craft beer bottle mockup, realistic product photography,
+dark glass bottle, detailed label design using the logo in the Moodboard,
+studio lighting, professional commercial shot
+
+ちゃんとマスクしたところに「ロゴ」らしきものが生成されました。
+もう一歩だと思う。
+ロゴ画像を正確に使用し、
+瓶の曲面の曲がり具合うに沿う形でロゴを入れて欲しいし、ビール瓶にふさわしいデレコーションを考えて生成して欲しい。

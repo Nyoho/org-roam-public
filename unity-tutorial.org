@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       588E7546-4524-4B80-A821-FD3F334FA9D1
+:END:
+#+title: Unity入門
+#+date: <2016-08-05 23:08:46 +0900>
+
+* 簡単なものを作ってみる
+
+** 新規プロジェクト作成
+- File → new project
+- 画面レイアウトで困ったら Window -> Layouts -> Default を選べば安心。
+
+** ものを置く
+- hierarchy タブ で create
+- Game Object メニューで 3D Object
+で好きな形を置いてみよう。
+
+** 保存
+File -> Save Scene
+
+** カメラの設定を今見ているシーンの状態にしたかったら
+GameObject メニュー -> Align With View を押すと good!
+
+
+** 物理マテリアルを作る
+Project の create か Assets メニュー -> Create -> Physics Material
+
+** scriptを書いてみよう
+Project の create か Assets メニュー -> Create 
+C# Script or JavaScript を選ぶ。
+適当に名前をつける。
+
+* 操作
+** Scene
+- Q, W, E, R :: 移動や変形や回転や拡大の切り替え
+- alt drag :: rotate
+- ctrl drag :: zoom
+- カメラを選択して GameObject -> Align With View で見ているままのカメラ位置にできる
+
+* Vuforiaを利用してAR
+ここにちょうどいい記事があったとです。
+
+[[http://www.atmarkit.co.jp/ait/articles/1508/24/news025.html][Unity＋ARで何ができるのか（1）：Unityでも使える無料ARライブラリVuforiaの基礎知識とライセンス登録、インストール、簡単な使い方 (1/3) - ＠IT]]
+
+* memo
+マニュアルを読もう!
+http://docs.unity3d.com/ja/current/Manual/index.html
+
+ドットインストールのUnity入門いいよ!
+[[http://dotinstall.com/lessons/basic_unity][Unity入門 (全26回) - プログラミングならドットインストール]]

@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       76ADB753-0511-4A20-A542-9A40F27AE8FD
+:END:
+#+title: Nreal
+#+date: [2022-12-14 Wed 12:54]
+
+Nreal Air
+https://www.nreal.jp
+
+- [[https://www.nreal.ai/compatibility-list/][Compatibility]] 対応機種一覧
+  - [[https://www.earlyteches.com/2022/07/nreal-air-list-of-compatible-models/][「Nreal Air」の対応機種一覧！「LG VELVET L-52A」が安価でオススメ | アーリーテックス]]
+- [[https://zenn.dev/meson/articles/get-started-with-nreal-air][Unityを使って初めてのNreal Airアプリを作ってみよう！]]
+- [[https://hatsune.hatenablog.jp/entry/2022/11/19/175810][Nreal Airを買ったのでアプリを作る準備しよう - はつねの日記]]
+- [[https://www.youtube.com/watch?v=sQApTthKG-k][How to build and test AR apps right in Unity? | Nreal Emulator | NRSDK Developing Tutorial #2 - YouTube]]
+- [[https://hatsune.hatenablog.jp/entry/2022/12/26/210703?fbclid=IwAR2vhkEYAIYs4ClKlFLsAqqM8p70bFByzbA6_8gEs1L6ABuNHF3JUJw-q3w][Nreal Airを買ったのでARCoreを使って6DoF化してみる - はつねの日記]]
+
+SDK
+NRTrackingPlane
+
+
+
+「ディスプレイケーブルをGalaxyに接続するとSamsung DeXが起動する設定になっており、これをオフにしないと次に進めないようです。」
+
+from https://rental.kikito.docomo.ne.jp/portal/articles/5015/

@@ -1,0 +1,374 @@
+:PROPERTIES:
+:ID:       E43B2CAB-4C78-40C1-801E-8C1B6ED0A481
+:END:
+#+TITLE: ruby
+#+date: <2021-04-28 10:10:54 +0900>
+
+* Tips
+** formatting
+#+BEGIN_SRC ruby
+"hoge %d" % [number]
+#+END_SRC
+すぐ忘れる。
+
+** 文字列の引用符やらなんやら
+=%Q=, =%q=, =%r=, =%s=
+
+#+BEGIN_SRC ruby
+%Q(これだと ' とか " とか書きまくっても余裕)
+%Q[ hoge="fuga" ]
+%Q| hoge="fuga" |
+#+END_SRC
+
+などとダブルクオーテーションをエスケープしなくてよくて便利。
+
+=%W, %w=
+array 
+
+=%x=
+execution
+
+** 組み込み変数
+- $: :: ライブラリをロードするときのサーチパスが文字列のArrayとして入っている。
+
+** select など
+- collect, map
+- select
+- inject, reduce 
+
+'-ect' で統一して使っていると John Mettraux さんが言っていた。
+ここで一句。列挙しつコレクトセレクトインジェクト
+
+#+BEGIN_SRC ruby
+  [1, 3, 6, 9].inject(0) do |total, n|
+    total += n
+  end
+#+END_SRC
+まあこれなら =.sum= でいいですけど
+
+* Timeの練習
+#+BEGIN_SRC sh
+ruby -rtime -e 'c=Time.now;a=Time.parse("#{c.year+1}-01-01 00:00:00");b=Time.parse("#{c.year}-01-01 00:00:00");c=Time.now;puts "今年もあと "+((a-c)/(a-b)*100).round(3).to_s+ " %"'
+#+END_SRC
+
+日差
+#+begin_src sh
+ruby -rtime -e 'c=Time.now;a=Time.parse("2020-08-25 00:00:00");b=Time.parse("2020-11-04 00:00:00");puts ((b-a)/60/60/24).to_s'
+#+end_src
+
+今年はあと何日
+#+begin_src sh
+ruby -rtime -e 'a=Time.now;b=Time.parse("#{a.year+1}-01-01 00:00:00");puts ((b-a)/60/60/24).to_s'
+#+end_src
+
+
+今年の1/3はいつ
+#+begin_src sh
+ruby -rtime -e 'a=Time.now;b=Time.parse("#{a.year+1}-01-01 00:00:00");c=Time.parse("#{a.year}-01-01 00:00:00");puts (c+(b-c)/3)'
+#+end_src
+
+* rbs
+型をRBSで。
+
+[[https://github.com/ruby/gem_rbs_collection][ruby/gem_rbs_collection]]
+
+* rubygems
+ファイル =~/.gemrc= に
+#+BEGIN_SRC sh
+gem: --no-ri --no-rdoc
+#+END_SRC
+を書いておけば =gem install= するときに ri や rdoc がインストールされない。
+
+* pry 
+- [[file:pry.org::*pry%20%E3%81%A7%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%81%8C%E5%8C%96%E3%81%91%E3%82%8B%E3%81%A8%E3%81%8D][pry で日本語が化けるとき]]
+- exit!, !!! :: ループも強制的に抜ける
+- ?, show-doc
+- ri
+
+2 * * * * /bin/zsh $HOME/program/hoge/exec.sh
+
+* powermod
+http://stackoverflow.com/questions/14785329/efficient-way-to-power-and-mod-in-ruby
+openssl を使うだと……
+#+BEGIN_SRC ruby
+require 'openssl'
+1_299_709.to_bn.mod_exp(1_300_751, 104_729) # => 90827
+#+END_SRC
+
+* Ruboty
+#+BEGIN_SRC 
+bundle exec ruboty --load user_script.rb
+#+END_SRC
+で起動して、コマンドを打つ。
+#+BEGIN_SRC 
+ruboty help
+#+END_SRC
+など。
+
+#+BEGIN_SRC sh
+eval `cat ~/prog/twitter-env/load-twitter-env.sh` RACK_ENV=production RUBOTY_ENV=production ROBOT_NAME=NeXTSTEP2OSX bundle exec ruboty --load user_script.rb
+#+END_SRC
+
+* ltsv の access log を
+
+#+BEGIN_SRC sh
+tail -F /var/log/nginx/access.log | ruby -rresolv -rpp -ne 'r=Hash[$_.chomp.split("\t").map{|f| f.split(":", 2)}];begin;r["name"]=Resolv.getname(r["host"]);end;pp r'
+#+END_SRC
+
+#+BEGIN_SRC sh
+tail -F /var/log/nginx/access.log | ruby -rresolv -rpp -ne 'r=Hash[$_.chomp.split("\t").map{|f| f.split(":", 2)}];begin;r["hostname"]=Resolv.getname(r["host"]);rescue;r["hostname"]="";end;puts %Q|■ #{r["hostname"]} (#{r["host"]})\n   #{r["req"]} (#{r["status"]})\n   #{r["time"]} ref:#{r["referer"]} size:#{r["size"]}|'
+#+END_SRC
+
+#+BEGIN_SRC sh
+tail -F /var/log/nginx/access.log | ruby -rresolv -rpp -ne 'r=Hash[$_.chomp.split("\t").map{|f| f.split(":", 2)}];begin;r["hostname"]=Resolv.getname(r["host"]);rescue;r["hostname"]="";end;puts %Q|o \e[36m\e[40m#{r["host"]} (#{r["hostname"]})\e[0m|;puts %Q|  #{r["req"]} (#{r["status"]})\n  #{r["time"]} ref:#{r["referer"]} size:#{r["size"]}\n  #{r["ua"]}|'
+#+END_SRC
+
+#+BEGIN_SRC sh
+tail -F /var/log/nginx/access.log | ruby -rresolv -rpp -ne 'r=Hash[$_.chomp.split("\t").map{|f| f.split(":", 2)}];begin;r["hostname"]=Resolv.getname(r["host"]);rescue;r["hostname"]="";end;puts %Q|o \e[36m\e[40m#{r["host"]} (#{r["hostname"]})\e[0m|;puts %Q|  #{r["req"]} (#{r["status"]})\n  #{r["time"]} ref:#{r["referer"]} size:#{r["size"]}\n  #{r["ua"]}|'
+#+END_SRC
+
+* Hiroshima Ruby Conference のメモ
+<2016-03-05 Sat>
+
+1993/2/24 Ruby誕生。
+ソフトウェアは形がないので概念が大事。Rubyは名前を決めた日を誕生日としている。
+fj.sources 1995/12/21 に公開。
+普段仕事はCとシェルスクリプトを使っていた。普段使う言語を作った。
+
+* performance
+** 簡単 performance 計測
+#+BEGIN_SRC ruby
+t1 = Time.now
+#+END_SRC
+と
+#+BEGIN_SRC ruby
+puts  "\e[36m\e[40m#{(Time.now-t1)*1000}(ms) in #{__method__}(#{__callee__}) (#{self.class})\e[0m"
+#+END_SRC
+で囲む。
+** gem
+便利道具
+- https://github.com/SamSaffron/memory_profiler
+- https://github.com/ko1/allocation_tracer
+
+memory_profiler の使い方
+
+#+begin_src ruby
+require 'memory_profiler'
+report = MemoryProfiler.report do
+  # 計測したい処理
+end
+#+end_src
+
+* build memo
+
+** libv8
+[[http://qiita.com/ooyabuh/items/32e7086917e29356b532][libv8 3.16.14.11 のインストールエラーの対応 - Qiita]]
+
+#+begin_src sh
+gem install libv8 -v '3.16.14.13' -- --with-system-v8
+bundle config build.libv8 --with-system-v8
+bundle update
+#+end_src
+
+* project generators
+** bundle gem project_name
+bundle gem project_name
+だけで生成される。
+
+bundle gem project_name -b とすると実行用ファイル =./bin/project_name= も生成される。
+
+** ore
+[[https://github.com/ruby-ore/ore][ruby-ore/ore: Mine beautiful RubyGems from Ore]]
+いいね
+
+* Debug
+** pry-byebug
+pry-byebug を使っていたら
+#+BEGIN_SRC ruby
+require 'pry'; binding.pry
+#+END_SRC
+して止めたときに、next, step, continue, finish ができる。
+そこのプロンプトで
+#+BEGIN_SRC ruby
+break ClassName#method_name
+#+END_SRC
+などと打つのもよい。
+
+=~/.pryrc= に
+#+BEGIN_SRC ruby
+if defined?(PryByebug)
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
+end
+#+END_SRC
+を書いておくと、n, s, c, f で実行できるので便利。
+
+* Sinatra
+** 即席ウェブサーバ公開
+カレントディレクトリのファイルをローカルでウェブサーバを立ててブラウザで見る
+
+: ruby -rsinatra -e 'set :public_folder, "."; set :port, 18888'
+
+としたら、ブラウザで http://localhost:18888/filename.html が filename.html が参照できる。
+
+** port指定など
+require 'sinatra' した ruby ファイル =hoge.rb= をそのまま実行すると、
+
+: ruby hoge.rb -h
+
+などとヘルプが出る。
+
+: ruby hoge.rb -o 0.0.0.0 -p 12345
+
+とするとホスト 0.0.0.0 (default は localhost), ポート 12345 (default: 4567) が指定される。
+
+** mini code
+#+BEGIN_SRC ruby
+require 'sinatra'
+require 'json'
+
+get '/' do
+  foo = {
+    count: 100,
+    message: "OK"
+  }
+
+  foo.to_json
+end
+
+post '/' do
+  body = request.body.read
+  body.to_json
+end
+#+END_SRC
+
+* DataMapper
+- [[https://stackoverflow.com/questions/19340615/datamapper-fetching-only-changed-properties-before-updating-record][ruby - DataMapper: Fetching only changed properties before updating record - Stack Overflow]]
+
+* Here document
+#+BEGIN_SRC ruby
+test = <<'EOS'
+ここは#{foo} と書こうがそのまま
+EOS
+
+# 中身をコマンドとして実行して、結果を代入
+test2 = <<`EOC`
+some_command #{var1} #{var2}
+EOC
+
+test3 = <<"EOS"
+これは単なるヒアドキュメントと変わらない
+EOS
+#+END_SRC
+
+* DNN
+** menoh-ruby
+
+** Red Chainer
+- Numo::NArray, Cumo
+- on CPU, GPU
+
+ONIX
+Protocal Buffers
+
+onnx-red-chainer
+Red Chainer from ONNX file
+
+chainner から onnx-chainer で onnx に。
+onnx-red-chainer で Red Chainer のファイルを作る。
+
+** Cumo
+
+https://github.com/sonots/cumo
+
+gcc は c++14 が必要。
+
+* Coding Tips
+
+こう書いておくとtab幅3になった。
+
+#+BEGIN_SRC ruby
+  # Local Variables:
+  # mode: ruby
+  # indent-tabs-mode: t
+  # tab-width: 3
+  # ruby-indent-level: 3
+  # End:
+#+END_SRC
+
+
+* misc
+** ArgumentError - invalid byte sequence in US-ASCII
+export LC_ALL="en_US.UTF-8"
+
+** md5
+[[http://en.gravatar.com/site/implement/images/ruby/][Gravatar - Globally Recognized Avatars]]
+#+BEGIN_SRC ruby
+email_string = ''
+require 'digest/md5'
+email_address = email_string.downcase
+hash = Digest::MD5.hexdigest(email_address)
+image_src = "https://www.gravatar.com/avatar/#{hash}"
+#+END_SRC
+
+結果の例
+https://www.gravatar.com/avatar/853cd87b5c317b8c16b0e78c2efbf8d1?size=200
+
+** 文字列
+
+#+BEGIN_SRC sh
+cat /.DocumentRevisions-V100/.cs/ChunkStorage/0/0/43/198 | ruby -e 'while c = STDIN.getc; d = c.codepoints[0]; print (d >= 32 && d <= 126 ? c : " ") ; end'
+#+END_SRC
+
+** idn-ruby
+idn-rubyをARMのHomebrewで環境で入れる。
+
+#+begin_src sh
+gem i idn-ruby -- --with-idn-dir=/opt/homebrew/Cellar/libidn/1.41
+#+end_src
+
+** mecab
+mecabをARMのHomebrew環境で入れる。
+
+#+begin_src sh
+  gem install mecab -- --with-cppflags=-I/opt/homebrew/include
+#+end_src
+
+* YJIT
+3.2.0をYJITを有効にしてrbenvでビルドする。
+
+#+begin_src 
+RUBY_CONFIGURE_OPTS=--enable-yjit rbenv install 3.2.0
+#+end_src
+
+確認
+#+begin_src shell
+  ruby --yjit -e "p RubyVM::YJIT.enabled?"
+#+end_src
+
+
+* gem install
+
+Homebrewでopenssl 3.2.0が入っているが、古いgem openssl 3.0.0をビルドしたい。
+
+#+begin_src sh
+gem install openssl -v '3.0.0' -- --with-openssl-dir=/opt/homebrew/Cellar/openssl@1.1
+#+end_src
+
+
+またRuby自体をopenssl@1.1でビルドするには
+
+#+begin_src sh
+brew install openssl@1.1
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+rbenv install 3.0.6
+#+end_src
+
+
+dyld[.....]: missing symbol called が出るときに次で治るかも?
+
+#+begin_src sh
+gem i idn-ruby -- --with-idn-dir=/opt/homebrew/Cellar/libidn/1.42
+#+end_src

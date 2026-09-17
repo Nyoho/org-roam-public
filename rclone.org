@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       E27FCDB0-EC00-4DAA-BCFA-F16CAC635F0D
+:END:
+#+title: rclone
+#+date: [2022-09-29 Thu 19:45]
+
+
+公式サイト https://rclone.org
+
+
+Links
+- [[https://www.wave440.com/wave_log/client_id.html][rclone 用に独自の Google Drive クライアント ID を作成する。]]

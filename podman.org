@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       36B5D02E-FBC4-466C-84C0-C0DC809E7569
+:END:
+#+title: Podman
+#+date: <2021-06-21 Mon>
+#+tags: container
+
+daemonなしで実行できるコンテナエンジンPodman
+
+https://podman.io
+
+* Systemdで自動起動
+
+#+begin_src shell
+  podman generate systemd --new --name なまえ
+#+end_src
+でsystemdのunitファイル(の内容)が出力される。
+=> /etc/systemd/system/なまえ.service= などにリダイレクトする。
+
+参考
+- [[https://www.zu-min.com/archives/875][podman のコンテナやポッドを自動起動する | zu-min.com]]
+- [[https://www.tutorialworks.com/podman-systemd/][How to Start Containers Automatically, with Podman and Systemd - Tutorial Works]]
+
+* Podman remote-client
+
+- [[https://github.com/containers/podman/blob/master/docs/tutorials/remote_client.md][Podman remote-client tutorial (containers/podman)]]

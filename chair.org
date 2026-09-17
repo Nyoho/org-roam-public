@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       5B3FF9EE-306E-443F-B736-67819EDF0F59
+:END:
+#+title: 椅子 chair
+#+date: [2024-06-27 Thu 23:49]
+
+椅子についてのメモ。
+
+* 椅子
+- 中古のOkamuraのバロンチェア
+   
+* 中古屋さん
+- [[https://www.raku1.co.jp/][楽市]]
+- [[https://www.officebusters.com/chair/][オフィスバスターズ]]

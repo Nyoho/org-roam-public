@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       EC2C86CB-B9A9-43B8-8149-E32C91CF3F49
+:END:
+#+title: Swift Package Manager
+
+Swift Package Manager と Swift package について
+
+* Links
+- [[https://developer.apple.com/documentation/swift_packages][Swift Packages | Apple Developer Documentation]]
+- [[https://developer.apple.com/documentation/swift_packages/editing_a_package_dependency_as_a_local_package][Editing a Package Dependency as a Local Package | Apple Developer Documentation]]
+- [[https://useyourloaf.com/blog/editing-a-swift-package/][Editing A Swift Package]]
+  
+- [[https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app][Adding Package Dependencies to Your App | Apple Developer Documentation]]
+- [[https://itnext.io/advanced-cross-platform-apps-using-local-swift-packages-and-uikit-appkit-2a478e8b05cd][Advanced cross-platform apps using local Swift packages and UIKit/AppKit | by Philip Niedertscheider | ITNEXT]]
+
+* Swift Package
+
+Swift 5.3からSwift Packageにリソースを入れられるようになった。
+
+Swift Packageの中のコードから中のリソースをロードするには
+#+begin_src swift
+let bundle = Bundle.module.url(forResource: "Hoge", withExtension: "fuga")
+#+end_src

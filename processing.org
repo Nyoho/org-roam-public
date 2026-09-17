@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       9B6FAA9B-7C03-4F60-8EF2-C5E2AFCA7B2F
+:END:
+#+title: Processing
+#+date: [2022-09-08 Thu 16:02]
+
+- https://processing.org
+- https://p5js.org
+- https://twigl.app/
+  - https://twigl.app/?ol=true&ss=-NRpAcKIzncPi-9-pZL2
+
+
+ぶつやき
+
+- https://x.com/zozuar/status/1875945664070475933

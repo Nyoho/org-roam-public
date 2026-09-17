@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       B6E454AA-A7C8-400A-A45A-F2551C969860
+:END:
+
+M-x org-trello-mode
+
+C-c o i で API key を取得する。
+
+メールアドレスではなく、user12345678901234567890 という trello のユーザ番号を入力する。
+するとブラウザが開いて、consumer key や access token をゲットできる。
+
+* 導入手順
+https://melpa.org/#/org-trello
+の通りにやるとよい。
+7の =C-u C-c o s= で今あるものを取ってくることができる。
+
+- C-c o c / C-c o C :: sync Org → Trello
+- C-u C-c o c / C-u C-c o C :: sync Trello → Org
+- C-c o s :: sync
+
+* links
+- [[https://org-trello.github.io/][org-trello]] 公式
+- [[https://org-trello.github.io/bindings.html][Bindings]]
+- [[http://sleepboy-zzz.blogspot.jp/2013/11/org-trello.html][memo: org trelloの導入]]
+  ここでショートカットを学ぶ。

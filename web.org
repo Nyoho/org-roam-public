@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       80E773F7-47DF-4EB2-AA3A-1F6E98132F8E
+:END:
+#+title: web
+#+tags: html, css
+#+date: <2013-05-19 Sun>
+
+HTML, CSS などウェブの話
+
+* Amicus
+https://github.com/nathos/amicus
+
+HTML5 Boilerplate, Sass, Compass, Susy に対応しているプロトタイプ
+
+* Susy
+[[http://susy.oddbird.net/][Susy: Responsive grids for Compass]]
+
+Compass で使える responsive なグリッドが簡単に作れる。
+
+* middleman
+- [[http://camuro.org/wordpress/?p%3D573][リモートインターン ｜ MIddleman 実践（2） | camuro]]
+
+* Sass/scss
+[[http://sass-lang.com/][Sass - Syntactically Awesome Stylesheets]]
+
+* Compass
+sass をさらに加速する便利ツール。
+
+* 開発
+HTML, CSS, JavaScript 断片を公開できるサービス
+- [[http://plnkr.co/][Plunker]]
+- [[http://jsdo.it/][jsdo.it]]
+- [[http://codepen.io/][CodePen]]
+
+GUI アニメーション作成ツール
+- Edge Animate CC http://html.adobe.com/jp/edge/animate/
+- Google Web Designer https://www.google.com/webdesigner/
+- Animatron http://animatron.com
+
+** 開発ツール類
+Firefox
+
+- [[https://developer.mozilla.org/ja/docs/Tools][開発ツール | MDN]]
+
+Chrome
+
+- [[https://developers.google.com/web/tools/chrome-devtools?hl=ja][Chrome DevTools]] 
+- [[https://www.youtube.com/playlist?list=PLNYkxOF6rcIBDSojZWBv4QJNoT4GNYzQD&app=desktop][What's New in DevTools - YouTube]]
+
+* SSL/TLS
+- https://www.ssllabs.com/ssltest/analyze.html
+
+* HTTP/2
+- Checker https://tools.keycdn.com/http2-test
+
+

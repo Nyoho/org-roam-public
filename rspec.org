@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       979B5178-BB2A-4736-9E2E-8ED5BD088960
+:END:
+#+title: RSpec
+#+date: <2016-04-18 21:11:51 +0900>
+
+rspec memo
+
+https://rspec.info
+
+* Basic
+** Installation
+#+BEGIN_SRC sh
+gem install rspec
+#+END_SRC
+
+** Start
+#+BEGIN_SRC sh
+rspec --init
+#+END_SRC
+
+** Write spec
+
+Assume a class Book is in lib/book.rb.
+
+Write spec/lib/book_spec.rb as follows.
+#+BEGIN_SRC ruby
+  describe "spec_helper"
+
+  describe "Book" do
+    it "something" do
+      book = Book.new
+      expect(book.some_property).to eq 'Something'
+    end
+  end
+#+END_SRC
+
+** double, mock
+ - [[https://gist.github.com/katoy/5bf50d9d4d8a0c16bcb43a15dd119b06][rspec の mock の例]]
+ - [[https://mickey24.hatenablog.com/entry/20100302/1267464477][RSpecでモックを使って外部サービスに依存するコードのテストを書いてみた - ぬいぐるみライフ？]]

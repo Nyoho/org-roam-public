@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       B0DDEB51-FB27-4989-AF03-8280C067AD4F
+:END:
+#+TITLE: Kaggleのメモ
+#+date: <2020-04-10 07:54:12 +0900>
+
+うわさの [[https://www.kaggle.com/][Kaggle]]
+
+* Titanic
+[[https://www.kaggle.com/currypurin/profile][currypurin さんの tutorial]]
+
+Pandas Profiling で EDA (exploratory data analysis; 探索的データ解析)
+
+ホールドアウト法 (training set と validation set に分けるやつのことをそういうらしい)
+
+~pandas.get_dummies~ で one-hot encoding がすぐできる。
+
+LightGBM
+
+k分割交叉検証 $k=3$
+
+k=5とかもよく使われている。
+
+tags: eda (exploratory data analysis), tutorial など
+
+lightGBM は ~categorical_feature=['foo', 'bar']~ と教えると one-hot encoding ではない categorical feature だと(大小関係がないデータだと)して学習する。
+
+- Kaggle api
+- Kaggle learn 教材
+- kaggler-ja (Slack)
+  - wiki
+- Kaggle Rankings
+- regonn & curry.fm (カレーさんのpodcast)
+
+lightGBM, XGBoost, Catboost
+
+特徴量作成に時間を掛ける。
+
+** HomeCreditコンペ
+評価指標はAUC [[http://www.randpy.tokyo/entry/roc_auc][【ROC曲線とAUC】機械学習の評価指標についての基礎講座 - Np-Urのデータ分析教室]]
+
+まず重要な3特徴だけで予測。
+その後に特徴を少しずつ加えていく。
+
+target encoding
+
+LightGBMのparameter tuning
+- hyperopt
+- bayesian optimization
+
+ニューラルネットワークとLight GBMのアンサンブル学習とかよくやられる
+
+* Links
+- [[https://qiita.com/upura/items/3c10ff6fed4e7c3d70f0][Kaggleに登録したら次にやること ～ これだけやれば十分闘える！Titanicの先へ行く入門 10 Kernel ～ - Qiita]]
+- [[https://upura.hatenablog.com/entry/2019/04/10/234953][Kaggle Petfinderコンペで準優勝しました - u++の備忘録]]
+- [[https://lp-tech.net/articles/JsWwf][KaggleチュートリアルTitanicで上位1%に入った話。(0.87081) - IMACEL Academy -人工知能・画像解析の技術応用に向けて-| エルピクセル株式会社]]
+- the famous Kaggle Dogs v Cats dataset: https://www.kaggle.com/c/dogs-vs-cats
+- [[https://medium.com/@hayato.iida.0213/%E6%95%B0%E5%AD%A6%E3%81%AB%E5%BC%B7%E3%81%84%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%82%80%E3%81%91%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E5%8B%89%E5%BC%B7%E6%B3%95-e3f4bd7a7cf9][数学に強いエンジニアむけの機械学習勉強法 - 飯田勇人 - Medium]] に Kaggle を写経するという項目がある
+- [[https://ho.lc/blog/kaggle_code_submission/][効率的なコードコンペティションの作業フロー | ho.lc]]

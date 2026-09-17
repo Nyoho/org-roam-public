@@ -1,0 +1,82 @@
+:PROPERTIES:
+:ID:       EC00588A-839F-4BE4-94F8-04F6286A8B7A
+:END:
+#+date:<2018-05-23 Wed>
+#+title: Btrfs
+
+* Commands
+SSDには option ssd
+
+#+begin_src sh
+btrfs filesystem show
+#+end_src
+
+label や uuid などがわかる。
+
+
+ラベルをつける
+
+#+begin_src sh
+btrfs filesystem label
+#+end_src
+
+
+一覧を出す。uuidやラベルやサイズなどが出てくる。
+
+#+begin_src sh
+btrfs filesystem show
+#+end_src
+
+
+デバイスのエラーなどを表示する。 =/dev/sda1= や =/mnt/foo= など
+
+#+begin_src 
+btrfs device stats /dev/sda1
+#+end_src
+
+* Tips
+** subvolume 例
+[[https://qiita.com/mazgi/items/5b059ff6aa4bae22e48e][#gentooinstallbattle UEFI+GRUB2+btrfs編 - Qiita]]
+
+** options
+- subvol=subvolume-name :: subvolume-name という名前のサブボリュームをマウント
+- compress=lzo :: 圧縮する。lzoで。
+- autodefrag :: 自動デフラグ
+- ssd :: SSDに優しい
+- discard :: 解放されたブロックをトリムできるように
+- inode_cache :: inodeの空き情報をキャッシュする
+
+** mount
+
+=/dev/sda1= の中にある =foo= という名前のsubvolumeをmountするには、
+
+#+begin_src shell
+  mount /dev/sda1 /somewhere -o subvol=foo
+#+end_src
+
+** restore
+rsyncで
+https://www.funtoo.org/BTRFS_Fun#Using_snapshots_for_system_recovery_.28aka_Back_to_the_Future.29
+
+=/mnt= にコピー先 (リストア先) をマウントしておくとすると、
+
+#+begin_src shell
+rsync --progress -aHAX --exclude=/proc --exclude=/dev --exclude=/sys --exclude=/mnt --exclude=/home snapshots/root_last/* /mnt
+#+end_src
+
+: btrfs restore (device) (path)
+
+- [[https://btrfs.wiki.kernel.org/index.php/Restore][Restore - btrfs Wiki]]
+- [[https://doc.opensuse.org/documentation/leap/reference/html/book-reference/cha-snapper.html#sec-snapper-snapshot-boot][System recovery and snapshot management with Snapper | Reference | openSUSE Leap 15.3]]
+
+** Snapshots
+- [[https://datawok.net/posts/btrfs-snapshots/][Btrfs Snapshots – D A T A W O K]] これいい。
+- [[https://askubuntu.com/questions/1459350/how-to-restore-btrfs-snapshot-backup-of-root-partition-with-subvolume-for-home][encryption - how to restore btrfs snapshot backup of root partition with subvolume for home - Ask Ubuntu]]
+   
+* References
+- [[https://github.com/satoru-takeuchi/btrfs-thin-book/][Btrfsの薄い本]]
+- [[https://ttandai.info/archives/1884][CentOS7 (1511) でbtrfsのスナップショットを定期的に保存するようにした。 | たんでーろぐ]]
+- [[https://btrfs.readthedocs.io/en/latest/][BTRFS documentation]]
+- [[https://lore.kernel.org/linux-btrfs/][linux-btrfs.vger.kernel.org archive mirror]]
+- [[https://karita.xyz/log/posts/linux-setup-2020/][2020年Linux開発マシン設定: btrfsに乗り換え - log]]
+- [[https://www.ncaq.net/2019/01/28/13/37/05/][デスクトップLinuxにBtrfsとSnapperを使うようになってファイルを間違えて削除してしまう恐怖から開放されました - ncaq]]

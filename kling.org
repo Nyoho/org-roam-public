@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       85099120-CE3F-4F04-A373-7FC84E82BB11
+:END:
+#+title: Kling
+#+date: [2025-10-06 Mon 20:52]
+
+動画生成AI
+
+
+* prompts
+https://x.com/umesh_ai/status/1975120362271580363

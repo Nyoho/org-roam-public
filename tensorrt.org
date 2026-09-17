@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       3FEE7F89-3411-466A-ABFA-E8B8E866CC72
+:END:
+#+title: TensorRT
+#+date: <2021-07-11 Sun>
+
+* build
+#+begin_src 
+cmake .. -DTRT_LIB_DIR=$HOME/prog/TensorRT -DTRT_OUT_DIR=`pwd`/out -DCUDA_VERSION=10.2 -DGPU_ARCHS=80 -DBUILD_PLUGINS=No
+#+end_src
+
+* Links
+- [[https://tech-blog.optim.co.jp/entry/2021/08/31/160000][姿勢推定モデル MoveNet を TensorRT でベンチマーク - OPTiM TECH BLOG]]

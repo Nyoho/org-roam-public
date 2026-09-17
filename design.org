@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       486F538E-6589-4414-B02E-188422D87B29
+:END:
+#+title: Design 勉強
+#+tags: design
+#+date: <2013-06-03 Mon>
+
+* 配色
+* ウェブページ
+* スライド
+- [[http://www.slideshare.net/kotas/git-15276118][こわくない Git]]
+- [[http://kotas.hatenablog.jp/entry/2012/11/22/000046][「こわくない Git」というスライドを発表しました - kotas.tech]]

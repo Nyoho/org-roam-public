@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       FA52E9F2-6CA2-4962-BC32-4FBAD58EB6FE
+:END:
+#+title: Linux distributions
+#+date: [2024-05-08 Wed 21:48]
+
+知らないディストリビューションをメモする
+
+* elementary OS
+- https://elementary.io
+
+version 0.4.1 が <2018-02-14> だった。

@@ -1,0 +1,94 @@
+:PROPERTIES:
+:ID:       EB3ACB39-B6F3-43B2-97CE-3F40595821F1
+:END:
+#+title: Mathematica
+#+tags: Mathematica
+#+date: <2019-06-05 15:53:04>
+
+Mathematica のメモです。
+
+* 行列作成
+** キー操作
+- ctrl + ,  :: 列を増やす
+- ctrl + return :: 行を増やす
+
+** Array関数で作る
+#+begin_src mathematica
+Array[Subscript[a,#1,#2] &, {3, 3}] // MatrixForm
+#+end_src
+
+* 関数(写像)適用
+f @@ list は Apply[f, list]
+
+#+begin_src mathematica
+Apply[f, {1, 2}]
+f[1,2]
+#+end_src
+
+f /@ list は Map[f, list]
+
+#+begin_src mathematica
+Map[f, {1, 2}]
+{f[1], f[2]}
+#+end_src
+
+lambda
+#+begin_src mathematica
+ 2 # /(# - 1) &
+#+end_src
+$x \mapsto 2x/(x-1)$ という関数
+
+
+listの要素を突っ込む。
+#+BEGIN_SRC mathematica
+#^2 & @ {1, 2, 3}
+#+END_SRC
+// {1, 4, 9} 
+
+* リストの操作
+
+#+BEGIN_SRC mathematica
+list[[1 ;; 10]]
+#+END_SRC
+
+* ディレクトリ
+- SetDirectory["~/hoge/fuga"] 
+- NotebookDirectory[] やっと思い出した<2013-12-14 Sat>
+
+* 画像変換
+#+begin_src mathematica
+img = Import["hoge.png"]
+ImageTransformation[img, Sqrt]
+#+end_src
+
+** 未分類
+- GeometricTransformation
+- TransformationFunction
+- ShearingTransform
+- Graphics[GeometricTransformation[Circle[], ShearingTransform[Pi/4, {1, 0}, {0, 1}]]]
+- GradientFilter 面白いね
+
+* Tips
+** Select
+filterできる。
+#+BEGIN_SRC mathematica
+Select[Table[i, {i, 2, 100}], PrimeQ]
+#+END_SRC
+
+** 解くときに冪根で表すには
+
+#+begin_src mathematica
+ToRadicals[%]
+#+end_src
+
+* links
+
+面白リンク
+
+- [[http://mathematica.stackexchange.com/questions/17704/how-to-create-a-new-person-curve][graphics - How to create a new "person curve"? - Mathematica Stack Exchange]]
+- [[http://otakumode.com/news/518e05c1a7bdbb1208000df8/A-Mathematical-Formula-for-Hatsune-Miku-Has-Been-Found-!-Draw-Characters-Using-Math-on-WolframAlpha][A Mathematical Formula for Hatsune Miku Has Been Found?! Draw Characters Using Math on WolframAlpha]]
+- [[https://mathematica.stackexchange.com/questions/tagged/generative-art?sort=frequent][Frequent 'generative-art' Questions - Mathematica Stack Exchange]]
+
+ショートカット
+
+- [[https://reference.wolfram.com/language/tutorial/KeyboardShortcutListing.html.ja?source=footer][キーボードショートカットのリスト—Wolfram言語ドキュメント]]

@@ -1,0 +1,427 @@
+:PROPERTIES:
+:ID:       80CACD78-3191-46C5-A1DF-970CD37D7AEA
+:END:
+#+TITLE: Unity
+#+TAGS: Unity
+#+DATE: <2012-03-25 Sun>
+
+Unity
+
+公式サイト https://unity.com
+
+* 操作
+** Scene
+- Q, W, E, R :: 移動や変形や回転や拡大
+- alt drag :: rotate
+- ctrl drag :: zoom
+- カメラを選択して GameObject -> Align With View (Shift + Cmd + F) で見ているままのカメラ位置にできる
+- オブジェクトを選択して F :: そこに視点が移動
+
+* Tips
+- Enter Play Mode Settings は便利。(2019.3から)
+
+* debugging
+** Profiler
+使い方
+あとでかく
+
+** frame debug
+レンダリングを1ステップごとに追跡できる
+
+** RenderDoc
+
+[[https://docs.unity3d.com/ja/2020.3/Manual/RenderDocIntegration.html][RenderDoc の統合 - Unity マニュアル]]
+
+* アニメーション
+
+Time.deltaTime に最後のフレームを完了するのに要した時間(秒)が入ってくる。
+これを Update () の中で使えばどのぐらい動けばいいかが計算できる。
+
+~LateUpdate()~ に ~Update()~ の後に実行する処理を書けます。
+
+~Time.time~ は経過時間。
+
+* Rigidbody
+オブジェクトを選択して Inspector の "Add Component" -> Physics -> Rigidbody
+- Mass 質量
+- Use gravity
+
+ぼよよん -> Physics Material を create してはねさせたいものに drop
+
+* Mesh
+EmptyObject に MeshFilter と MeshRenderer を追加してスクリプトで設定する。
+
+* Script間連携
+var hoge : HogeScript
+と出しておいて、
+Inspector で hoge に Hoge オブジェクトを放り込む。
+すると Hoge オブジェクトにくっついている HogeScript.js の中の関数が hoge.method() で動かせる。
+
+* 3rd Person Controller
+
+- Animator の Controller を ThirdPersonAnimatorController にする。
+
+** Camera
+- Import [Cameras] from [Import Package] 
+- [Standard Assets] > [Cameras] > [Prefabs] > [MultipurposeCameraRig]
+
+** キー操作
+- space :: jump
+- asdw/矢印 :: 移動
+- space + 移動 :: run
+
+** iPhoneのみ傾き操作にする
+#+BEGIN_SRC unityjs
+  var v:float;
+  var h:float;
+   
+  #if !UNITY_EDITOR && UNITY_IPHONE
+  //iPhoneの場合のみ、傾きセンサで操作----------------------------------
+  //端末を横向きに持った場合（ホームボタンが向かって左）
+   
+  //重力ベクトルの値を増幅させる（小さな動きでも反応するようにする）
+  var gyroScale:float = 2;
+   
+  //左右に傾けたときの重力ベクトルの値の差を左右の移動とする
+  h = Mathf.Clamp(Input.gyro.gravity.y * gyroScale, -1.0, 1.0);
+  //手前・奥に傾けたときの重力ベクトルの値の差を手前・奥の移動とする
+  v = Mathf.Clamp(-1 * (Input.gyro.gravity.x - 0.6) * gyroScale, -1.0, 1.0);
+   
+  #else
+  //それ以外は上下左右キーで操作-------------------------------------------
+   
+  //上下キーによる手前・奥への移動
+  v = Input.GetAxisRaw("Vertical");
+  //左右キーによる左右の移動
+  h = Input.GetAxisRaw("Horizontal");
+   
+  #endif
+  //  var v = Input.GetAxisRaw("Vertical");
+  //  var h = Input.GetAxisRaw("Horizontal");
+#+END_SRC
+
+** キャラクタ・アニメーション
+- [[https://www.youtube.com/watch?v=k-X4bqcc4Mg][スクリプトベースで移動するキャラクターにアニメーションを合わせる方法 - Animation Tips #3 - YouTube]]
+
+* 数学
+- =Mathf.PI= :: 円周率
+- =Mathf.Sin :: 正弦関数
+  
+* 風景
+http://blog.cubycom.net/?eid=158
+- Terrain
+- Palm
+- Water: Basic
+  - Daylight Simple Water
+- Light Flares
+  - Empty Object に Component -> Effects -> Lens Flare -> 50mm
+- Skyboxes (package)
+  - Edit -> Render Settings
+- Projector (package)
+  - Blob Shadow Projector
+
+* [[http://nanmo.hateblo.jp/entry/2012/06/02/212328][Unityで動的にメッシュを生成するだいたい最小のコード - 戸袋に手を引き込まれないように]]
+
+* iOSアプリ自動回転
+Edit -> Project Settings -> Player -> "Resolution and Presentation" 
+
+Select "Auto Rotation" for the "Default Orientation" and select the orientations you would like to support.
+
+[[http://answers.unity3d.com/questions/48924/how-to-allow-automatic-screen-rotation-in-ios.html][How to allow automatic screen rotation in iOS? - Unity Answers]]
+
+* BroadcastMessage
+
+* yield が使える。
+
+* Raycast
+passing through するには単に Layer を "Ignore Raycast" に設定するだけ。
+
+* LineRenderer という Effect で折れ線が描ける
+Use World Space を off にすれば相対位置になる。
+
+* iTween
+[[http://narudesign.com/devlog/unity-itween/][Unity3D:アニメーションにはiTween - devlog {naru design}]]
+
+* OnGUI()
+** GUI.Toggle()
+http://answers.unity3d.com/questions/360635/strange-guitoggle-behavior.html
+true で判定していたら何度も呼ばれてしまう。
+
+** GUI.Label()
+
+* 2本指ジェスチャ
+
+* 回転
+http://yun.cup.com/unity007.html
+
+* LoadLevel
+LoadAdditive()
+で先読みできる。
+LoadLevel()
+音を止めないなど?
+
+- [[http://qiita.com/srtkmsw/items/bf6a33d6bb2987c74936][Unity - Scene切替時でもGameObject等を破棄せずに保持しておく方法 - Qiita]]
+- [[http://terasur.blog.fc2.com/blog-entry-87.html][テラシュールウェア {Unity3D}引数付きシーン呼び出し]]
+** fade in / fade out
+[[http://wiki.unity3d.com/index.php?title%3DFadeInOut][FadeInOut (Unify Community Wiki)]] が便利。
+
+* データ共有
+- static
+- additive 煩雑
+  引数付きの Additive
+
+* 勉強
+
+** Unity Learning Materials
+便利 <2019-07-01 Mon>
+in Panasonic の動画をあとで見る。
+
+** Thread
+C# の ~Thread~ が使える。
+
+** コルーチン
+
+#+begin_src cs
+StartCoroutine(loop())
+#+end_src
+
+しておいたらOK。
+
+** MonoBehaviour
+- これを継承しないとポンと置けない。
+- ~public GameObject~ で作っておくとインスペクタにプロパティのように現れる。
+- ~Awake~ 生まれたときに呼ばれる
+- ~Start~ は ~Update~ ループの直前に一度だけ呼ばれる。というか ~Update~ の1回目がこれ。(~Awake~ よりもあと)
+- ~FixedUpdate~ ([[https://qiita.com/yuji_yasuhara/items/6f50ecdd5d59e83aac99][[Unity] InputとFixedUpdateと物理演算の関係を整理しよう - Qiita]])
+
+** Unity の勉強会 <2012-03-25 Sun> 広島Macユーザグループ
+- Hierarchy 空っぽのゲームオブジェクトを作るにはメニューから GameObject -> Create Empty とする
+- Layout は 2 by 3 にしてみる。
+
+** Collider 衝突設定 当たり判定
+Physics Material で
+script で当たり判定
+- isTrigger をチェック
+- mesh renderer off
+void OnTriggerStay(Collider other) {
+
+}
+
+注意: sleep してしまうので、wakeUpなんとかで collider を起こさないとあたり判定が素通りしてしまうことがある。
+
+** Material で texture など。
+** FindObject でオブジェクトを取ってくる。
+** 作ったものを使い回すにはプレハブ化する。
+Hierarchy から Project にコピーする。(すると Hierarchy にあったものは青い文字になる。)
+
+prefab は open prefab すると prefab 編集画面が出る (2018.3 から!)
+ヒエラルキーをからいじった場合は =apply= すると prefab が更新される。
+
+** Align With View するとカメラの位置などを作業シーンと同じにできる。
+
+** ミサイルみたいなものや敵キャラをどんどん出現させるには
+ミサイルにその動きのスクリプトをつけたものをプレハブ化して、
+Instantiate(object, transform.position, Quaternion.identity);
+などとする。
+
+#+BEGIN_SRC cs
+GameObject.Instantiate (enemys[randomValue], transform.position, Quaternion.Euler (0f, randomRotationY, 0f));
+#+END_SRC
+
+参考 [[https://gametukurikata.com/program/appearenemy][Unityで出現場所から一定時間毎に人数制限内で敵を出現させる | Unityを使った３Dゲームの作り方（かめくめ）]]
+
+** 音を鳴らす
+音を出したいオブジェクトに Add Component して Audio Source をつけるのが簡単。
+出現と同時にならしたい場合は Play On Awake をチェック。
+
+** 未分類
+- [[http://japan.unity3d.com/developer/document/tutorial/][UNITY - Developer - チュートリアル]] 公式のチュートリアルがいい。
+- [[https://github.com/unity3d-jp-tutorials/2d-shooting-game/wiki][Home · unity3d-jp-tutorials/2d-shooting-game Wiki]] 2Dゲームを作るチュートリアル。丁寧。
+- [[https://doc.photonengine.com/ja/pun/current/tutorials/tutorial-marco-polo][マルコ・ポーロ・チュートリアル | Exit Games]] 翻訳調
+- [[http://gamesonytablet.blogspot.jp/2012/11/unity.html][ゲームは初心者にやさしく: 必見！Unity初心者が学ぶ「別スクリプトの変数やメソッドへの参照」]]
+- [[http://answers.unity3d.com/questions/8023/creating-a-mesh-procedurally.html][creating a mesh procedurally - Unity Answers]]
+- [[https://www.google.co.jp/search?client%3Dsafari&rls%3Den&q%3DCamera.main.ScreenPointToRay%2Bc%2523&ie%3DUTF-8&oe%3DUTF-8&redir_esc%3D&ei%3D2NzTUJzMKsiZiQfH7oA4#hl%3Dja&safe%3Doff&client%3Dsafari&tbo%3Dd&rls%3Den&sclient%3Dpsy-ab&q%3DScreenPointToRay%2Bc%2523%2BPhysics.Raycast&oq%3DScreenPointToRay%2Bc%2523%2BPhysics.Raycast&gs_l%3Dserp.3...9220.9498.1.9940.2.2.0.0.0.0.141.235.1j1.2.0...0.0...1c.1.aca3dtuFZoY&pbx%3D1&fp%3D1&bpcl%3D40096503&biw%3D1114&bih%3D1324&cad%3Db&bav%3Don.2,or.r_gc.r_pw.r_cp.r_qf.&sei%3DbIUQUcv3HsmokQXtkIH4Cg][screenpointtoray c# physics.raycast - Google 検索]]
+- [[https://www.google.co.jp/search?client%3Dsafari&rls%3Den&q%3Dunity%2Bfrustum%2Bmatrix&ie%3DUTF-8&oe%3DUTF-8&gws_rd%3Dcr&ei%3Dm90YUqGzBonVkwWlzoGoDg][unity frustum matrix - Google 検索]]
+- [[http://docs-jp.unity3d.com/Documentation/ScriptReference/index.Instantiate.html][Unity Script Reference – Overview: Instantiate]]
+- [[http://blog.livedoor.jp/nanashisoft/archives/52506227.html][UnityのJavaScriptで最近詰まったところ（２ : Nanashi-soft]]
+- [[http://docs.unity3d.com/Documentation/ScriptReference/Matrix4x4.html][Unity Script Reference:]] Matrix4x4
+- [[http://answers.unity3d.com/questions/30400/text-mesh-ignores-backface-culling-depth-test.html][Text Mesh - Ignores Backface culling & Depth Test? - Unity Answers]]
+- [[http://dotinstall.com/lessons/basic_unity][Unity入門 (全26回) - プログラミングならドットインストール]]
+- [[http://warapuri.tumblr.com/post/28972633000/unity-50-tips][Unity開発に関する50のTips　〜ベストプラクティス〜（翻訳）]] hack, no work
+- [[https://blogs.unity3d.com/jp/2019/03/13/2d-pixel-perfect-how-to-set-up-your-unity-project-for-retro-8-bits-games/][2D Pixel Perfect：レトロな 8 ビットゲームの制作に向けた Unity プロジェクトのセットアップ方法 - Unity Technologies Blog]]
+- [[https://blogs.unity3d.com/jp/2019/08/02/2d-pixel-perfect-how-to-set-up-your-unity-project-for-retro-16-bit-games/][2D Pixel Perfect：レトロな 16 ビットゲームの制作に向けた Unity プロジェクトのセットアップ方法 - Unity Technologies Blog]]
+- [[https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6][How to make a Video Game - Getting Started - YouTube]]
+
+** Shade 3D for Unity
+- 左の Toolbox の Create で自由曲面を作ってみる。ベジエ曲線の closed line と open line が用意されている。
+- とりあえず Closed line を作ってみる。
+- 右の Browser の Curved Surface に Closed Line を放り込んで、さらに Closed Line をコピペして増やし個別に移動させると、それらがつながった面がどんどん出来る。
+- Open line は回転体を作るときに便利。
+- Toolbox
+  - Modify の Switch で立体の断面の closed lines の方向を変えられる。
+  - Part の Bone, Bone Joint でボーンを入れる。結構いい加減でも Unity がうまく読んでくれるらしい。
+- 右下の Camera で視点やターゲットの移動が出来る。
+- M キーでパスを選択。個別に頂点を選択も出来る。
+
+** 表現
+- [[http://tsubakit1.hateblo.jp/entry/2015/06/24/055130][【Unity】Unity 5 で「光モノ系」を表現するあれこれ - テラシュールブログ]]
+
+** MMD4Mecanim
+- [[http://mebiustos.hatenablog.com/entry/2015/08/16/113117][MMD4Mecanimの表情をUnityのMecanimで制御する | Unity3D - MEBIUSTOSのブログ]]
+- [[https://qiita.com/A_kkie/items/94c6cb0c290f04d55755][UnityARKitPlugin FaceTracking FaceBlendshapeで取得できるパラメーター - Qiita]]
+faceblendshapeの値を出す感じにして、mmd4mecanimのパラメタに数値を投げてみる。
+
+** ProBuider
+2018から
+[[https://blogs.unity3d.com/jp/2018/02/15/probuilder-joins-unity-offering-integrated-in-editor-advanced-level-design/][ProBuilder が Unity に統合、エディターで高度なレベルデザインが可能に – Unity Blog]]
+
+** ChucK
+- [[http://www.asset-sale.net/entry/Chunity%253A_ChucK_For_Unity][【新作無料アセット】リアルタイム音声合成、音楽制作をするためのオーディオプログラミング言語「ChucK」 正確なタイミングで音をデザインする「Chunity: ChucK For Unity」を試してみた - Unity AssetStoreまとめ]]
+
+** Assets
+- [[https://www.youtube.com/watch?v=1U20uvW2Sa8][5 Great Assets for Beginners in Unity 2018! - YouTube]]
+
+** タッチしたところをワールド座標に変換する
+
+- [[http://answers.unity3d.com/questions/180991/touch-point-to-world-coordinate-and-local-coordina.html][Touch point to world coordinate and local coordinate - Unity Answers]]
+- [[https://shibuya24.info/entry/unity-screen-to-world][【Unity】スクリーン座標をワールド座標に変換する方法 - 渋谷ほととぎす通信]]
+
+** 最近(2022)のUnity
+[[https://learning.unity3d.jp/8383/][今から始めて差をつける、Unityグラフィックスの新常識 | Unity Learning Materials]]
+
+* Shader
+
+** Links
+- [[https://qiita.com/guru_taka/items/28c7cd5db4ce3a3bf287][【Unity】ド素人からShaderを使えるようにまでに重宝したリンク集まとめ - Qiita]]
+- [[http://nn-hokuson.hatenablog.com/entry/2018/02/15/140037][7日間でマスターするUnityシェーダ入門 - おもちゃラボ]]
+
+* AR
+** AR Foundation
+
+- [[https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@5.0/manual/index.html#samples][About AR Foundation | AR Foundation | 5.0.0-pre.13]]
+- [[https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@3.1/manual/index.html][About AR Foundation | AR Foundation | 3.1.0-preview.4]]
+- [[https://note.com/npaka/n/nc24ba42aa710][AR Foundation 4.0 入門｜npaka｜note]]
+- [[https://note.com/npaka/n/nbbe37de79960][AR Foundation 4.1 入門｜npaka｜note]]
+
+*** log
+<2022-08-02 Tue>
+- AR project template を用いた
+- o Edit > Project Settings > XR Plug-in Management, and select the platforms you plan to deploy to. ARKitを選んだ。
+
+*** 4.0
+Package Manager から AR Foundation, ARKit XR Plugin を入れる。
+
+XR interaction toolkit package も入れないといけない?
+
+でなければ、
+
+#+begin_quote
+No active UnityEngine.XR.ARSubsystems.XRRaycastSubsystem is available. Please ensure that a valid loader configuration exists in the XR project settings.
+#+end_quote
+
+が出る?
+
+- AR Default Plane を prefab にして AR Session Origin の AR Plane Manager の Plane Prefab に突っ込むと認識した平面を表示してくれる。
+- AR Default Plane の材質を変えることで見た目も変わる。最初は材質に DebugPlane というものが設定されている。
+
+- iOS では Project Settings の XR Plug-in Management から ARKit にチェックを入れる。
+
+*** 参考になるコード
+- https://github.com/dilmerv/UnityARFoundationEssentials/
+* VR
+- hp reverb g2 vr headset
+  - [[https://jp.ext.hp.com/immersive/reverb_g2/][HP Reverb G2 Headset 製品詳細・スペック - HP Workstations ・PC通販 | 日本HP]]
+- Unity の HP Reverb G2 コントローラー
+- https://docs.microsoft.com/ja-jp/windows/mixed-reality/develop/unity/unity-reverb-g2-controllers
+- https://qiita.com/search?q=Microsoft.MixedReality.Input
+- Oculus Integration https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
+** XR Interaction Toolkit
+- [[https://note.com/suzuran_amano/n/n19edcf39406a][UnityでVRゲーム製作！XR Interaction Toolkit 銃を撃つ編｜天野 スズラン]]
+- [[https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488][枠線アセット]]というものがある。モデルに枠線をつける。
+   
+* Machine learning
+- [[https://unity.com/ja/products/machine-learning-agents][ML-Agents を使用してより魅力的なゲームを構築する | Unity]]
+  
+* Render Texture
+カメラの映像をリアルタイムにテクスチャに貼り付けることができる。
+
+これを使ってシューティングゲームのレーダが作れる。
+
+そのレーダ用のカメラにしか映らないオブジェクトを、キャラにくっつけておくといい。
+
+* GPU インスタンシング
+[[https://docs.unity3d.com/ja/2023.2/Manual/GPUInstancing.html][GPU インスタンシング - Unity マニュアル]]
+「同じマテリアルをもつ複数のメッシュコピーを 1 回のドローコールでレンダリングします。」
+* Meta Questなど
+Meta Quest 2などの開発のときに、Stream VRとALVRを使うとWi-Fi経由で開発できる方法があるらしい。
+
+[[https://github.com/alvr-org/ALVR][alvr-org/ALVR: Stream VR games from your PC to your headset via Wi-Fi]]
+
+Meta Quest Developer Hubを使うとよさそう
+- [[https://qiita.com/Kazu_Sack/items/32092a324240d97dae41][Meta Quest Developer Hubをかじってみたらいい感じだった #VR - Qiita]]
+- [[https://developer.oculus.com/documentation/unity/unity-enable-device/?locale=ja_JP][開発とテスト用にデバイスを有効にする | Oculus開発者]]
+  - "Allow USB debugging?" を OK とする
+- ADB over Wi-Fi を on にするとパソコンからQuestをいじれる。
+
+* code memo
+#+BEGIN_SRC js
+//        if (cam == null)
+// 
+//        {
+// 
+//            cam = GameObject.Find("ARCamera");
+// 
+//        }
+ 
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+ 
+        {
+ 
+            var ray:Ray = camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+ 
+            var hit : RaycastHit;
+ 			var fwd = transform.TransformDirection (Vector3.forward);
+
+            if (Physics.Raycast(ray, fwd, Mathf.Infinity))
+ 
+            {
+ 
+                if (hit.collider.tag == "Info")
+ 
+                {
+ 
+                    showIC = !showIC;
+ 
+                    go = hit.collider.gameObject;
+ 
+                    //cam.GetComponent<CamInfo>().target = go;
+ 
+                }
+ 
+            }
+ 
+        }
+
+#+END_SRC
+
+** 2 
+#+BEGIN_SRC javascript
+	GUI.Label(Rect(w/2-50, 10, 100, 60), "z = f(x,y)", style);
+	if (GUI.Button(Rect(10, 10, 200*sc, 44*sc), "Maclaurin近似")) { // style = "box", btnTexture
+		graphScript.GetComponent(GraphMeshScript).toggleMode();
+
+	}
+	
+	if (GUI.Button(Rect((10+200)*sc, 10, 200*sc, 44*sc), "Skeleton")) {
+		graphScript.GetComponent(GraphMeshScript).toggleSkel();
+		
+		//iTween.FadeTo(conditionalCurve, {"alpha": 0, "time": 0.5f});
+		//iTween.MoveTo(conditionalCurve, {"y":-0.1f});
+		//conditionalCurve.SetActiveRecursively(false);
+		//conditionalCurve.renderer.enabled = false;
+	}
+
+	isCurveVisible = GUI.Toggle(Rect(10, 100, 100, 64), isCurveVisible, "条件付き");
+	conditionalCurve.SetActive(isCurveVisible);
+	restrictedCurve.SetActive(isCurveVisible);
+#+END_SRC

@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       A17D2BD8-3417-49F0-AB22-FB0F366F7422
+:ROAM_ALIASES: color
+:END:
+#+title: 色
+
+* JPEG
+
+1. RGB -> Y Cb Cr
+2. reduce Cb, Cr channel
+3. cosine transform
+
+* 色のメモ
+- #406CAA 落ち着いた青
+- #1FA4D2 水色 (はてなブックマークなど)
+
+* 安全色
+
+JIS 安全色
+
+- [[https://iro-color.com/episode/jis.html][視認性に配慮した色の識別！JIS安全色彩]]
+
+* Links
+- [[https://gigazine.net/news/20200910-data-visualizations-color-choice/][グラフを作ってデータを可視化する時に「見やすい色」を選ぶコツをまとめ - GIGAZINE]]
+- [[https://www.w3schools.com/colors/colors_converter.asp][Color Converter]]
+- [[https://www.tpgi.com/color-contrast-checker/][Color Contrast Checker - TPGi]]

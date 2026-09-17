@@ -1,0 +1,351 @@
+ :PROPERTIES:
+:ID:       922CFAE8-4A73-43D8-9697-FB9B69A063BC
+:END:
+#+title: Advent Calendars
+#+date: <2020-12-04 09:51:02 +0900>
+
+わしが注目しているAdvent Calendarsのリンク集
+面白そうなのを見付けたらリンクを追加。
+
+* 2025
+- [[https://adventar.org/calendars/11438][証明支援系 Advent Calendar 2025 - Adventar]]
+- [[https://qiita.com/advent-calendar/2025/cxx][C++ - Qiita Advent Calendar 2025 - Qiita]]
+- [[https://qiita.com/advent-calendar/2025/emacs][Emacs - Qiita Advent Calendar 2025 - Qiita]]
+   
+* 2024
+- [[https://qiita.com/advent-calendar/2024/emacs][Emacs - Qiita Advent Calendar 2024 - Qiita]]
+- [[https://adventar.org/calendars/9972][日曜数学 Advent Calendar 2024 - Adventar]]
+- [[https://adventar.org/calendars/10209][証明支援系 Advent Calendar 2024 - Adventar]]
+- [[https://qiita.com/advent-calendar/2024/rust][Rust - Qiita Advent Calendar 2024 - Qiita]]
+- [[https://adventar.org/calendars/10489][ゲーム制作にかかわる人が自由な記事を作る Advent Calendar 2024 - Adventar]]
+- [[https://adventar.org/calendars/10586][2024年に買ってよかったもの Advent Calendar 2024 - Adventar]]
+
+* 2023
+- [[https://adventar.org/calendars/8636][表現論 Advent Calendar 2023 - Adventar]]
+- [[https://adventar.org/calendars/8737][Mathematical Logic Advent Calendar 2023 - Adventar]]
+- [[https://adventar.org/calendars/9022][定理証明支援系 Advent Calendar 2023 - Adventar]]
+- [[https://adventar.org/calendars/8673][2023年 微分方程式アドベントカレンダー Advent Calendar 2023 - Adventar]]
+- [[https://adventar.org/calendars/9432][日曜数学 Advent Calendar 2023 - Adventar]]
+- [[https://qiita.com/advent-calendar/2023/haskell][Haskellのカレンダー | Advent Calendar 2023 - Qiita]]
+- [[https://adventar.org/calendars/8568][WebXR ( WebVR/WebAR ) Advent Calendar 2023 - Adventar]]
+- [[https://qiita.com/advent-calendar/2023/3rd-party-cookie][3rd Party Cookieのカレンダー | Advent Calendar 2023 - Qiita]]
+- [[https://adventar.org/calendars/9134][言語学な人々 Advent Calendar 2023 - Adventar]]
+- [[https://qiita.com/advent-calendar/2023/mathematical_statistics][統計・機械学習の数理のカレンダー | Advent Calendar 2023 - Qiita]]
+
+* 2022
+- [[https://qiita.com/advent-calendar/2022/emacs][Emacsのカレンダー | Advent Calendar 2022 - Qiita]]
+- [[https://qiita.com/advent-calendar/2022/rust][Rustのカレンダー | Advent Calendar 2022 - Qiita]]
+- [[https://qiita.com/advent-calendar/2022/elixir][Elixirのカレンダー | Advent Calendar 2022 - Qiita]]
+- [[https://qiita.com/advent-calendar/2022/react][Reactのカレンダー | Advent Calendar 2022 - Qiita]]
+- [[https://adventar.org/calendars/7465][Mathematical Logic Advent Calendar 2022 - Adventar]]
+- [[https://adventar.org/calendars/8069][日曜数学 Advent Calendar 2022 - Adventar]]
+- [[https://adventar.org/calendars/8065][数学・物理 Advent Calendar 2022 - Adventar]]
+- [[https://adventar.org/calendars/7888][圏論 Advent Calendar 2022 - Adventar]]
+- [[https://qiita.com/advent-calendar/2022/custom-keyboard][キーボード、自作キーボードのカレンダー | Advent Calendar 2022 - Qiita]]
+- [[https://adventar.org/calendars/7868][TeX ＆ LaTeX Advent Calendar 2022 - Adventar]]
+
+* 2021
+- [[https://qiita.com/advent-calendar/2021/emacs][emacsのカレンダー | Advent Calendar 2021 - Qiita]]
+- [[https://qiita.com/advent-calendar/2021/rust][Rustのカレンダー | Advent Calendar 2021 - Qiita]]
+- [[https://qiita.com/advent-calendar/2021/haskell][Haskellのカレンダー | Advent Calendar 2021 - Qiita]]
+- [[https://adventar.org/calendars/7086][PRK Firmware Advent Calendar 2021 - Adventar]]
+- [[https://adventar.org/calendars/6246][キーボード #1 Advent Calendar 2021 - Adventar]]
+- [[https://adventar.org/calendars/6280][キーボード #2 Advent Calendar 2021 - Adventar]]
+- [[https://adventar.org/calendars/6496][キーボード #3 Advent Calendar 2021 - Adventar]]
+- [[https://adventar.org/calendars/6669][Rubyist近況 Advent Calendar 2021 - Adventar]]
+- [[https://qiita.com/advent-calendar/2021/pre-competitive][競技プログラミングを始めたばかりの人に伝えたいことのカレンダー | Advent Calendar 2021 - Qiita]]
+- [[https://qiita.com/advent-calendar/2021/avx][AVX/AVX2/AVX512のカレンダー | Advent Calendar 2021 - Qiita]]
+  
+* 2020
+
+** 計算機系
+- [[https://adventar.org/calendars/5279][キーボード #1 Advent Calendar 2020 - Adventar]]
+- [[https://adventar.org/calendars/5307][キーボード #2 Advent Calendar 2020 - Adventar]]
+- [[https://qiita.com/advent-calendar/2020/emacs][Emacs Advent Calendar 2020 - Qiita]]
+    
+* 2019
+- Qiita https://qiita.com/advent-calendar/2019
+- Adventar https://adventar.org 
+
+** 数学系
+- [[https://adventar.org/calendars/4015][Mathematical Logic Advent Calendar 2019 - Adventar]]
+- [[https://adventar.org/calendars/4130][ゼータ Advent Calendar 2019 - Adventar]]
+
+** 計算機系
+- [[https://qiita.com/advent-calendar/2019/ios][iOS Advent Calendar 2019 - Qiita]]
+- [[https://adventar.org/calendars/4087][TeX ＆ LaTeX Advent Calendar 2019 - Adventar]]
+- [[https://qiita.com/advent-calendar/2019/emacs][Emacs Advent Calendar 2019 - Qiita]]
+- [[https://qiita.com/advent-calendar/2019/rust][Rust Advent Calendar 2019 - Qiita]]
+- [[https://qiita.com/advent-calendar/2019/julialang][Julia Advent Calendar 2019 - Qiita]]
+- [[https://qiita.com/advent-calendar/2019/nlp][自然言語処理 Advent Calendar 2019 - Qiita]]
+- [[https://qiita.com/advent-calendar/2019/threejs][Three.js Advent Calendar 2019 - Qiita]]
+- [[https://qiita.com/advent-calendar/2019/numerical_analysis][数値計算 Advent Calendar 2019 - Qiita]]
+- [[https://adventar.org/calendars/4719][『数式組版』を組む技術 Advent Calendar 2019 - Adventar]]
+- [[https://adventar.org/calendars/3929][SATySFi Advent Calendar 2019 - Adventar]]
+
+** 科学系
+- [[https://adventar.org/calendars/4086][東京大学航空宇宙工学科／専攻 Advent Calendar 2019 - Adventar]]
+
+* 2018
+- Qiita https://qiita.com/advent-calendar/2018
+- Adventar https://adventar.org 
+
+** 数学系
+- [[https://adventar.org/calendars/3619][一人統計・機械学習・数学 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3084][数理物理 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3655][好きな証明 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3314][巨大数 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3168][Category Theory Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2965][数学カフェ Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3119][機械学習 Advent Calendar 2018 - Adventar]]
+- [[https://qiita.com/advent-calendar/2018/mlse][機械学習工学 / MLSE Advent Calendar 2018 - Qiita]]
+
+** 計算機系
+- [[https://qiita.com/advent-calendar/2018/emacs][Emacs Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/numerical_analysis][数値計算 Advent Calendar 2018 - Qiita]]
+- [[https://adventar.org/calendars/3382][TeX ＆ LaTeX Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3418][SATySFi Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2954][自作キーボード Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2964][自作キーボード #2 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3208][自作キーボード #3 Advent Calendar 2018 - Adventar]]
+- [[https://qiita.com/advent-calendar/2018/property-based-testing][Property-Based Testing Advent Calendar 2018 - Qiita]]
+- [[https://adventar.org/calendars/3455][React 一人アドベント Advent Calendar 2018 - Adventar]]
+- [[https://qiita.com/advent-calendar/2018/react][React.js Advent Calendar 2018 - Qiita]]
+- [[https://adventar.org/calendars/2933][C++は競技プログラミングの役に立つ Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2931][Competitive Programming (1) Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2997][Raspberry Pi Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2970][WebAssembly Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2966][ゲーム制作 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2920][Adobe XD Advent Calendar 2018 - Adventar]]
+- [[https://qiita.com/advent-calendar/2018/mackerel-cre][Mackerel アドベントカレンダー（全部CRE） Advent Calendar 2018 - Qiita]]
+- [[https://www.hackingwithswift.com/articles/137/advent-of-swiftmas-2018][Advent of Swiftmas 2018 – Hacking with Swift]]
+- [[https://qiita.com/advent-calendar/2018/postgresql][PostgreSQL Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/elixir][Elixir Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/unity][Unity Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/hololens][HoloLens Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/arkit][ARKit Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/ue4][Unreal Engine 4 (UE4) Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/oculus-rift][Oculus Rift Advent Calendar 2018 - Qiita]]
+- [[https://adventar.org/calendars/2971][Design Tools Advent Calendar 2018 - Adventar]]
+- [[https://qiita.com/advent-calendar/2018/julialang][Julia Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/lang_dev][言語実装 Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/vtuber][VTuber Tech #1 Advent Calendar 2018 - Qiita]]
+- [[https://qiita.com/advent-calendar/2018/vtuber2][VTuber Tech #2 Advent Calendar 2018 - Qiita]]
+
+** 地域系
+- [[https://adventar.org/calendars/3648][そこは広島 Advent Calendar 2018 - Adventar]]
+
+** その他
+- [[https://adventar.org/calendars/3068][Podcaster Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3467][本田未央 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3453][クソじゃないアニメ Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3312][英語学習 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/3144][大河ドラマ「西郷どん」 Advent Calendar 2018 - Adventar]]
+- [[https://adventar.org/calendars/2981][大都会岡山 Advent Calendar 2018 - Adventar]]
+
+* 2017
+- [[https://qiita.com/advent-calendar/2017/math-and-computer][数学とコンピュータ Advent Calendar 2017 - Qiita]]
+- [[https://adventar.org/calendars/2393][Category Theory Advent Calendar 2017 - Adventar]]
+- [[https://qiita.com/advent-calendar/2017/emacs][Emacs Advent Calendar 2017 - Qiita]]
+- [[https://adventar.org/calendars/2229][TeX ＆ LaTeX Advent Calendar 2017 - Adventar]]
+- [[https://qiita.com/advent-calendar/2017/swift][Swift Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/swift2][Swift その2 Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/ruby][Ruby Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/rust-lang][Rust Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/rust-lang-2][Rustその2 Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/haskell][Haskell Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/haskell2][Haskell (その2) Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/haskell3][Haskell (その3) Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/haskell4][Haskell (その4) Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/julialang][Julia Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/lowlayer][ひとりでCPUとエミュレータとコンパイラを作る Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/nonverbal][自然非言語処理 Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/jupyter][Jupyter Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/ml_and_math2017][機械学習と数学 Advent Calendar 2017 - Qiita]]
+- [[https://adventar.org/calendars/2307][Deep Learningやっていき Advent Calendar 2017 - Adventar]]
+- [[https://qiita.com/advent-calendar/2017/docker][Docker Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/kubernetes][Kubernetes Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/kubernetes2][Kubernetes2 Advent Calendar 2017 - Qiita]]
+- [[https://adventar.org/calendars/2114][自作キーボード Advent Calendar 2017 - Adventar]]
+- [[https://qiita.com/advent-calendar/2017/kyomu][かなり初心者 Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/favorite-oss][OSS紹介 Advent Calendar 2017 - Qiita]]
+- [[https://qiita.com/advent-calendar/2017/povray4math][POV-Rayによる数学お絵かき入門 Advent Calendar 2017 - Qiita]]
+
+* 2016
+** 数学系
+- [[http://qiita.com/advent-calendar/2016/math][数学 Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/mathematica][Mathematica Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/math_for_ml][機械学習に必要な高校数学やり直しアドベントカレンダー Advent Calendar 2016 - Qiita]]
+
+** 計算機系
+- [[http://qiita.com/advent-calendar/2016/cocoa][Cocoa Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/ios][iOS Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/ios2][iOS その2 Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/ios3][iOS その3 Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/ios_shimesaba][iOS(一人) Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/emacs][Emacs Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/dot-emacs][.emacs Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/ruby][Ruby Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/haskell][Haskell Advent Calendar 2016 - Qiita]]
+- [[http://www.adventar.org/calendars/1494][(bouzuya) PureScript Advent Calendar 2016 - Adventar]]
+- [[http://qiita.com/advent-calendar/2016/unity][Unity Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/unity2][Unity 2 Advent Calendar 2016 - Qiita]]
+- [[http://www.adventar.org/calendars/1457][コンピュータ将棋 Advent Calendar 2016 - Adventar]]
+- [[http://qiita.com/advent-calendar/2016/nlp][自然言語処理 Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/machine-learning][Machine Learning Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/tensorflow][TensorFlow Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/chainer][Chainer Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/ml4a][Machine Learning for Artists Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/opencv][OpenCV Advent Calendar 2016 - Qiita]]
+- [[http://www.adventar.org/calendars/1734][TeX ＆ LaTeX Advent Calendar 2016 - Adventar]]
+- [[http://www.adventar.org/calendars/1494][(bouzuya) PureScript Advent Calendar 2016 - Adventar]]
+- [[http://qiita.com/advent-calendar/2016/docker][Docker Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/docker2][Docker2 Advent Calendar 2016 - Qiita]]
+- [[https://qiita.com/advent-calendar/2016/kubernetes][Kubernetes Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/angular][Angular Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/react][React Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/website-performance][Webサイトパフォーマンス Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/python_python][Python Advent Calendar 2016 - Qiita]]
+- [[http://www.adventar.org/calendars/1466][Competitive Programming Advent Calendar 2016 - Adventar]]
+- [[http://www.adventar.org/calendars/1625][Competitive Programming （その2） Advent Calendar 2016 - Adventar]]
+- [[http://qiita.com/advent-calendar/2016/translation][技術翻訳 Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/ansible][Ansible Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/distributed-computing][Distributed computing (Apache Hadoop, Spark, ...) Advent Calendar 2016 - Qiita]]
+- [[http://qiita.com/advent-calendar/2016/julialang][Julia Advent Calendar 2016 - Qiita]]
+- [[https://adventar.org/calendars/1404][脆弱性&quot;&amp;&#39;&lt;&lt;&gt;\ Advent Calendar 2016 - Adventar]]
+
+** 生活系
+- [[http://www.adventar.org/calendars/1346][家庭を支える技術 Advent Calendar 2016 - Adventar]]
+- [[http://qiita.com/advent-calendar/2016/no-girlfriend][カノジョできないエンジニア Advent Calendar 2016 - Qiita]]
+- [[http://www.adventar.org/calendars/1480][妻・夫を愛してるITエンジニア Advent Calendar 2016 - Adventar]]
+
+** 地域系
+- [[http://www.adventar.org/calendars/1569][たまに広島 Advent Calendar 2016 - Adventar]]
+
+** 文化系
+- [[http://www.adventar.org/calendars/1343][SHIROBAKO Advent Calendar 2016 - Adventar]]
+
+** 謎系
+- [[http://qiita.com/advent-calendar/2016/muscle][筋肉 Advent Calendar 2016 - Qiita]]
+
+** リンク集
+- [[http://qiita.com/advent-calendar/2016/categories/programming_languages][2016年プログラミング言語カテゴリーのカレンダー - Qiita]]
+
+* 2015
+- [[http://qiita.com/advent-calendar/2015/haskell][Haskell Advent Calendar 2015 - Qiita]]
+- [[http://www.adventar.org/calendars/852][Math Advent Calendar 2015 - Adventar]]
+- [[http://www.adventar.org/calendars/1000][日曜数学 Advent Calendar 2015 - Adventar]]
+- [[http://www.adventar.org/calendars/995][ふつうの広島 Advent Calendar 2015 - Adventar]]
+- [[http://www.adventar.org/calendars/748][大都会岡山 Advent Calendar 2015 - Adventar]]
+- [[http://www.adventar.org/calendars/992][Deep Learning Advent Calendar 2015 - Adventar]]
+- [[http://qiita.com/advent-calendar/2015/math][数学 Advent Calendar 2015 - Qiita]]
+- [[http://www.adventar.org/calendars/929][TeX ＆ LaTeX Advent Calendar 2015 - Adventar]]
+- [[http://qiita.com/advent-calendar/2015/dot-emacs][.emacs Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/emacs][Emacs Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/swift][Swift Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/swift2][Swift その2 Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/swift3][Swift その3 Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/swift_solo][Swift(一人) Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/haskell][Haskell Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/hashicorp][HashiCorp Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/machinelearning][Machine Learning Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/tensorflow][TensorFlow Advent Calendar 2015 - Qiita]]
+- [[http://www.adventar.org/calendars/992][Deep Learning Advent Calendar 2015 - Adventar]]
+- [[http://qiita.com/advent-calendar/2015/azure][Microsoft Azure Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/unity][Unity Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/mathematica][Mathematica Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/cocoa][Cocoa Advent Calendar 2015 - Qiita]]
+- [[http://www.adventar.org/calendars/788][concrete5 Japan Advent Calendar 2015 - Adventar]]
+- [[http://qiita.com/advent-calendar/2015/ansible][Ansible Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/docker][Docker Advent Calendar 2015 - Qiita]]
+- [[https://qiita.com/advent-calendar/2015/kubernetes][Kubernetes Advent Calendar 2015 - Qiita]] ほとんどない
+- [[http://qiita.com/advent-calendar/2015/heroku][Heroku Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/gcp][Google Cloud Platform Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/aws][AWS Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/webgl][WebGL Advent Calendar 2015 - Qiita]]
+- [[http://www.adventar.org/calendars/856][DTM Advent Calendar 2015 - Adventar]]
+- [[http://www.adventar.org/calendars/833][Blender Advent Calendar 2015 - Adventar]]
+- [[http://qiita.com/advent-calendar/2015/ios][iOS Advent Calendar 2015 - Qiita]]
+- [[http://qiita.com/advent-calendar/2015/ios-2][iOS Second Stage Advent Calendar 2015 - Qiita]]
+- [[http://www.adventar.org/calendars/986][博士課程 Advent Calendar 2015 - Adventar]]
+- [[http://www.adventar.org/calendars/773][お子さん、どんな本読んでる？ Advent Calendar 2015 - Adventar]]
+- [[http://qiita.com/advent-calendar/2015/sadatech][さだまさし x IT Advent Calendar 2015 - Qiita]]
+
+
+リンク集
+- [[http://qiita.com/advent-calendar/2015/categories/programming_languages][2015年プログラミング言語カテゴリのカレンダー - Qiita]]
+- [[http://gihyo.jp/news/info/2015/12/0101][本日12月1日より，2015年の技術系Advent Calendarが各所ではじまる：インフォメーション｜gihyo.jp … 技術評論社]]
+
+* 2014
+- [[http://qiita.com/advent-calendar/2014/emacs][Emacs Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/osx][OS X Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/objective-c][Objective-C Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/ios][iOS Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/swift][Swift Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/ruby][Ruby Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/rails][Ruby on Rails Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/haskell][Haskell Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/cpp][C++ Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/csharp][C# Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/docker][Docker Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/kubernetes][Kubernetes Advent Calendar 2014 - Qiita]]
+- [[http://www.adventar.org/calendars/393][Blender Advent Calendar 2014 - Adventar]]
+- [[http://qiita.com/advent-calendar/2014/webgl][WebGL Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/ansible][Ansible Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/ffmpeg][ffmpeg Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/sensu][Sensu Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/unity][Unity Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/ouch-hack][おうちハック Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/fluentd][Fluentd Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/mongodb][MongoDB Advent Calendar 2014 - Qiita]]
+- [[http://qiita.com/advent-calendar/2014/machinelearning][Machine Learning Advent Calendar 2014 - Qiita]]
+
+* 2013
+- [[http://qiita.com/advent-calendar/2013/ios][iOS Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com/advent-calendar/2013/ios-2][iOS Second Stage Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com/advent-calendar/2013/unity][Unity Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://www.adventar.org/calendars/326][雑なUnity Advent Calendar 2013 - Adventar]]
+- [[http://qiita.com/advent-calendar/2013/dot-emacs][.emacs Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://atnd.org/events/45072][Vim Advent Calendar 2013 : ATND]]
+- [[http://qiita.com/advent-calendar/2013/git][Git Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com/advent-calendar/2013/zsh][zsh Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://www.adventar.org/calendars/57][CSS Property Advent Calendar 2013]]
+- [[http://www.adventar.org/calendars/91][Game Development Advent Calendar 2013]]
+- [[http://qiita.com/advent-calendar/2013/aws][Amazon Web Service Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com/advent-calendar/2013/ansible][Ansible Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com//advent-calendar/2013/fluentd][Fluentd Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com//advent-calendar/2013/riak][みんなでやるRiak Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com//advent-calendar/2013/mongodb][MongoDB Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com/advent-calendar/2013/linux][Linux Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://atnd.org/events/45968][Debian/Ubuntu JP Advent Calendar 2013 : ATND]]
+- [[http://qiita.com/advent-calendar/2013/kernelvm/about][カーネル/VM Advent Calendar 2013について - Qiita {キータ}]]
+- [[http://www.adventar.org/calendars/115][UX Advent Calendar 2013]]
+- [[http://www.adventar.org/calendars/116][UI Design Advent Calendar 2013]]
+- [[http://qiita.com//advent-calendar/2013/tddadventjp][TDD Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com//advent-calendar/2013/jenkinsci][Jenkins CI Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com//advent-calendar/2013/documentation][ドキュメンテーション Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://www.adventar.org/calendars/172][LibreOffice Advent Calendar 2013]]
+- [[http://www.adventar.org/calendars/187][TeX & LaTeX Advent Calendar 2013]]
+- [[http://qiita.com/advent-calendar/2013/machinelearning][Machine Learning Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com//advent-calendar/2013/static_and_machinlearning][統計＆機械学習 Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com//advent-calendar/2013/math][数学 Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://www.adventar.org/calendars/170][Mathematics Advent Calendar 2013]]
+- [[http://qiita.com//advent-calendar/2013/osm][OpenStreetMap Advent Calendar 2013 - Qiita {キータ}]]
+- [[http://qiita.com/advent-calendar/2013/dotfiles][みんなで作ろう最強の設定ファイル Advent Calendar 2013 - Qiita {キータ}]]
+
+* 2012
+- [[http://qiita.com/advent-calendar/2012/ruby][Ruby Advent Calendar 2012 - Qiita]]
+- [[http://qiita.com/advent-calendar/2012/objective-c][Objective-C Advent Calendar 2012 - Qiita]]
+- [[http://qiita.com/advent-calendar/2012/unity][Unity Advent Calendar 2012 - Qiita]]
+- [[http://atnd.org/events/34318][TeX & LaTeX Advent Calendar : ATND]]
+- [[http://qiita.com/advent-calendar/2012/zsh][zsh Advent Calendar 2012 - Qiita]]
+- [[http://qiita.com/advent-calendar/2012/git-scm][Git Advent Calendar 2012 - Qiita]]
+- [[http://atnd.org/events/33891][enchant.js Advent Calendar 2012 : ATND]]
+- [[http://qiita.com/advent-calendar/2012/emacs][Emacs Advent Calendar 2012 - Qiita]]
+- [[http://www.adventar.org/calendars/42][おいしい広島 Advent Calendar 2012]]
+- [[http://atnd.org/events/34177][子育てエンジニア advent calendar 2012 : ATND]]
+- [[http://www.adventar.org/calendars/45][子育てエンジニアがお役立ち育児グッズをひたすら紹介する Advent Calendar 2012]]
+- [[http://qiita.com/advent-calendar/2012/machinelearning][Machine Learning Advent Calendar 2012 - Qiita]]
+  - [[http://qiita.com/items/5bde6addf228b1fe24e6][PRML 11章 二変量正規分布からのギブスサンプリング #PRML #R - Qiita]]
+- [[http://www.adventar.org/calendars/19][#LOVEFONT Advent Calendar 2012]]
+- [[http://partake.in/events/45a01d39-af5e-42f1-91c7-e8fcc91db244][Haskell Advent Calendar 2012]]

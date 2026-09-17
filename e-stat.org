@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       140A9932-B09C-4176-B348-7C2973CF89B9
+:END:
+
+e-stat関連
+<2018-10-17 Wed>
+
+* 資料
+- [[https://vdata.nikkei.com/prj2/tax-annualIncome/][年収でこんなに違う　所得・消費税、あなたの負担は：日本経済新聞]]
+
+** 総務省統計局
+- [[https://www.e-stat.go.jp/][政府統計の総合窓口]] (e-Stat)
+  - [[http://www.stat.go.jp/data/kakei/2.html][家計調査（家計収支編）]]
+
+** 国税庁
+- [[https://www.nta.go.jp/publication/statistics/kokuzeicho/minkan/top.htm][民間給与実態統計調査｜国税庁]]
+  - [[https://www.nta.go.jp/publication/statistics/kokuzeicho/minkan/toukei.htm#kekka][民間給与実態統計調査　年度別リンク｜国税庁]] 調査結果

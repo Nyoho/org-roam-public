@@ -1,0 +1,159 @@
+:PROPERTIES:
+:ID:       50E04C70-A526-4EE3-B039-01CB2DB972FE
+:END:
+#+title: openSUSE
+
+* zypper
+** reinstall or force install
+
+#+begin_src sh
+zypper in -f package_name
+#+end_src
+
+* polkit
+新しい権限管理ソフトウェア。
+
+=/etc/polkit-default-privs.standard= や
+=/etc/polkit-default-privs.local= に書き込むと設定が 追加できる。
+
+<2021-09-01 Wed>
+=/usr/etc/polkit-default-privs/local.template=
+が新しいみたい
+
+編集後、
+/sbin/set_polkit_default_privs
+を実行する。
+
+* memo
+** memo 12.3 to 13.1 <2015-03-29 Sun>
+#+BEGIN_SRC
+  cabal-install               obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  epic                        obs://build.opensuse.org/network -> openSUSE
+  ghc                         obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-Cabal                   obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-Cabal-devel             obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-HTTP                    obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-HUnit                   obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-HUnit-devel             obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-array                   obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-array-devel             obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-base                    obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-base-devel              obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-binary                  obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-binary-devel            obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-bytestring              obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-bytestring-devel        obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-cgi                     obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-cgi-devel               obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-compiler                obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-containers              obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-containers-devel        obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-deepseq                 obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-deepseq-devel           obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-directory               obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-directory-devel         obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+  ghc-filepath                obs://build.opensuse.org/devel:languages:haskell -> openSUSE
+#+END_SRC
+
+* 無線LAN
+: hwinfo -wlan
+
+: systemctl status network@wlan0.service
+
+: wpa_supplicant -iwlan0 -c/var/run/wpa_supplicant-wlan0.conf -Dnl80211,wext -P/var/run/wpa_....
+
+: kill -SIGUSR1 `pidof wpa_supplicant`
+
+- [[https://en.opensuse.org/SDB:Tracking_down_wireless_problems][SDB:Tracking down wireless problems - openSUSE]]
+
+* Grub 2
+#+BEGIN_SRC sh
+grub2-install /dev/sda
+grub2-mkconfig -o /boot/grub2/grub.cfg
+#+END_SRC
+
+/boot/grub2/grub.cfg は grub2-mkconfig で生成する。
+
+btrfs のサブボリュームを / にしたいときは
+何らかの rescue Linux から起動して
+
+: mount -o subvol=サブボリュームの名前 /dev/sda1 /hoge
+
+とマウントしてその中に入って(chrootして)からgrubをinstallすればOK。
+
+* nfs
+: zypper install nfs-kernel-server
+
+: systemctl enable nfsserver
+
+* Samba
+
+* repository
+- repository of Tumbleweed: https://download.opensuse.org/tumbleweed/repo/oss/x86_64/
+
+* 未分類
+** aaa_base より
+
+#+BEGIN_SRC 
+(Use the Enter or Space key to scroll the text by lines or pages.)
+
+Message from package aaa_base:
+
+sysconfig settings for cleaning up temporary directories are no longer
+supported. Some of the features are provided by systemd's tmpfile
+mechanism instead. Please refer to 'man tmpfiles.d' for more
+information.
+
+Here are the old settings for reference:
+
+MAX_DAYS_IN_TMP=0
+MAX_DAYS_IN_LONG_TMP=0
+OWNER_TO_KEEP_IN_TMP=root
+
+-----------------------------------------------------------------------------
+
+
+(Press 'q' to exit the pager.)
+
+#+END_SRC
+
+** posttrans script
+
+Executing %posttrans script
+coreutils
+initrd 作っている?
+
+** apparmorがおかしいとき
+=/etc/apparmor.d/tunables= にある .rpmnew ファイルを全部更新したらなおった。
+<2024-05-01 Wed>
+
+* Tumbleweed repository
+http://ftp.riken.jp/Linux/opensuse/tumbleweed/repo/oss/x86_64/
+
+* upgrading memo
+<2021-09-01 Wed>
+The following product is going to be upgraded:                                                                    
+  openSUSE Tumbleweed  20210524-0 -> 20210830-0                                                                   
+    
+#+begin_src
+( 68/973) Installing: filesystem-84.87-2.1.x86_64 ...............................................................[error]
+Installation of filesystem-84.87-2.1.x86_64 failed:
+Error: Subprocess failed. Error: RPM failed: Make a copy of `/bin'.
+Merge the copy with `/usr/bin'.
+Clean up duplicates in `/usr/bin'.
+Make a copy of `/sbin'.
+Merge the copy with `/usr/sbin'.
+Clean up duplicates in `/usr/sbin'.
+Make a copy of `/lib'.
+Merge the copy with `/usr/lib'.
+cp: cannot overwrite non-directory '/usr/lib.usrmerge/udev' with directory '/usr/lib/udev'
+UsrMerge conversion failed, cleaning up
+!!! ATTENTION: Do NOT proceed if you see this message during
+!!! distribution upgrade. Chances are high that your system might
+!!! break beyond repair if you do.
+error: lua script failed: [string "%prein(filesystem-84.87-2.1.x86_64)"]:15: exit
+error: filesystem-84.87-2.1.x86_64: install failed
+error: filesystem-15.5-40.1.x86_64: erase skipped
+#+end_src
+
+と出たけど、 =/lib/udev= を削除して retry した。

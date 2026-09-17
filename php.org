@@ -1,0 +1,29 @@
+#+title: PHP
+#+date: <2021-09-03 Fri>
+
+* Profiler
+** tideways
+
+phpize を入れるために php7-devel をインストールした。
+
+[[https://qiita.com/a_yasui/items/ed773044aa0482f85cd4][PHPプログラムのパフォーマンス可視化 - Qiita]]
+
+=/etc/php7/conf.d/tideways.ini= に
+#+begin_src 
+extension=tideways_xhprof.so
+tideways.auto_prepend_library=0
+#+end_src
+
+
+次のように使う。
+
+#+begin_src php
+  tideways_xhprof_enable();
+
+  // 元の処理
+  
+  file_put_contents(
+      './this_file.xhprof',
+      json_encode(tideways_xhprof_disable())
+  );     
+#+end_src

@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       91A12126-57A4-4FE9-869E-E7D0DACC11CC
+:END:
+#+title: Blockchain
+
+Blockchainのメモ
+
+* ブロック
+
+- [[http://bambinya.hateblo.jp/entry/2017/03/05/102857][BitcoinのBlockとTransactionのデータ構造について - bambinya's blog]]
+- [[https://qiita.com/nagata03/items/4ec24c387d037cf155df][ブロックの構造 - Qiita]]
+- [[https://note.mu/strictlyes/n/n40e5884229a5][ブロックチェーンのデータ構造をJavascriptで作ろう｜S ⚡️｜note]]
+
+
+* Links
+
+- [[https://qiita.com/shu223/items/ebe59325f36fbf25e3d6][Swiftでブロックチェーンを実装してみる - Qiita]]
+- [[https://qiita.com/shiki_tak/items/d890e909d14546147f8c][Rubyでブロックチェーンを実装してみる - Qiita]]
+- [[https://chainflyer.bitflyer.jp/Block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f][Block 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f - chainFlyer]]

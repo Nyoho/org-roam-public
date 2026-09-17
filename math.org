@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       2C19A6F7-BCE9-476C-A88D-FA6ACD4CB86A
+:END:
+#+Title: 数学メモ
+#+OPTIONS: tex:t  
+#+DATE: <2013-02-21 Thu>
+#+MATH: true
+
+数学のメモ。
+
+MathJax もテスト。
+
+
+$f(0) + \sum_{i=1}^{\infty} \frac{1}{i!} f^{(i)} (0)x^i$
+
+* fft
+[["http://electronics.stackexchange.com/questions/12407/what-is-the-relation-between-fft-length-and-frequency-resolution][dsp - What is the relation between FFT length and frequency resolution? - Electrical Engineering Stack Exchange]]
+
+* Hartshorne
+p.2
+p.9 
+$Z(T)$
+p.10 
+p.12
+p.147 Problem Cl()
+
+* Books
+** 線形代数
+- [[https://www.amazon.co.jp/dp/4535787719][線型代数{改訂版} 長谷川 浩司]]
+- [[https://www.amazon.co.jp/%25E7%25B7%259A%25E5%259E%258B%25E4%25BB%25A3%25E6%2595%25B0%25E5%25AD%25A6-%25E6%2596%25B0%25E8%25A3%2585%25E7%2589%2588-%25E6%2595%25B0%25E5%25AD%25A6%25E9%2581%25B8%25E6%259B%25B8-%25E4%25BD%2590%25E6%25AD%25A6-%25E4%25B8%2580%25E9%2583%258E/dp/4785313161][線型代数学(新装版) (数学選書) 佐武 一郎]]
+
+
+** 共形場理論
+- [[https://www.amazon.co.jp/dp/4563006610][共形場理論入門 (数理物理シリーズ) 山田 泰彦]]
+
+
+* カルバック・ライブラ情報量 (KL情報量)
+Kullback–Leibler divergence
+
+離散:
+$$
+D _ { \mathrm { KL } } ( P \| Q ) = \sum _ { i } P ( i ) \log \frac { P ( i ) } { Q ( i ) }
+$$

@@ -1,0 +1,99 @@
+:PROPERTIES:
+:ID:       572C57F4-C683-4A2C-8DA4-3846815C60C2
+:END:
+#+title: fluentd
+#+date: <2018-05-16 17:24:38 +0900>
+
+公式 https://www.fluentd.org/
+
+* Installation
+
+Ubuntu 16.04
+
+: curl -L https://toolbelt.treasuredata.com/sh/install-ubuntu-xenial-td-agent3.sh | sh
+
+* 使い方
+=/etc/td-agent/td-agent.conf= に source directive, match directive を書く。
+
+こんなプラグインがある。
+
+- ソースは [[https://www.fluentd.org/datasources][List of Data Sources]] 
+- 出力先については [[https://www.fluentd.org/dataoutputs][List of Data Outputs]]
+  - [[https://github.com/daichirata/fluent-plugin-gcs][daichirata/fluent-plugin-gcs: Google Cloud Storage output plugin for Fluentd.]]
+
+** Elasticsearch + Kibana
+
+: sudo /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch --no-document
+
+Elasticsearch に match させる
+#+BEGIN_SRC conf
+<source>
+  type tail
+  tag nginx.access
+  format ltsv
+  path /var/log/nginx/access.log
+  pos_file /var/log/fluentd/nginx_access.log.pos
+</source>
+
+<match nginx.access>
+  @type elasticsearch
+  logstash_format true
+  hosts ff.ff.ff.ff:port # Elasticsearch server
+  flush_interval 10s # for testing. Remove after testing.
+</match>
+#+END_SRC
+
+単純に別サーバに送るだけなら
+#+BEGIN_SRC conf
+<match nginx.access>
+  @type forward
+  host ff.ff.ff.ff
+  port 00000
+</match>
+#+END_SRC
+でOK
+
+受けるサーバで
+#+BEGIN_SRC conf
+  <source>
+    @type forward
+    port 00000
+    tag *
+  </source>
+
+  <match nginx.access>
+    @type elasticsearch
+    host localhost
+    port 9200
+    logstash_format true
+    logstash_prefix nginx-access
+  </match>
+#+END_SRC
+とすればOK。
+
+** nginx のLTSV形式のログをS3に出す例
+#+BEGIN_SRC conf
+<source>
+  type tail
+  tag nginx.access
+  format ltsv
+  path /var/log/nginx/access.log
+  pos_file /var/log/fluentd/nginx_access.log.pos
+</source>
+
+<match nginx.access>
+    type s3
+    aws_key_id [aws_key]
+    aws_sec_key [secret_key]
+    s3_bucket [bucket_name]
+    s3_endpoint [region_name].amazonaws.com
+    s3_object_key_format %{path}%{time_slice}_%{index}_%{hostname}.%{file_extension}
+    path logs/
+    buffer_path /var/log/fluentd/s3
+    time_slice_format %Y-%m-%d/%H
+    time_slice_wait 10m
+</match>
+#+END_SRC
+
+* 参考文献
+- [[https://qiita.com/shuntaro_tamura/items/e897cdc8a155cfcf9da7][fluentdインストール（丁寧な説明つき） - Qiita]]

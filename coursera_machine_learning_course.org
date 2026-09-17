@@ -1,0 +1,252 @@
+:PROPERTIES:
+:ID:       3FCC73D4-831F-4366-89A9-916D501C8A97
+:END:
+#+title: Coursera machine learning course
+#+date: [2025-02-27 Thu 22:15]
+
+CourseraのNg先生の機械学習のコース
+
+* CourseraのNg先生のコースのノート
+
+https://www.coursera.org/learn/machine-learning-course
+
+** regularization
+Increasing lambda results in less overfitting but also greater bias. 
+
+** neural network
+
+*** forwordpropagation algorithm
+*** backproppagation algorithm
+合成関数の微分を使って微分を計算すること。
+
+- [[https://www.quora.com/How-do-you-explain-back-propagation-algorithm-to-a-beginner-in-neural-network][How do you explain back propagation algorithm to a beginner in neural network? - Quora]]
+
+*** gradient checking
+*** random initialization
+#+BEGIN_SRC octave
+Theta1 = rand(10, 11)*(2*INIT_EPSILON) - INIT_EPSILON
+#+END_SRC
+
+** 次にどうするか
+*** Evaluating a Hypothesis
+
+overfitting しとるかどうか
+training set を 7:3 などに分割してみて(ランダムに分けた方がよい)、70%だけをtraining setとしてみる。30%をtest samplesとする。
+overfitting のときは、J(theta)は低いのに $J_{test}(\theta)$ は高いとなっている。
+
+misclassification error
+err(h(x), y) = 1 if h(x) >= 0.5, y = 0 or if h(x) < 0.5, y = 1 \\ 0 otherwise
+
+*** Model Selection and Train/Validation/Test Sets
+多項式の次数をいくつまでにするか
+
+dataset の 60% を training set, 20% を cross validation set, 20% を test set に。
+それぞれ training error, cross validation error, test error を計算する。
+
+多項式の次数 d をパラメタとして、cv set に fit する。
+
+*** Diagnosing bias vs. variance バイアスなのか分散なのか
+
+regularization parameter λ を 0, 0.01, 0.02, 0.04, ... などと変化させながら、
+それぞれJ(\theta)を最小化するthetaを計算。
+そのthetaによって$J_{\mathrm{cv}}(\theta)$を計算して$J_cv$が小さかった$\theta$のときのλを選択する。
+
+*** Learning curves
+学習曲線
+training set size を増やしていくと J_train はだんだん増えていくが J_CV は減っていく。
+しかし high bias のときには高いところで水平に推移していき、J train と  CV との差が少ない。
+
+high variance のときにはその差が大きく、 J_CV も割とずっと減っていく。
+
+*** 次にどうするか
+- fixes high variance
+  - training example を増やす
+  - set of features を小さくする
+  - λを増やす
+- fixes high bias
+  - set of features を大きくする
+  - polynomial features を追加する
+  - λを減らす
+
+*** まず汚くても早い実装をする
+cross varidation error をチェックする。
+
+*** skewed Data
+[[https://www.coursera.org/learn/machine-learning/lecture/tKMWX/error-metrics-for-skewed-classes][Error Metrics for Skewed Classes - Stanford University | Coursera]]
+
+skew しているとき(positiveがnegativeよりうんと多いとか)。
+precision, recall を計算する。
+
+pとrから p+r / 2 ではなく、F_1 score という \( 2 pr/(p+r) \) というのを使うと結構いい。
+
+*** Large data rationale
+
+パラメタをたくさんにする。regression なら特徴をたくさんに。neural networkなら隠れユニットをたくさんに。
+
+low bias。
+J_trainが小さく。
+
+その上で大きなtraining setを使う。
+J_train ~~ J_test
+J_test が小さくなる。
+low variance
+
+** unsupervised learning
+*** k-means
+cost function J はdistortion functionとも呼ばれる。
+
+local optimaになることがあるので、
+random initialization して最小のJを与えるクラスタリングを選択するのがよい。
+initialization はランダムな点ではなく、サンプルそのものにする。
+
+
+じゃあどうやってクラスタ数Kを計算するのか。
+Kを変化させてJを計算する。
+プロットしたときにエルボーがあればそこに設定する。それがはっきりしないときもある。
+
+** PCA
+dim n を dim k に削減する。(n > k)
+では k をいくつにすればよいか。
+
+1/m sum_{i=1}^{m} | x^i - x^i_{approx} |^2 / (1/m sum_{i=1}^{m} | x^{(i)} |^2 )
+
+が、たとえば 0.01 未満になる最小のkを選ぶ。
+そのときは 99% of variance is retained という。
+
+- k = 1
+- U_reduce, z1, z2, ..., zm, x1a, ..., xma
+- check 上の値
+- [U, S, V] = svd(Sigma)
+
+実際には、svd で対角行列 S (対角成分s_{11}, ..., s_{nn}) を得たら、
+1 - sum^k s_ii / sum^n s_ii
+を計算する。
+
+*** 次元削減のメリット
+- 圧縮して高速化する
+- 2、3次元にして可視化する
+
+*** 気をつけること
+- overfittingに取り組むときはやばい。regularizationを使え。
+- 次元削減しなければ行けなくなってからPCAせよ。最初はオリジナルを使え。
+
+** Anomaly detection 異常検知
+
+例 正規分布だとして各パラメタごとに確率を計算する。
+
+10000 good ones, 20 flawed ones.
+
+- Training set: 6000 good ones.
+- CV: 2000 good ones, 10 anomalous
+- Test: 2000 good ones, 10 anomalous
+
+cv と test set ちゃんと別々にする。
+
+evaluationは、とてもひずんだものなので、全部normalと判定するだけで高評価になってしまうので注意。
+precision/recall, F_1 score などを使おう。
+
+*** anomaly detection vs 教師あり学習
+**** Anomaly detecion がいい場合
+- positive examples が少ない。
+- anomalyにめっちゃいろんな種類がある。
+
+**** 教師あり学習がいい場合
+positive も negative もどっちもたくさんある。
+
+*** featureをどう選ぶかがかなり大事
+
+histを実行してみて分布がガウス分布のようでなかったら、例えばlogを取ってみるなどする。
+log(x), log(x+1), sqrt(x), x^1/3 などしてみる。
+
+feature 1 で異常値のはずが正常値と判定されるexampleの場合、x_2 という feature を付け加えてそれが異常値になるようにすれば全体的に異常値エリアに来る。 
+新しい feature は今までのものから計算してもよい。x_5 := x_1 / x_3 など。
+
+** Recommendation system
+
+Content Based Recommendations
+
+映画ごとにfeaturesが既にあるとして作られるシステム。線形回帰をする。
+
+ランダムに初期化して parameter theta と features x を代わる代わる学習させてして収束させる。
+
+それよりも、theta と x を両方いっぺんに予想することもできる。
+
+collaborative filtering という。
+
+low rank matrix factorization ともいう。
+
+各映画の特徴ベクトルを持ってきて、距離が近いのをおすすめする。
+
+*** mean normalization
+映画のrationの行列で各平均を引く。
+その行列をデータにして学習させれば、まだ全くレイティングしていないユーザに平均のレイティング予想をすることができる。
+
+** 大規模データを扱う
+learning curve をプロットしてみて J_train(theta), J_CV(theta) が m = 1000 ぐらいでもう接近していたら、もうそれ以上増やしてもよくならないことがわかる。
+そうだったら、次にfeatureを増やしたり隠れユニットを増やしたりして、曲線が接近しないものになることもある。そうすると初めて1億examplesをやってみる。
+
+*** 確率的最急降下法
+今までの最急降下法をバッチ最急降下法 (batch gradient descentと呼ぶ。
+Stochastic gradient descent はまずデータをシャッフルしておいて、
+theta_j を update するときに、なんと全方向の偏微分の和を取らない。1つの偏微分だけ引く。
+
+Mini-batch gradient descent: Use b examples in each iteration
+b=2 to 100 (10ぐらい)
+
+Stochastic gradient descent の収束判定。
+iterations 1000回ごとに cost(theta, (xs,yx)) の1000個の平均をプロットする。
+
+(それに対して、batch のときは J_train(θ) をプロットする。(全データの和))
+
+- ぎざぎざだが全体としてだんだん下がっている
+- 学習率を下げる。
+- 5000ごとにしたらなめらかに下がることもある。
+- 対して下がってないこともある。
+- 学習率を変えたりする。
+- 上がっていたら発散しているかも。学習率を下げてみよう。
+- 学習率アルファをだんだん下げるのもいいことがある。例えば、アルファ = const1 / (iteration回数 + const2) とする。でも const1,2 の調整に時間がかかる。
+
+*** online learning
+ユーザデータ(x,y)が来るたんびに学習する。今までのデータを全部使って学習するわけではない。(x,y)だけでθをアップデートする。
+
+CTR = Click Through Rate
+
+*** map reduce
+
+** Photo Optical Character Recognition (OCR)
+組み合わせ方
+パイプライン
+- text detection
+  - どこに文字が書いてあるか検知する
+- character segmentation
+  - 文字ごとに分割
+- characer classification
+  - 文字ごとに何の文字か判定する
+- さらにエラー訂正する
+  - 例 c1eaning -> cleaning
+
+
+- sliding windows
+  - スキャンしていく
+  - 文字がありそうなところを検出
+  - その文字がありそうな矩形に対してさらに 1D sliding window をして、文字の区切りになりそうなところを検出する。
+
+
+人工データ合成
+- 大量のlow biasなデータを得る方法
+- 無から作る方法と、少ないデータを増やす方法がある
+- 文字であれば、
+  - いろんなフォントから画像を作る方法
+  - 既にある文字画像からゆがみなどを加えて別の画像を作り出す方法
+- 音なら
+  - ノイズを加えるとか、人混みの中の背景を加えるとか、電話っぽく品質を落とすとか
+
+人工的にデータを作る前に今持っているデータが低バイアスかどうかを確認するべきだ。学習曲線を描く。高バリアンスではないことを確認する。低バイアスでなければ、特徴を増やしてみたり隠れユニットを増やしたりする。それをやってなければ、結局1週間を無駄にすることがある。
+「データを10倍にするのにどれだけの労力が必要か」をNg先生はよく聞く。
+
+Ceiling Analysis (天井分析)
+- 各パイプライン項目を手動で完璧にしたら、全体としてどのぐらいの正確さになるかを逐一計算する。
+- するとその項目を完璧にするのに手間をかける意味があるかがわかる。
+
+Ng先生は直感を信じてはいけないことを学んだ。
+

@@ -1,0 +1,106 @@
+:PROPERTIES:
+:ID:       9CB23069-D2B9-4B30-AED8-7424413AA902
+:END:
+#+title: Ubuntu
+#+tags: Ubuntu, Linux
+#+date: <2013-05-02 Thu>
+
+* Install Memo
+[[http://ambiesoft.ddo.jp/blog/archives/368][Ubuntuのsudoでパスワードを入力しなくてすむようにする | ﾌﾞｰログ]]
+
+sudo apt-get install python-software-properties
+
+add-apt-repository ppa:cassou/emacs
+apt-get update
+apt-get install emacs24 emacs24-el
+
+[[http://masaoo.blogspot.jp/2013/01/ubuntu-1204-emacs242.html][まさおのブログ (表): Ubuntu 12.04 に Emacs24.2 をインストールする]]
+
+aptitude install nginx gcc make libssl-dev
+nginx-common
+
+rbenv
+ruby-build
+
+libxml2-dev
+libxslt-dev
+g++
+sqlite3 libsqlite3-dev
+nodejs
+libreadline-dev
+
+* apt-get
+** インストール済みのパッケージを確認する
+#+BEGIN_SRC 
+dpkg -l
+#+END_SRC
+
+#+begin_src sh
+dpkg -L PackageName
+#+end_src
+
+#+begin_src
+dpkg -S /etc/nginx/nginx.conf
+# nginx-common
+#+end_src
+
+** deb の中身を見たり展開したりする
+
+apt でインストールしようとしたものは =/var/cache/apt/archives/= に =.deb= ファイルがある。
+
+これをまず =ar= で展開する。
+
+#+begin_src sh
+ar -x supersupersuperpackage.deb
+#+end_src
+
+するといくつか出てきて、 =data.tar.gz= がファイルやディレクトリ。これを展開すれば取り出せる。
+
+** 検索
+#+BEGIN_SRC sh
+apt-cache search emacs
+#+END_SRC
+
+** outdated みたいなの
+: apt list --upgradable
+
+** 容量節約
+#+BEGIN_SRC sh
+apt-get clean
+apt-get autoremove --purge
+#+END_SRC
+
+* 自動起動
+sysv-rc-conf
+
+* packages
+** avconv (ffmpeg)
+#+begin_src sh
+% apt-get install libavcodec-extra-53
+% avconv -codecs | grep "264"
+EV libx264 libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+#+end_src
+
+*** aac
+#+begin_src sh
+-acodec libvo_aacenc
+#+end_src
+
+* distribution-upgrade
+do-release-upgrade
+でできる。
+
+しかし /etc/update-manager/release-upgrades の
+Prompt=lts
+を
+Prompt=normal
+にしてから。
+
+#+BEGIN_SRC sh
+do-release-upgrade -d -f DistUpgradeViewNonInteractive
+#+END_SRC
+via [[http://awaseroot.wordpress.com/2012/04/29/ubuntu-release-upgrade-fully-automatic-non-interactive-upgrade/][Ubuntu Release Upgrade – Fully automatic non-interactive upgrade | awaseroot]]
+
+#+BEGIN_SRC sh
+DEBIAN_FRONTEND=noninteractive /usr/bin/apt-get dist-upgrade -o Dpkg::Options::="--force-confold" --force-yes -y
+#+END_SRC

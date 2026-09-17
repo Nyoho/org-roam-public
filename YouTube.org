@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       046EB1C6-9B8E-43B7-A6B6-C0843A4FCD50
+:END:
+YouTube
+
+embedding
+
+- [[https://stackoverflow.com/questions/19896430/keeping-two-youtube-videos-in-sync-with-each-other][javascript - Keeping two YouTube videos in sync with each other - Stack Overflow]]

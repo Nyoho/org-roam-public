@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       881B0B60-0D9F-4F19-BC58-D61C26E0F9AC
+:END:
+#+title: azooKey
+#+date: [2025-06-30 Mon 14:43]
+
+[[https://azookey.com/][azooKey - 自由自在なキーボードアプリ]]
+
+* カスタマイズ
+- [[https://note.com/jeebis_keyboard/n/n687c4aee3c6f][日本語入力に最適化したフリック配列を作った｜じーびす]]
+
+* azooKeyMac
+
+[[https://github.com/azooKey/azooKey-Desktop][azooKey/azooKey-Desktop]]
+
+** いい感じ変換
+
+いい感じ変換を使うには
+
+OpenAI API
+
+ollama のサーバを使うとき: 
+http://127.0.0.1:11434/v1/chat/completions
+
+LM Studioのサーバを使うとき: 
+http://127.0.0.1:1234/v1/chat/completions
+
+google/gemma4-e2b
+
+
+<2026-08-17 Mon>
+Ollamaの qwen3:4b-instruct にしてみよう。

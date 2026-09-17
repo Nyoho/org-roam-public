@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       190E849E-09A0-4D59-889A-5388FD4CCAFD
+:END:
+#+title: JAX
+#+date: [2022-06-14 Tue 21:52]
+
+
+https://github.com/google/jax
+
+* Links
+- [[https://qiita.com/koshian2/items/44a871386576b4f80aff][JAX入門～高速なNumPyとして使いこなすためのチュートリアル～ - Qiita]]
+- [[https://tech.morikatron.ai/entry/2020/12/07/100000][自動微分+XLA付き機械学習フレームワークJAXを使用してMNISTを学習させてみる - Morikatron Engineer Blog]]
+- [[https://www.tc3.co.jp/jaxflax-introduction-with-mnist/][JAX/Flaxを使ってMNISTを学習させてみる | tc3]]

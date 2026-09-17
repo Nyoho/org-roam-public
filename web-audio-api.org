@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       539DD5C9-5051-4514-BACD-9ACCF1E00BC5
+:END:
+#+begin_html
+---
+title: Web Audio API
+tags: audio web
+date: <2014-08-29 Fri>
+---
+#+end_html
+
+Web Audio API について学ぶ。
+
+- [[http://curtaincall.weblike.jp/portfolio-web-sounder/webaudioapi-visualization/draw-wave][波形描画 | サウンドの視覚化 | WEB SOUNDER - Web Audio API 解説 -]]
+- [[http://qiita.com/fnobi/items/2f08a67800dec1d61f21][WebAudioAPIで遊べるようになった - Qiita]]
+- [[http://mohayonao.hatenablog.com/entry/2012/12/12/103009][Web Audio系APIを使うときに注意する点 - 音の鳴るブログ]]
+- [[http://mohayonao.hatenablog.com/entry/2012/09/21/203833][iOS6 の Web Audio API を使う - 音の鳴るブログ]]
+
+* obsolete
+AudioContext.createJavaScriptNode() は obsolete になったので
+AudioContext.createScriptProcessor() を使う。
+
+[[https://dev.mozilla.jp/2013/08/web-audio-api-comes-to-firefox/][Web Audio API が Firefox に登場 | Mozilla Developer Street (modest)]]
+
+他の移行ガイドがここに!
+- [[https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Porting_webkitAudioContext_code_to_standards_based_AudioContext][Porting webkitAudioContext code to standards based AudioContext - Web API Interfaces | MDN]]
+
+** よくわからない
+buffersource の .stop()
+がきかない?
+

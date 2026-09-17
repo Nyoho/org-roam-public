@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       46A7C52F-FFD1-4479-AA7A-8BDBDE0C7EA8
+:END:
+#+title: 制御理論 control theory
+#+date: [2025-07-31 Thu 19:52]
+
+制御理論のメモ
+
+- [[https://ja.wikipedia.org/wiki/%E5%88%B6%E5%BE%A1%E7%90%86%E8%AB%96][制御理論 - Wikipedia]]
+- [[https://www.tups.jp/book/book.php?id=409][『ロボティクスの幾何学的基礎　第2版』 J.M. Selig 著、内山勝 訳]]
+- [[https://www.ids.sys.i.kyoto-u.ac.jp/research_nonlinear.html][大塚研究室 研究紹介 | 京都大学 大学院情報学研究科 システム科学専攻]] 代数学・代数幾何学を用いた非線形システムの解析と制御

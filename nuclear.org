@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       217DAF13-A22E-4C0F-8DD8-36AD352C6FA0
+:END:
+#+title: nuclear
+#+date: [2025-11-05 Wed 18:23]
+
+核兵器
+
+step by step
+- [[https://ja.wikipedia.org/wiki/%E5%8C%85%E6%8B%AC%E7%9A%84%E6%A0%B8%E5%AE%9F%E9%A8%93%E7%A6%81%E6%AD%A2%E6%9D%A1%E7%B4%84][CTBT]] 
+- FMCT
+- NFU (no first use)
+
+核抑止論者は抑止が破れたことを考えていない。
+期待損失を算出する作業を国連で進めている。
+
+

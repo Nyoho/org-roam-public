@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       44A2415C-75A4-40EE-98F5-F0CA9D17CE76
+:END:
+#+title: WebSocket メモ
+
+** クライアント
+- [[https://github.com/robtaussig/react-use-websocket][robtaussig/react-use-websocket: React Hook for WebSocket communication]] React Hooks 版
+
+** サーバ
+*** Node
+- [[https://www.nexmo.com/blog/2020/03/11/real-time-sms-demo-with-react-node-and-google-translate-dr][Real-time SMS Demo with React, Node, and Google Translate - Vonage Developer Blog]]
+- [[https://qiita.com/okumurakengo/items/c497fba7f16b41146d77][WebSocket(ブラウザAPI)とws(Node.js) の基本、自分用のまとめ - Qiita]]

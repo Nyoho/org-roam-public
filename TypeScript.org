@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       F7BE02F3-1D75-42E1-90A3-832947D68EA2
+:END:
+#+title: TypeScript
+#+date: <2020-07-04 14:54:32 +0900>
+
+TypeScriptのメモ
+
+- [[https://www.typescriptlang.org/docs/handbook/react-&-webpack.html][React & Webpack · TypeScript]]
+- [[https://hackernoon.com/react-with-typescript-and-webpack-654f93f34db6][React with Typescript and Webpack - By]]
+- [[https://qiita.com/uryyyyyyy/items/63969d6ed9341affdffb][React + TypeScript + Webpackの最小構成 - Qiita]]
+- [[https://www.google.com/search?client=safari&rls=en&q=how+to+start+typescript+react+package.json+webpack&ie=UTF-8&oe=UTF-8][how to start typescript react package.json webpack - Google 検索]]
+- [[https://book.yyts.org/][サバイバルTypeScript]]
+
+* 型のブランド化とコンパニオンオブジェクト
+型のブランド化 https://gist.github.com/gushernobindsme/2f0c3933d85eb5b4a882a0828afdf6c8 にあった。
+
+コンパニオンオブジェクトは type Hoge と const Hoge = ... のように、型と値で同じ名前を使って作られるオブジェクトのこと。
+
+* サンプルコード
+- [[https://github.com/aws/aws-cdk][aws/aws-cdk: The AWS Cloud Development Kit is a framework for defining cloud infrastructure in code]]

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       4E2AA23D-1BA0-4635-A566-0C8BEA58FD41
+:END:
+#+title: Hiroshima.rb
+#+date: <2013-07-08>
+
+- http://hiroshimarb.github.io
+- [[http://www.ustream.tv/channel/hiroshimarb02][Hiroshima.rb #3 USTREAM: hiroshimarb02: Hiroshima.rb http://hiroshimarb.github.com/ . コンピュータ]]
+

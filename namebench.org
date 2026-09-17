@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       BD8D261D-0ACF-41DF-8926-F763EF13D923
+:END:
+
+#+BEGIN_SRC sh
+brew install namebench
+#+END_SRC
+
+#+BEGIN_SRC sh
+namebench
+#+END_SRC
+
+面白い。

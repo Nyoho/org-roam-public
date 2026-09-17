@@ -1,0 +1,10 @@
+#+title: OpenBLAS
+#+date: <2021-07-26 Mon>
+
+https://github.com/xianyi/OpenBLAS/
+
+: make CC=gcc PREFIX=$HOME/.local NO_FORTRAN=1 NO_LAPACK=1
+
+でだいたい入った。
+ =-lgfortran= がないよというエラーが出るけどいらないときは =NO_LAPACK=1= をする。
+ 

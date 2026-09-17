@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       9F39F459-612F-49F7-AEE4-A30D09AA68FB
+:END:
+#+title: mac mini
+#+date: [2023-05-17 Wed 22:30]
+
+Mac mini Late 2014
+- [[https://www.handsonplus.com/mac/macmini-ssd/][Mac miniをSSDに換装して現役復帰！Late 2014だってまだまだ使える！！分解・交換手順を詳しく解説 – ハンズオンプラス]]
+
+トラブルメモ
+  - [[https://forums.macrumors.com/threads/does-monterey-have-a-bug-with-mounting-external-drives-images.2331283/][Does Monterey Have a Bug with Mounting External Drives & Images? | MacRumors Forums]]

@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       736EFDF5-8627-4697-BFA5-50DEB508F424
+:END:
+#+title: Metal
+#+date: <2021-09-01 Wed>
+
+GPUを比較的近くで触れるMetal
+
+* 計算に使う
+Metal Shading Language (MSL) を用いたサンプルコード: [[https://developer.apple.com/documentation/metal/basic_tasks_and_concepts/performing_calculations_on_a_gpu][Performing Calculations on a GPU | Apple Developer Documentation]]
+
+* Julia
+JuliaでMetalする Metal.jl
+
+https://github.com/JuliaGPU/Metal.jl
+
+Metalを触るところでは小さいCラッパ [[https://github.com/JuliaGPU/cmt][cmt]] が使われている。

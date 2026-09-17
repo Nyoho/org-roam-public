@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       DF55CA6D-C1B5-4792-B020-B937D200A405
+:END:
+#+title: CamTwist
+#+tags: 
+#+date: <2016-03-20 Sun>
+
+[[http://camtwiststudio.com/][CamTwist]] のメモです。
+
+* Effects
+
+- Telestrator :: 画面へお絵かき。おもしろ
+- Image Overlay :: ロゴを右上などに表示するときに便利
+
+
+* 参考
+
+- [[http://gihyo.jp/lifestyle/serial/01/event-streaming/0002?page=2][第2回　WebカメラとCamTwistを使ってUstream配信をする：エンジニアのためのイベント映像活用方法｜gihyo.jp … 技術評論社]]
+- [[http://www.manpen.info/mp/manpen.cgi?id=ust_camtwist&continue=on][CamTwistめも]]
+
+#+begin_quote
+/Library/CoreMediaIO/Plug-Ins/DAL/CamTwist.plugin
+#+end_quote
+
+にウェブカメラとしてのプラグインがある。

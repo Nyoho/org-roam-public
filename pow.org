@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       7F336D66-08BE-45D2-8673-9DAD99D03424
+:END:
+
+pow のメモ
+
+http://pow.cx
+Rack app をローカルで動かすときに簡単に hoge.dev でアクセスできるようにする。
+
+* Installation
+(tmux の外で)
+#+BEGIN_SRC sh
+sudo sysctl -w net.inet.ip.fw.enable=1
+#+END_SRC
+#+BEGIN_SRC sh
+curl get.pow.cx | sh
+#+END_SRC
+
+* rbenvで使うには
+ ~/.powconfig に export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+
+(ここに書いてある https://github.com/37signals/pow/wiki/Troubleshooting)
+
+* 環境変数 ENV['hoge'] は
+.powenv にかく。ただし export する。
+export TWITTER_OAUTH_TOKEN_SECRET=hogehoge
+
+* powder
+#+BEGIN_SRC sh
+gem install powder
+#+END_SRC
+
+#+BEGIN_SRC sh
+powder link hogeapp
+#+END_SRC
+
+* インストールすると入るもの
+
+$HOME/Library/LaunchAgents/cx.pow.powd.plist
+
+/etc/resolver/dev
+/Library/LaunchDaemons/cx.pow.firewall.plist

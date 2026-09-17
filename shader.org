@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       2EDF1C6E-95F0-4A6A-8F7C-1C3E42339B1F
+:END:
+
+
+- [[http://nn-hokuson.hatenablog.com/entry/2018/02/15/140037][7日間でマスターするUnityシェーダ入門 - おもちゃラボ]]
+- [[https://www.sejuku.net/blog/66319][【Unity入門】Shaderってなんだ?誰でもわかるシェーダー解説! | 侍エンジニア塾ブログ（Samurai Blog） - プログラミング入門者向けサイト]]
+
+
+- [[https://www.twitch.tv/videos/386454533?filter=all&sort=time][unityjp - Unity道場 2月~シェーダを書けるプログラマになろう~ - Twitch]]
+  - mipmap きれいにテクスチャを縮小する。
+

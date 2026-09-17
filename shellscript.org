@@ -1,0 +1,115 @@
+:PROPERTIES:
+:ID:       91BF06D3-FE1E-4F29-9A8D-3EE5563B125F
+:END:
+#+title: shell script
+#+tags: shell script bash zsh
+#+date: <2014-09-17 Wed>
+
+* 条件分岐のときのtestオプション
+とりあえず
+#+BEGIN_SRC sh
+man test
+#+END_SRC
+を見ると -f も -e も全部書いてある。
+
+#+BEGIN_SRC sh
+if [ -f "filename" ]; then
+  echo filename exists.
+fi
+#+END_SRC
+
+* 変数
+- $? :: 前回のコマンドの返値
+- $0 :: スクリプトの名前
+- $# :: 引数の数
+- $* :: 引数全部 ("hoge fuga" になっている)
+- $@ :: 引数全部 ("hoge" "fuga" になっている)
+- "$@" :: 上をダブルクオーテーションでくくっているのでパラメタの数を維持できる。展開せずに渡せる。
+
+- <<< :: ヒアストリング。変数の内容をコマンドに渡す。
+
+* bash でデバッグ
+#+BEGIN_SRC sh
+bash -x [shellscript_to_debug.sh]
+#+END_SRC
+
+* 計算
+#+BEGIN_SRC sh
+expr 1 + 1
+expr \( 1 + 1 \) \* 2
+a=`expr $a + 1`
+#+END_SRC
+
+* 複数行の文字列を出すあのやり方
+#+BEGIN_SRC sh
+cat <<'EOF' > hoge.c
+int main() {
+  return 1;
+}
+EOF
+#+END_SRC
+
+* human readable file size
+#+BEGIN_SRC sh
+awk '{ split( "KB MB GB" , v ); s=1; while( $1>1024 ){ $1/=1024; s++ } print int($1) v[s] }'
+#+END_SRC
+From [[https://www.linuxquestions.org/questions/linux-general-1/awk-to-convert-bytes-to-human-number-909214/][Awk to convert bytes to human number?]]
+
+これを使うと、
+
+: du -s *|sort -n| awk '{ split( "KB MB GB" , v ); s=1; while( $1>1024 ){ $1/=1024; s++ } print int($1) " " v[s] "\t" $2}'
+
+などとできる。
+
+* 変数
+=${x##*/}= という使い方
+
+: ln -s ${x##*/}-4.16.11-1-default $x$suffix
+
+** 配列
+#+BEGIN_SRC sh
+foo=(`... | awk '{print $1,$3'`)
+${foo[0]}
+${foo[1]}
+${foo[*]}
+${#foo[*]} # count
+#+END_SRC
+
+* Error処理
+
+#+BEGIN_SRC sh
+cd directory || {
+         echo 'changing directory failed >&2
+         exit 1
+}
+#+END_SRC
+
+* 色
+256色のリスト
+
+文字色
+#+begin_src sh
+for i in {0..255}; do
+    printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
+done
+#+end_src
+
+背景色
+#+begin_src sh
+for i in {0..255}; do
+    printf "\x1b[48;5;${i}mcolour${i}\x1b[0m\n"
+done
+#+end_src
+
+* 未分類ンフォ
+
+#+BEGIN_SRC sh
+eval "$(command)"
+#+END_SRC
+
+戻り値は =$?= に。
+
+* 参考文献
+- [[http://d.hatena.ne.jp/progd/20110618/shellscript][よく使うシェルスクリプト基本構文とサンプル - progd]]
+- [[http://motw.mods.jp/shellscript/tutorial.html][シェルスクリプト入門 書き方のまとめ | Memo on the Web]]
+

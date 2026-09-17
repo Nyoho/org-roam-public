@@ -1,0 +1,66 @@
+:PROPERTIES:
+:ID:       EA0BD8F2-7BD2-49C1-9007-1BBD71AF7FB2
+:END:
+#+title: ChatGPT
+#+date: [2023-04-12 Wed 08:29]
+
+ChatGPT に関するメモ
+
+https://chat.openai.com/chat
+
+* 英会話に
+- [[https://yanase-yosuke.blogspot.com/2023/04/chatgpt.html][英語教育の哲学的探究3: ChatGPTと音声で英会話する方法（上級者用）]]
+- [[https://news.yahoo.co.jp/byline/kandatoshiaki/20230424-00346918][ChatGPTで無料で学べる『英会話AI』の作り方（神田敏晶） - 個人 - Yahoo!ニュース]]
+- https://www.usespeak.com
+- [[https://note.com/genkaijokyo/n/n64efcfcd6cdd][【コピペでOK】ChatGPTのVoice Modeでリアルな会話練習！もう英会話のフリートークは怖くない｜genkAIjokyo|ChatGPT/Claudeで論文作成と科研費申請]]
+
+* プログラミングなど
+- [[https://qiita.com/tajima_taso/items/c8ed4cb06866ef11a455][【Linuxカーネルを読む】ChatGPTで爆速コードリーディング - Qiita]]
+- [[https://zenn.dev/seiyakitazume/articles/bc11bbd020cdfe][chatGPTにアドバイスをもらったらデータサイエンスを知って1週間の友人がコンペで上位6.5%に入った話]]
+
+* 用途
+- generation
+- open question
+- ブレインストーミング
+- chat
+- 書き換え(翻訳も含む)
+- 要約
+
+* Tips
+- [[https://edulab.t.u-tokyo.ac.jp/chatgpt-qa/][ChatGPT に関する Q&A│Lui Yoshida Lab]]
+- [[https://twitter.com/kenkawakenkenke/status/1652545358956998657][Ken Kawamoto（ガリのほう）GPTで便利なの作った！『つい本を読みたくなるPOP自動生成アプリ』]]
+- [[https://twitter.com/promptia_jp/status/1684044516175773699][ChatGPTに「水平思考で考えて」と付け加えると、より創造的で独自性の高いアイデアになる]]
+- 答えを聞きに行こうとすると失敗する。会話で相談していく。壁打ちにすると有用であることが多い。
+     
+** embedding
+- [[https://speakerdeck.com/ryoheiigushi/chatgpt-apinoembedding-kasutamaisuru-men?slide=29][ChatGPT_APIのEmbedding_カスタマイズ入門 - Speaker Deck]]
+- [[https://www.youtube.com/watch?v=RKCFi3nqVFw][ChatGPT APIのEmbeddingカスタマイズ入門 - YouTube]]
+- https://llamahub.ai
+
+https://github.com/openai/openai-cookbook/blob/main/examples/Question_answering_using_embeddings.ipynb  [[https://twitter.com/gijigae/status/1647425836122013696?s=12&t=ocVGiBXC10cAjO69rNrybA][Embeddingsを基礎から学びたい全ての方にお勧めしたいのが 
+@OpenAI が管理するこちらのnotebook]]とのこと。
+
+[[https://tech.nri-net.com/entry/tried_langchain_to_extend_chatgpt][ChatGPTの機能を拡張するLangChainを試してみた - NRIネットコムBlog]]
+
+* GPT-4
+まだ公開されていないけど画像から意味を読み取れる。→ Plusで使えるようになった。
+
+物理問題。
+ジョーク写真の面白さわかっている。
+
+* 生成系AI
+- 大規模言語モデル
+  - 言語は本来不確定なもの、あえてそれを使うことは?
+  - 昔自然言語でDB検索するというのもあった。
+  - 目的によって変わる
+  - 直訳に近いタスクは不正確性が下がる。
+- ブレインストーミング・壁打ち
+- 教育では、結果が重要なのではなくて考えるプロセスが非常に重要であることを伝える。
+- 教員学生同士で議論するのに加えてAIと議論することができるように。
+
+* 資料
+- [[https://edulab.t.u-tokyo.ac.jp/2023-05-13-report-event-chatgpt-course/][イベント「教員向け ChatGPT 講座 ～基礎から応用まで～」 5/13 開催報告と振り返り│Lui Yoshida Lab]]
+- [[https://drive.google.com/file/d/1I09n8EK1Z_T0tOEI_891OoWkaRaaXaOT/view][東京大学吉田塁准教授「教員向けChatGPT講座」 2023.05.13_ChatGPT講座_v2_共有用.pdf]]
+- [[https://www.mext.go.jp/b_menu/houdou/2023/mext_01260.html][大学・高専における生成AIの教学面の取扱いについて：文部科学省]]
+- [[https://www.youtube.com/watch?v=Hqw_Zfj5LNA][橋本 大也 氏: ChatGPTと本の未来 - YouTube]]
+- [[https://www.youtube.com/watch?v=gv72l_x0sbg][橋本大也氏: 頭がいい出版人のChatGPT&Copilotの使い方 - YouTube]]

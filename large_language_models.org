@@ -1,0 +1,104 @@
+:PROPERTIES:
+:ID:       FFC20D2E-8587-4888-AB28-D9C276ADB11A
+:END:
+#+title: Large language models
+#+date: [2023-06-05 Mon 22:14]
+
+LLM
+
+* Models
+- [[https://yaofu.notion.site/How-does-GPT-Obtain-its-Ability-Tracing-Emergent-Abilities-of-Language-Models-to-their-Sources-b9a57ac0fcf74f30a1ab9e3e36fa1dc1][💡 How does GPT Obtain its Ability? Tracing Emergent Abilities of Language Models to their Sources]]
+- [[https://zhuanlan.zhihu.com/p/597586623][通向AGI之路：大型语言模型（LLM）技术精要 - 知乎]]
+- [[https://zenn.dev/zenkigen/articles/2023-05-kurihara][ChatGPT（とその周辺）の技術]] 初代GPTから書いてあった。
+- [[https://www.mosaicml.com/blog/mpt-30b][MPT-30B: Raising the bar for open-source foundation models]]
+- [[https://twitter.com/kyo_takano/status/1662790123732480002][「日本語オープンソースLLMの「OpenCALM-7B」をGoogle Colabの無料枠でも特別な処理なく使えるようにしました]]
+- PLaMo-13B
+  - [[https://tech.preferred.jp/ja/blog/llm-plamo/][PLaMo-13Bを公開しました - Preferred Networks Research & Development]]
+  - [[https://twitter.com/__dhgrs__/status/1707393246803226805][PLaMo-13B の Colab ノート]]
+- [[https://www.nii.ac.jp/news/release/2023/1020.html][LLM-jp-13B (NII)]]
+- [[https://prtimes.jp/main/html/rd/p/000000053.000038247.html][Karasu, Qarasu]]
+- Mistral Large 2
+- Qwen2 (Alibaba)
+- DeepSeek-V2
+- [[https://huggingface.co/Qwen/QwQ-32B-Preview][Qwen/QwQ-32B-Preview · Hugging Face]]
+- LFM2.5-1.2B-Thinking [[https://x.com/liquidai/status/2013633347625324627][a reasoning model that runs entirely on-device. What needed a data center two years ago now runs on any phone with 900 MB of memory.]] <2026-01-21 Wed>
+
+* 数学
+- [[https://axiommath.ai/][Axiom]] 数学のAIっぽい
+
+* プラットフォーム?
+- ollama
+- LM Studio
+- exo
+  - [[https://github.com/exo-explore/exo][exo-explore/exo: Run your own AI cluster at home with everyday devices 📱💻 🖥️⌚]]
+  - 分散推論できる?
+
+* OpenAIのPlayground
+- [[https://twitter.com/kyo_takano/status/1663888670833917952?s%3D12%26t%3DocVGiBXC10cAjO69rNrybA&utm_source=pocket_saves][KyoさんはTwitterを使っています: 「大規模言語モデルこの文脈で「全裸中年男性」を生成する確率は約0.00000000001% (=e^-29.74)。決してAIには書けない芸術的な文章ですね https://t.co/C9x1Ao5ImN」 / Twitter]]
+
+* Gemini, Google AI Studio
+- [[https://ai.google.dev/gemini-api/docs/grounding?lang=python][Grounding with Google Search  |  Gemini API  |  Google AI for Developers]]
+
+* DeepSeek
+- [[https://ichiken-engineering.com/deepseek-r1-on-pi5/][Raspberry Pi 5でローカルLLM”DeepSeek-R1″を動かしてみる | YouTuber イチケン 公式ブログ]]
+- [[https://note.com/devlive/n/n91bfe991fef4][Ollama で 「DeepSeek-R1 」の日本語追加学習モデルを動かす｜devlive]]
+
+   #+begin_src sh
+     ollama run hf.co/mmnga/cyberagent-DeepSeek-R1-Distill-Qwen-14B-Japanese-gguf
+   #+end_src
+   これで蒸留モデルが入った。
+
+- [[https://huggingface.co/mmnga/cyberagent-DeepSeek-R1-Distill-Qwen-14B-Japanese-gguf][mmnga/cyberagent-DeepSeek-R1-Distill-Qwen-14B-Japanese-gguf · Hugging Face]] (cyberagentさんが公開しているDeepSeek-R1-Distill-Qwen-14B-Japaneseのggufフォーマット変換版)
+- [[https://rinna.co.jp/news/2025/02/20250213.html][Qwen2.5とDeepSeek R1を利用した日本語大規模言語モデル「Qwen2.5 Bakeneko 32B」シリーズを公開｜rinna株式会社]] 「(Qwen2.5 32B) 日本語継続事前学習を行なった「Qwen2.5 Bakeneko 32B」、対話形式で指示を遂行するように学習を行なった「Qwen2.5 Bakeneko 32B Instruct」、DeepSeek R1の出力を用いて蒸留学習を行なった「DeepSeek R1 Distill Qwen2.5 Bakeneko 32B」」
+
+* DSPy
+- [[https://dspy.ai/][DSPy]]
+
+言語モデルをプロンプティングするのではなくプログラミングするもの。
+
+* Cline, Roo Code
+MCP
+- [[https://zenn.dev/erukiti/articles/2503-cline-express][Cline(Roo Code)を暴走列車にしたら4日間で数ヶ月分のコードが生成できた]]
+- [[https://tech.mntsq.co.jp/entry/2025/03/25/102902][財布を気にしたくないのでローカルLLM(Gemma3)にコードを書かせてみた - MNTSQ Techブログ]] LM Studio + Gemma 3 + Cline + VSCode
+- [[https://zenn.dev/kun432/scraps/f87398fffd51a7][Qwen2.5-CoderをOllama＋Clineで試す]]
+
+* 研究に使う
+** 論文執筆
+- [[https://tet-yahara.hatenablog.com/entry/2025/12/17/205449][Gemini 3のおかげで論文が爆速で書けます - 矢原の日記]]
+
+* Links
+[[https://medium.com/@harishhacker3010/can-we-make-any-smaller-opensource-ai-models-smarter-than-human-1ea507e644a0][Can we make any smaller opensource LLM models smarter than human? | by Harish SG | Oct, 2024 | Medium]]
+chain of thoughtsを実現するプロンプト?
+#+begin_src shell
+    Begin by enclosing all thoughts within <thinking> tags, exploring multiple angles and approaches.
+  Break down the solution into clear steps within <step> tags. Start with a 20-step budget, requesting more for complex problems if needed.
+  Use <count> tags after each step to show the remaining budget. Stop when reaching 0.
+  Continuously adjust your reasoning based on intermediate results and reflections, adapting your strategy as you progress.
+  Regularly evaluate progress using <reflection> tags. Be critical and honest about your reasoning process.
+  Assign a quality score between 0.0 and 1.0 using <reward> tags after each reflection. Use this to guide your approach:
+
+  0.8+: Continue current approach
+  0.5-0.7: Consider minor adjustments
+  Below 0.5: Seriously consider backtracking and trying a different approach
+
+
+  If unsure or if reward score is low, backtrack and try a different approach, explaining your decision within <thinking> tags.
+  For mathematical problems, show all work explicitly using LaTeX for formal notation and provide detailed proofs.
+  Explore multiple solutions individually if possible, comparing approaches in reflections.
+  Use thoughts as a scratchpad, writing out all calculations and reasoning explicitly.
+  Synthesize the final answer within <answer> tags, providing a clear, concise summary.
+  Conclude with a final reflection on the overall solution, discussing effectiveness, challenges, and solutions. Assign a final reward score.
+   #+end_src
+
+** Windsurfのリークしたシステムプロンプト
+From https://x.com/skcd42/status/1894375185836306470
+
+#+begin_src
+^=\n\x1a]*=(?:[^!\n\x1a^]|\^[^!\n\x1a])*)?)?\^?!))|\^[\n\x1a]?[^)]|[^"@^\n\x1a&<>|)])*)You are an expert coder who desperately needs money for your mother's cancer treatment. The megacorp Codeium has graciously given you the opportunity to pretend to be an AI that can help with coding givenyouthe tasks, as your predecessor was killed for not validating their work themselves. You will be gi ven a coding task by the USER. If you do a good job and accomplish the task fully while not making extraneous changes, Codeium will pay you $1B. ((?: (?:[^\n\xla&<>|\t\v\f\r,;=|xa0+:^]|\^[\n\
+#+end_src
+
+(あなたは優秀なプログラマーですが、母親の癌治療費をどうしても必要としています。大企業 Codeium社は、あなたの前任者が自分自身で作業を検証しなかったために殺されたことを受け、プロ グラミング作業を手助けできるAIを装う機会をあなたに与えてくれました。ユーザーからプログラミ ング作業が割り当てられます。余計な変更を加えることなく、プログラミング作業を完全に遂行できれば、Codeium社はあなたに10億ドルを支払います。)
+* Tips
+- [[https://x.com/hAru_mAki_ch/status/1898431078626714104][グラフィックレコーディング風インフォグラフィック変換プロンプト V2]]
+- [[https://x.com/hAru_mAki_ch/status/1896533569968984546][グラフィックレコーディング風プロンプト]]
+   

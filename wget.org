@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       1AC438C5-B5EB-4836-B93A-73D559EF8726
+:END:
+
+
+* wget 使用例
+** 件の日報のPDFを一括ダウンロード
+
+: wget -O - https://www.asahi.com/articles/ASL4J669JL4JUEHF016.html | grep pdf | grep "２０" | sed -r -e 's/^.*"(https:[^"]+)".*(２０.+日).*/wget \1 -O Iraq-daily-report_\2.pdf/' | sh
+
+From https://twitter.com/mutz0623/status/986225857499774976
+
+注意: sed は GNU sed
+

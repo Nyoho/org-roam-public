@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       142024DA-7A69-447C-A817-5571A29D63FD
+:END:
+#+title: causal inference 因果推論
+#+date: [2024-12-25 Wed 12:44]
+
+因果推論のメモ
+
+- [[https://www.youtube.com/playlist?list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus][Statistical Rethinking 2023 - YouTube]]
+- [[https://github.com/rmcelreath/stat_rethinking_2023][rmcelreath/stat_rethinking_2023: Statistical Rethinking Course for Jan-Mar 2023]]
+
+- [[https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/][Causal Inference: What If (the book) | Miguel Hernan's Faculty Website | Harvard T.H. Chan School of Public Health]] (本のPDF)
+- [[https://causalml-book.org/][CausalML Book]] 本
+
+- [[https://www.krsk-phs.com/entry/counterfactual_assumptions][データから因果関係をどう導く？：統計的因果推論の基本、「反事実モデル」をゼロから - Unboundedly]]
+- [[https://hiramekun.hatenablog.com/entry/2021/12/26/122014#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%89%E3%82%A2%E5%9F%BA%E6%BA%96][【因果推論】バックドア基準とフロントドア基準 - ひらめの日常]]
+- [[https://note.com/okayamatarou/n/nd0eee07159fc][因果推論とAI｜OkayamaTarou]]
+
+DoWhy PyWhy
+- [[https://github.com/py-why/dowhy?tab=readme-ov-file][py-why/dowhy]] DoWhy is a Python library for causal inference
+- [[https://speakerdeck.com/s1ok69oo/dowhytoeconmlniyoruyin-guo-tui-lun-noshi-zhuang][DoWhyとEconMLによる因果推論の実装 - Speaker Deck]]
+- [[https://www.krsk-phs.com/entry/2018/08/22/060844][統計的因果推論のためのPythonライブラリDoWhyについて解説：なにができて、なにに注意すべきか - Unboundedly]]
+- [[https://www.youtube.com/watch?v=ilpSZiDjdv0&t=2s][An introduction to Causal Inference with Python – making accurate estimates of cause and effect from - YouTube]] PyCon AU 2023での講演
+
+** 回帰不連続デザイン
+regression discontinuity design (RDD)
+pdf 
+https://yukiyanai.github.io/jp/classes/econometrics2/contents/slides/metrics2_topic08_slides_pub.pdf
+
+** SCM
+構造的因果モデル structural causal model (SCM)
+
+DAG
+
+[[https://elevanth.org/blog/2021/06/29/regression-fire-and-dangerous-things-3-3/][Regression, Fire, and Dangerous Things (3/3) | Elements of Evolutionary Anthropology]]
+

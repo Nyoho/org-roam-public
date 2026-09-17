@@ -1,0 +1,238 @@
+:PROPERTIES:
+:ID:       22312241-1BE8-478A-9490-F8D8F8B5D0EC
+:ROAM_ALIASES: R言語
+:END:
+#+title: R
+#+date: <2013-04-15 Mon>
+#+filetags: programming
+
+* 読み込み
+** CSV 読み込み。カンマ区切りを指定する。
+#+begin_src R
+x <- read.table("sample.csv", header=TRUE, sep=",")
+#+end_src
+
+** クリップボードから読み込み
+for OS X
+
+#+BEGIN_SRC R
+x = scan(pipe("pbpaste"))
+#+END_SRC 
+
+表?
+#+BEGIN_SRC R
+x = read.table(pipe("pbpaste"),header=T)
+#+END_SRC 
+
+* sample
+** demo
+#+BEGIN_SRC R
+demo(graphics)
+#+END_SRC
+
+** CSV 読み込み
+#+begin_src c
+x <- read.table("sample.csv", header=TRUE, sep=",")
+#+end_src
+
+** カレントディレクトリ関連
+#+begin_src c
+getwd()
+setwd("Documents")
+#+end_src
+
+** 正規性の検定
+
+Kolmogorov-Smirnov 検定
+#+BEGIN_SRC R
+ks.test(x, "pnorm", mean=mean(x), sd=sqrt(var(x)))
+#+END_SRC
+
+Shapiro-Wilk 検定
+#+BEGIN_SRC R
+shapiro.test(x)
+#+END_SRC
+
+** 集計
+表の項目ごとの集計
+#+BEGIN_SRC R
+aggregate(x$score, list(day=x$day, place=x$place), FUN=mean)
+#+END_SRC
+
+** 表のソート
+#+BEGIN_SRC R
+t[order(t$x,decreasing=TRUE),]
+#+END_SRC
+
+** 未分類メモ
+
+サマリ
+#+BEGIN_SRC r
+summary(x)
+#+END_SRC
+
+xの中で20より大きい部分集合y
+#+BEGIN_SRC r
+y = subset(x,x>20)
+#+END_SRC
+
+ヒストグラム
+#+BEGIN_SRC r
+hist(x)
+#+END_SRC
+
+#+begin_src c
+  names(x)
+  
+  t.test(x[,1])
+  t.test(x[,1],x[,2])
+  var.test(x[,1],x[,2])
+  ks.test(x[,1],x[,2])
+  
+  for (i in  1:length(x)) {
+    for (j in  1:length(x)) {
+      if (i == j) 
+        next
+      print (sprintf ("%s vs %s", colnames(x)[i] , colnames(x)[j]))
+      print (t.test(x[,i],x[,j], na.rm=TRUE, var.equal=T)$p.value)
+    }
+  }
+  
+  t.test(x[,1],x[,2], na.rm=TRUE, var.equal=T)$p.value
+  names(res)
+  res <- t.test(x[,1],x[,2], na.rm=TRUE, var.equal=T)$p.value
+  
+  c(5,1:5,-1:10)
+  
+  mat <- array(0, dim=c(length(x),length(x)))
+  for (i in  1:length(x)) {
+    for (j in  1:length(x)) {
+      mat[i,j] = t.test(x[,i],x[,j], na.rm=TRUE, var.equal=T)$p.value
+    }
+  }
+  
+  # 正規性
+  for (i in 1:length(x)) {
+    print (ks.test(x[,i], "pnorm", mean=mean(x[,i],na.rm=TRUE), sd=sd(x[,i],na.rm=TRUE))$p.value)
+  }
+  
+
+  # 等分散性
+  for (i in  1:length(x)) {
+    for (j in  1:length(x)) {
+     mat[i,j] = var.test(x[,i],x[,j])$p.value
+    }
+  }
+  mat
+  
+  # t検定 母平均の差の検定 
+  for (i in  1:length(x)) {
+    for (j in  1:length(x)) {
+     mat[i,j] = t.test(x[,i],x[,j],equal=T)$p.value
+    }
+  }
+  mat
+
+  # 正規性がない場合
+  # Wilcoxonの順位和検定（Mann-WhitneyのU検定）
+  for (i in  1:length(x)) {
+    for (j in  1:length(x)) {
+     mat[i,j] = wilcox.test(x[,i],x[,j])$p.value
+    }
+  }
+  mat
+  
+#+end_src
+
+#+begin_src c
+mydata <- na.omit(mydata) # listwise deletion of missing
+mydata <- scale(mydata) # standardize variables
+lapply(1:nrow(x),function(i) sum(x[i,]))
+#+end_src
+
+
+* 項目反応理論 項目応答理論 IRT (item response theory)
+#+BEGIN_SRC R
+library(ltm)
+
+x <- # read data (each element is in {0,1}) # 0,1の間も入れると計算量が増えまくるらしい。要調査。
+
+rasch(x)
+
+# 2-parameter 
+ltm(x ~ z1)
+
+#+END_SRC
+
+#+BEGIN_SRC R
+# 3-parameter
+tpm(x)
+
+Call:
+tpm(data = y)
+
+Coefficients:
+     Gussng  Dffclt   Dscrmn
+P1    0.000  -2.214   58.621
+P2    0.281   1.351  139.180
+......
+P10   0.065   0.681  148.200
+
+Log.Lik: -368.156
+#+END_SRC
+| Gussng             | Dffclt | Dscrmn |
+| 当てずっぽうで合う | 困難度 | 識別度 |
+
+参考 [[http://www.okada.jp.org/RWiki/?R%25A4%25C7%25B9%25E0%25CC%25DC%25C8%25BF%25B1%25FE%25CD%25FD%25CF%25C0][Rで項目反応理論 - RjpWiki]]
+
+- 1 パラメタ 40人
+- 2 パラメタ 400人
+- 3 パラメタ 1000人ぐらい必要
+
+
+* KFAS
+
+#+begin_src
+install.packages("KFAS")
+library(KFAS)
+nile_train <- window(Nile, end = 1950)
+nile_train[41:60] <- NA
+
+#+end_src
+
+* packages 管理
+R.app ならメニューの「パッケージとデータ」から
+
+[[http://stackoverflow.com/questions/11488174/how-to-select-a-cran-mirror-in-r][install - How to select a CRAN mirror in R - Stack Overflow]]
+#+BEGIN_SRC R
+chooseCRANmirror()
+#+END_SRC
+
+パッケージを入れる
+#+BEGIN_SRC R
+install.packages('ltm')
+#+END_SRC
+
+パッケージを使う
+#+BEGIN_SRC R
+library(packageName)
+#+END_SRC
+
+
+* 参考
+- [[http://oku.edu.mie-u.ac.jp/~okumura/stat/][統計・データ解析]] 奥村先生のページ
+- [[http://www.obihiro.ac.jp/~masuday/resources/stat/r_t-test02.html][Rでt検定 1]]
+- [[http://www.kkaneko.com/rinkou/r/rprinc.html][R を用いた主成分分析]]
+- http://cran.r-project.org/doc/contrib/manuals-jp/Mase-Rstatman.pdf
+- [[http://monge.tec.fukuoka-u.ac.jp/R_analysis/test_t01.html][R言語で統計解析入門： 独立な２群の平均値の差に関するt検定とウェルチの方法(1)「アンスタック形式」　梶山　喜一郎]]
+- [[https://twitter.com/iznaiy_emjawak/status/1518509206868881408][performanceパッケージのcheck_model()関数]]
+  
+* 正規性の検定
+
+- 正規性の検定において Kolmogorov-Smirnov (ks) 検定といえば、正規分布の分布関数と経験分布関数の差に基づく検定統計量 (差の絶対値の上極限) を用いた検定。
+- データを階級値（多項分布）にし、そのセル確率が正規分布に基づくセル確率に近いかを適合検定統計量を用いて検定する方法もある。
+- どちらを用いられたかを明記する。
+- 正規分布に対するカイ自乗統計量での適合度検定が一般的
+- センドやワイドもおもしろい指標
+- 上記の検定は正規確率紙の判定のある意味での統計的精密化かな?
+

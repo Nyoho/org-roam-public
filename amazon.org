@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       DA129614-19D4-473D-AEA0-F2801C3EAD1F
+:END:
+Amazon
+
+Amazonで使える検索条件
+
+- OR :: |
+- NOT :: -

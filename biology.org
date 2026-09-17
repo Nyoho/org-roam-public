@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       1A5044C2-5A49-45B5-B7A8-F0B932B4DB2E
+:END:
+#+title: biology
+#+date: [2026-05-17 Sun 18:21]
+
+生物学
+
+- [[https://alphafold.ebi.ac.uk/][AlphaFold Protein Structure Database]]
+- [[https://catalog.takara-bio.co.jp/product/basic_info.php?unitid=U100003628][コドン表｜タカラバイオ株式会社]]
+- [[https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%9F%E3%83%8E%E9%85%B8][アミノ酸 - Wikipedia]]

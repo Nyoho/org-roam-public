@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       7929184A-ACD5-4DCB-853A-C0E5144E2258
+:END:
+
+
+* Oculus Go
+
+Care
+https://support.oculus.com/483957785140290/
+
+* Oculus Quest
+
+** Unity
+- [[https://qiita.com/Ichitar0/items/42efd6d153bbd175de1c][はじめてのOculus Quest 開発 with Unity - Qiita]]
+- [[https://framesynthesis.jp/tech/unity/oculusquest/][Unity＋Oculus Quest 開発メモ - フレームシンセシス]]

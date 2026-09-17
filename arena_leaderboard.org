@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       EDBB6F89-7E8C-427D-BF23-25C70D297252
+:END:
+#+title: arena-leaderboard
+#+date: [2026-07-28 Tue 15:55]
+
+機械学習・AIモデルのランキング
+
+[[https://huggingface.co/spaces/lmarena-ai/arena-leaderboard][Arena Leaderboard - a Hugging Face Space by lmarena-ai]]
+
+
+昔の記事
+[[https://www.lmsys.org/blog/2023-05-03-arena/][Chatbot Arena: Benchmarking LLMs in the Wild with Elo Ratings - LMSYS Org]]

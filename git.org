@@ -1,0 +1,338 @@
+:PROPERTIES:
+:ID:       396B95C8-F6CB-4565-9B02-E03289F0F108
+:END:
+#+title: Git
+#+tags: Git
+#+date: <2013-06-01 Sat>
+
+* 参考サイト
+- [[http://sourceforge.jp/magazine/09/03/16/0831212][Gitを使いこなすための20のコマンド]]
+- [[http://www8.atwiki.jp/git_jp/pub/Documentation.ja/user-manual.html#repositories-and-branches][Git ユーザマニュアル (バージョン 1.5.3 以降用) Chapter 1. リポジトリとブランチ]]
+- [[http://www.backlog.jp/git-guide/stepup/stepup1_3.html][ブランチの切り替え【ブランチ】 | サルでもわかるGit入門 〜バージョン管理を使いこなそう〜 | どこでもプロジェクト管理バックログ]]
+- [[http://keijinsonyaban.blogspot.jp/2010/11/git-tips.html][見えないチカラ: 【翻訳】あなたの知らないGit Tips]]
+- [[http://keijinsonyaban.blogspot.jp/2010/10/successful-git-branching-model.html][見えないチカラ: A successful Git branching model を翻訳しました]]
+
+* コマンドメモ
+- git blame filename :: 誰がそのファイルのその変更をしたのかがわかる。
+- git show :: HEAD と 'HEAD^' との差分の情報 (= ~git diff HEAD^ HEAD~)
+- git show fuga hoge :: fuga (前) と hoge(後)との差分情報
+- git merge --no-ff :: no fast-forward での merge。
+- git push kita :nyoho :: repository kita の branch nyoho が消せる。
+- git stash すると今変更していてコミットしていないファイルを一旦待避できる。stash pop で戻す。
+- git tag -a v0.0 -m 'comment for v0.0' :: コメントタグをつける
+- git rebase -i :: squash や pick や一部削除などに使う。
+- git rebase -i --rebase-merges :: rebase -i のときにマージコミットも残したいときに使う。
+- git log -p :: log とともに diff も出してくれる。
+- git checkout <branch> -- <path> :: わしは「取り寄せバッグ」と呼ぶ。branch の path を取ってくる。
+- git branch -D branch_name :: ブランチ branch_name を削除
+- git branch --delete branch_name :: マージ済みのブランチ branch_name を削除
+- git switch :: (Git 2.23から)
+- git restore :: (Git 2.23から)
+
+** git diff
+- git diff master...[ブランチ名] :: トリプルドット (ブランチがmasterからブランチした時の分岐点とのdiffを表示する。git diffのみだとmasterの最新との比較がされるため。ふたつの参照のうちどちらか一方からのみたどれるコミット (つまり、両方からたどれるコミットは含まない) を指定します） https://gist.github.com/poutyface/758790a
+- git diff master..[ブランチ名] :: ダブルドット。ブランチ名からはたどれるけれど、master からはたどれないすべてのコミット https://gist.github.com/poutyface/758790
+- git diff <branch1> <branch2> <path> :: 同じファイル path をブランチ間で比較できる
+- git diff foo bar --name-only :: ファイル名のみ diff を表示
+
+* merge vs rebase 
+本家 (=honke=) にPRを送りたいわけじゃなくて、独自にわしわしブランチ (=washiwashi=) で開発しつつ、本家の状況も取り込みたい場合は、 =rebase honke/master= じゃなくて =merge honke/master= の方がよい。
+=rebase= してしまったら =washiwashi= ブランチが =--force push= するしかなくなるからである。
+
+以下は =origin= が =honke= だとする。
+
+#+BEGIN_SRC sh
+git checkout master
+git pull origin master
+git checkout mybranch
+git merge master
+#+END_SRC
+
+または
+
+#+BEGIN_SRC sh
+git fetch origin
+git merge origin/master
+#+END_SRC
+
+* やりなおせる
+** reset
+commit 後にやり直すためによくあるのは HEAD^ に reset すること。
+|                        | commit | index    | work tree |
+|------------------------+--------+----------+-----------|
+| git reset --soft HEAD^ | 戻る   | そのまま | そのまま  |
+| git reset HEAD^        | 戻る   | 戻る     | そのまま  |
+| git reset --hard HEAD^ | 戻る   | 戻る     | 戻る      |
+
+commit 前にやり直すということは HEAD に reset すること。
+
+** git checkout [filename]
+indices と work tree を変更するもの
+指定した [filename] を index と同じものにする。
+
+git checkout HEAD^ [filename] ともできる
+
+** rebase origin する前に
+git branch old してブランチを複製しておけば reset --hard old で元に戻れる。
+
+** あまりやってはいけないかも知れない歴史改変
+参考: [[http://git-scm.com/book/ja/Git-%25E3%2581%25AE%25E3%2581%2595%25E3%2581%25BE%25E3%2581%2596%25E3%2581%25BE%25E3%2581%25AA%25E3%2583%2584%25E3%2583%25BC%25E3%2583%25AB-%25E6%25AD%25B4%25E5%258F%25B2%25E3%2581%25AE%25E6%259B%25B8%25E3%2581%258D%25E6%258F%259B%25E3%2581%2588][Git - 歴史の書き換え]]
+
+*** 日付改変
+git commit --amend では CommitDate が変わる。AuthorDate は変わらない。
+#+BEGIN_SRC sh
+git log --pretty=fuller
+#+END_SRC
+で確かめられる。
+
+次の --date では AuthorDate が指定できる。CommitDate は amend した時点になっていた。
+#+BEGIN_SRC sh
+git commit --amend --date="Wed Dec 1 00:00 2014 +0900"
+#+END_SRC
+などとする。
+
+#+BEGIN_SRC sh
+GIT_COMMITTER_DATE="Wed Dec 1 00:00 2014 +0900" git commit --amend --date="Wed Dec 1 00:00 2014 +0900"
+GIT_COMMITTER_DATE="Mon, 25 Jan 2016 19:07:58 +0900" git commit --amend --date="Mon, 25 Jan 2016 19:07:58 +0900"
+#+END_SRC
+とすれば CommitDate も改変できる。
+
+#+BEGIN_SRC sh
+export D="Tue, 26 Jan 2016 23:26:03 +0900"
+GIT_COMMITTER_DATE="${D}" git commit --amend --date="${D}"
+#+END_SRC
+rebase のときなら --committer-date-is-author-date で同じに出来る。
+
+環境変数 GIT_AUTHOR_DATE, GIT_COMMITTER_DATE を使うことも出来る。
+
+#+BEGIN_SRC sh
+git filter-branch --env-filter \
+    'if [ $GIT_COMMIT = 119f9ecf58069b265ab22f1f97d2b648faf932e0 ]
+     then
+         export GIT_AUTHOR_DATE="Fri Jan 2 21:38:53 2009 -0800"
+         export GIT_COMMITTER_DATE="Sat May 19 01:01:01 2007 -0700"
+     fi'
+#+END_SRC
+
+参考
+- [[http://stackoverflow.com/questions/454734/how-can-one-change-the-timestamp-of-an-old-commit-in-git][How can one change the timestamp of an old commit in Git? - Stack Overflow]]
+- [[http://vividcode.hatenablog.com/entry/git/author-date-and-committer-date][Git のコミットのタイムスタンプには author date と committer date の 2 種類があるという話 - ひだまりソケットは壊れない]]
+
+** reflog
+git reflog で HEAD@{1} などが出る
+これは HEAD^ ではなく、
+git commit --amend してしまったときの「さっきの」になるなど、前になる。
+
+** ORIG_HEAD
+The ogirinal head.
+
+* upstream
+** master ブランチの upstream を new-origin/master に変更
+#+BEGIN_SRC sh
+git branch --set-upstream-to=new-origin/master master
+#+END_SRC
+
+** 現在の upstream を確認する
+[[http://stackoverflow.com/questions/171550/find-out-which-remote-branch-a-local-branch-is-tracking][git - Find out which remote branch a local branch is tracking - Stack Overflow]]
+#+BEGIN_SRC sh
+git remote show origin
+#+END_SRC
+でわかる．
+Remote branch(es) に tracked がつく
+
+#+BEGIN_SRC sh
+git branch -av
+#+END_SRC
+?
+
+* Pull requests
+[[http://d.hatena.ne.jp/hnw/20110528][GitHubへpull requestする際のベストプラクティス - hnwの日記]]
+に fork したあとに元のレポジトリに追従する方法も含めて丁寧に書いてある。
+
+1. fork someone/ProjectX.git
+2. git clone git@github.com:myname/ProjectX.git
+3. in local ProjectX
+   1) git checkout -b a-branch
+   2) modifying local ProjectX
+   3) commit.
+4. fork 元の更新に追従する
+
+** GitHubの pull request をローカルにチェックアウトするには
+hub コマンドが checkout を上書きしてくれていて
+
+: hub checkout (pull requestのURL)
+
+これでいける。
+
+*** hubを使わない方法
+
+- [[https://help.github.com/articles/checking-out-pull-requests-locally/][Checking out pull requests locally - User Documentation]]
+- [[http://qiita.com/tarr1124/items/d807887418671adbc46f][Githubで特定のpull requestをローカルに持ってくる - Qiita]]
+
+#+BEGIN_SRC sh
+git fetch origin pull/ID/head:BRANCHNAME
+git checkout BRANCHNAME
+#+END_SRC
+
+- [[http://d.hatena.ne.jp/holysugar/20130129/p1][GitHub のプルリクエストを fetch しとくと便利 - HWPS別館]] これ便利
+
+remote を追加する。.git/config で設定するならば
+#+BEGIN_SRC
+[remote "pr"]
+    url = git@github.com:yourusername/yourrepos.git
+    fetch = +refs/pull/*:refs/remotes/pr/*
+#+END_SRC
+これで
+
+: git fetch pr
+: git checkout pr/1234/head -b pr1234
+
+などとできるようになる。
+
+* 削除
+** 特定のファイルを履歴も含め完全に削除
+
+#+BEGIN_SRC sh
+git filter-branch -f --index-filter 'git update-index --remove "filename"' HEAD
+#+END_SRC
+
+または
+
+#+BEGIN_SRC sh
+git filter-branch -f --index-filter 'git rm --ignore-unmatch path/hoge.sh' HEAD
+#+END_SRC
+
+最後に =git push --force= すればリモートも改変出来る。 =--force= は注意してね。
+
+参考: [[http://blog.s21g.com/articles/1592][gitリポジトリからファイルを完全に消去する方法 - Hello, world! - s21g]]
+
+** branch
+設けされたリモートのブランチを削除するには
+
+#+begin_src shell
+  git fetch --prune
+#+end_src
+
+#+begin_src shell
+  git remote prune repository_name
+#+end_src
+
+* submodule
+レポジトリを =git clone= して、その中に submodule があった場合は、
+
+: git submodule status
+
+とすると何かが表示される。
+
+: git submodule init
+
+とすると .git/config に書き込まれる。
+
+: git submodule update
+
+とすると、clone される。
+
+また、submodule の中身が clone されていないときに
+
+: git submodule update --init --recursive
+
+とやると clone される。
+
+* commit-ish, tree-ish
+参考文献
+- [[https://www.kernel.org/pub/software/scm/git/docs/#_identifier_terminology][git(1) - Identifier Terminology]] (公式)
+- [[https://www.kernel.org/pub/software/scm/git/docs/gitglossary.html][gitglossary(7)]] 公式
+- [[https://www.kernel.org/pub/software/scm/git/docs/gitrevisions.html#_specifying_revisions][gitrevisions(7)]] 公式
+- [[http://stackoverflow.com/questions/23303549/what-are-commit-ish-and-tree-ish-in-git][What are commit-ish and tree-ish in Git? - Stack Overflow]]
+- [[http://stackoverflow.com/questions/4044368/what-does-tree-ish-mean-in-git][git archive - What does tree-ish mean in Git? - Stack Overflow]]
+
+* clone --depth 1 など
+
+clone するときに ~--depth 1~ しておくと1個のコミットしか手元に持って来ない。
+重たいリポジトリをcloneするときに便利。
+
+その後やっぱり全部欲しいときは
+
+#+begin_src sh
+  git fetch --unshallow
+#+end_src
+
+#+begin_src sh
+  git pull --unshallow
+#+end_src
+
+とする。
+
+全部じゃないけど過去のコミットを少し欲しいときは次のようにする。
+
+#+begin_src shell
+  git pull --depth 100
+#+end_src
+
+* Tools
+** Emacs
+Emacs では magit など便利なものがたくさんあります。
+
+*** magit
+- M-x magit-status
+  - ファイルで s :: add
+  - ファイルで M-s :: 部分ステージ (部分的にadd)
+    - s :: リージョンを add
+    - v :: 部分的に revert
+- M-x magit-blame-mode
+
+** SourceTree
+アプリから command line tool "stree" をインストールできる。
+
+stree: カレントディレクトリを SourceTree で開く
+
+** hub command
+ローカル Git レポジトリで
+#+BEGIN_SRC sh
+hub create RepoName
+#+END_SRC
+RepoName というレポジトリを作成
+
+#+BEGIN_SRC sh
+hub pull-request
+hub pull-request -b source # when main branch is source
+#+END_SRC
+
+* Customizing
+
+#+BEGIN_SRC sh
+git config --global pager.log 'diff-highlight | less --raw-control-chars --no-init --quit-if-one-screen'
+#+END_SRC
+https://twitter.com/hkato193/status/751311970876350464
+
+* GitHub
+** Comparing
+[[https://help.github.com/articles/comparing-commits-across-time/][Comparing commits across time - User Documentation]] を読む。
+
+=/compare/<commitish1>..<commitish2>= を付加すると、 =<commitish1>= と =<commitish2>= の比較ができる。
+
+フォークのときは
+https://github.com/tootsuite/mastodon/compare/v1.4.1...Nyoho:mathtodon
+のようにアカウントの後にコロンをつけてブランチ名を書くとよい。
+
+* dry-run merge
+
+=my-branch= をマージできるかどうかマージをせずにチェックする(dry-run)には、
+
+: git merge --no-commit --no-ff my-branch
+
+とする。
+
+衝突がある場合は
+
+: git diff --cached
+
+の中に =* Unmerged path ほげほげ= という行がある。
+
+問題なければコミットする。
+
+取り消しは通常通り ~merge --abort~ を使うか ~git reset --hard HEAD~ をするなど。
+
+* Links
+- [[https://juffalow.com/other/write-good-git-commit-message][Write good git commit message | juffalow.com]]
+- [[https://kakakakakku.hatenablog.com/entry/2020/04/08/151627][git checkout の代替としてリリースされた git switch と git restore - kakakakakku blog]]

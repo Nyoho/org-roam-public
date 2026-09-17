@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       DC2FC427-F8CC-4640-9D7F-1239CDF761C9
+:END:
+#+title: travel
+#+date: [2025-07-16 Wed 10:56]
+
+旅のテクニック
+
+* 航空券
+ANAの早割
+
+[[https://www.ana.co.jp/ja/jp/domestic/theme/sv/][ANA SUPER VALUE～早割（早期割引）運賃でおトクな航空券のご予約|ANA]]
+
+
+[[https://www.airtrip.jp/][エアトリ]]
+
+- たとえば [[https://www.airtrip.jp/ticket/search?trip_way=round_trip&source=listing.adwords.airtrip.jp&ek_type=SR&search_type=3&F1Departure=HIJ&F1Destination=TKY&F1Month=7&F1Day=21&F2Month=7&F2Day=22&F2Departure=TKY&F2Destination=HIJ&valueAdultNum=1&valueChildNum=0&childNum1=&childNum2=&childNum3=&childNum4=&childNum5=&childNum6=&adult=1&F1Year=2025&F2Year=2025&ptimeout=1][広島空港 ・ 東京(羽田・成田)空港]]

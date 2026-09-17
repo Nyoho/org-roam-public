@@ -1,0 +1,159 @@
+:PROPERTIES:
+:ID:       6AECB5AF-1DA8-4788-B653-162E7AE0FA36
+:END:
+#+title: Python
+#+date: <2021-03-17 18:41:15 +0900>
+
+* venv
+作業するディレクトリで
+
+#+begin_src sh
+python -m venv venv
+. venv/bin/activate.fish
+#+end_src
+
+とする。
+
+* pyenv
+#+BEGIN_SRC sh
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+#+END_SRC
+#+BEGIN_SRC sh
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+#+END_SRC
+
+
+[[https://github.com/pyenv/pyenv/wiki/Common-build-problems#error-the-python-ssl-extension-was-not-compiled-missing-the-openssl-lib][Common build problems · pyenv/pyenv Wiki]] にopenssl11の設定があった。
+#+begin_src sh
+  CPPFLAGS="$(pkg-config --cflags openssl11)" \
+  LDFLAGS="$(pkg-config --libs openssl11)" \
+  pyenv install -v 3
+#+end_src
+
+* jupyter, ipython
+test.pyがあるとして
+ipthonで
+%run test
+とすると test.py が読まれて便利。
+
+** binding.pry みたいなことをする
+#+BEGIN_SRC python
+from IPython.core.debugger import Tracer
+Tracer()()
+#+END_SRC
+を入れる。
+
+
+* MeCab
+#+BEGIN_SRC sh
+wget https://mecab.googlecode.com/files/mecab-python-0.996.tar.gz
+pip install mecab-python-0.996.tar.gz
+#+END_SRC
+
+#+BEGIN_SRC python
+import MeCab
+t = MeCab.Tagger("-Owakati -d /usr/local/Cellar/mecab/0.996/lib/mecab/dic/mecab-unidic-neologd")
+print t.parse("サンプルテキストです。")
+#+END_SRC
+
+* 等しいことを実装する
+Python 3 ならもう =__eq__= のみ実装すればいいらしい。
+
+#+BEGIN_SRC python
+  class Hoge:
+      def __eq__(self, other):
+          """Overrides the default implementation"""
+          if isinstance(other, Hoge):
+              return self.something == other.something
+          return False
+#+END_SRC
+
+- [[https://stackoverflow.com/questions/390250/elegant-ways-to-support-equivalence-equality-in-python-classes][Elegant ways to support equivalence ("equality") in Python classes - Stack Overflow]]
+- [[https://stackoverflow.com/questions/4352244/python-should-i-implement-ne-operator-based-on-eq][comparison - Python, should I implement __ne__() operator based on __eq__? - Stack Overflow]]
+
+* debug
+: import pdb; pdb.set_trace()
+
+s, n, r, l, a, p, c
+
+
+* pip
+PyPIにpublishする
+
+: python setup.py sdist bdist_wheel upload
+
+
+** requirements.txt を生成する
+
+requirements.txt をカレントディレクトリで生成するには
+
+#+begin_src python
+  pip install pipreqs
+  pipreqs .
+#+end_src
+
+* Pipenv
+[[https://pipenv-ja.readthedocs.io/ja/translate-ja/basics.html][Pipenvの基本的な使い方 — pipenv 2018.11.27.dev0 ドキュメント]]
+
+Python version を指定する
+
+#+begin_src sh
+pipenv --python 3.7
+#+end_src
+
+#+begin_src sh
+pipenv install
+pipenv install <numpy> ...
+
+pipenv shell
+
+pipenv run ...
+#+end_src
+
+
+おかしかったら
+#+begin_src sh
+brew uninstall pipenv
+brew install pipenv
+#+end_src
+する。
+
+* pipx
+https://pipx.pypa.io/stable
+
+#+begin_src shell
+  pipx ensurepath
+  sudo pipx ensurepath --global
+#+end_src
+
+で使えるらしい。
+
+* class
+=type(オブジェクト).__name__= とするとクラスが調べられる。
+
+* tqdm
+プログレスバーを出す。
+#+begin_src python
+  from tqdm import tqdm
+  import time
+
+  for i in tqdm(range(100)):
+      time.sleep(1)
+#+end_src
+
+* Ninja
+[[https://ninja-build.org/][Ninja, a small build system with a focus on speed]]
+
+* Tips
+** 取り消し線を付ける
+
+#+begin_src python
+def striken(text):
+    return '\u0336'.join(text) + '\u0336'
+#+end_src
+
+* Links
+- [[https://chokkan.github.io/python/][Python早見帳]]
+

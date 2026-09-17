@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       FDA4C8D1-6886-4DC8-AB48-EA3C75BFDD08
+:END:
+#+title: voice creation softwares
+#+date: [2025-01-03 Fri 18:15]
+
+- [[https://utau-synth.com/][UTAU-Synth / 歌声合成ツールUTAU]]
+- [[https://voisona.com/song/][VoiSona Song]]

@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       5BF52CB2-8759-49FC-AB59-8CDD5C6A0316
+:END:
+#+title: OAuthSwift
+#+date: <2016-02-23 10:37:07>
+
+[[https://github.com/OAuthSwift/OAuthSwift][OAuthSwift/OAuthSwift: Swift based OAuth library for iOS]]
+
+* code reading
+
+func postOAuthAccessTokenWithRequestToken(success: TokenSuccessHandler, failure: FailureHandler?)
+
+self.client.post内部
+        parameters["oauth_token"] = self.client.credential.oauth_token
+        parameters["oauth_verifier"] = self.client.credential.oauth_verifier
+
+OAuth1Swift.swift の
+
+OauthSwifthClient.swiftの
+makeRequest()の中で最後に request.headers を確認したら、
+, oauth_token=\"hogehoge%253D%253D\"
+のようになっていた。
+本当は
+hogehoge%3D%3D
+
+
+verifierも。% が %25 になっている。

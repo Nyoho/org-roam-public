@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       086A6147-8856-4795-B51B-AF300F9BE5D7
+:END:
+
+* Tutorial
+まず、
+[[https://realm.io/docs/get-started/installation/mac/][Realm: Create reactive mobile apps in a fraction of the time]]
+の =Downdload the macOS bundle= からSDKやmacOS用のサーバなど一式をダウンロードする。
+
+その中で、
+#+BEGIN_SRC sh
+./start-object-server.command
+#+END_SRC
+
+するとサーバが立ち上がる。
+hoge@example.net
+ユーザを作った。
+
+=Realm Browser.app= というのも用意されていて、実際に動いているRealmのオブジェクトサーバの中のオブジェクトを見たり操作したり出来る。
+
+
+これでチュートリアルが始められる。
+iOS の ToDo アプリを作るチュートリアル [[https://realm.io/docs/tutorials/realmtasks/][Building Your First Realm Mobile Platform iOS App]]
+
+
+これはメモリに保存されているだけ
+
+7.
+ここから Realm サーバ
+
+
+* Realm Object Server を自分で立てる
+自分で立てるには macOS か Linux でやる。
+[[https://realm.io/docs/realm-object-server/][Realm: Create reactive mobile apps in a fraction of the time]]
+
+* Questions
+- 自分で立てた Realm Server は http でいいの?
+- 暗号化はどうなっているのか。
+- Realm.Configuration() の /hogehoge はどうできるのか? 権限など。
+- ウェブアプリでも使えるのか?

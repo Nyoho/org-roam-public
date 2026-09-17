@@ -1,0 +1,92 @@
+:PROPERTIES:
+:ID:       30F595E5-4ECB-4493-9769-0E5D9B8F0153
+:END:
+#+title: Logic Pro X
+#+date: <2020-10-05 23:09:50 +0900>
+
+Logic Pro X の使い方メモ
+
+* エフェクト・加工
+
+** ステレオ素材をモノラルにする。
+
+master の "Stereo Out" のeffect のところで Gain の "Convert To Mono" を追加する。
+
+** Strip Silence
+オーディオを選択 -> 右クリック -> 「オーディオリージョンから無音部分を削除」
+
+うっすら声が乗ってしまっている場合は、strip silence の下限を up。
+
+** Compression
+Audio FX -> Dynamics -> Compressor -> Mono
+
+- detection :: peak
+- threashold :: -3?
+- auto gain :: off
+- release :: 50
+- attack :: 6?
+
+** コーラス
+ボーカルのハモりに
+- Glimmering Chorus (moduration -> chorus)
+- Channel EQ で低音成分抑えめ
+- compressor
+
+** 音圧調整
+Dynamics -> Adaptive Limiter 
+
+- Out Ceiling を超えないようにしてくれる。
+- Out Ceiling を -0.1 dB ぐらいにしておく。
+- あとは好きなだけ Gain を上げる。
+- reduction は下げても -6 ぐらい?
+  
+Metering -> Loudness meter を使って LUFS を見る。
+
+** ノイズ除去
+Noise Gate を用いる方法。閾値を設定してそれより小さい音は無音化する。
+
+選択範囲を作って(上に黄色いところを作る)、メニューの
+「機能」 → 「選択範囲の処理…」(selection-based processing)
+で「チャンネルストリップの設定 (Channel Strip Setting)」を 「Noise Suppresion Expander」にする
+という方法。
+これだと音量が高い部分のノイズも除去できる。
+
+* 編集
+** 速度調整
+Varispeed [[https://support.apple.com/kb/PH13094?locale=ja_JP&viewlocale=ja_JP][Logic Pro X: Varispeedを使ってオーディオの速度とピッチを変更する]]
+LCDを「カスタム」にしておくと「コントロールバーとディスプレイをカスタマイズ」でVarispeedが選べるようになる。
+
+* Bounce
+** ループ音源を作るには
+ループ音源を作るには、バウンスのときに「リアルタイム」を選択し、「2番目のサイクルパスをバウンス」をチェックする。
+最後のリバーブがぶち切れにならずに前に戻って出てくれる。
+
+* Shortcuts
+- =,= と =.= :: 左右にちょっとカーソル移動
+- shift + f :: 後続のものを全て選択する
+- opt + left/right :: 左右にナッジ
+- x :: ミキサを表示
+
+** nudge value ナッジ値
+nudge value を tick や division や beat などにセットする
+
+編集 -> 移動 -> ナッジ
+
+* Swing
+リージョンのエディタのインスペクタでクオンタイズを ~1/8 Swing D~ などとしておいて、
+スコアエディタでクオンタイズを ~8,12~ にすると、8分音符表示のまま、演奏をスイングさせることができる。
+
+* スコアをXMLで書き出す
+
+ウインドウ -> スコアエディタを開く
+
+書き出したいリージョン（または全体）を選択。「ファイル」>「書き出す」>「スコアをMusicXMLとして...」を選択して保存。
+
+「スコアをMusicXMLとして」がグレーアウトして選択できない場合は全体のスコアを出す。
+
+* Links
+- [[https://sleepfreaks-dtm.com/category/for-beginner-logic/][Logic Proの使い方 初心者編]]
+- [[https://www.youtube.com/watch?v=wnw1kXBX1-E][Logic Pro X 初心者講座 ㉟ 音圧調整と楽曲の書き出し（Sleepfreaks DTMスクール） - YouTube]]
+- [[https://spitfireaudio.zendesk.com/hc/en-us/articles/360010393038-How-to-Load-BBCSO-Discover-in-Logic-Pro-X][How to Load BBCSO Discover in Logic Pro X – Support Centre]]
+- [[https://www.youtube.com/watch?v=qZlkDy-BTm4][無料音源だけで上手に曲を作るコツ【曲データ配布】 - YouTube]]
+- [[https://sonicwire.com/news/blog/2025/02/logic-pro-5][[Logic Pro] 内蔵機能だけ！とりあえず使うべき便利機能5選 | SONICWIRE BLOG]]

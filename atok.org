@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       7E66CC3C-F04A-4F4F-97B8-AA38B3C90F92
+:END:
+#+title: ATOK
+#+date: <2019-07-27 17:32:47>
+
+* Tips
+
+- ctrl + shift + Y :: 再変換
+- ctrl + shift + B :: ATOK文字パレット
+- ctrl + shift + G :: ATOKパレット
+- ctrl + shift + U :: ATOK環境設定
+
+* プレゼンテーションに便利な設定
+- 環境設定→「推測変換」→自動表示を「しない」にする
+
+* 間違って確定した推測変換の候補を削除するには
+間違って確定した推測変換の候補を削除するには
+
+- 変換を出してtabキーなどで選択する
+- control+shift+d (macOS) ctrl+d (Windows)
+  
+
+

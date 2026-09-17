@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       A3C45330-BB2C-48EA-8462-9078FACF33D6
+:END:
+#+title: synthesizer
+#+date: [2024-09-05 Thu 10:57]
+
+シンセサイザなど
+
+- Prophet-5
+- [[https://www.roland.com/jp/products/rc_jupiter-8/][Roland - JUPITER-8 | Software Synthesizer]]
+- [[https://www.korg.com/jp/support/download/manual/1/117/981/][05R/W]]
+

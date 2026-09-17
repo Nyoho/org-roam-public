@@ -1,0 +1,79 @@
+:PROPERTIES:
+:ID:       4E9E81FF-6453-40C3-93B9-12BA028A2B22
+:END:
+#+title: duplicity
+#+tags: duplicity backup
+#+date: <2014-05-07 Wed>
+
+duplicity でバックアップしてみよう。
+
+* 例: local へ
+=/something/somewhere/= にある =original-hoge/= 以下を
+ローカルのファイル =/tmp/fuga/hoge-backup= へ
+バックアップする場合。
+
+#+BEGIN_SRC sh
+  mkdir /tmp/fuga
+  cd /tmp/fuga
+  # duplicity コマンド実行時に GPG 鍵のパスワードを設定する。
+  duplicity /something/anything/original-hoge/ file:///tmp/fuga/hoge-backup
+#+END_SRC
+
+- ulimit がおかしいといわれたらいわれるままに ulimit -n 1024 などと設定する。
+
+リストアしてみる。
+#+BEGIN_SRC sh
+duplicity restore file:///tmp/fuga/backup restored
+#+END_SRC
+
+リストアを確かめてみる。
+#+BEGIN_SRC sh
+diff -r /something/anything/original-hoge/ restored/
+#+END_SRC
+
+* 例: S3 へ
+
+#+BEGIN_SRC sh
+pip install boto
+#+END_SRC
+
+#+BEGIN_SRC 
+export AWS_ACCESS_KEY_ID=''
+export AWS_SECRET_ACCESS_KEY=''
+export PASSPHRASE=
+#+END_SRC
+
+#+BEGIN_SRC sh
+duplicity \
+    --no-encryption \
+    --s3-use-new-style \
+    --s3-use-rrs \
+    somedirectory_to_backup \
+    s3://s3-ap-northeast-1.amazonaws.com/baketu12345
+#+END_SRC
+でローカルの somedirectory_to_backup の内容が baketu12345 という bucket にバックアップされる。
+
+** 暗号化する
+gpg が内部で使われ duplicity で暗号化してくれる。
+
+#+BEGIN_SRC sh
+export PASSPHRASE='パスフレーズ'
+#+END_SRC
+としておき、上記 duplicity のコマンドオプションから --no-encryption を外すと gpg で暗号化が行われる。
+
+
+** 速度
+*** 16GB, 暗号化, S3
+16GB を暗号化で S3 に送ってみたところ、
+
+#+BEGIN_SRC 
+29205.49 秒 (8 hours 6 minutes 45.49 seconds)
+SourceFiles 16080
+SourceFileSize 17255085064 (16.1 GB)
+#+END_SRC
+
+だった。
+つまり 576.969 KB/s だった。
+* Links
+- [[https://theholyjava.wordpress.com/2015/04/03/backup-wd-mycloud-to-s3glacier-with-duplicity-build-instructions-included/][Backup WD MyCloud to S3/Glacier with duplicity (build instructions included) « The Holy Java]]
+  - [[https://github.com/jakubholynet/blog/tree/master/miniprojects/mycloud-duplicity-backup][blog/restore.example at master · jakubholynet/blog]]

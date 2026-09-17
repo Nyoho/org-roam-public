@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       13CB032E-C5D8-49EC-B25C-2D888786AF2F
+:END:
+#+title: VST plugins
+#+date: [2026-09-08 Tue 09:41]
+
+VST plugins
+
+- [[https://www.tokyodawn.net/tdr-prism/][TDR Prism | Tokyo Dawn Records]]
+- [[https://www.bluecataudio.com/Products/Product_FreqAnalyst/][Blue Cat's FreqAnalyst - Real Time Spectrum Analysis Plug-in (VST, Audio Unit, VST3, AAX) (Freeware)]]

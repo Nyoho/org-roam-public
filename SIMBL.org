@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       FB657621-589E-49B0-A4D5-5CCFAA254BA6
+:END:
+SIMBL
+
+
+mySIMBL で "System Info" で
+Apple Mobile File Integrity (AMFI) も disabled にできる。
+
+"Load into all applications" 

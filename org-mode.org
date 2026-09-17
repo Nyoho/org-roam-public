@@ -1,0 +1,183 @@
+:PROPERTIES:
+:ID:       857680A1-050C-4F5A-B329-006358D2F739
+:END:
+#+title: org-mode
+#+tags: org-mode emacs
+#+date: <2012-12-10 Mon>
+
+[[https://orgmode.org][Org Mode]]最高ですね。
+
+* Tips
+** 計算
+
+- リージョン指定して C-+ :: 合計するだけ
+- C-c ^ :: sort
+- C-c } :: 番号表示
+- C-c = :: table
+
+** どこでもリンク
+
+リンク元の場所で =C-c l= (=org-store-link=) してから別の場所で =C-c C-l= (=org-insert-link=) するとどこでもリンクが張れるよ。
+リンク部分は =C-c C-o= でそこへ飛べる。
+
+** コード編集
+コードの部分 +BEGIN_SRC emacs-lisp の中で =C-c '= でそのモードで編集ができる。
+
+** C-c C-x \
+で UTF-8 で 10^100 など表示
+
+** C-c C-e t
+でオプションをどかっと出す。
+ 
+** timestamp 関連
+- C-c . :: timestamp
+- C-u C-c . :: timestamp
+
+- [[https://orgmode.org/manual/Creating-Timestamps.html#Creating-Timestamps][Creating Timestamps (The Org Manual)]]
+- WWDC 2013 まで <2013-05-22 Wed>--<2013-06-10 Mon> の上で =C-c C-y= で日数計算
+- <2013-01-01 Tue>--<2013-07-01 Mon> 181日
+- <2013-07-01 Mon>--<2014-01-01 Wed> 184日
+- <2014-04-01 Tue>--<2014-07-31 Wed> 184日
+
+** org-timer -- 時間付き taking notes 
+
+- C-c C-x 0 :: org-timer をスタート
+- C-c C-x . :: 現在の時間を挿入
+- C-c C-x , :: 一時停止/再開
+- C-c C-x _ :: 終了
+
+** Easy Templates
+[[http://orgmode.org/manual/Easy-Templates.html][Easy Templates - The Org Manual]]
+
+~<s~ の後に =TAB= で ~#+BEGIN_SRC ... #+END+SRC~ が展開される。
+
+カスタマイズするには ~org-structure-template-alist~ 
+
+** M-S-<RET> (org-insert-todo-heading)
+~M-S-RET~ 箇条書きだとチェックボックスが入る。
+普通のときは次の見出しが作られて =TODO= になる。
+
+** Structure, narrowing
+- C-x n s :: org-narrow-to-subtree
+- C-x n w :: widen
+
+** C-c C-l
+リンクの編集ができる。
+
+** org-lint
+lintできる。
+
+** インラインで画像を出す
+
+=C-c C-x C-v= でインライン画像表示。
+
+#+BEGIN_SRC org-mode
+[[filename.png]]
+#+END_SRC
+などと書いておいて =M-x org-display-inline-images= 
+
+設定としては、
+
+#+BEGIN_SRC emacs-lisp
+(setq org-startup-with-inline-images t)
+#+END_SRC
+
+orgファイルのヘッダに「#+STARTUP: inlineimages」を付ける。
+
+** mermaid
+
+[[https://github.com/arnm/ob-mermaid][arnm/ob-mermaid: Generate mermaid diagrams within Emacs org-mode babel]]
+
+** 見出しにしたり見出しを本文にしたり
+=C-c *=
+
+** コロンとスペースで始まる行
+A “fixed-width line” start with a colon character and a whitespace or an end of line.
+
+* ヘッダのところに書くタグ
+
+[[https://orgmode.org/manual/In_002dbuffer-settings.html#In_002dbuffer-settings][The Org Manual: In-buffer settings]] に書いてある。
+
+一般的には
+
+「#+CONSTANTS: name1=value1 name2=value2」
+
+と書く。カンマなしであることに注意。
+
+他にも heading にプロパティを付けるには ~:PROPERTIES:~ を使う。
+[[https://orgmode.org/manual/Using-Header-Arguments.html][The Org Manual: Using Header Arguments]] を見る。
+
+** 1行で書く例
+#+PROPERTY: header-args:R  :session *R*
+
+** 複数行で書く例
+  :PROPERTIES:
+  :header-args:clojure:    :session *clojure-1*
+  :header-args:R:          :session *R*
+  :END:
+
+* タグ
+
+- C-c C-q (org-set-tags-command) :: タグを(headingに)セットする。
+- C-u C-c C-q :: タグをrealignしてくれる。(右端のタグ (:hoge: たち)が ~org-tags-column~ にしたがってそろってないときにピシッとしてくれる。)
+
+* 見出し(アスタリスクで書くもの)に書くタグとプロパティ
+
+- C-c / m :: タグの検索をする
+
+* org-capture
+- entry のところの ~file+headline~ ではなく ~file~ で作ればファイルのトップレベルに項目を作れる。
+
+* org-agenda
+- [[https://maskaw.hatenablog.com/entry/2018/09/21/205910][Emacs org-agenda他を運用して１年経ったのでまとめる - メモ.org]]
+
+** org-clock
+=org-clock-in= (org-clock スタート)
+
+org-agendaのアジェンダ上で =I= 
+するかorg-modeの見出しで =C-c C-x C-i=
+
+=org-clock-out= (org-clock 終了)
+org-agendaのアジェンダ上で =O= 
+するかorg-modeの見出しで =C-c C-x C-i=
+
+- C-c C-x C-i :: org-clock-in
+- C-c C-x C-d :: org-clock-display
+- C-c C-x C-e :: org-clock-modify-effort-estimate (Set effort)
+- C-c C-x C-j :: org-clock-goto 測っているところにジャンプする
+  
+* Schedule vs deadline
+- [[https://www.reddit.com/r/emacs/comments/ffx389/org_schedule_vs_deadline/][Org schedule vs deadline : emacs]]
+
+* date
+** formats
+日付のフォーマットを変更するには、
+~(setq-default org-display-custom-times t)~ しておいて
+~org-time-stamp-custom-formats~ を変更する。
+
+参考
+- [[https://emacs.stackexchange.com/questions/15016/how-can-i-set-custom-date-formats-in-org-mode/60654][org agenda - How can I set custom date formats in org mode? - Emacs Stack Exchange]]
+
+* Org-roam
+[[id:269BD99A-EFFD-4108-B117-5D761E5BD1FD][Org-roam]]
+
+* org-jorunal
+https://github.com/bastibe/org-journal
+
+* literate documentation
+- [[https://emacsconf.org/2023/talks/doc/][EmacsConf - 2023 - talks - Literate Documentation with Emacs and Org Mode]]
+
+* org-crypt
+
+* Links
+- [[http://20seven.org/journal/2009/03/20/applescript-to-send-links-to-emacs-org-mode/][Applescript to Send Safari Url to Emacs Org-Mode - 20seven]]
+	# (const :tag "C  mac-link:          Grab links and url from various mac Applications" org-mac-link)
+- [[https://www.youtube.com/watch?v=vO_RF2dK7M0&feature=youtu.be][Using emacs 26 - Google Calendar and Org Agenda (good version) - YouTube]]
+- [[https://orgmode.org/worg/dev/org-syntax.html][Org Syntax (draft)]] 公式のたぶん網羅している文書
+- [[https://www.reddit.com/r/emacs/comments/i09ncw/discussion_using_emacsorgmode_to_manage_life/][Discussion: Using emacs/org-mode to manage life : emacs]]
+- [[https://www.youtube.com/playlist?list=PLVtKhBrRV_ZkPnBtt_TD1Cs9PJlU0IIdE][OrgMode tutorial - YouTube]] Rainer König氏のYouTubeチャネル
+- [[https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html][Orgmode for GTD]]
+- [[http://doc.norang.ca/org-mode.html][Org Mode - Organize Your Life In Plain Text!]]
+- [[https://blog.jethro.dev/posts/org_mode_workflow_preview/][Org-mode Workflow: A Preview · Jethro Kuan]]
+- [[http://ehneilsen.net/notebook/orgExamples/org-examples.html][Emacs org-mode examples and cookbook]] 豊富
+- [[https://twitter.com/orgmode_bot][@orgmode_bot (Twitter)]]

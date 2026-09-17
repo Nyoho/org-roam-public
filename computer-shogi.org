@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       2F3C8225-BB66-4346-B6BC-091377C054B0
+:END:
+#+title: コンピュータ将棋
+#+tags: 将棋
+#+date: <2018-01-22 Mon>
+
+* 思考エンジン
+** USIプロトコル
+[[http://shogidokoro.starfree.jp/enginelink.html][将棋所：USIエンジンのリンク]]にいろいろある。
+
+** やねうら王
+[[http://yaneuraou.yaneu.com/][やねうら王 公式サイト]]
+
+- [[http://yaneuraou.yaneu.com/yaneuraou_mini/][やねうら王オープンソースプロジェクト]]
+- https://github.com/yaneurao/YaneuraOu
+- [[https://book.mynavi.jp/shogi/detail/id=99063][「自然な弱さ」を実現！「将棋神 やねうら王」アップデート第２弾リリース｜将棋情報局]]
+
+** 技巧
+[[https://github.com/gikou-official/Gikou][gikou-official/Gikou: 将棋ソフト「技巧」]]
+
+#+begin_src sh
+make release
+#+end_src
+
+- [[https://qiita.com/ligerbolt/items/6e27c882838fdcc1a490][技巧をMac環境で使う - Qiita]]
+
+** Apery
+- https://github.com/HiraokaTakuya/apery
+
+** elmo
+
+elmoの評価関数が作者により[[https://twitter.com/mktakizawa/status/995591992947097600][公開されている]]。
+
+https://drive.google.com/open?id=1YOh7YSD7ggAHayJLUrEnLuvcAMBVBTnn 
+
+「やねうら王などの思考エンジンが必要となります」とのこと。
+
+** Hefeweisen
+https://www.apply.computer-shogi.org/wcsc28/appeal/Hefeweizen/appeal.pdf
+
+** その他
+- [[https://github.com/gunyarakun/python-shogi][gunyarakun/python-shogi: A pure Python shogi library with move generation and validation and handling of common formats.]]
+- [[https://github.com/gunyarakun/gunyanza][gunyarakun/gunyanza: A toy shogi AI]]
+
+* 将棋GUIソフト
+- [[http://shogidokoro.starfree.jp/][将棋GUIソフト「将棋所」のページ]]
+- [[https://www.sbrowser-q.com][将棋ぶらうざＱ]] Mac
+  - /Applications に入れること。make release
+- [[https://qiita.com/mokemokechicken/items/2d2b188a7404d8c77d6a][2020年6月時点でMacで将棋AIのGUI環境を整えるそこそこ簡単な方法 - Qiita]]
+  - [[http://shogidokoro.starfree.jp/mac/index.html][将棋所Macのページ]]
+
+* 参考リンク
+- [[https://github.com/kobanium/aoba-zero][kobanium/aoba-zero: Aoba Zero]] AlphaZeroの将棋の実験の追試
+- [[https://www.slideshare.net/HEROZ-JAPAN/ponanza-83900718][Ponanzaにおける強化学習とディープラーニングの応用]]
+- [[https://yaneuraou.yaneu.com/2021/03/29/wcsc31-strong-shogi-ai/][第31回世界コンピュータ将棋選手権は前年の優勝ソフトに9割勝つソフトがスタートライン | やねうら王 公式サイト]]

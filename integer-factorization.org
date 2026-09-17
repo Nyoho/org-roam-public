@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       E2D546B7-08F7-4CEB-AD6D-B2B52C7755B5
+:END:
+
+
+
+- NTTら、768ビット合成数を一般数体篩法にて完全分解に成功 | マイナビニュース - http://news.mynavi.jp/news/2010/01/08/055/
+- [[http://blog.livedoor.jp/dankogai/archives/51854062.html][404 Blog Not Found:Math - おまいら素因数分解どうしてますか?]]

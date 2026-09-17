@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       5E21875C-94C7-4A88-8BE2-1D57C75C9B18
+:END:
+#+title: music source separation
+#+date: [2026-06-03 Wed 13:22]
+
+音楽のトラック分離
+
+- [[https://github.com/intel/openvino-plugins-ai-audacity][intel/openvino-plugins-ai-audacity: A set of AI-enabled effects, generators, and analyzers for Audacity®.]]
+- [[https://github.com/stemdeckapp/stemdeck][stemdeckapp/stemdeck]]

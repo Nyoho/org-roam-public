@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       39152571-BC32-449F-9774-836FFFAFED90
+:END:
+#+title: Google Cloud Platform (GCP)
+#+date: <2018-06-10 15:15:30 +0900>
+
+Google Cloud Platform (GCP) だったが、もうGoogle Cloudという名前になった。
+
+* 
+* 未分類メモ
+
+#+BEGIN_SRC 
+To install or remove components at your current SDK version [200.0.0], run:
+  $ gcloud components install COMPONENT_ID
+  $ gcloud components remove COMPONENT_ID
+
+To update your SDK installation to the latest version [204.0.0], run:
+  $ gcloud components update
+#+END_SRC

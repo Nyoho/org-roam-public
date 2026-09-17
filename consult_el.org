@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       7101C9B4-0CEC-4014-AE70-DC60BC262DCA
+:END:
+#+title: consult.el
+#+date: [2022-10-31 Mon 09:59]
+#+filetags: emacs
+
+consult.el
+
+A minad-ware
+
+https://github.com/minad/consult
+
+** consult--read
+=consult--read= 関数に渡すもの
+
+=:lookup= は選択したものが渡ってくる。

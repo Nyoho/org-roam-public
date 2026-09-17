@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       717B9C97-561E-4E3F-B425-68568EB9C577
+:END:
+Padrino
+
+レンダリングに slim を、CSS には sass を使うには、
+
+#+BEGIN_SRC sh
+padrino g project sample-padrino-static-pages --renderer slim --stylesheet sass
+#+END_SRC
+
+でよい。
+
+
+#+BEGIN_SRC ruby
+  set :static, true
+  set :public_folder, 'public'
+#+END_SRC
+とすると静的ファイル配信が変更できる。
+

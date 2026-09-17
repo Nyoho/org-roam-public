@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       245667E4-C599-4487-A4D3-878E64F99D65
+:END:
+#+title: pytorch-ssd code reading
+
+https://github.com/qfgaohao/pytorch-ssd/
+
+options
+** net
+'mb2-ssd-lite' なら
+~create_net~ を ~create_mobilenetv2_ssd_lite~ を呼ぶものを代入。
+https://github.com/qfgaohao/pytorch-ssd/blob/master/train_ssd.py#L187
+
+** =--freeze_net=
+=--freeze_net= option
+
+reg grand を false に
+
+** base_net
+base_net
+-> models/
+mb2_imagenet
+71_8.pth
+
+pretrained model
+
+create_net vision/ssd/mnv2 ssd
+nn/mobilenetv2
+

@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       AE6F8997-68F0-4CDD-B362-581F10406422
+:END:
+Test driven development
+
+TDD の練習
+
+- テスト → 仮実装 → 三角測量 → 実装 
+- テスト → 仮実装 → 実装
+- テスト → 明白な実装
+
+三角測量
+

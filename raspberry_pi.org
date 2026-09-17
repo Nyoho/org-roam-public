@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       0E746357-213D-4019-B001-2AA5B75EF2A0
+:END:
+#+title: Raspberry Pi
+#+date: [2023-08-22 Tue 17:31]
+
+* キーボード配列
+
+キーボード配列がおかしいとき。パイプが打てないとか。
+
+=sudo raspi-config= で 5 localization でどうにか English (US) を選ぶ。
+
+cf. [[https://kyabe.net/blog/raspberry-pi-us-keyboard/][Raspberry PiでUSキーボード使用時のキー配置がおかしい時の対処法 | kyabe.net]]
+
+
+* 温度
+
+#+begin_src shell
+sudo vcgencmd measure_temp
+#+end_src
+

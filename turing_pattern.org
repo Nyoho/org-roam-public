@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       7BA83193-0721-478A-B94D-A664051D21C9
+:END:
+#+title: Turing pattern
+#+date: [2023-05-02 Tue 23:01]
+
+
+- [[http://www.degeneratestate.org/posts/2017/May/05/turing-patterns/][Turing Patterns]] Pythonで実装されている。
+- [[https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%BB%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3][チューリング・パターン - Wikipedia]]

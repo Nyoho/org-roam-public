@@ -1,0 +1,241 @@
+:PROPERTIES:
+:ID:       5CC05FBC-C9D4-42CF-9D42-C2FF7E1666CB
+:END:
+#+title: TeX, LaTeX
+#+tags: TeX
+#+date: <2013-12-05 Thu>
+
+* AUCTeX
+→ [[id:1F8C5F59-8E39-4D74-9B80-CCE1E4532E8D][AUCTeX]]
+
+* auto-complete-latex
+
+\usepackage{otf}
+と書いていたら、
+\ajMaru...がきくようになる。
+
+\usepackage{amsmath}
+と書いていたら \sup の候補が増える。
+
+\usepackage{color}
+と書いていたら \colorbox{Green(など)} の候補が増える。
+
+[[http://d.hatena.ne.jp/tequilasunset/20100317/p1][画像で見る AutoCompleteLaTeX - Clipboard]]
+
+* TeX Live
+** TeX Live paper size
+TeX Live paper size does not match system default と言われた。
+A4 にしてみた。
+
+** tlmgr
+
+: tlmgr info --list lm
+
+で =lm= というパッケージのファイルリストが得られる。
+
+* TeX Live 2013 で文字エンコード推測
+次の設定をやっておくと、文字エンコードが混ざった include ができるようになる。
+これまで platex コマンド起動時につけていた -kanji=sjis なども不要となる。
+
+#+BEGIN_SRC sh
+sudo nano /usr/local/texlive/texmf-local/web2c/texmf.cnf
+#+END_SRC
+
+#+begin_src
+guess_input_kanji_encoding = 1
+#+end_src
+
+参考: http://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d%3D1042
+
+* PythonTeX
+TeX Live 2013 なら
+: sudo tlmgr --self --all update
+: sudo easy_install pygments
+すると入る。
+
+* titlesec
+簡単に chapter や section などを装飾できる。
+
+Document: http://www.ctex.org/documents/packages/layout/titlesec.pdf
+
+#+BEGIN_SRC tex
+  \titleformat{⟨command ⟩}[⟨shape ⟩]{⟨format ⟩}{⟨label ⟩}{⟨sep ⟩}{⟨before ⟩}[⟨after ⟩]
+#+END_SRC
+
+* upTeX
+#+BEGIN_SRC tex
+\documentclass[uplatex]{jsarticle}
+#+END_SRC
+
+ptex2pdf は -u で upTeX モードになる。
+- [[http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?ptex2pdf][ptex2pdf - TeX Wiki]]
+
+* pdfTeX
+\pdfsavepos 現在の座標取得が出来る。あと何文字だったらページに入れるなど出来る。
+
+pdfLaTeX なら日本語がある程度使える。
+
+* XeTeX
+OS のフォントを直接使える。
+IVS 異体字選択符号も使える。(わたなべのなべ)
+
+XeLaTeX + bxjsarticle + zxjatype で日本語組版もできるようになってきた。
+
+* LuaTeX
+pdfTeX の後継
+
+Lua が使えるので、バイナリファイル解析やネットワークアクセスも出来る。
+
+* LuaTeX-ja
+優先度付きグルーがあるので'「」'の間のスペースを詰めたりするのはもっとよくやってくれる。
+
+コンパイル時間が長い。5倍かかる。
+
+縦書きが出来ないので年賀状が書けない。
+
+* 現在
+dvipdfmx のときは \usepackage[dvipdfmx]{graphicx} にちゃんとする。
+
+dvipdfmx でフォント埋め込みをするのがよい。
+
+図版埋め込みは eps じゃなくて PDF を使うのが今の常識。bbも要らない。
+eps だと毎回 ghostscript を起動することになってしまう。
+
+図版作成
+picture環境は制約が多い
+- epic.sty
+- eepic.sty / pict2e.sty: DVIware (dvipdfmxなど)でやる
+- PSTricks: PostScript を直接書ける。psを使うのでdvipdfmx は使えない。 pspicture環境
+- PGF/TikZ: 今ホット。ps使わない。dvipdfmx, luatex などだいたいいける。
+  tikz3dplot もできる
+
+* font
+** pfa
+#+BEGIN_SRC sh
+kpsewhich -progname=dvipdfmx -format=map pigpen.map
+kpsewhich pigpen.pfa
+#+END_SRC
+
+** dvipdfmx で使う漢字フォントを変更
+ヒラギノを使うようにする。
+
+#+begin_src shell
+  sudo tlmgr repository add http://contrib.texlive.info/current tlcontrib
+  sudo tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
+#+end_src
+
+↑古いかも? ↓こっちが最新かな
+
+ #+begin_src shell
+   udo tlmgr repository add htt s://mirror.ctan.org/systems/texlive/tlcontrib tlcontrib
+   sudotlmgr pinning add tlcontrib "*"
+   sudo tlmgr update --self
+   sudo tlmgr install japanese-otf-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
+   sudo cjk-gs-integrate-macos --link-texmf --fontdef-add=cjkgs-macos-highsierra.dat
+   sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
+ #+end_src
+
+: sudo kanji-config-updmap-sys hiragino-elcapitan-pron
+
+: sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
+
+小塚を使うなら
+
+: sudo kanji-config-updmap-sys --jis2004 kozuka-pr6n
+
+* TeX Live 2018
+TLContrib を追加する。[[https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=2366][forum: 2366]]
+
+#+BEGIN_SRC sh
+sudo tlmgr repository add http://contrib.texlive.info/current tlcontrib
+
+sudo tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree
+#+END_SRC
+
+その後
+: sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
+すると
+
+dvipdfmx がエラーを吐かなくなった。
+
+吐いていたエラーは、
+#+BEGIN_SRC 
+[1                                                  
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 0+555/600 --dpi 555 hminr-h
+mktexpk: don't know how to create bitmap font for hminr-h.   
+mktexpk: perhaps hminr-h is missing from the map file.
+kpathsea: Appending font creation commands to missfont.log.
+                                              
+dvipdfmx:warning: Could not locate a virtual/physical font for TFM "hminr-h".
+dvipdfmx:warning: >> There are no valid font mapping entry for this font.
+dvipdfmx:warning: >> Font file name "hminr-h" was assumed but failed to locate that font.
+dvipdfmx:fatal: Cannot proceed without .vf or "physical" font for PDF output...
+#+END_SRC
+
+* macOSでTeX
+MacTeX が簡単
+
+** macOS Mojave
+#+BEGIN_SRC sh
+sudo tlmgr update --self --all
+#+END_SRC
+
+cf. [[https://sites.google.com/view/s-yokoyama/misc/mactex?authuser=0][Shun'ichi YOKOYAMA - MacTeX]]
+
+* TikZ
+
+#+begin_src tex
+\usepackage{pgf,tikz}
+#+end_src
+
+** spy
+#+begin_src tex
+\usetikzlibrary{spy}
+#+end_src
+
+** online tools
+- [[https://www.mathcha.io/][Mathcha - Online Math Editor]]
+- [[https://tikzcd.yichuanshen.de/][tikzcd-editor]]
+
+** Links
+- [[https://tasusu.github.io/tikz.html][TikZ — Tasuku Soma's webpage]]
+
+* Beamer
+テーマをダウンロードして =~/Library/texmf/tex/latex/beamer= に入れた。
+
+* item
+カスタマイズ
+\itemsep 10mm \leftmargin =10mm
+
+* チートシート
+- [[https://wtsnjp.com/pdf/platexsheet.pdf][pLaTeX2eチートシート]]
+- [[https://ctan.org/pkg/short-math-guide][CTAN: Package short-math-guide]] American Mathematical Society のおすすめの書き方
+  
+* Tips
+** 均等割り付け
+#+BEGIN_SRC tex
+\def\fitwidth#1#2{\leavevmode{%
+  \setbox0=\hbox{#2}%
+  \ifdim\wd0>#1 \resizebox{#1}{\height}{#2}%
+  \else
+    \def\@tempa{#2}%
+    \ifx\@tempa\empty\hbox to#1{\hss}%
+    \else\relax\hbox to#1\bgroup\hfil\@fitwidth#2{}\end@fitwidth\fi
+  \fi}}
+\def\@fitwidth#1#2\end@fitwidth{\def\@tempa{#2}#1%
+  \ifx\@tempa\empty\let\next\end@fitwidth
+  \else\hfill\def\next{\@fitwidth#2\end@fitwidth}\fi
+  \next}
+\def\end@fitwidth{\hfil\egroup}
+#+END_SRC
+from [[http://www.math.nagoya-u.ac.jp/~kubo/ja/latex/tips-003.html][久保の研究室 : 和文の均等割付]]
+
+- [[http://www.math.nagoya-u.ac.jp/~kubo/ja/latex/tips-003.html][久保の研究室 : 和文の均等割付]]
+- [[http://oversleptabit.com/?p=778][TeXの記憶(95) — 文字を均等に配置したい(2) – 寝坊した]]
+- [[http://oversleptabit.com/?p=540][TeXの記憶(54) — 文字を均等に配置したい – 寝坊した]]
+- [[http://d.hatena.ne.jp/rougeref/20080220][TeXで均等割り - あるシステム管理者の日常]]
+
+** category code
+other character japanese
+書きかけ
+TeXの中での文字の種類

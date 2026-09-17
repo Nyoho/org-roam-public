@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       857707C6-81A0-451C-828E-D556DAE32A8A
+:END:
+#+title: Quicksilver
+#+date: [2022-03-29 Tue 09:24]
+
+Quicksilver
+
+https://qsapp.com
+
+長年使っているmacOSアプリ。便利。
+アプリ launcher としてはもはや Spotlight が便利になってしまったが
+hot key と large type と clipboard plugin は未だに便利。
+
+* 開発
+[[https://github.com/quicksilver/Quicksilver/][quicksilver/Quicksilver: Quicksilver Project Source]] 本体
+
+interface に QSFoundation.framework などが使われている。
+
+interface例
+[[https://github.com/quicksilver/Nostromo][quicksilver/Nostromo: The Nostromo Quicksilver interface]]
+
+* 貢献・寄付
+https://qsapp.com/donate.php

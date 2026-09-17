@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       CE01A811-01EA-4D46-83A7-84D8262E9559
+:END:
+#+title: DaVinci Resolve
+#+date: [2025-04-13 Sun 08:18]
+
+
+*  Tips
+- [[https://www.youtube.com/watch?v=MLUqmByugoY][How to get a Shine Effect in DaVinci Resolve 18 - YouTube]]
+- PremiereのQ,Wに該当するショートカット :: cmd + shift + '[', ']'
+- クリップを普通にdeleteしたらそこがそのまま空き地になるが、  shift + delete とすると、後ろが前に詰まってくれる。
+- カーソルのある位置で command + B でそのクリップをブレード
+- option + Y でそれ以降のクリップを全選択

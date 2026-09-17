@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       FEC9F221-B507-460B-8F76-BB0FB593CE15
+:END:
+CI
+
+* 比較
+** CircleCI
+CircleCIのOSSプランはmacOSが1~2個づつしか並列で起動できない。
+Docker使うジョブだけなら、Dockerイメージのキャッシュが効くCircleCI の方が速い。
+
+** Azure Pipelines
+[[https://azure.microsoft.com/ja-jp/services/devops/pipelines/][Azure Pipelines | Microsoft Azure]]
+
+Azure PipelinesのOSSプランはどのOSのジョブも10個まで並列で起動できる。
+

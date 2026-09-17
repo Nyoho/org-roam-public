@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       CC9712EF-F135-4ADA-8AEA-050772A7DB4C
+:END:
+#+title: ACE-Step
+#+date: [2026-05-13 Wed 19:53]
+
+音楽生成できる。
+
+[[https://github.com/ace-step/ACE-Step-1.5][ace-step/ACE-Step-1.5]]
+
+
+UIに [[https://github.com/fspecii/ace-step-ui][fspecii/ace-step-ui]]
+を使おうとしたら
+
+#+begin_quote
+Generation failed. Please try again.: spawn ......./ACE-Step-1.5/env/bin/python ENOENT
+#+end_quote
+
+とでた。
+のでシンボリックリンクしてみたらうまくいった。
+
+ACE-Step-1.5 を隣にclone。そこで、
+
+#+begin_src sh
+uv run acestep --port 8001 --enable-api --backend pt --server-name 127.0.0.1
+#+end_src
+
+UIは ./server と . でそれぞれ ~npm run dev~ を起動する。
+
+
+* 既存の曲のアレンジ
+1. generation mode を remix
+2. source audioをアップロード
+3. Editをチェックし、source captionとsource lyricsを入力
+4. Remix strength, cover strength (melogy retention)を調整する。
+   - conver strength は小さいと保持しない。大きいと元を保持する
+   - remix strength は小さいとクリエイティブに自由。高いとオリジナルに近くなる。

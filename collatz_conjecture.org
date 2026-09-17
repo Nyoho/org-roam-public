@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       16BF9DFB-BC26-4814-9543-5E63E8DFBF7F
+:END:
+#+title: Collatz conjecture
+#+date: [2023-03-20 Mon 09:06]
+#+filetags: math
+
+コラッツ予想
+
+Lagarias
+https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/Lagarias3-23.pdf
+
+- LagariasのQ関数
+- http://pn675.html.xdomain.jp/science.html のコラッツ予想関連の項目

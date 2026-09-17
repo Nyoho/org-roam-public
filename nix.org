@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       46569469-F43C-4ABE-A78B-F320130B7217
+:END:
+#+title: Nix
+#+date: [2023-03-07 Tue 00:05]
+
+NixOS や Nixpkgs のメモ
+
+ https://nixos.org
+
+- [[https://nixos.wiki/][NixOS Wiki]]
+- [[https://github.com/NixOS/nixpkgs][NixOS/nixpkgs: Nix Packages collection]]
+- [[https://blog.tomoyukim.net/entry/nix-shell-nodejs/][nix-shellでnodejsの切り替えを実現する]]
+
+* Emacs
+- [[https://github.com/takeokunn/nixos-configuration/tree/main/home-manager/programs/emacs][nixos-configuration/home-manager/programs/emacs at main · takeokunn/nixos-configuration]]
+
+* 暗号化
+[[https://github.com/Mic92/sops-nix][Mic92/sops-nix: Atomic secret provisioning for NixOS based on sops]]
+
+* Links
+- [[https://zenn.dev/kawarimidoll/articles/0a4ec8bab8a8ba][Homebrew管理下のCLIをNixに移してみる]]
+   

@@ -1,0 +1,246 @@
+:PROPERTIES:
+:ID:       3C45F111-0480-49D8-86D2-5D1F2F60C6C8
+:END:
+
+
+* Installation
+[[https://www.tensorflow.org/versions/r0.8/get_started/os_setup.html][Download and Setup]]
+
+#+BEGIN_SRC sh
+# pip install chainer
+
+# Mac
+pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0rc0-py2-none-any.whl
+
+# Linux, CPU
+pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
+#+END_SRC
+
+Check
+#+BEGIN_SRC python
+import tensorflow as tf
+#+END_SRC
+
+#+BEGIN_SRC sh
+python -c 'import os; import inspect; import tensorflow; print(os.path.dirname(inspect.getfile(tensorflow)))' 
+# /Users/nyoho/.pyenv/versions/2.7.11/lib/python2.7/site-packages/tensorflow
+
+# demo
+python -m tensorflow.models.image.mnist.convolutional
+#+END_SRC
+
+: python -m tensorflow.python.debug.examples.debug_mnist
+
+** virtualenvで
+#+BEGIN_SRC sh
+  # export MY_TF_DIR=/tmp/tf
+  # export MY_TF_DIR=$HOME/tf
+
+  export MY_TF_DIR=$HOME/Nyoho/tf
+  pip install --upgrade virtualenv
+  virtualenv --system-site-packages $MY_TF_DIR
+  source $MY_TF_DIR/bin/activate
+  # pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0rc0-cp27-none-linux_x86_64.whl
+  pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
+
+#+END_SRC
+
+/lib64/ld-linux-x86-64.so.2 --list ../tf/lib/python2.7/site-packages/tensorflow/python/_pywrap_tensorflow.so
+
+libstdc++ も読むようにする
+
+export LD_LIBRARY_PATH=/tmp/e/ee/libc6_2.17/lib/x86_64-linux-gnu:/tmp/e/ee/libc6_2.17/usr/lib/x86_64-linux-gnu:/tmp/e/ee/usr/lib64
+
+[[http://hoshiyama.hatenablog.com/entry/2014/11/08/160131][error while loading shared libraries: __vdso_time: invalid mode for dlopen(): Invalid argument - hoshiyamaブログDEメモ]]
+
+[[https://github.com/tensorflow/tensorflow/issues/53][Can't install on ubuntu 12.04.5 LTS · Issue #53 · tensorflow/tensorflow]]
+
+** offline and ソースから
+- bazel
+- jdk
+- numpy
+- scipy
+- Cython
+
+installer.sh を使ってみた。 [[https://bazel.build/versions/master/docs/install.html][Installing Bazel - Bazel]]
+だめか。
+
+pip downalod でダウンロードして送るのをやってみる <2017-02-27 Mon>
+
+#+BEGIN_SRC sh
+$MYGLIBDIR/libc/lib64/ld-linux-x86-64.so.2 --library-path $MYGLIBDIR/libc/lib64/:$MYGLIBDIR/libc/usr/lib64/:$LD_LIBRARY_PATH $MY_TF_DIR/bin/pythonn
+#+END_SRC
+<2017-03-07 Tue>
+(参考: [[http://qiita.com/komeda-shinji/items/93880150f85738432a59][CentOS6 で Zabbix 3.0 を動かす (力業編) - Qiita]])
+
+* GLIBC の error
+#+BEGIN_SRC
+ImportError: /lib64/libc.so.6: version `GLIBC_2.15' not found (required by /home/nyoho/.pyenv/versions/2.7.11/lib/python2.7/site-packages/tensorflow/python/_pywrap_tensorflow.so)
+#+END_SRC
+
+** temp
+#+BEGIN_SRC sh
+wget https://ftp.gnu.org/gnu/glibc/glibc-2.15.tar.xz
+tar xvf glibc-2.15.tar.xz
+cd glibc-2.15
+mkdir BUILD
+cd BUILD
+../configure --prefix=${HOME}/local
+make
+make check
+make install
+#+END_SRC
+
+#+BEGIN_SRC sh
+mkdir tflib
+cd tflib
+wget http://ftp.riken.jp/Linux/centos/7/os/x86_64/Packages/glibc-2.17-105.el7.x86_64.rpm
+rpm2cpio glibc-2.17-*.x86_64.rpm|cpio -idv
+wget http://ftp.riken.jp/Linux/centos/7/os/x86_64/Packages/libstdc++-4.8.5-4.el7.x86_64.rpm 
+rpm2cpio libstdc++-4.*.x86_64.rpm|cpio -idv
+#+END_SRC
+#+BEGIN_SRC sh
+export LC_ALL=C
+export LC_ALL=POSIX
+#+END_SRC
+
+
+#+BEGIN_SRC sh
+pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.5.0-cp27-none-linux_x86_64.whl
+cd /tmp/e
+wget http://launchpadlibrarian.net/137699828/libc6_2.17-0ubuntu5_amd64.deb
+wget http://launchpadlibrarian.net/137699829/libc6-dev_2.17-0ubuntu5_amd64.deb
+mkdir libc6_2.17
+cd libc6_2.17
+ar p ../libc6_2.17-0ubuntu5_amd64.deb data.tar.gz | tar zx
+ar p ../libc6-dev_2.17-0ubuntu5_amd64.deb data.tar.gz | tar zx
+cd -
+#LD_LIBRARY_PATH=/tmp/e/libc6_2.17/lib/x86_64-linux-gnu/ /tmp/e/libc6_2.17/lib/x86_64-linux-gnu/ld-2.17.so bin/python local/lib/python2.7/site-packages/tensorflow/models/image/mnist/convolutional.py
+
+LD_LIBRARY_PATH=/tmp/e/libc6_2.17/lib/x86_64-linux-gnu/ /tmp/e/libc6_2.17/lib/x86_64-linux-gnu/ld-2.17.so $MY_TF_DIR/bin/python $MY_TF_DIR/lib/python2.7/site-packages/tensorflow/models/image/mnist/convolutional.py
+
+#+END_SRC
+
+** <2016-05-01 Sun> 完成
+GLIBCとGLIBCXXを新しいのにする。
+#+BEGIN_SRC sh
+  export MYGLIBDIR=/tmp/e
+
+  export mkdir
+  MYGLIBDIR=$HOME/myglib -p $MYGLIBDIR
+  cd $MYGLIBDIR
+  wget \
+      ftp://ftp.riken.go.jp/Linux/centos/7/os/x86_64/Packages/glibc-2.17-157.el7.x86_64.rpm \
+      ftp://ftp.riken.go.jp/Linux/centos/7/os/x86_64/Packages/glibc-devel-2.17-157.el7.x86_64.rpm \
+      ftp://ftp.riken.go.jp/Linux/centos/7/os/x86_64/Packages/libstdc++-4.8.5-11.el7.x86_64.rpm \
+      ftp://ftp.riken.go.jp/Linux/centos/7/os/x86_64/Packages/libstdc++-devel-4.8.5-11.el7.x86_64.rpm
+  mkdir libc
+  cd libc
+  for r in ../*rpm ;do rpm2cpio $r | cpio -idmv; done
+#+END_SRC
+
+実行。
+virtualenv 環境だと、
+
+#+BEGIN_SRC sh
+LD_LIBRARY_PATH=$MYGLIBDIR/libc/lib64/:$MYGLIBDIR/libc/usr/lib64/ $MYGLIBDIR/libc/lib64/ld-2.17.so $MY_TF_DIR/bin/python $MY_TF_DIR/lib/python2.7/site-packages/tensorflow/models/image/mnist/convolutional.py
+#+END_SRC
+
+または
+
+#+BEGIN_SRC sh
+LD_LIBRARY_PATH=$MYGLIBDIR/libc/lib64/:$MYGLIBDIR/libc/usr/lib64/:$LD_LIBRARY_PATH $MYGLIBDIR/libc/lib64/ld-2.17.so $MY_TF_DIR/bin/python -m tensorflow.models.image.mnist.convolutional
+#+END_SRC
+
+これで出来た。
+
+普段の実行
+#+BEGIN_SRC sh
+export MYGLIBDIR=$HOME/myglib
+export MY_TF_DIR=$HOME/tf
+source $MY_TF_DIR/bin/activate
+
+LD_LIBRARY_PATH=$MYGLIBDIR/libc/lib64/:$MYGLIBDIR/libc/usr/lib64/ $MYGLIBDIR/libc/lib64/ld-2.17.so $MY_TF_DIR/bin/python something.py
+#+END_SRC
+
+** Trash
+#+BEGIN_SRC sh
+wget ftp://ftp.riken.go.jp/Linux/centos/6.7/os/x86_64/Packages/glibc-2.12-1.166.el6.x86_64.rpm ftp://ftp.riken.go.jp/Linux/centos/6.7/os/x86_64/Packages/glibc-devel-2.12-1.166.el6.x86_64.rpm ftp://ftp.riken.go.jp/Linux/centos/6.7/os/x86_64/Packages/libstdc++-4.4.7-16.el6.x86_64.rpm ftp://ftp.riken.go.jp/Linux/centos/6.7/os/x86_64/Packages/libstdc++-devel-4.4.7-16.el6.x86_64.rpm
+mkdir libc
+cd libc
+for r in ../*rpm ;do rpm2cpio $r | cpio -idmv; done
+#+END_SRC
+
+pyenvだと、???
+LD_LIBRARY_PATH=$MYGLIBDIR/libc/lib64/:$MYGLIBDIR/libc/usr/lib64/ $MYGLIBDIR/libc/lib64/ld-2.17.so python $PYENV_ROOT/versions/2.7.11/lib/python2.7/site-packages/tensorflow/models/image/mnist/convolutional.py
+
+* tensorflow/models/rnn/translate
+
+#+BEGIN_SRC sh
+python translate.py --data_dir data_dir --size=4 --num_layers=2
+#+END_SRC
+
+メモリが足らないので、小さいサイズのデータセットにする。(cf. [[http://stackoverflow.com/questions/34830393/suggestions-for-building-tensorflow-seq2seq-lite-model-dataset][Suggestions for building tensorflow seq2seq 'lite' model/dataset - Stack Overflow]])
+#+BEGIN_SRC sh
+  for f in giga-fren.release2.{en,fr}
+  do
+      head -10000000 $f > ../$f
+  done
+#+END_SRC
+
+* GPU
+- [[https://qiita.com/namakemono/items/12ad8a9f6d0561929056][KerasでGPUメモリの使用量を抑える方法 - Qiita]]
+
+#+BEGIN_SRC python
+config = tensorflow.ConfigProto()
+config.gpu_options.allow_growth=True
+#+END_SRC
+
+として ~.Session(config=config)~ と食わせると、GPUメモリ使用量を抑制できるようです。
+
+
+** GPUが使えるか確かめる
+#+begin_src python
+from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
+#+end_src
+
+* TensorFlow Lite
+
+[[https://medium.com/tensorflow/tensorflow-lite-now-faster-with-mobile-gpus-developer-preview-e15797e6dee7][TensorFlow Lite Now Faster with Mobile GPUs (Developer Preview)]]
+
+<2019-01-23 Wed>
+[[https://www.tensorflow.org/lite/performance/gpu][TensorFlow Lite GPU Delegate Tutorial  |  TensorFlow Lite  |  TensorFlow]]
+
+#+begin_src sh
+tensorflow/lite/tools/make/download_dependencies.sh
+tensorflow/lite/tools/make/build_ios_universal_lib.sh
+#+end_src
+
+#+begin_src sh
+cd tensorflow/lite/examples/ios
+./download_models.sh
+
+cd camera
+pod install
+open tflite_camera_example.xcworkspace/
+#+end_src
+
+* 参考文献
+
+- [[https://github.com/tensorflow/tensorflow/pull/664][Enable building with CUDA support on Mac OS X by ville-k · Pull Request #664 · tensorflow/tensorflow]]
+- [[https://github.com/tensorflow/tensorboard/blob/master/docs/r2/get_started.ipynb][tensorboardがjupyter notebookでできるように]] <2019-03-05 Tue>
+
+
+* トラブル
+
+#+begin_src sh
+export CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.0
+export CUDNN_ROOT_DIR=/usr/local/cuda-10.0
+#+end_src
+
+
+cudnnの参照場所がおかしいときに次を行った。
+#+begin_src sh
+LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
+#+end_src

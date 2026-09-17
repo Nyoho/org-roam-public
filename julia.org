@@ -1,0 +1,196 @@
+:PROPERTIES:
+:ID:       3BD2030F-C538-491B-939D-F94F92229069
+:END:
+#+title: Julia
+
+プログラミング言語 [[https://julialang.org/][Julia]]
+
+* Installation
+Homebrewだと
+#+BEGIN_SRC sh
+brew tap staticfloat/julia
+brew install julia
+#+END_SRC
+
+** IJulia (Jupyterを使うため)
+IJulia ([[https://github.com/JuliaLang/IJulia.jl][JuliaLang/IJulia.jl: Julia kernel for Jupyter]]) を入れる。
+
+juliaプロンプトで、
+
+#+BEGIN_SRC julia
+using Pkg
+Pkg.add("IJulia")
+#+END_SRC
+
+または =]= を入力して
+#+begin_src
+  add IJulia
+  build IJulia
+#+end_src
+
+古いカーネルを削除するには、
+
+#+begin_src
+~/Library/Jupyter/kernels/julia-{version_number}
+#+end_src
+
+を削除する。
+
+なんかどうしてもカーネルが入らないときがあって次を行った。
+
+#+begin_src julia
+  using IJulia
+  IJulia.installkernel("Julia")
+#+end_src
+
+** PyPlot
+#+BEGIN_SRC julia
+using Pkg
+Pkg.add("PyPlot")
+#+END_SRC
+
+** IJluia起動
+[[https://github.com/JuliaLang/IJulia.jl][IJulia]] で Jupyter notebook できる。
+
+IJuliaのインストール
+#+BEGIN_SRC julia
+using Pkg
+Pkg.add("IJulia")
+#+END_SRC
+
+起動する。
+#+BEGIN_SRC julia
+using IJulia
+notebook()
+#+END_SRC
+
+既にバックグラウンドで起動しているものがあれば、
+#+BEGIN_SRC julia
+using IJulia; notebook(detached=true)
+#+END_SRC
+
+#+BEGIN_SRC julia
+notebook(dir="somewhere")
+#+END_SRC
+すると homedir() 以外から起動するし、
+jupyter notebook が設定できていたら
+コマンドで =jupyter notebook= でカレントディレクトリから立ち上がる。
+
+うまくいかなかったら
+#+BEGIN_SRC sh
+brew rm -f openblas-julia
+brew install openblas-julia
+#+END_SRC
+と[[https://github.com/staticfloat/homebrew-julia/issues/208][する]]。
+
+* Packages
+
+** Math
+- Nemo
+- Nemo/Hecke [[https://arxiv.org/abs/1705.06134][{1705.06134} Nemo/Hecke: Computer Algebra and Number Theory Packages for the Julia Programming Language]]
+
+** Primes
+#+BEGIN_SRC julia
+using Primes
+isprime(65537)
+#+END_SRC
+
+** Deep learning
+- [[https://github.com/hshindo/Merlin.jl][Merlin.jl]]
+- [[https://github.com/pluskid/Mocha.jl][Mocha.jl]]
+- [[https://github.com/FluxML/Flux.jl][FluxML/Flux.jl]]
+
+** Graphics
+- Plots.jl
+- Gadfly.jl
+- Makie.jl
+
+** 統計
+- Distributed.jl
+
+** Pluto.jl
+https://github.com/fonsp/Pluto.jl
+Jupyter Notebook のように対話的ノートブックできるもの。
+
+* パッケージ開発
+- [[https://togotv.dbcls.jp/20220421.html][Juliaのパッケージ開発2022年版 @ Bio”Pack”athon2022#2 | TogoTV]]
+
+* Tips
+** 型
+=typeof()= で型が調べられます。
+
+** Sample
+#+NAME: sample.jl
+  #+BEGIN_SRC julia
+  n = 10
+  m = 20
+  v = zeros(n)
+  #+END_SRC
+
+#+NAME: sample.jl
+ #+BEGIN_SRC julia <switches> <header arguments>
+ n = 10
+ #+END_SRC
+
+** 函数化するだけで高速化する
+例 https://gist.github.com/genkuroki/97d623818a1ce0df0fd42dc8b74e8466
+
+** Juliaが呼ぶPythonを3にする
+: export CONDA_JL_VERSION=3
+
+** 陰関数
+pyplot で
+~contour~ の ~levels=1~
+
+https://nbviewer.jupyter.org/gist/genkuroki/fe02290178abf5f2e59f64b93306c820 
+https://twitter.com/genkuroki/status/1177217961502789633
+で知った。
+
+** Plotly.jsでぐりぐりする
+[[https://plot.ly/javascript/][plotly.js]] オープンソースグラフライブラリ
+
+- 使用例 https://nbviewer.jupyter.org/gist/genkuroki/a314f4c627a60d63a37c9fddf7bf02f7
+- 解説 https://twitter.com/genkuroki/status/1177960206820495360
+- https://juliagizmos.github.io/WebIO.jl/latest/troubleshooting/not-detected/
+
+** Julia v1.0.0 とそれ以前の違い
+https://github.com/JuliaLang/julia/blob/master/HISTORY.md#julia-v100-release-notes
+この辺を見るとよい。
+
+** Julia multi-processing
+- [[https://docs.julialang.org/en/v1/base/multi-threading/][Multi-Threading · The Julia Language]]
+- [[https://docs.julialang.org/en/v1/manual/distributed-computing/][Multi-processing and Distributed Computing · The Julia Language]]
+- [[https://qiita.com/cometscome_phys/items/f1971f8590a6d69d472b][Juliaで数値計算　その4:コードサンプル〜MPI並列計算編 - Qiita]]
+
+
+@spawnat
+@spawn
+で並列実行する
+
+** PyCall系
+
+~Sys.which("python")~ の値を ~ENV["PYTHON"]~ に突っ込む。
+
+~ENV["PYTHON"] = ""~ で default の conda に戻せる
+
+* Links
+- [[https://juliabox.com][JuliaBox]] 便利なウェブサービス。
+- [[https://juliahub.com/ui/Home][JuliaHub]] 便利なウェブサービス。
+- [[http://qiita.com/advent-calendar/2016/julialang][Julia Advent Calendar 2016 - Qiita]]
+- [[http://bicycle1885.hatenablog.com/entry/2014/12/01/050522][X分で学ぶJulia - りんごがでている]]
+- [[https://github.com/bicycle1885/Julia-Tutorial][bicycle1885/Julia-Tutorial: 高速でJuliaを学ぶ入門チュートリアル]]
+  - [[https://nbviewer.jupyter.org/github/bicycle1885/Julia-Tutorial/blob/master/Julia%25E9%25AB%2598%25E9%2580%259F%25E3%2583%2581%25E3%2583%25A5%25E3%2583%25BC%25E3%2583%2588%25E3%2583%25AA%25E3%2582%25A2%25E3%2583%25AB.ipynb][Julia高速チュートリアル.ipynb]]
+  - [[https://nbviewer.jupyter.org/github/bicycle1885/Julia-Tutorial/blob/master/Julia%25E3%2582%25AF%25E3%2583%2583%25E3%2582%25AF%25E3%2583%2596%25E3%2583%2583%25E3%2582%25AF.ipynb][Juliaクックブック.ipynb]]
+- [[https://code.i-harness.com/ja/docs/julia~1.0/manual/metaprogramming/index][Julia 1.0 | Metaprogramming | CODE Q&A 問題解決 {日本語}]]
+- [[https://qiita.com/koinori/items/bdb01ec789d5e49aed0f][{2019年2月版} Juliaが1.1になっていたので触ってみるか - Qiita]]
+- [[http://dora.bk.tsukuba.ac.jp/~takeuchi/?%25E3%2583%2597%25E3%2583%25AD%25E3%2582%25B0%25E3%2583%25A9%25E3%2583%259F%25E3%2583%25B3%25E3%2582%25B0%252Fjulia%252F%25E3%2582%25B0%25E3%2583%25A9%25E3%2583%2595%25E3%2581%25AE%25E6%259B%25B8%25E3%2581%258D%25E6%2596%25B9][プログラミング/julia/グラフの書き方 - 武内＠筑波大]]
+- [[http://heppoko-souken.hatenablog.com/entry/2018/09/01/073600][JuliaでPlotを試す/グラフの作成 - へっぽこ総合研究所]]
+- [[https://qiita.com/antimon2/items/a370ed6e91d0f2764e80][Julia のススメ 〜 Deep Learning のための Julia 〜 - Qiita]]
+- [[https://www.st-hakky-blog.com/entry/2018/02/01/100000][Julia入門 - 入門者がまず読むべき参考サイトや本のまとめ【随時更新】 - St_Hakky’s blog]]
+- [[https://docs.julialang.org/en/v1/manual/performance-tips/index.html][Performance Tips · The Julia Language]]
+- [[http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2018-7Semester-AppliedMath9/01-guide/][julia解説 and 数値計算の有限性 - Applied Mathematics 9 (2018, spring and summer semesters)]]
+- [[https://github.com/mitmath/18S096/tree/iap2017][18.S096, IAP 2017: Performance Computing in a High Level Language (mitmath/18S096)]]
+- [[https://krasjet.com/rnd.wlk/julia/][julia as a cli calculator]]
+- [[https://juliadocs.github.io/Julia-Cheat-Sheet/][The Fast Track to Julia]] (cheat sheet)
+- [[https://towardsdatascience.com/visualizing-covid-19-data-using-julia-7731a524cf49][Visualizing COVID-19 Data using Julia | by Vikas Negi | Jul, 2020 | Towards Data Science]]
+- [[https://yoyablog.com/post/deeplearning/julia-scratch/][だいたい1時間で分かるDeepLearningの仕組み by Julia | Log:Code]]

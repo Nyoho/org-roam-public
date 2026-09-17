@@ -1,0 +1,169 @@
+:PROPERTIES:
+:ID:       EE3270EC-5D8C-4DEF-AB73-AB0481714B3B
+:END:
+#+title: NGINX
+#+date: <2018-05-17 16:39:40 +0900>
+
+https://www.nginx.com
+
+* tips
+
+** リバースプロキシの前に、静的ファイルを nginx 側で返す
+/etc/nginx/sites-available/site.example.net
+
+
+#+BEGIN_SRC 
+server {
+       location ~ /diary/.*\.(css|js|jpg|gif|png) {
+               expires 7d;
+               break;
+       }
+
+
+#+END_SRC
+
+** nginx.conf 類をテストする。
+#+BEGIN_SRC sh
+nginx -t
+#+END_SRC
+
+** Perfect Forward Security (PFS)
+#+BEGIN_SRC sh
+mkdir /etc/nginx/ssl
+cd /etc/nginx/ssl
+openssl dhparam 2048 -out dhparam.pem
+#+END_SRC
+http://qiita.com/sak_2/items/ff835b669c0a7e110b09
+
+* Virtual host をさくっと設定してみる
+
+For an http site,
+
+#+BEGIN_SRC sh
+VHOSTNAME=hoge.example.net
+mkdir -p /var/www/$VHOSTNAME
+chmod -R 755 /var/www/$VHOSTNAME
+cat << EOS > /etc/nginx/sites-available/$VHOSTNAME
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/${VHOSTNAME};
+        index index.html index.htm;
+
+        server_name $VHOSTNAME;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+EOS
+ln -s /etc/nginx/sites-available/$VHOSTNAME /etc/nginx/sites-enabled/
+nginx -t
+#+END_SRC
+
+or,
+for an https site,
+
+#+BEGIN_SRC sh
+  VHOSTNAME=hoge.example.net
+  mkdir -p /var/www/$VHOSTNAME
+  chmod -R 755 /var/www/$VHOSTNAME
+  cat << EOS > /etc/nginx/sites-available/$VHOSTNAME
+  server {
+      listen 80;
+      listen [::]:80;
+      server_name ${VHOSTNAME};
+      root /var/www/${VHOSTNAME};
+      location /.well-known/acme-challenge/ { allow all; }
+      location / { return 301 https://$host$request_uri; }
+  }
+
+  server {
+          listen 443 ssl;
+
+          root /var/www/$VHOSTNAME;
+          index index.html index.htm;
+
+          ssl on;
+          ssl_certificate /etc/letsencrypt/live/${VHOSTNAME}/fullchain.pem;
+          ssl_certificate_key /etc/letsencrypt/live/${VHOSTNAME}/privkey.pem;
+
+          server_name $VHOSTNAME;
+
+          ssl_session_timeout 5m;
+
+          ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+          ssl_ciphers EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
+          ssl_prefer_server_ciphers on;
+          ssl_session_cache shared:SSL:128m;
+          ssl_dhparam /etc/nginx/dhparams.pem;
+          add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains;';
+
+          add_header X-Content-Type-Options "nosniff";
+          add_header X-Xss-Protection "1";
+
+          ssl_stapling on;
+          ssl_stapling_verify on;
+          ssl_trusted_certificate /etc/letsencrypt/live/${VHOSTNAME}/fullchain.pem;
+          resolver 8.8.8.8;
+
+          access_log /var/log/nginx/${VHOSTNAME}-access.log ltsv;
+          error_log /var/log/nginx/${VHOSTNAME}-error.log;
+  }
+  EOS
+
+  cd /etc/nginx/sites-enabled
+  ln -s /etc/nginx/sites-available/$VHOSTNAME .
+
+#+END_SRC
+
+Let's Encrypt
+
+Ubuntu 16.04なら
+#+BEGIN_SRC sh
+apt install letsencrypt
+#+END_SRC
+で入る。
+
+Using standalone
+#+BEGIN_SRC sh
+systemctl stop nginx
+certbot certonly -a standalone -w /var/www/$VHOSTNAME -d $VHOSTNAME
+systemctl start nginx
+#+END_SRC
+
+Using webroot
+#+BEGIN_SRC sh
+/usr/local/share/letsencrypt/env/bin/certbot certonly --webroot -w /var/www/$VHOSTNAME -d $VHOSTNAME
+#+END_SRC
+webrootならnginx停止がいらない。
+
+
+And then, restart nginx.
+
+#+BEGIN_SRC sh
+systemctl restart nginx
+#+END_SRC
+
+Update letsencrypt
+#+BEGIN_SRC 
+service nginx stop
+/usr/local/share/letsencrypt/env/bin/certbot certonly --standalone --renew-by-default -w /var/www/$VHOSTNAME -d $VHOSTNAME
+service nginx start
+#+END_SRC
+
+実はこれでもう renew は OK
+#+BEGIN_SRC sh
+service nginx stop && /usr/local/share/letsencrypt/env/bin/certbot renew && service nginx start
+#+END_SRC
+
+renew
+#+BEGIN_SRC sh
+service nginx stop ; /usr/local/share/letsencrypt/env/bin/certbot renew ; service nginx start
+#+END_SRC
+
+webrootならこんな感じで
+: 0 5 * * 1 /usr/local/share/letsencrypt/env/bin/certbot renew --webroot && service nginx restart > /dev/null
+
+: 0 5 * * 1 letsencrypt renew --webroot && service nginx restart > /dev/null

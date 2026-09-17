@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       C20875C2-0019-4D44-B374-8E85D3CC2E3D
+:END:
+#+title: MediaWiki
+#+date: [2022-04-19 Tue 10:52]
+
+MediaWiki
+
+memo
+
+* update
+
+#+begin_src sh
+php maintenance/update.php
+#+end_src
+
+でアップデートできる。

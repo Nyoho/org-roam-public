@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       F802000E-385A-4472-A060-DED4B3A07CAB
+:END:
+
+Django
+
+: pip install django
+
+[[https://docs.djangoproject.com/ja/2.0/][Django ドキュメント | Django documentation | Django]]
+

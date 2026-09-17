@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       5C1A4662-CFFB-4F24-8174-67D90A578674
+:END:
+C言語
+
+
+* 時刻扱い
+=timespec= 構造体は =<time.h>= にある。
+
+#+BEGIN_SRC c
+struct ts_start;
+struct ts_end;
+clock_gettime(CLOCK_MONOTONIC, &ts_start);
+/* Do something*/
+clock_gettime(CLOCK_MONOTONIC, &ts_end);
+
+time_t diff = ts_end.tv_sec - ts_start.tv_sec;
+#+END_SRC

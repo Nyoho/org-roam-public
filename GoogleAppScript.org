@@ -1,0 +1,83 @@
+:PROPERTIES:
+:ID:       F4C34B7C-044F-424A-88B2-D152C501A658
+:END:
+#+title: Google App Script 
+
+Google App Script 略して GAS。
+
+https://script.google.com
+Google Spreadsheet にいるときは「ツール」→「スクリプトエディタ」で起動 
+
+* Tips
+** 定期実行
+- 「編集」→「現在のプロジェクトのトリガー」などで定期実行ができる
+
+関数 periodicCheckReaction を時間主導型で5分おきに実行とかできる。
+
+** Script properties
+ファイル → オブジェクトのプロパティ → スクリプトのプロパティ → 行の追加
+
+これで環境変数のようなものが設定できる。API key などを登録するのに便利。
+スクリプト内からは、
+#+BEGIN_SRC javascript
+var prop = PropertiesService.getScriptProperties().getProperties();
+foo(prop.SLACK_API_TOKEN)
+#+END_SRC
+などと使える。
+
+** ライブラリを追加する
+Resources → Libraries... 
+「ライブラリを追加」に「キー」を入力。
+
+** ウェブ アプリケーションとして導入
+バージョンを上げて更新する必要がある。
+あと  Slack の Outgoing Webhooks で連携するには「全員(匿名ユーザーを含む)」を選択する。
+
+** Twitter
+
+callback を
+
+#+BEGIN_SRC 
+https://script.google.com/macros/d/{PROJECT_KEY}/usercallback
+#+END_SRC
+
+に設定。
+PROJECT_KEY のところには実は PROJECT_KEY は deprecated らしく、「スクリプト ID」(「ファイル」→オブジェクトのプロパティ→情報→スクリプトID)を記述する。
+
+* ライブラリ
+** OAuth1
+[[https://github.com/gsuitedevs/apps-script-oauth1][gsuitedevs/apps-script-oauth1: An OAuth1 library for Google Apps Script.]]
+
+* Spreadsheet
+#+BEGIN_SRC javascript
+var sheet = SpreadsheetApp.openById(prop.SPREAD_SHEET_ID).getSheetByName(prop.SHEET_NAME);
+#+END_SRC
+
+Spreadsheetに紐付けたscriptだった場合は、
+#+BEGIN_SRC javascript
+var sheetName = 'シート1';
+var ss = SpreadsheetApp.getActive().getSheetByName( sheetName );
+var row = ss.getLastRow() + 1;
+#+END_SRC
+でも取れる。
+
+* Gmailを読み書き
+
+** 送り方
+#+begin_src javascript
+function myFunctionTest() {
+  var dest = "destination@example.net";
+  var sender = "sender@example.net";
+  var senderName = "わし";
+  
+  GmailApp.sendEmail(
+    dest,
+    "これはサブジェクト",
+    "本文です。\nこれは本文ですね。ではでは。",
+    {
+      from: sender,
+      name: senderName
+    }
+  );
+}
+#+end_src

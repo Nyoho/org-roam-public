@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       62E6163D-55C4-49BB-9B44-6E3DECF54D5C
+:END:
+#+title: The Rubik's Cube
+#+date: <2020-07-11 16:03:59 +0900>
+
+* 基本
+- https://www.pazru.net/rubic
+- [[http://www.macozy.com/rubik/3rc/step1.html][ステップ１．１面とその側面１段目まで揃えよう！]]
+- https://www.pazru.net/rubic/2.htm
+- [[http://www.macozy.com/rubik/3rc/step4.html#td][ステップ４．上面を揃えよう！]] 
+- [[https://www.youtube.com/watch?v=QysdvUVL_e0][【マジで出来る！】超かんたん６面完成手順「第７段階目」【ルービックキューブ】 - YouTube]]
+- [[https://cubevoyage.net/how-to-solve/intermediate/correct-solving-style/][正しい持ち方、回し方を身につけよう！ | Cube Voyage]]
+
+* スピードキューブ
+解法 CFOP, 簡易LBL
+
+- [[http://tribox.com/3x3x3/solution/easy/][初めてのルービックキューブ | tribox]]
+- [[https://cubevoyage.net/how-to-solve/][ルービックキューブのそろえ方 | Cube Voyage]]
+- [[https://cubevoyage.net/how-to-solve/advice/advice-for-person-who-solves-60-seconds/][60秒が切れない人へのアドバイス 　－ルービックキューブは誰でも１分以内に揃えられる！－ | Cube Voyage]]
+- [[https://cubevoyage.net/how-to-solve/intermediate/][中級編 | Cube Voyage]]
+- [[https://cubenavi.com/category/3x3x3/easy-lbl/][簡易LBL アーカイブ - cubenavi キューブナビ]]
+- [[https://www.youtube.com/watch?v=cEtg0IMPVQs][【初心者必見】４つの基本テクニックで劇的スピードアップ！ルービックキューブを速く揃える方法 - YouTube]]
+  - 2 look OLL, 2look PLL, D面クロス, AUF
+  
+** F2L
+- [[https://cubevoyage.net/how-to-solve/advanced/f2l-theory/][F2Lの手順は覚えなくていい！？ | Cube Voyage]]
+- [[https://www.youtube.com/watch?v=vrzP_eU5Jzw&t=197s][【ルービックキューブ】カンタンなF2Lのやり方(２列目までを早く揃える方法) - YouTube]]
+- [[https://www.youtube.com/watch?v=3hgo3gcyXhI][【ルービックキューブF2L】絶対わかるF2L！Feliks氏のF2Lベーシックから学んだ① - YouTube]]
+- http://algdb.net/puzzle/333
+
+** D面クロス
+- [[https://cubevoyage.net/how-to-solve/advanced/cross-tips/][クロスの素早い作り方 | Cube Voyage]]
+- [[https://www.youtube.com/watch?v=tgTluFBod9M][【D面クロス】正しい順番で学習しよう！段階別にD面クロス（下クロス）を解説します！ - YouTube]]
+
+* 動画
+- [[https://www.youtube.com/watch?v=0Bg5CGThSDQ][【ルービックキューブそろえ方！】初中級者が簡単に1分30秒で６面完成|とりあえず揃えられれば大丈夫！ - YouTube]]

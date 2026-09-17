@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       5FDEF5E5-C4E0-44D1-96B0-53374BD16E6B
+:END:
+
+Unicorn
+[[http://unicorn.bogomips.org/][Unicorn: Rack HTTP server for fast clients and Unix]]
+
+* production モードで起動する
+bundle exec unicorn -c unicorn.rb -D -E production
+
+* プロセスの再起動方法
+USR2 シグナルで新しいプロセス立ち上げ。(古いのはまだ生きている)
+#+BEGIN_SRC sh
+kill -USR2 `cat /tmp/unicorn.pid`
+#+END_SRC
+
+
+その後古い方に WINCH シグナルを送る。
+#+BEGIN_SRC sh
+kill -WINCH `cat /tmp/unicorn.pid.oldbin`
+#+END_SRC

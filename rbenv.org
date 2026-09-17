@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       EA502D70-14BC-4F34-B137-60F6451F4662
+:END:
+rbenv 
+構築
+
+rbenv and ruby-build
+#+BEGIN_SRC sh
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+#+END_SRC
+
+
+~/.rbenv/versions/3.3.2/openssl/ssl/cert.pem が /usr/ssl/cert.pem へのリンクになっているが、 /usr/ssl/cert.pem がないことがあった。
+次のようにした。
+#+begin_src sh
+ln -s /var/lib/ca-certificates/ca-bundle.pem ~/.rbenv/versions/3.3.2/openssl/ssl/cert.pem
+#+end_src
+
+これでいいのかな。

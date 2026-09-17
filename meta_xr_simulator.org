@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       2AAA6D63-CDDE-4FEE-8FE1-65A383955431
+:END:
+#+title: Meta XR simulator
+#+date: [2024-07-19 Fri 01:05]
+
+Meta XR Simulator というのが出たらしい
+
+[[https://developer.oculus.com/blog/meta-xr-simulator-pc-mac-unity-unreal-developer-mixed-reality/][Accelerate Development and Automate Testing for VR/MR with Meta XR Simulator]]
+
+[[https://developer.oculus.com/documentation/unity/tools-meta-xr-sim/?locale=ja_JP][Meta XRシミュレーターを使ってUnity OpenXR開発のイテレーションの速度を上げる | Oculus開発者]]
+
+macOSには Meta XR Simulator を [[https://developer.oculus.com/documentation/unity/xrsim-getting-started/][Unity Package ManagerじゃなくてHomebrewでインストールすべき]]と書かれている。
+
+
+#+begin_src sh
+sudo /opt/homebrew/Cellar/meta-xr-simulator/66.0.0/post_installation_macos.sh
+#+end_src
+
+#+begin_src sh
+/opt/homebrew/Cellar/meta-xr-simulator/66.0.0/synth_env_server/LaunchLivingRoom.sh
+#+end_src

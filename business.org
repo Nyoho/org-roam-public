@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       9FF56DE4-CD5E-4261-BDFD-A41B95CA5F5F
+:END:
+#+title: ビジネス系のノウハウ
+#+date: <2020-11-11 11:16:49 +0900>
+
+ビジネス系のノウハウ
+
+* Interviews
+- [[https://resource.foundx.jp/interview/][スタートアップの顧客インタビューのやり方（厳選記事） - FoundX Startup Resources]]
+  - 課題探索インタビューに使える質問集
+  - ソリューション検証インタビューに使える質問集
+- [[https://review.foundx.jp/entry/how-to-talk-to-users][ユーザーインタビューの基本（Startup School 2019 #02） - FoundX Review - 起業家とスタートアップのためのノウハウ情報]]
+- [[https://www.slideshare.net/takaumada/lean-customer-development-lean-startup-update-2015][人間と話す: Lean Customer Development (Lean Startup Update 2015)]]
+- [[https://u-site.jp/alertbox/user-interviews][ユーザーインタビュー： 実施の理由・方法・タイミング – U-Site]]
+
+* 戦略の階層
+[[http://www.realist.jp/strata3/][戦略の階層 3.0]] (the hierarchy of strategy)
+
+1. 世界観 vision
+2. 政策 policy
+3. 大戦略 grand strategy
+4. 軍事戦略 military strategy
+5. 作戦 operation
+6. 戦術 tactics
+7. 技術 technology
+
+今どこのレベルの議論をしているのか、アイディアなのかを考えながらビジネスを考えることがとても重要。とても便利。
+   

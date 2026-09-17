@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       46AE1FD8-1578-44D0-9D7A-96A1766E7CE7
+:END:
+#+title: symplectic variety
+#+date: [2024-06-16 Sun 23:43]
+
+シンプレクティック多様体
+
+ノート
+
+- [[https://pseudoholomorphic.fpark.tmu.ac.jp/introduction_to_symplectic_manifolds_20230115.pdf][シンプレクティック多様体の基礎 (PDF)]] 赤穂まなぶ先生
+- [[https://yhomma.w.waseda.jp/homma2/download/symplectic-intro.pdf][シンプレクティック幾何入門 (PDF)]] 本間先生

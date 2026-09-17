@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       EEACDBC6-60A0-4F2E-A461-B54F30AA069E
+:END:
+#+title: 和算
+#+date: [2022-07-30 Sat 19:01]
+
+和算のメモ
+Japanese mathematics
+
+* 和算というか大きい数、小さい数の呼び方
+- [[http://anchor.main.jp/ookazukokazu.htm][大きな数と小さな数]]

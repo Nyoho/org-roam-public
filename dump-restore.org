@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID:       84537D2A-D0A3-45DB-9F3E-5AADC20A1EAE
+:END:
+#+begin_html
+---
+title: dump でバックアップ restore で復元
+tags: dump, restore, backup
+date: <2013-04-13 Sat>
+---
+#+end_html
+* dump, restore
+Mac OS X は Time Machine で超簡単ど素人でも簡単に完全にすべてをバックアップできます。
+
+ここでは Linux で自分が使うのを目的として UNIX の伝統的な dump, restore によるバックアップをメモります。
+
+** /dev/sdb1 を filename というファイルに丸ごとバックアップするとき
+#+begin_src sh
+dump -0uf filename /dev/sdb1
+#+end_src
+
+0 がレベル。
+0やったあとは 1 にするとインクリメンタル。以後 9 までインクリメンタルに差分バックアップできる。
+
+restore で戻すときはその逆をたどる。
+
+それから数が前回より小さいものを使うと、戻った数までは無効でそっからの差分となる。
+
+適当に時間がたったらレベル0のバックアップをしよう。
+
+** 除外することもできる
+#+begin_src sh
+chattr -R +d /home/suteaccount
+#+end_src
+除外されたか確認
+#+begin_src sh
+lsattr /home/suteaccount
+#+end_src
+
+** restore
+フォーマットした /dev/sda1 を /h にマウントして、そこへ /s/a.dump をリストアする。
+#+BEGIN_SRC sh
+mkdir /h
+mount -t ext4 /dev/sda1 /h
+cd /h
+restore -r -T /s/tmp -f /s/a.dump
+#+END_SRC
+
+* 参考 URL
+http://www.linux.or.jp/JF/JFdocs/dump-restore-mini-HOWTO.html
+
+* restoreで一部のファイルだけ取り出す
+** 直接
+#+begin_src sh
+restore -xf dumpfile ./toridashitai-file-no-path
+#+end_src
+
+** 対話的
+#+begin_src sh
+restore -if dumpfile
+#+end_src
+
+** 取り出すときのメッセージ
+#+begin_src
+You have not read any volumes yet.
+Unless you know which volume your file(s) are on you should start
+with the last volume and work towards the first.
+Specify next volume # (none if no more volumes): 
+#+end_src
+と言われたらおもむろに 1
+
+#+begin_src
+set owner/mode for '.'? [yn] 
+#+end_src
+
+と言われたらおもむろに y (元のowner/modeにセットする)
+
+** -t アーカイブに入っているファイルのリストを表示する。
+#+BEGIN_SRC sh
+restore -t -f dumped_file
+#+END_SRC

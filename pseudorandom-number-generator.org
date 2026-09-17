@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       B39C63D0-429E-435C-A317-BF7889E6CB30
+:END:
+#+title: pseudorandom number generator
+#+date: <2019-05-02 10:02:40 +0900>
+
+- [[https://v8.dev/blog/math-random][There’s Math.random(), and then there’s Math.random() · V8]]
+- [[http://erlang.org/doc/man/rand.html][Erlang -- rand]]
+- [[https://prng.di.unimi.it/][xoshiro/xoroshiro generators and the PRNG shootout]]
+
+NumPyにはpcgが実装されている。
+[[https://numpy.org/doc/2.0/reference/random/bit_generators/pcg64.html][Permuted congruential generator (64-bit, PCG64) — NumPy v2.0 Manual]]
+
+Xorshift128+ (Vigna) がGoogleの[[id:1483740E-6D10-4B67-A229-A6005728CE7A][JavaScript]]エンジンに使われている。
+
+(a,b,c)=(23, 17, 26)
+
+

@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       95FB6558-2BAE-476C-9CAA-E10B1DC064E1
+:END:
+#+title: MySQL
+#+date: <2016-07-25 19:42:14 +0900>
+
+* mysql root password 忘れた
+
+#+BEGIN_SRC sh
+systemctl stop mysql  
+mysqld_safe --skip-grant-tables &
+mysql -u root
+#+END_SRC
+
+#+BEGIN_SRC mysql
+use mysql;
+update user set password=PASSWORD("newpassword1234567890") where User='root';
+flush privileges;
+#+END_SRC
+
+
+* 外部ホストからの接続を許可する
+#+BEGIN_SRC mysql
+select user,host from mysql.user;
+grant select,insert,update,delete on dbname.* to dbusername"192.168.0.5" identified by 'password';
+flush privileges;
+#+END_SRC
+
+
+* ツール
+- [[https://www.mysql.com/jp/products/workbench/][MySQL Workbench]]

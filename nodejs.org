@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       A3EC12CA-2B42-4272-BF2B-57F416A7A766
+:END:
+
+
+* npm
+** package.json
+package.json がある状態で
+#+BEGIN_SRC sh
+npm install
+#+END_SRC
+
+** npm-check-updates
+
+Install ~ncu~.
+#+begin_src sh
+npm install -g npm-check-updates
+#+end_src
+
+#+begin_src sh
+ncu
+#+end_src
+
+* Yeoman
+#+BEGIN_SRC sh
+gem install compass
+
+npm install -g bower grunt-cli yo
+#+END_SRC
+
+#+BEGIN_SRC sh
+  mkdir yoSample
+  cd yoSample
+  yo
+#+END_SRC
+
+いろいろ自動でいくようになっていた <2013-12-31 Tue>.
+
+#+BEGIN_SRC sh
+grunt server
+#+END_SRC
+
+* bower
+npm install -g bower
+
+* Ruby との比較表
+** bower
+bundler
+
+** Grunt, gulp
+middleman のようなもの
+
+** npm install
+package.json を書いておいて npm install。
+Gemfile を書いておいて bundle install をするようなもの。
+bower install hoge もできる。

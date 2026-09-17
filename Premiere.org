@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       27E6158F-FC39-4928-A5EC-F0DEE072DAED
+:END:
+#+title: Adobe Premiere
+
+* 便利ショートカット
+From [[https://helpx.adobe.com/jp/premiere-pro/using/default-keyboard-shortcuts-cc.html][Premiere Prof CC のプリセットおよびカスタマイズ可能なキーボードショートカット]]
+
+- Q :: 前を削除して詰める
+- W :: 後ろを削除して詰める
+- V :: 矢印ツールに
+- C :: カミソリツールに
+
+実験中
+- T :: トリミング
+- R :: 巻き戻し
+- F :: マッチフレーム
+- Shift + R :: 逆マッチフレーム
+- cmd + K :: 編集点を作る
+
+- cmd + クリップをdrag :: 移動後が上書きされずに挿入される
+- cmd + opt + K :: キーボードショートカット
+
+* タイトル
+CC 2017ぐらいかそのぐらいで、legacyなtitleからPremiere Pro のエッセンシャルグラフィックスパネルにかわった。ただしlegacyのも残っている。
+
+- [[https://helpx.adobe.com/jp/premiere-pro/using/essential-graphics-panel.html][Premiere Pro のグラフィックワークスペースを使用してタイトルとモーショングラフィックスを作成します。]]
+- [[https://www.youtube.com/watch?v=GJ9VNJ61F84][Text Reveal Effect TITLE in Premiere Pro Tutorial - YouTube]]
+
+* 字幕
+Adobe SenseiによるSpeech to Text
+- [[https://www.youtube.com/watch?v=SJKoTXjvGGQ][Speech to Text in Premiere Pro - YouTube]]
+
+* 参考
+- [[https://helpx.adobe.com/jp/premiere-pro/using/trimming-clips1.html][Adobe Premiere Pro CC でのクリップのトリミング]]

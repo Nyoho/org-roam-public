@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       3B6B30B5-2B8D-4D96-93C2-FD0CB1E2788E
+:END:
+#+title: tailwindcss
+#+date: [2022-04-01 Fri 19:56]
+
+Tailwind CSS
+
+公式サイト https://tailwindcss.com
+
+* UI Components
+tailwindcssを用いたUIパーツたち
+
+- [[https://flowrift.com/c/banner][Flowrift - Banner]]
+- [[https://tailblocks.cc/][Tailblocks — Ready-to-use Tailwind CSS blocks]]
+- [[https://www.tailwind-kit.com/components][Tailwind UI KIT – Components section for React, VueJS and Angular.]]
+- [[https://kitwind.io/products/kometa/components/][Kitwind | Kometa UI Kit]]
+- [[https://merakiui.com/components/][Meraki UI Tailwind CSS Components]]
+- [[https://flyonui.com/][FlyonUI]]
+
+* Links
+- [[https://coliss.com/articles/build-websites/operation/css/modern-ui-component-library-for-tailwind-css.html][ブックマークしておくと便利！ Tailwind CSSで実装された最新のUIコンポーネントライブラリ -Sailboat UI | コリス]]

@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       AE4533FF-0C34-4957-9CA2-7ABC69DC583A
+:END:
+#+title: Next.js
+#+date: [2022-04-01 Fri 00:39]
+
+
+Next.js
+
+https://nextjs.org
+
+* 最初
+
+#+begin_src sh
+npx create-next-app@latest --ts
+#+end_src
+
+または
+
+#+begin_src sh
+yarn create next-app pipe-client --typescript
+#+end_src
+

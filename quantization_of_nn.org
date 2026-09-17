@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       BE5F8655-3AA5-4608-9A3B-B8FEFFD650A3
+:END:
+#+title: Quantization of neural networks
+#+tags: neural network machine learning
+
+ニューラルネットワークの量子化
+
+- [[https://developer.smartnews.com/blog/2017/03/neural-network-quantization/][ニューラルネットワークの量子化についての最近の研究の進展と、その重要性 - SmartNews Engineering Blog]]

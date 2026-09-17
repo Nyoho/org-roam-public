@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       A1439BF8-F78B-4AB1-993C-6C60EE7C1C2C
+:END:
+#+title: cad
+#+date: [2024-05-28 Tue 17:30]
+
+CADアプリ
+- [[https://www.tinkercad.com/][Tinkercad]] ブラウザベース。3Dデザインだけでなく、電子工作の設計もできる。
+   

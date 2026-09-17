@@ -1,0 +1,16 @@
+#+title: MicroPython
+#+date: <2021-08-15 Sun>
+
+- https://www.raspberrypi.org/documentation/rp2040/getting-started/#getting-started-with-micropython から UF2 ファイルをダウンロードして書き込み
+- https://datasheets.raspberrypi.org/pico/pico-datasheet.pdf
+- [[https://micropython-docs-ja.readthedocs.io/][MicroPython document]]
+- https://micropython-docs-ja.readthedocs.io/ja/latest/library/math.html
+- https://github.com/micropython/micropython
+- [[https://github.com/jczic/MicroMLP][jczic/MicroMLP: A micro neural network multilayer perceptron for MicroPython (used on ESP32 and Pycom modules)]]
+
+* CircuitPython
+https://circuitpython.org
+
+MicroPythonの亜種
+
+- [[https://akkiesoft.hatenablog.jp/entry/20210523/1621778666][RP2040とCircuitPythonでマクロキーボード（ボードではない）を雑につくる - あっきぃ日誌]]

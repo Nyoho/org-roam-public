@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       5066610E-4F60-4344-95D5-649F68244D2F
+:END:
+#+title: ゼロ知識証明 (zero knowledge proof)
+#+date: [2022-05-01 Sun 16:47]
+
+* zk-SNARKs, zk-STARKs
+- [[https://zenn.dev/kyosuke/articles/a1854b9be26c01df13eb][zk-SNARKsの理論]]
+- [[https://scrapbox.io/layerx/zk-SNARKs%E3%81%A8zk-STARKs%E3%81%AE%E6%AF%94%E8%BC%83][zk-SNARKsとzk-STARKsの比較 - LayerX Research]]
+  

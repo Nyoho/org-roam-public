@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       434B6CA7-4E1B-44BA-B6FD-F854746BD411
+:END:
+#+title: telugu
+#+date: [2023-01-24 Tue 19:44]
+
+テルグ語 Telugu
+
+* 文字
+
+- [[https://omniglot.com/writing/telugu.htm][Telugu alphabet, pronunciation and language]]
+- [[https://ja.wikipedia.org/wiki/%E3%83%86%E3%83%AB%E3%82%B0%E6%96%87%E5%AD%97][テルグ文字 - Wikipedia]]
+
+** 動画
+- [[https://www.youtube.com/watch?v=BOmDK-Bgyhg][Learn Telugu Varnamala | Learn Telugu Alphabets | Telugu Aksharamala | Varna TV | Telugu Aksharalu - YouTube]]
+- [[https://www.youtube.com/watch?v=90xqXzXvPXw][Learn Hallulu | Learn Telugu Varnamala | Telugu Aksharamala | Learn Telugu Alphabets | Varna TV - YouTube]]
+- ka [[https://www.youtube.com/watch?v=ojiXcx0-Fho][క గుణింతము | Learn Ka Gunintham in Telugu | Guninthalu in Telugu |How to write Telugu Ka gunintham - YouTube]] 子音の組み合わせ
+- ca gunintham [[https://www.youtube.com/watch?v=cMTGBhQOkIY][Telugu Guninthalu in English | How to write Ca gunintham | చ గుణింతం | Learn #guninthalu in English - YouTube]]
+- [[https://www.youtube.com/watch?v=N3kHs8YAZHw]["The Story of Telugu: India’s Classical Jewel Under Threat?" - YouTube]]

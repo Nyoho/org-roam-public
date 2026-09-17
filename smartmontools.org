@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       5EA6B4CA-2597-4956-9D68-F87D7173F422
+:END:
+#+title: smartmontools
+#+date: [2024-05-01 Wed 19:41]
+
+S.M.A.R.Tの情報を取るツール
+
+
+
+shortのテストを開始する。2分ぐらいかかる。
+#+begin_src 
+smartctl -t short /dev/sda
+#+end_src
+
+結果を見る。
+
+#+begin_src 
+smartctl -a /dev/sda
+#+end_src
+
+* Links
+- [[https://ja.wikipedia.org/wiki/Self-Monitoring,_Analysis_and_Reporting_Technology][Self-Monitoring, Analysis and Reporting Technology - Wikipedia]]

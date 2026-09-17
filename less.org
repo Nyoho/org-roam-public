@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       6F3FB58A-9131-4781-82C5-FA1D6FF191F7
+:END:
+
+
+
+export LESS='-g -i -M -R -S -W -z-4 -x4'

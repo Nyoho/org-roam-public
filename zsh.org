@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       4CE0A394-33A2-4A81-B057-258759B7C88E
+:END:
+#+begin_html
+---
+title: zsh
+tags: zsh
+date: <2013-08-15 Thu>
+---
+#+end_html
+
+* 便利ツールズ
+** zaw
+#+begin_src sh
+  cd
+  mkdir .zsh
+  cd .zsh
+  git clone https://github.com/zsh-users/zaw.git
+#+end_src

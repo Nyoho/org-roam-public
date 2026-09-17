@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       434360C9-B984-40E4-9A0D-910D0D715948
+:END:
+#+title: Core Data
+#+tags: CoreData
+#+date: <2016-01-29 Fri>
+
+#+BEGIN_SRC swift
+managedObjectContext.performBlock {
+ let createRequest = NSFetchRequest(entityName: "Recipe")
+  createRequest.resultType = ManagedObjectIDResultType
+  let predicate = NSPredicate(format: "source = %@ AND externalID = %@", source,externalID)
+  let results = self.managedObjectContext.executeFetchRequest(createRequest)
+  if (results.count) {
+      //update it!
+  } else {
+      //create it!
+  }
+}
+#+END_SRC
+
+NSBatchUpdateRequest
+
+* NSPredicate
+#+BEGIN_SRC 
+"uniqueid = %@", hogeID // unique id
+"name contains[c] %@", string // case insensitive
+"date > %@", NSDateNoSomething // compare
+"hoge.name = %@", nameString
+"any obj.title contains %@", string
+#+END_SRC
+
+#+BEGIN_SRC swift
+moc.performBlock {
+}
+#+END_SRC
+
+* Links
+- [[https://qiita.com/da1ssk/items/3b1b9c11106717a5a935][Core DataをSwift 4で使う (iOS 10以降) - Qiita]]
+- [[https://remotestance.com/blog/71/][CoreDataのRelationshipに設定できるDelete Ruleについて | Code & Business]]
+- [[http://niwatako.hatenablog.jp/entry/2019/03/22/172929][Core Dataを守るために | try! Swift Tokyo 2019 2-15 - niwatakoのはてなブログ]]
+- [[https://www.youtube.com/watch?v=w7tFF7IfKVk][Effective Core Data with Swift - YouTube]]

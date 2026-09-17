@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       8B505ED7-05CE-49AA-93DB-E9DA7ECE3C8A
+:END:
+#+title: DNS server の設定メモ
+#+date: <2015-01-22 21:56:13>
+DNS server の設定メモ
+
+* openSUSE の場合
+: yast dns-server
+
+(Network Services -> DNS Server)
+
+Zone を hoge.example.net にして
+#+begin_src 
+aaa.hoge.example.net ipaddr
+bbb.hoge.example.net ipaddr
+#+end_src
+などをAレコードに追加などとする。
+
+Zoneの名前があってないと無視される
+例: ignoring out-of-zone data (www.sugoilocalnet) 
+
+
+=/var/lib/named/master/= にファイルができる。
+=/etc/named.conf= から zone で参照される。

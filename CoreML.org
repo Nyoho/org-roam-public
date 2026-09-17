@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       C0932B41-751A-41F7-A0D9-08CE43127698
+:END:
+#+title: CoreML
+#+date: <2020-04-21 16:39:02 +0900>
+
+* 変換
+PyTorch から ONNX にして CoreMLにする。
+
+cf. [[https://qiita.com/yason0319/items/0fe74b987f0637f3cf54][PyTorchで生成した姓名分類モデルをiOSアプリ(swift4)上で利用するまで - Qiita]]
+
+* Links
+- [[https://developer.apple.com/machine-learning/models/][Machine Learning - Models - Apple Developer]]
+- [[https://github.com/vonholst/SSDMobileNet_CoreML][vonholst/SSDMobileNet_CoreML: Real-time object-detection using SSD on Mobilenet on iOS using CoreML, exported using tf-coreml]]
+- [[https://github.com/hollance/coreml-survival-guide][hollance/coreml-survival-guide]] MobileNetV2+SSDLite のサンプルコード
+- [[https://takawang.medium.com/execute-yolov7-model-on-ios-devices-bd9713834ad0][Run YOLOv7 model on iOS devices. Real-time object detection with CoreML… | by Taka Wang | Medium]]
+- [[https://github.com/tucan9389/ObjectDetection-CoreML][tucan9389/ObjectDetection-CoreML: An example running Object Detection using Core ML]]

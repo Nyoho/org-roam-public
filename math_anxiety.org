@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       C3163197-839D-4536-9208-26C756C1CB5E
+:END:
+#+title: math anxiety
+#+date: [2026-05-01 Fri 23:18]
+
+
+* Scales
+- AMAS (Abbreviated Math Anxiety Scale)
+  - https://doi.org/10.1177/1073191103010002008
+- Modified AMAS (mAMAS) (9項目)
+  - https://doi.org/10.3389/fpsyg.2017.00011
+- sMARS (Shortened Math Anxiety Rating Scale) (24項目)
+  - https://digitalcommons.uri.edu/oa_diss/959
+- MAS-UK (Mathematics Anxiety Scale-UK)
+- [[https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2017.00011/full#T1][Frontiers | The Modified Abbreviated Math Anxiety Scale: A Valid and Reliable Instrument for Use with Children]]
+- [[https://www.researchgate.net/figure/The-modified-Abbreviated-Mathematics-Anxiety-Scale-mAMAS_fig1_364588227][The modified Abbreviated Mathematics Anxiety Scale (mAMAS). | Download Scientific Diagram]]
+- [[http://schoolcounselingandmathanxiety.blogspot.com/2014/06/abreviated-math-anxiety-scale.html][School Counselor and Math Anxiety: Abbreviated Math Anxiety Scale]]
+- [[https://diposit.ub.edu/server/api/core/bitstreams/73f2f4b2-bbfe-4ede-9740-8806073417cc/content][The Single-Item Math Anxiety Scale (SIMA): An Alternative Way of Measuring Mathematical Anxiety]]

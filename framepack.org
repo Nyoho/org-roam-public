@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       BE1972A1-F7CF-4EE0-BFAB-F385A22F712A
+:END:
+#+title: FramePack
+#+date: [2025-05-03 Sat 17:54]
+
+[[https://github.com/lllyasviel/FramePack][lllyasviel/FramePack: Lets make video diffusion practical!]]
+
+* Links
+- [[https://github.com/git-ai-code/FramePack-eichi?tab=readme-ov-file][git-ai-code/FramePack-eichi]]
+- [[https://note.com/npaka/n/n33d1a0f1bbc1][Google Colab で FramePack を試す｜npaka]]

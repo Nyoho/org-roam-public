@@ -1,0 +1,64 @@
+:PROPERTIES:
+:ID:       CB0C629F-B1FD-4F4E-9C1B-0B9C88E6C905
+:END:
+
+Google Colaboratory
+
+https://colab.research.google.com/
+
+#+BEGIN_QUOTE
+Colaboratory は、機械学習の教育や研究の促進を目的とした Google 研究プロジェクトです。完全にクラウドで実行される Jupyter ノートブック環境を特別な設定なしにご利用いただけます。
+Colaboratory ノートブックは Google ドライブに保存され、Google ドキュメントや Google スプレッドシートと同じように共有できます。Colaboratory の利用は無料です。
+#+END_QUOTE
+
+* Tips
+** 操作
+- shift + return :: 実行
+
+** GPU
+- メニュー ➡ランタイム → ランタイムのタイプを変更 ➡ ノートブックの設定
+- ハードウェアアクセラレータを "GPU" に
+- 保存
+
+** PyTorchやってみる
+#+BEGIN_SRC python
+from os import path
+from wheel.pep425tags import get_abbr_impl, get_impl_ver, get_abi_tag
+platform = '{}{}-{}'.format(get_abbr_impl(), get_impl_ver(), get_abi_tag())
+
+accelerator = 'cu80' if path.exists('/opt/bin/nvidia-smi') else 'cpu'
+
+!pip install -q http://download.pytorch.org/whl/{accelerator}/torch-0.4.1.post4-{platform}-linux_x86_64.whl torchvision
+#+END_SRC
+
+
+#+BEGIN_SRC python
+!pip3 install torch #http://download.pytorch.org/whl/{accelerator}/torch-0.4.1.post4-{platform}-linux_x86_64.whl
+!pip3 install torchvision
+#+END_SRC
+
+確認
+#+BEGIN_SRC python
+!python --version
+#+END_SRC
+
+あとは普通に。
+#+BEGIN_SRC python
+import torch
+import torchvision
+import torchvision.transforms as transforms
+#+END_SRC
+
+Reference
+- [[https://jovianlin.io/pytorch-with-gpu-in-google-colab/][Using PyTorch with GPU in Google Colab]]
+
+** Keras やってみる
+
+#+BEGIN_SRC python
+!pip install -q keras
+import keras
+
+from keras.datasets import mnist
+mnist.load_data()
+
+#+END_SRC

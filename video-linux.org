@@ -1,0 +1,196 @@
+:PROPERTIES:
+:ID:       61DEE3E9-873B-4CC2-9D45-5111BF5EE464
+:END:
+#+title: Linuxでビデオ
+#+tags: Linux video mplayer ffmpeg
+#+date: <2013-09-02 Mon>
+
+* ffmpeg
+** build
+
+pkg-config が =/usr/local/lib= を読んでくれないとき
+
+#+begin_src shell
+  PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig ./configure --enable-libxvid --enable-libx264 --enable-nonfree --enable-libvorbis --enable-gpl --enable-libmp3lame --enable-pthreads --enable-shared
+#+end_src
+
+なんか.soを読んでなかったら、ldcondig。
+#+begin_src sh
+ldconfig
+#+end_src
+
+** 拡張子変更
+# ${OUTPUT%.ts}.mp4 などで拡張子変更
+#+BEGIN_SRC sh
+OUTPUT=hoge
+/usr/bin/nice -n 19 ffmpeg -loglevel quiet -y -i ${OUTPUT}.tmp.ts -vsync 1 -vcodec libx264 -vpre libx264-ipod320 -b 931k -s 640x360 -r 30000/1001 -acodec libfaac -ac 2 -ar 48000 -ab 128k -af aresample=async=1000 ${OUTPUT}
+#+END_SRC
+
+#+BEGIN_SRC sh
+/usr/bin/nice -n 19 $FFMPEG -loglevel quiet -y -i ${OUTPUT}.tmp.ts -vsync 1 -c:v libx264 -vpre libx264-ipod320 -b:v 931k -s 640x360 -r 30000/1001 -map 0:v:0 -map 0:a:0 -c:a libfaac -ac 2 -ar 48000 -b:a 128k ${OUTPUT} >/dev/null 2>&1
+#+END_SRC
+
+** 一部を切り出す
+例 =-ss 140 -t 10= 
+140秒後から10秒間。
+
+** 多チャンネル
+NHKなどの多チャンネル放送・副音声を取り出す ffmpeg でのオプションの例
+#+BEGIN_SRC sh
+ -map 0:v:0 -map 0:a:0 
+ -map 0:v:2 -map 0:a:2
+ -map 0:v:2 -map 0:a:1
+#+END_SRC
+
+副音声が
+#+BEGIN_SRC sh
+-map 0:a:1
+#+END_SRC
+のときと
+#+BEGIN_SRC sh
+-map 0:a:2
+#+END_SRC
+のときがある。
+
+#+BEGIN_SRC sh
+OUTPUT=hoge.mp4
+/usr/bin/nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -vcodec libx264 -vpre libx264-ipod320 -b:v 480k -s 640x360 -r 60000/1001 -map 0:v:0 -map 0:a:0 -acodec libfaac -ac 2 -ar 48000 -b:a 128k -map 0:a:2 -b:a 128k ${OUTPUT}
+#+END_SRC
+
+ビデオ #0 とオーディオ #0, #1 を出力。
+#+BEGIN_SRC sh
+/usr/bin/nice -n 19 time ffmpeg -y -i ${INPUT} -ss 310 -t 15 -codec:v libx264 -s 1280x720 -b:v 1000k -r 30000/1001 -map 0:v:0 -map 0:a:0 -acodec libfaac -ac 2 -ar 48000 -b:a 128k -map 0:a:1 -b:a 128k ${OUTPUT}
+#+END_SRC
+
+副音声のみの aac に取り出す
+#+BEGIN_SRC sh
+OUTPUT=hoge.mp4.tmp.ts /usr/bin/nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -map 0:a:2 -acodec libfaac -ac 2 -ar 44100 -b:a 128k -vn output.m4a
+#+END_SRC
+
+input.ts output.mp4
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i input.ts -c:v libx264 -b:v 640k -maxrate 1000k -bufsize 1000k -level 21 -s 640x360 -r 30000/1001 -c:a libfaac -b:a 128k -map 0:v:0 -map 0:a:0 -map 0:a:2 output.mp4
+#+END_SRC
+
+ビデオじゃないけどオーディオ変換
+#+BEGIN_SRC sh
+ffmpeg -i hoge.aiff -acodec aac hoge.m4a
+#+END_SRC
+
+** 2pass
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -r 60000/1001 -an -pass 1 -passlogfile "./pass.log" ${OUTPUT} ; /usr/bin/nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -pass 2 -passlogfile "./pass.log" -vcodec libx264 -b:v 480k -s 640x360 -r 60000/1001  -map 0:v:0 -map 0:a:0 -acodec libfaac -ac 2 -ar 48000 -b:a 128k -map 0:a:2 -b:a 128k ${OUTPUT}
+#+END_SRC
+
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -c:v libx264 -preset medium -b:v 640k -pass 1 -an -f mp4 /dev/null && \
+ffmpeg -i ${OUTPUT}.tmp.ts -c:v libx264 -preset medium -b:v 640k -pass 2 -c:a libfdk_aac -b:a 128k output.mp4
+#+END_SRC
+
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -c:v libx264 -preset medium -b:v 640k -pass 1 -an -f mp4 /dev/null && \
+ffmpeg -i ${OUTPUT}.tmp.ts -c:v libx264 -preset medium -b:v 640k -pass 2 -c:a libfaac -b:a 128k output.mp4
+#+END_SRC
+
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -pass 2 -passlogfile "./pass.log" -vcodec libx264 -b:v 480k -s 640x360 -r 60000/1001 -map 0:v:0 -map 0:a:0 -acodec libfaac -ac 2 -ar 48000 -b:a 128k -map 0:a:2 -b:a 128k ${OUTPUT}
+#+END_SRC
+
+** deinterlace / yadif
+- yadif=0 :: フレームを1枚に
+- yadif=1 :: フィールドを1枚に (インタレースだったら2倍にしてくれる)
+
+したがって =-vf yadif=1:-1:0 -r 60000/1001= のように組み合わせれば 29.97 fps i から 59.94 fps p の動画が作れる。
+
+例
+#+BEGIN_SRC sh
+f=source.mp4
+/usr/bin/nice -n 19 time ffmpeg -y -i $f -vcodec libx264 -vf yadif=1:-1:0 -b:v 1280k -s 1280x720 -r 60000/1001 -map 0:v:0 -map 0:a:0 -acodec libfaac -ac 2 -ar 48000 -b:a 128k -ss 60 -t 20 target.mp4
+#+END_SRC
+
+** アニメ 24 fps (23.976 =~ 24000/1001 fps)
+=-r 24000/1001= とすれば(いわゆる約)24fpsに。
+
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -r 24000/1001 -map 0:v:0 -an -pass 1 -passlogfile "./pass.log" ${OUTPUT} && /usr/bin/nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -pass 2 -passlogfile "./pass.log" -vcodec libx264 -b:v 1400k -deinterlace -s 1280x720 -r 24000/1001 -map 0:v:0 -map 0:a:0 -acodec libfaac -ac 2 -ar 48000 -b:a 128k ${OUTPUT}
+#+END_SRC
+
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -r 24000/1001 -pass 1 -an -f mp4 /dev/null && /usr/bin/nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -pass 2 -vcodec libx264 -b:v 1400k -deinterlace -s 1280x720 -r 24000/1001 -map 0:v:0 -map 0:a:0 -acodec libfaac -ac 2 -ar 48000 -b:a 128k ${OUTPUT}
+#+END_SRC
+
+なんか -an だと 2nd pass の frame が 1st pass のより多いとかいわれるのでこうしてみた:
+#+BEGIN_SRC sh
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -codec:v libx264 -s 1280x720 -r 24000/1001 -pass 1 -f mp4 /dev/null && \
+nice -n 19 time ffmpeg -y -i ${OUTPUT}.tmp.ts -pass 2 -codec:v libx264 -b:v 1400k -s 1280x720 -r 24000/1001 -map 0:v:0 -map 0:a:0 -codec:a libfaac -ac 2 -ar 48000 -b:a 128k ${OUTPUT}
+#+END_SRC
+
+** making an animation GIF
+#+BEGIN_SRC sh
+ffmpeg -i video.m4v -an -r 15  -pix_fmt rgb24 -f gif animation-gif.gif
+#+END_SRC
+
+** 言語ラベルみたいなもの
+manより。
+=-metadata:s:a:1 language=eng=
+とするとオーディオ1にengというラベルがつく。
+
+** Animation GIF を作る
+#+BEGIN_SRC sh
+ffmpeg -i moviefile.mp4 -vf scale=320:-1 -r 8 output.gif
+#+END_SRC
+など。
+
+** Animation GIF から mp4
+#+BEGIN_SRC sh
+ffmpeg -i animated.gif -pix_fmt yuv420p animated.mp4
+#+END_SRC
+
+#+begin_src sh
+ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" animated.mp4
+#+end_src
+
+** 連番pngをmp4へ
+#+BEGIN_SRC sh
+ffmpeg -f image2 -r 15 -i renban%03d.png -r 15 -pix_fmt yuv420p out.mp4
+#+END_SRC
+
+** オーディオを切り出す
+#+BEGIN_SRC sh
+ffmpeg -i input.mp4 -vn -acodec copy audio-onlu.aac
+#+END_SRC
+などとする。
+
+** AirPlay できる mp4 を作るには
+
+[[https://trac.ffmpeg.org/wiki/Encode/H.264][Encode/H.264 – FFmpeg]] を見ると第3世代 Apple TV (1080pできるようになったもの) は、Level 4.0 にするべきであるようだ。
+
+すなわち、
+
+: -profile:v high -level 4.0
+
+または
+
+: -profile:v main -level 4.0
+
+を使うといいらしい。
+
+<2018-11-05 Mon> でもまでうまくできてない。
+
+#+BEGIN_SRC sh
+ffmpeg -i YOUR-INPUT.wmv -s qvga -b 384k -vcodec libx264 -r 23.976 -acodec libfaac -ac 2 -ar 44100 -ab 64k -vpre baseline -crf 22 -deinterlace YOUR-OUTPUT.MP4
+
+ffmpeg -i INPUT -s 320x240 -r 30000/1001 -b 200k -bt 240k -vcodec libx264 -coder 0 -bf 0 -refs 1 -flags2 -wpred-dct8x8 -level 30 -maxrate 10M -bufsize 10M -acodec libfaac -ac 2 -ar 48000 -ab 192k OUTPUT.mp4
+
+ffmpeg -i input.mp4 -vcodec libx264 -profile:v main -level 3.1 -preset medium -crf 23 -x264-params ref=4 -acodec copy -movflags +faststart output.mp4
+#+END_SRC
+
+** ずれ対策
+オプションに ~-max_muxing_queue_size 1024~ を付けたらうまくいったことがあった。
+~-async 1~ や ~-vf decimate,fps=30000/1001~ なども試す。
+
+* オプション例参考サイト
+- [[http://mkit2009.hatenablog.com/entry/2013/01/22/234714][ffmpegのオプションメモ - 適当な事を適当にかいていくブログ]] deinterlace など
+- http://dolls.orz.hm/?p=5380
+
+

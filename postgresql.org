@@ -1,0 +1,245 @@
+:PROPERTIES:
+:ID:       A94626CE-3331-4B33-B711-B7FC8021104B
+:END:
+#+TITLE: PostgreSQL
+
+* SQL文やpsqlコマンド
+** 削除
+条件に合うものだけを消すには、
+
+: delete from tableName where 条件;
+
+とする。
+
+テーブルごと消すには、
+
+: DROP TABLE tableName
+
+とする。
+
+** 変更 UPDATE
+
+: UPDATE someTable SET col1 = 2 WHERE col2 = 1;
+
+** Tips
+- =\l= :: データベース一覧を出す (=sudo -u postgres psql= で入ってからやると楽)
+- =\dt= :: テーブル一覧を出す
+- =\d= :: テーブル一覧を出す (viewなども出る)
+- =\c dbname= :: =dbname= というテーブルを選択する
+- =\connect username= :: =username= というユーザに変更する
+- len(string) :: 文字列stringの長さ
+- Mid(string,1,12) :: 部分文字列。1文字目から12文字までにカット 
+
+時刻
+: where starttime < now();
+
+*** .pgpass
+
+ ~/.pgpass に
+#+BEGIN_SRC 
+ *:5432:*:username:password
+#+END_SRC
+とやるといいのかな? 悪いのかな?
+
+
+*** なんかハングするときに
+
+: reindex tablename
+
+したら治った。
+[[http://zx.jpn.org/b/20141026/386/postgresql/postgresql-howto-find-lock-sql][PostgreSQL ロック待ちの原因となっているSQLのセッションを特定する]] を見るとロックがかかっているところを調べることができる。(?!= になっているのは != の間違いだと思われる。)
+
+
+* Mac の Postgres.app
+
+[[http://postgresapp.com/][Postgres.app – the easiest way to get started with PostgreSQL on the Mac]]
+からゲットする。
+便利。
+
+データディレクトリは preference を開くと書いてある。
+version 9.5 は
+$HOME/Library/Application Support/Postgres/var-9.5
+だった。
+変更可能。
+
+* Homebrew で入れる PostgreSQL
+
+#+BEGIN_SRC sh
+brew install postgresql
+
+ARCHFLAGS="-arch x86_64" gem install pg
+#+END_SRC
+
+** 起動メモ
+#+BEGIN_SRC 
+To have launchd start postgresql at login:
+    ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+Then to load postgresql now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+Or, if you don't want/need launchctl, you can just run:
+    postgres -D /usr/local/var/postgres
+#+END_SRC
+
+** バージョンが変わったときに新しいdbを作る
+(参考: [[http://qiita.com/blueplanet/items/58e511daa02b5684ec1d][homebrewで PostgreSQL 9.3へバージョンアップ方法 - Qiita]])
+
+9.5のところは読み替えて
+
+#+BEGIN_SRC sh
+  initdb /usr/local/var/postgres9.5 -E utf8
+  initdb --locale=C -E UTF-8 /usr/local/var/postgres
+#+END_SRC
+
+pg_upgrade
+#+BEGIN_SRC 
+ pg_upgrade \
+  -d /usr/local/var/postgres9.6 \
+  -D /usr/local/var/postgres10 \
+  -b /usr/local/Cellar/postgresql/9.6.3/bin/ \
+  -B /usr/local/Cellar/postgresql/10.1/bin/ \
+  -v
+#+END_SRC 
+
+
+macOSのPostgres.appの場合
+
+#+begin_src sh
+/Applications/Postgres.app/Contents/Versions/14/bin/initdb -D ~/Library/Application\ Support/Postgres/var-14 --encoding=UTF-8 --locale=en_US.UTF-8
+#+end_src
+
+としたときに
+
+#+begin_src text
+  creating configuration files ... ok                                                         
+  running bootstrap script ... 2022-03-10 11:39:35.738 JST [23786] FATAL:  could not create shared memory segment: Cannot allocate memory                                                 
+  2022-03-10 11:39:35.738 JST [23786] DETAIL:  Failed system call was shmget(key=23759199, size=56, 03600).                                                                               2022-03-10 11:39:35.738 JST [23786] HINT:  This error usually means that PostgreSQL's request for a shared memory segment exceeded your kernel's SHMALL parameter.  You might need to reconfigure the kernel with larger SHMALL.                                                    
+          The PostgreSQL documentation contains more information about shared memory configuration.
+  child process exited with exit code 1
+#+end_src
+
+というエラーでinitdbができないときに
+
+#+begin_src sh
+sudo sysctl -w kern.sysv.shmmax=16777216
+sudo sysctl -w kern.sysv.shmall=4096
+#+end_src
+とした。参考: https://stackoverflow.com/questions/6861945/postgresql-failing-with-below-error-on-lion-os-x
+
+
+#+begin_src sh
+# /Applications/Postgres.app/Contents/Versions/14/bin/pg_upgrade -b /Applications/Postgres.app/Contents/Versions/9.5/bin -B /Applications/Postgres.app/Contents/Versions/14/bin -d ~/Library/Application\ Support/Postgres/var-9.5 -D ~/Library/Application\ Support/Postgres/var-14 -v
+
+/Applications/Postgres.app/Contents/Versions/14/bin/pg_upgrade -b /opt/homebrew/Cellar/postgresql@9.5/9.5.25/bin -B /Applications/Postgres.app/Contents/Versions/14/bin -d ~/Library/Application\ Support/Postgres/var-9.5 -D ~/Library/Application\ Support/Postgres/var-14 -v
+#+end_src
+
+** そしたらこれで起動する
+#+BEGIN_SRC sh
+pg_ctl -D /usr/local/var/postgres9.5 -l logfile start
+#+END_SRC
+
+- username の role が出来ている。
+- postgres という db がある。
+
+#+BEGIN_SRC sh
+pg_ctl -D /usr/local/var/postgres start
+#+END_SRC
+でもいいみたい。
+
+* Backup and restoration
+
+** 通常
+: pg_dump -Fc -b databasename > dumpdata
+
+("-U username" でユーザ指定)
+
+: pg_restore -d databasename dumpdata
+
+パスワードなしで pg_dump とか自動実行とかしたい場合 ~/.pgpass に
+
+: ホスト名:ポート:データベース名:ユーザ名:パスワード
+
+と書いておく。
+
+設定ファイル =/etc/postgresql/9.5/main/pg_hba.conf= に
+
+#+begin_src 
+host    all     all     127.0.0.1/32    trust
+#+end_src
+
+と書いておくと、ローカルからのアクセスはパスワードなしにできる(やや危険)。
+
+
+: pg_dump -Fc -b databasename -U username > databasename-`date +%Y%m%d-%k%M%S`.dump
+
+とすれば日付や時刻もついたものが一発作成されるであろう。
+
+*** 完全バックアップへの道
+~pg_dumpall~ を使うとユーザ情報やパスワードも含めて全部吐き出される。ですから注意なされますよう。
+
+: pg_dumpall -h localhost -U postgres -c > alldumpdata
+
+とやる。postgres さんは PostgreSQL のスーパユーザ。
+
+localhost からの操作を OK にしとかんとだめだね。 そのためには =/var/lib/pgsql/data/pg_hba.conf= に
+
+: host    all         all         127.0.0.1         255.255.255.255   trust
+
+などとする。
+
+
+** WALまで含めた説明
+この資料がとてもいい [[https://www.slideshare.net/satock/osc2013-spring-pg][OSC東京2013/Spring_JPUG資料]]
+
+*** pg_rman による方法
+Ubuntuは
+: apt install postgresql-server-dev-all postgresql-common libpam0g-dev libedit-dev libselinux1-dev
+がいる。
+
+/etc/postgresql/9.5/main/postgresql.conf の wal_level を hot_stanby か archive にする。
+
+#+BEGIN_SRC conf
+wal_level = archive #or wal_level = hot_standby
+archive_mode = on
+archive_command = '/bin/cp %p /var/lib/postgresql/9.5/arclog/%f'
+#+END_SRC
+
+postgres ユーザで。
+#+BEGIN_SRC sh
+export PGDATA=/var/lib/postgresql/9.5/main
+export BACKUP_PATH=/var/lib/postgresql/backup
+export ARCLOG_PATH=/var/lib/postgresql/9.5/arclog
+export PATH=/usr/lib/postgresql/9.5/bin:$PATH
+#+END_SRC
+
+get https://github.com/ossc-db/pg_rman/releases
+
+
+preparation
+
+: pg_rman init -B $BACKUP -D $PGDATA$
+
+backup
+
+: pg_rman backup --backup-mode=full --with-serverlog
+: pg_rman validate
+
+restoration
+
+: pg_ctl stop -m immediate -D $PGDATA
+: pg_rman restore
+: pg_ctl start -D $PGDATA
+
+crontab setting
+
+#+BEGIN_SRC 
+30  4  *   *   *     pg_rman backup --backup-mode=full --with-serverlog > /dev/null
+20  */4  *   *   *     pg_rman backup --backup-mode=incremental > /dev/null && pg_rman validate > /dev/null
+#+END_SRC
+
+これでできた =$BACKUP_PATH= のものと =$ARCLOG_PATH= をコピーしておけば
+だいたい
+
+*** wal-e
+- [[https://github.com/wal-e/wal-e][wal-e/wal-e: Continuous Archiving for Postgres]]
+- [[https://qiita.com/awakia/items/0f36c051a1df8f0b6c6a][Herokuが開発したWAL-Eを使って、AWSでPostgreSQLのバックアップを取る - Qiita]]
+

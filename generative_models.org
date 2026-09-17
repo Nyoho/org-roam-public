@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       D967B642-5DA9-40A1-830A-FDDEFF900F88
+:END:
+#+title: generative models 生成AI
+#+date: [2023-11-26 Sun 16:35]
+
+* 生成AI
+- [[id:EA0BD8F2-7BD2-49C1-9007-1BBD71AF7FB2][ChatGPT]]
+- [[https://claude.ai][Claud]]
+- [[https://www.perplexity.ai/][Perplexity]]
+- [[https://felo.ai][Felo]]
+- [[https://www.chatpdf.com/][ChatPDF]]
+- [[https://gemini.google.com/app][Gemini]]
+- [[https://aistudio.google.com/app/prompts/new_chat][Gemini (Studio)]]
+- [[https://v0.dev/chat][v0]] 
+
+** 画像生成AI
+- [[https://aitestkitchen.withgoogle.com/ja/tools/image-fx][ImageFX]]
+- Nano Banana
+  - [[https://youmind.com/ja-JP/nano-banana-pro-prompts][Nano Banana Pro Prompts - 高品質AIプロンプトと画像生成 - YouMind]]
+  - [[https://github.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts][YouMind-OpenLab/awesome-nano-banana-pro-prompts]]
+
+** 動画
+- [[https://humva.ai/project][Humva]]
+- [[https://app.runwayml.com][Runway]]
+- [[https://lumalabs.ai/dream-machine/creations][Luma]]
+- [[https://hailuoai.video/][Hailuo]]
+- [[https://higgsfield.ai/collection/effects][Higgsfield Effects]]
+
+** プログラミング
+- [[https://codeium.com/blog/termium-codeium-in-terminal-launch][Termium: Codeium in the Terminal]]
+
+** 要約
+
+- [[https://notebooklm.google.com/][NotebookLM]]
+- [[https://www.napkin.ai/][Napkin (図解)]]
+
+** ファクトチェック
+- [[https://www.genspark.ai/autopilotagent_viewer][Genspark Autopilot Agent]]
+
+** 360度?
+- [[https://www.blockadelabs.com/][Blockade Labs]]
+   
+** speech変換
+- [[https://elevenlabs.io/][ElevenLabs]]
+
+** 動画作成例
+- Genspark
+- AKOOL https://akool.com 動画
+- FishAudio 音声
+
+* 事例
+- [[https://www.kyoiku.metro.tokyo.lg.jp/information/press/2025/05/2025051201][全都立学校で生成ＡＩを活用した学習が始まります！|5月|東京都教育委員会]]
+
+* 記事
+- [[https://note.com/chatgpt4graph/n/na2c61100d60d][DALLE3 (ダリスリー) の無料教科書:初級編｜プチpony]]
+- [[https://ascii.jp/elem/000/004/312/4312934/2/][ASCII.jp：ラフさえ描けばイラスト作品ほぼ完成　画像生成AI「FLUX.1 Kontext」LoRAが示す制作の未来 (2/5)]]
+- [[https://ascii.jp/elem/000/004/312/4312173/][ASCII.jp：無料の動画生成AI「Wan2.2」が凄すぎる　PCローカルでこの品質が出せるとは (1/5)]]
+- [[https://note.com/miya19/n/n68cb095fa190][「Wan 2.2」をColab環境から初利用してみました。｜miya]]
+  - https://github.com/Isi-dev/Google-Colab_Notebooks/blob/main/wan2_2/wan22_FirstLastFrame2Video.ipynb

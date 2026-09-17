@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       8A49E8F8-4026-4E67-ABCD-1F143A296DBC
+:END:
+#+title: raycast
+#+date: [2025-11-10 Mon 14:12]
+
+RaycastというmacOSのアプリ
+
+4 weeks from today
+December 8

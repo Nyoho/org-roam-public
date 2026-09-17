@@ -1,0 +1,62 @@
+:PROPERTIES:
+:ID:       AD4A2C6A-F17E-4F9F-A9BF-7D712B5DF42F
+:END:
+#+title: webのフロントエンド
+#+date: <2018-05-14 17:31:00 +0900>
+
+* 学習
+
+** webpack
+https://webpack.github.io
+
+** Babel
+https://babeljs.io
+
+The compiler for writing next generation JavaScript.
+Babel is a JavaScript compiler. Use next generation JavaScript, today.
+
+** PostCSS
+https://github.com/postcss/postcss
+
+PostCSS is a tool for transforming styles with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.
+
+** CSS Modules
+https://github.com/css-modules/css-modules
+
+** esbuild
+[[https://esbuild.github.io/][esbuild]]
+
+** Linters
+
+- ESLint
+- oxc
+- biome
+- deno_lint
+
+** その他 (未分類)
+
+- [[https://facebook.github.io/react/][React]]
+- [[https://github.com/reactjs/redux][Redux]]
+- [[https://github.com/reactjs/react-router-redux][React-router-redux]]
+- [[https://astro.build/][Astro]]
+- [[https://remix.run/][Remix - Build Better Websites]]
+  - [[https://remix.run/blog/remix-heart-vite][Remix ❤️ Vite | Remix]]
+- [[https://vitejs.dev][Vite]]
+- [[https://www.solidjs.com/][Solid]]
+- [[https://github.com/BuilderIO/qwik][Qwik]]
+- [[https://svelte.dev][Svelte]]
+  - [[https://kit.svelte.jp/][SvelteKit]]
+- [[https://mswjs.io/][MSW (Mock Service Worker)]] API mocking
+
+** 素振り
+From: [[https://qiita.com/azu/items/bacd146ed2e26980b9b0][JavaScriptのトレンドを素振りして確認する方法 - Qiita]]
+
+npmを試せる。
+- [[https://runkit.com/home][RunKit is Node prototyping]]
+- [[http://requirebin.com/][RequireBin]]
+
+Firefoxの開発者ツールでは
+
+: inject jQuery
+
+などとできる。

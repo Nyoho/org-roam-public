@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       C1590964-98EE-4AAA-A8B2-0B0C407EC5BF
+:END:
+#+title: Delsarte theory
+#+date: [2023-11-25 Sat 22:49]
+
+Delsarte理論
+
+- https://www.math.is.tohoku.ac.jp/~combin/ac2014/docs/tanaka.pdf

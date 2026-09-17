@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       0E13F472-0A10-4849-90D5-06C184F24F60
+:END:
+#+title: ImageMagick
+#+date: <2016-06-19 12:05:30 +0900>
+
+crop and animated gif
+#+BEGIN_SRC sh
+convert -delay 6 -crop 1932x1932+0+664 aaa.jpg bbb.jpg test%d.jpg 
+convert -delay 6 test*.jpg a.gif
+#+END_SRC
+
+中央にしてクロップ
+#+begin_src shell
+  for f in *.jpg
+      convert $f -gravity center -resize 512x512^ -extent 512x512 $f.jpg
+  end
+#+end_src

@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       DFD6544F-535B-4AD8-B447-CFDA9B879819
+:END:
+#+begin_html
+---
+title: C++
+tags: C++
+date: <2013-03-29 Fri>
+---
+#+end_html
+
+* C++11, C++14 の便利機能勉強
+** auto
+** var
+型を書かなくていいやつ
+
+* Test
+- Google Test :: [[http://inet-lab.naist.jp/google-test-under-current-directory/][{c/c++} google testをカレントディレクトリ配下のみで利用する | 情報基盤システム学研究室]]

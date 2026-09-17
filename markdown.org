@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       E0B5AABC-C93E-41F9-9BC8-6A6621E51530
+:END:
+#+title: markdown
+#+date: [2023-03-22 Wed 21:00]
+
+* presentation tools
+- marp https://github.com/marp-team/marp-cli
+- slidev https://ja.sli.dev
+- fusuma https://github.com/hiroppy/fusuma

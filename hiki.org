@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       68007FA4-0791-4034-9A50-9C4E1C47A374
+:END:
+
+Hiki
+
+* subpathで動かす
+#+BEGIN_SRC sh
+LC_ALL=en_US.UTF-8 bundle exec thin --prefix /wiki -p 9292 start
+#+END_SRC
+
+older
+#+BEGIN_SRC sh
+bundle exec thin --prefix /wiki --rackup hiki.rb -p 9292 start
+#+END_SRC

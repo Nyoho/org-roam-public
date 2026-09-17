@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       6564A235-AAA4-44F5-A1CD-F9A5641E88AE
+:END:
+#+title: Google Chrome
+
+
+* Tips
+- DNS情報を取る :: [[chrome://net-internals/#dns][chrome://net-internals/#dns]]
+
+* Headless Chrome
+
+参考: [[https://developers.google.com/web/updates/2017/04/headless-chrome?hl=ja][ヘッドレス Chrome ことはじめ  |  Web  |  Google Developers]]
+
+: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --headless --disable-gpu --remote-debugging-port=9222
+
+: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+
+- --headless :: これで headless モードになる。
+- --disable-gpu ::
+- --dump-dom URL :: document.body.innerHTML を標準出力に
+
+

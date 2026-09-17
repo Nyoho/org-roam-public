@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       DEBE24AC-2C6C-4135-92F6-089818358BBC
+:END:
+#+title: GrowthForecast
+#+tags: GrowthForecast, monitoring
+#+date: <2013-04-03 Wed>
+
+* GrowthForecast
+
+これをやってみたかった。
+[[http://d.hatena.ne.jp/sugyan/20130314/1363192996][FluentdとGrowthForecastを使って自分の行動をロギング・可視化する - すぎゃーんメモ]]
+
+
+Virtual Machine に CentOS [[http://nullpopopo.blogcube.info/2012/08/fluent_and_growthforecast_install02.html][{CentOS}fluent と GrowthForecast を連携させてグラフを作ってみる #02 | (っ´∀｀)っ ゃー | nullpopopo]]
+
+cpanm
+
+#+begin_src sh
+perlbrew install perl-5.16.3
+perlbrew switch perl-5.16.3
+perlbrew install-cpanm
+cpanm -n GrowthForecast
+#+end_src
+
+これで入った。
+
+実行
+#+begin_src sh
+LANG=C growthforecast.pl --data-dir ./growthforecast
+#+end_src
+
+** 文字化け対策
+#+begin_src sh
+sudo yum install bitmap-console-fonts
+#+end_src
+
+* fluentd 
+#+begin_src sh
+gem install fluent-plugin-map fluent-plugin-dstat fluent-plugin-growthforecast fluent-plugin-datacounter
+#+end_src
+
+fluent.conf を書いて
+#+begin_src sh
+fluentd -c ./fluent/fluent.conf -vv
+#+end_src
+

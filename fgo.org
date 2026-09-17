@@ -1,0 +1,83 @@
+:PROPERTIES:
+:ID:       CAF44C92-EA62-4FCE-B7D1-1B99B87622BD
+:END:
+#+title: Fate/Grand Order memo
+#+date: <2019-04-26 07:54:07 +0900>
+
+* サーヴァント
+** オリオン
+スキル 1, 3, 2 の優先度で育てる。
+
+https://appmedia.jp/fategrandorder/101030
+
+** ジャンヌ・ダルク
+幕間IIを絶対する。
+スキル1をやる。次に3
+
+https://appmedia.jp/fategrandorder/84440
+
+** 坂田金時
+
+** 三蔵法師
+
+** 玉藻の前
+
+** セミラミス
+
+** 謎のヒロインX
+
+** エウリュアレ
+
+https://appmedia.jp/fategrandorder/118273
+
+** 静謐のハサン
+
+[[https://appmedia.jp/fategrandorder/361985][【FGO】静謐のハサンの評価とスキル上げ優先度/アサシン | AppMedia : 【国内最大級】ゲームアプリ攻略サイト！]]
+
+** メディア
+スキル1をLv 4にする
+https://appmedia.jp/fategrandorder/91777
+
+** ジャンヌ・オルタ
+La Grondement Du Haine
+
+- La (女) the
+- Grondement (男) 咆哮
+- Du (男) 部分冠詞
+- Haine (女) 憎しみ
+
+なので変だとのこと。
+言うならば、
+
+le grondement de la haine (ル・グロンドマン・デュ・ラ・エーヌ)
+
+** 沖田総司
+一歩音超え、二歩無間、三歩絶刀、無明三段突き
+いっぽおとごえ、にほむけん、さんぽぜっとう、むみょうさんだんづき
+
+* 概念礼装
+概念礼装の育成方法
+
+1. 星1礼装レベル19に
+2. それを16枚作ってレベル50に
+3. それを8枚作って星5礼装に食わせるとレベル100
+
+   
+* サーヴァント組み合わせ方
+
+** 凸黒聖杯水着カーマにWキャストリア
+アーツがかなりアップして強い。宝具が連射できる。
+
+** 太歳星君+キャストリア
+- 太歳星君がアーツ。
+- 強化無効するかもしれないスキルを持つ。スキル2。レベル10で確実になる。
+
+* コマンドコード
+
+- [[https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13216124863][FGOのコマンドについてなのですが...私は基本コマンド全く付けな... - Yahoo!知恵袋]]
+
+* 攻略メモ
+
+** 汝、星を鋤く豊穣(IV) (デメテル戦)
+- [[https://www.youtube.com/watch?v=W9-q8VZoslA][牛若丸ほぼ単騎vsデメテル【第7節】汝、星を鋤く豊穣（Ⅳ）【FGO】 - YouTube]]
+- [[https://www.youtube.com/watch?v=QUbf_RyA87s][ゲ　オ　ル　ギ　ウ　ス　無　双　【第7節】汝、星を鋤く豊穣（Ⅳ）【FGO】 - YouTube]]

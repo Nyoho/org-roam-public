@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       231D5291-FCC3-485D-AB37-7B0B97D38988
+:END:
+#+title: 聴衆に質問などを集めるシステム
+
+シンポジウムやカンファレンスや勉強会などで、聴衆の質問などを集めるシステムを集めます。
+ウェブのシステムが色々あります。
+
+- [[https://handsup.cloud/][handsup!]]
+- [[https://www.mentimeter.com/][Mentimeter]] 多機能
+- [[https://www.sli.do/][Slido]]

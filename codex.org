@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       19AB230A-51A3-4DEC-939F-61904FED693B
+:END:
+#+title: Codex
+#+date: [2026-02-15 Sun 20:44]
+
+OpenAIのCodex
+
+
+bunでインストールする方法
+
+#+begin_src sh
+bun add -g @openai/codex
+#+end_src
+
+
+npmでインストールする方法
+
+#+begin_src sh
+  npm install -g @openai/codex
+#+end_src
+
+* 設定
+=~/.codex/config.toml= で設定ができる。
+
+https://developers.openai.com/codex/config-reference
+

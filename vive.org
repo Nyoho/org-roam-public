@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       9E18703D-10C0-43AA-B05F-3E0C95543465
+:END:
+VIVE Focus 開発
+
+VIVE Focus
+
+* Unityで開発するには
+
+** Android Studio をゲットする。
+https://developer.android.com/studio/
+
+** ViveFocusのdeveloper
+
+https://developer.vive.com/us/wave/
+
+-> "Become a Developer"
+
+-> "Material Download"
+
+-> WaveSDK
+
+その中の =SDK/plugins/unity/wavevr.unitypackage= を使う。
+(<2018-11-20 Tue> 時点では WaveSDK は 2.1.8)
+
+** Unityで
+
+Build setting で Android に "Switch Platform"
+
+Preference -> External Tools -> SDK, JDK の設定
+
+JDK は [[https://www.oracle.com/technetwork/java/javase/downloads/index.html][Java SE - Downloads | Oracle Technology Network | Oracle]] から
+Java SE 8 を入れるらしい (cf. [[https://qiita.com/Hirai0827/items/8cf92ea9ea42b62e178e][ViveFocusとUnityでVRアプリを作る方法 - Qiita]])
+
+上の  =wavevr.unitypackage= で入った WaveVR というオブジェクトが =Aseets/WaveVR/Prefabs/= に入っているので、それをおもむろにドラッグアンドドロップ。
+コントローラは同じフォルダの ControllerLoader というプレハブ。これを放り込む。
+
+[[https://hub.vive.com/storage/app/doc/en-us/WaveVR_EventSystem.html][WaveVR_EventSystem — Wave VR 2.1.8 documentation]]
+
+イベントのサンプルは、sample の Hello VR の Go_Event.cs というスクリプトなどにある。
+
+** VIVE Focus で
+VIVE Focus は Android 端末なので、Setting の Developer のところで、
+Developer、USB Debugging を on にする。
+
+* 一般
+3Dパススルーモード
+カメラで前方を見ることができる。
+メニューのヘッドセットのところでONにする。
+電源ボタンをダブルクリックで入る。

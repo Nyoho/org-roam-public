@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       B0058D17-E1B4-4531-A9A2-3465697723B5
+:END:
+
+
+[[https://dev.botframework.com/][Bot Framework]] <2016-03-31 Thu>
+
+- [[http://docs.botframework.com/builder/node/guides/understanding-natural-language/#navtitle][Understanding Natural Language | Documentation | Bot Framework]]
+- [[https://www.luis.ai/help][LUIS: Help]] (video: [[https://vimeo.com/145499419][Microsoft LUIS tutorial on Vimeo]])
+
+Microsoftアカウントを作成した。
+LUISに登録した。
+

@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       3D5288F9-D718-415B-96F4-D9E7561FEAB5
+:END:
+#+title: VI
+
+VI, which is not six.
+
+* 操作
+- 0 :: 行頭へ
+- ^ :: 文字がある行頭へ(スペースは無視)
+- $ :: 行末へ
+- w, W :: 単語移動 (前へ) 大文字だとスペースまで行く
+- b, B :: 単語移動 (後ろへ) 大文字だとスペースまで行く
+- x :: 1文字削除
+- dw :: 単語削除
+- d$ :: 行末まで削除
+- dW :: 次の空白まで削除
+- dd :: 1行削除
+- di( :: かっこの中を削除 (かっこはいろいろ変えてみよう)
+- da( :: かっこの中を削除
+- V :: visual選択
+- C-v :: visual矩形選択
+- u :: undo
+- yy :: yank (copy)
+- Vのときにコロン :: そして ~y+~ と打つとOSのクリップボードにコピーされる
+- p :: paste (カーソル後に)
+- P :: paste (カーソル前に)
+- H,M,L :: 画面の上・真ん中・下へ移動
+- W, B :: 単語移動
+- e :: 単語の終わりにジャンプ
+- f,t :: 後方検索してジャンプ
+- F :: 前方検索ジャンプ
+- C-f :: ページ送り
+- C-b :: ページ戻る
+- C-d :: 半ページ送る
+- C-u :: 半ページ戻る
+- { :: 段落ジャンプ(上)
+- } :: 段落ジャンプ(下)
+- % :: 対応するかっこに飛ぶ
+- / :: 検索
+- i :: insert mode に
+- I :: 行頭に行ってinsert mode
+- c :: 削除した上で挿入モードに
+
+** ファイルを開く
+=:= のあとに =e= ファイル名で開く。
+=sp= はウインドウ分割して開く。 =vsp= は vertitally split する。
+
+* Links
+- [[https://loumo.jp/wp/archive/20080701175525/][プログラマが知っておくべき100のVimコマンド | Lonely Mobiler]]
+- [[https://qiita.com/hachi8833/items/7beeee825c11f7437f54][Vim幼稚園からVim小学校へ - Qiita]]
+- [[http://tyru.hatenablog.com/entry/2016/12/04/000025][ミニマリストな Vimmer におすすめしたい履歴管理プラグイン oldfilesearch.vim - Humanity]]
+- [[https://www.slideshare.net/cohama/vim-nagoyavim-1][(初心者向け) Vim の機能紹介＠nagoya.vim #1]]

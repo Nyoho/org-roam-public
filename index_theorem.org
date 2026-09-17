@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       55325B25-6C56-447A-9D42-0E8EBB4139C0
+:END:
+#+title: index theorem
+#+date: [2023-05-12 Fri 01:10]
+
+Atiyah-Singerの指数定理
+- [[https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%86%E3%82%A3%E3%83%A4%EF%BC%9D%E3%82%B7%E3%83%B3%E3%82%AC%E3%83%BC%E3%81%AE%E6%8C%87%E6%95%B0%E5%AE%9A%E7%90%86][アティヤ＝シンガーの指数定理 - Wikipedia]]
+- [[http://pantodon.jp/index.rb?body=index_theorem][Atiyah-Singer の指数定理]]
+- [[https://web.math.ucsb.edu/~dai/book.pdf][Lectures on Dirac Operators and Index Theory (PDF)]]

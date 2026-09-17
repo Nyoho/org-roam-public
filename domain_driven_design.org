@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       B674FE4B-B2DB-4565-A025-75AE70766647
+:END:
+#+title: domain driven design
+#+date: [2023-01-23 Mon 20:33]
+
+DDD
+
+* Links
+- [[https://zenn.dev/imamura_sh/articles/ddd-summary-f85323ffc1b91d82f795][ドメイン駆動設計にまつわる概念]]

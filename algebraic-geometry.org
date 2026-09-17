@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       056F481E-E1A5-4393-B192-4667B5654EE3
+:ROAM_ALIASES: "algebraic geometry"
+:END:
+#+title: 代数幾何学
+#+date: <2020-09-02 15:54:54 +0900>
+
+代数幾何学に関することなら何でもメモする。
+
+* 講義
+- [[https://www.youtube.com/playlist?list=PL8yHsr3EFj50Un2NpfPySgXctRQK7CLG-][Algebraic geometry II: Schemes - YouTube]] by Richard E. Borcherds
+- [[https://www.youtube.com/watch?v=WTEZjR5aNjw][AGITTOC pseudolecture 1 (welcome; philosophy; some category theory) - YouTube]] by Ravil Vakil
+

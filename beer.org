@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       E9D1ED49-AEC7-4624-9FD6-347DB66DE1E2
+:ROAM_ALIASES: beer
+:END:
+#+title: ビール
+#+date: <2016-09-17 14:28:44 +0900>
+#+filetags: 食文化
+
+木内酒造
+- [[http://kodawari.cc/shop/html/products/detail.php?product_id=19][ヴァイツェン Weizen 330ml]]
+
+* ノンアルコール
+- ヒューガルデン
+   

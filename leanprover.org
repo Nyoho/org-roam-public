@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       4F9E50A0-895E-4C27-81ED-356B3687555C
+:END:
+#+title: Lean Prover
+#+date: <2021-07-02 Fri>
+
+Lean
+https://leanprover-community.github.io
+
+Natural Number Game
+https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/
+
+Formalising Mathematics
+- [[https://github.com/ImperialCollegeLondon/formalising-mathematics][ImperialCollegeLondon/formalising-mathematics: Material for Kevin Buzzard's 2021 TCC courrse on formalising mathematics.]]
+
+* 未分類メモ
+- pfr
+- magma
+- https://borisalexeev.com/pdf/erdos707.pdf  著者に[[id:EA0BD8F2-7BD2-49C1-9007-1BBD71AF7FB2][ChatGPT]] と Lean がいる
+
+* Projects
+- Mathlib
+- Kevin Buzzard
+- Infinity Cosmos by Emily Riehl
+- Lean formalization of Analysis I by Terence Tao
+- [[https://github.com/leanprover-community/flt-regular][leanprover-community/flt-regular: Fermat's Last Theorem for regular primes]]
+
+* Videos
+- [[https://www.youtube.com/@xenaproject3306/videos][Xena Project - YouTube]]
+- [[https://www.youtube.com/watch?v=8MFGhOWeCNE][Lean 4 overview for Mathlib users - Patrick Massot - YouTube]]
+- [[https://www.youtube.com/watch?v=5wV8qS66piQ][定理を証明するプログラミング言語Leanって？環境構築、入門教材の紹介も！supported by Proxima Technology - YouTube]]
+   
+* Links
+- [[https://xenaproject.wordpress.com/2023/01/08/lean-2022-round-up/][Lean 2022 round-up | Xena]]
+- [[https://leanprover-community.github.io/mathematics_in_lean/index.html][Mathematics in Lean — Mathematics in Lean 0.1 documentation]]
+- [[https://github.com/leanprover/lean4-mode][leanprover/lean4-mode: Emacs major mode for Lean 4]]
+- https://github.com/yuma-mizuno/lean-math-workshop
+  - https://github.com/s-taiga/lean-math-workshop-my-solution/tree/my-solution
+- [[https://afm.episciences.org/][Annals of Formalized Mathematics]]
+- [[https://live.lean-lang.org/][Lean 4 Web]]
+- [[https://leanprover-community.github.io/mathlib4_docs/][mathlib4 docs]]
+- [[https://github.com/openai/miniF2F][openai/miniF2F: Formal to Formal Mathematics Benchmark]]
+- [[https://github.com/trishullab/PutnamBench][trishullab/PutnamBench: An evaluation benchmark for undergraduate competition math in Lean4, Isabelle, Coq, and natural language.]]
+- [[https://github.com/Goedel-LM/Goedel-Prover-V2][Goedel-Prover-V2]]
+  - [[https://arxiv.org/abs/2508.03613][Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction]]
+- [[https://arxiv.org/abs/2504.21801][DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition]]
+- [[https://arxiv.org/abs/2506.11487][Reviving DSP for Advanced Theorem Proving in the Era of Reasoning Models]]

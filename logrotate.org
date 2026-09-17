@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       C01807E7-0B8E-4746-87C7-17D933159C8C
+:END:
+
+logrotate
+
+* 設定
+/etc/logrotate.conf, /etc/logrotate.d
+に設定を書いていく。
+
+** dateext
+dateext をつけると .1 .2 ではなく日付のファイル名がつく。
+
+** サイズ指定
+=size=+4096k= となどとする。
+
+** compress にしたときに使う圧縮コマンドに xz を使う
+#+BEGIN_SRC sh
+compresscmd /usr/bin/xz
+uncompresscmd /usr/bin/xzdec
+#+END_SRC

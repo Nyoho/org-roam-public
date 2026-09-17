@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       AECD816D-E2B9-4E61-BB5E-CA51935A4294
+:END:
+噂の [[http://cask.github.io/][Cask]]
+
+* Installation
+
+Homebrew でもインストールできるが、=~/.cask/= に入れてみたかったので次のようにした。
+#+BEGIN_SRC sh
+curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+#+END_SRC
+
+
+* Usage
+別の Emacs を試すときは
+#+BEGIN_SRC sh
+export EMACS=~/Desktop/emacs-25.1/nextstep/Emacs.app/Contents/MacOS/Emacs 
+#+END_SRC
+
+
+* 参考URL
+以下を参考にした。
+
+- [[http://cask.github.io/][Cask]] (公式ドキュメント)
+- [[https://github.com/rdallasgray/pallet][rdallasgray/pallet]]
+- [[http://d.hatena.ne.jp/naoya/20140424/1398318293][Cask - naoyaのはてなダイアリー]]
+- [[http://d.hatena.ne.jp/syohex/20140424/1398310931][package.elから Caskに切り替えました - Life is very short]]
+- [[http://gongo.hatenablog.com/entry/2014/05/09/230836][Emacs のパッケージ管理を package.el + el-get から Cask + pallet に乗り換えました - Thanks Driven Life]]
+- [[http://qiita.com/kametaro/items/2a0197c74cfd38fddb6b][Emacs - caskとpalletを使って、RubyのBundlerのようにpackage.elから管理する - Qiita]]
+
+
+* 備考
+org-mode を入れるときは elpa installation のバグのようなものがあるらしく、Emacs と同じセッションで入れる[[http://comments.gmane.org/gmane.emacs.orgmode/70880][必要がある]]という。
+pallet を入れておいて、
+M-x package-install org-plus-contrib
+してみた。
+
+複数のEmacsを入れて cask を使いたいとき、環境変数EMACSを用いて、
+#+BEGIN_SRC sh
+export EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+cask install
+#+END_SRC
+とすればOK。
+参考: [[http://stackoverflow.com/questions/18330954/using-cask-with-emacs-app][osx - Using Cask with Emacs.app - Stack Overflow]]

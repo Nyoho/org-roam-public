@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       CB45562E-A2D2-4942-AD51-5AE31753B628
+:END:
+
+Learning Tools Interoperability® (LTI®)
+
+- [[https://www.imsglobal.org/activity/learning-tools-interoperability][Learning Tools Interoperability | IMS Global Learning Consortium]]
+- [[http://www.blackboard.com/learning-management-system/extending-blackboard-learn.aspx][Extending Blackboard Learn]]
+- [[https://building.coursera.org/app-platform/lti/][Building Coursera | Building Coursera]]
+- [[http://www.blackboard.jp/platforms/learn/blackboard_platform_link/extending-learn/openness-technologies/][Blackboard Learnが採用するオープンテクノロジー | Blackboard Learn]]
+- https://www.slideshare.net/hosamshahin/lti-50090855
+
+- https://github.com/instructure/ims-lti gem
+- [[https://www.edu-apps.org/code.html][Writing LTI Stuff]]
+- [[https://www.slideshare.net/hosamshahin/lti-50090855][Lti]] スライド
+
+
+sample codes
+
+- [[https://www.imsglobal.org/learning-tools-interoperability-sample-code][Learning Tools Interoperability: Sample Code | IMS Global Learning Consortium]]
+- [[https://github.com/instructure/canvas-lms/blob/e5a181caa320bcec6ca8394dc2a0d35b02e207a2/app/controllers/external_content_controller.rb][canvas-lms/external_content_controller.rb at e5a181caa320bcec6ca8394dc2a0d35b02e207a2 · instructure/canvas-lms]]
+
+
+LTIが使えるLMS
+- Blackboard
+- [[https://github.com/instructure/canvas-lms][instructure/canvas-lms: The open LMS by Instructure, Inc.]]

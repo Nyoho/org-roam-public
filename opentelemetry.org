@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       4FE63F47-3B6D-44FD-977C-D4A3C06D5AEF
+:END:
+#+title: OpenTelemetry
+#+date: [2026-07-28 Tue 15:50]
+
+* Links
+- [[https://github.com/nginx/nginx-otel][nginx/nginx-otel]] NGINX用のモジュール

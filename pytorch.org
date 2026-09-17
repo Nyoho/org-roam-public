@@ -1,0 +1,115 @@
+:PROPERTIES:
+:ID:       D90261B6-A84C-40F8-9252-C91B850C534D
+:END:
+#+title: PyTorch
+
+A deep learning framework PyTorch
+
+* Installation
+[[https://pytorch.org/get-started/locally/][Start Locally | PyTorch]]
+ここで選ぶとOK
+
+Linux, Pip, CUDA 10.0なら
+#+begin_src sh
+pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl
+pip3 install torchvision
+#+end_src
+と出る。
+
+* Building
+pytorch は pip で入れたけど CUDAのために下のように pytorch/pytorch をビルドした。
+
+: git submodule update --init
+
+しておき、
+
+: env CMAKE_PREFIX_PATH=$HOME/.pyenv/shims/conda/../ MACOSX_DEPLOYMENT_TARGET=10.13 CC=clang CXX=clang++ CXXFLAGS=-stdlib=libc++ python setup.py install
+
+でビルド。
+
+** PyTorchが入ったか確認するには
+
+=python= を起動して、
+
+#+BEGIN_SRC python
+import torch
+t = torch.rand(3)
+r = t.cuda()
+#+END_SRC
+
+** 注意点
+ビルドしたディレクトリがカレントディレクトリのまま =import torch= すると、torch というディレクトリがあるためにミスることがある。
+
+** 準備 
+cudnn v6.0
+
+: conda install -c anaconda cudnn
+
+or,
+
+cudnn を公式からダウンロード
+
+
+* Tutorials
+
+- https://pytorch.org/tutorials/
+- https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
+- [[https://github.com/yunjey/pytorch-tutorial/blob/master/README.md][pytorch-tutorial/README.md at master · yunjey/pytorch-tutorial]]
+
+メモ
+- 自動微分 autograd
+- torch.Tensor が中心
+- .requires_grad as True にセットすると計算をトラッキングする。
+- .backward()を呼ぶ。
+
+** Dataset
+: from torchvision import datasets, transforms
+
+~datasets~ に ~.MNIST~ などがある。
+
+** DataLoader
+: from torch.utils.data import DataLoader
+
+
+* pytorch/examples
+** DGGAN
+Download lfw from [[http://vis-www.cs.umass.edu/lfw/][LFW Face Database]].
+
+: python main.py --cuda --dataset lfw --dataroot lfw/
+
+To continue, 
+: python main.py --cuda --dataset lfw --dataroot lfw/ --niter 30 --netG netG_epoch_24.pth --netD netD_epoch_24.pth
+
+
+* Export to Core ML
+
+[[https://qiita.com/kamata1729/items/e54bcb7d0ed3d296daf8][{CoreML, Pytorch, Swift} PytorchのモデルをCoreMLを使ってiOSで実行 - Qiita]]
+
+ONNX を経由する。
+
+coremltools は直接変換できるようになっている。(4.0から) https://coremltools.readme.io/docs/pytorch-conversion
+
+* inference mode
+- [[https://github.com/pytorch/rfcs/pull/17][RFC-0011-InferenceMode by ailzhang · Pull Request #17 · pytorch/rfcs]]
+- [[https://pytorch.org/docs/1.9.0/notes/autograd.html#locally-disabling-gradient-computation][Autograd mechanics — PyTorch 1.9.0 documentation]]
+
+~with torch.no_grad():~ を ~with torch.inference_mode():~ にするとちょっと速くなる。
+  
+* PyTorchLightning
+
+[[https://github.com/PyTorchLightning/pytorch-lightning][PyTorchLightning/pytorch-lightning: The lightweight PyTorch wrapper for ML researchers. Scale your models. Write less boilerplate]]
+特にtrainのところが短く書ける。
+
+参考
+- [[https://qiita.com/fam_taro/items/df8656a6c3b277f58781][PyTorch Lightning 2021 (for MLコンペ) - Qiita]]
+  
+* Libraries
+- [[https://github.com/rusty1s/pytorch_geometric][rusty1s/pytorch_geometric: Geometric Deep Learning Extension Library for PyTorch]]
+
+* Links
+- [[https://qiita.com/sh-tatsuno/items/42fccff90c98103dffc9][ライトニングpytorch入門 - Qiita]]
+- [[https://mosko.tokyo/post/pytorch-rnn/][PyTorchでRNN入門 | moskomule log]]
+- [[http://caffe.classcat.com/2017/04/14/pytorch-tutorial-neural-networks/][PyTorch : Tutorial 初級 : ニューラルネットワーク – Deep Learning フレームワーク]]
+- [[https://docs.microsoft.com/en-us/learn/paths/pytorch-fundamentals/][PyTorch Fundamentals]] Microsoft による入門
+- [[https://atcold.github.io/pytorch-Deep-Learning/][Deep Learning]] DS-GA 1008 · SPRING 2020 · NYU CENTER FOR DATA SCIENCE (PyTorchベース)
+- [[https://o-84.com/article/m1-mac-gpu-yolox-pytorch/][M1 MacのGPUでYOLOXを動かしてみた | o-84.com]]

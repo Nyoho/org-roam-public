@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       8F11E037-39C7-48E5-B883-12D8877ECF0A
+:END:
+#+begin_html
+---
+title: Hakyll
+tags: Haskell, Hakyll
+---
+#+end_html
+
+Haskell 製の静的サイトジェネレータ Hakyll のメモです。
+
+#+BEGIN_SRC sh
+cabal install hakyll
+#+END_SRC
+
+* Clean URLs (pretty URLs) のやり方
+- [[https://groups.google.com/forum/?fromgroups%3D#!topic/hakyll/rcJ2lVBiOEs][Site config - clean urls - github sync - Google グループ]]
+- [[https://github.com/altercation/ethanschoonover.com][altercation/ethanschoonover.com · GitHub]] solarized の作者(?)のサイトは Hakyll でばりばり
+
+* MathJax
+MathJax を入れるのに
+https://github.com/brianshourd/brianshourd.com/blob/master/hakyll.hs
+これを流用した。
+math: true のページのみ MathJax が使えるように。
+ 
+* 入門
+Generate
+#+BEGIN_SRC sh
+hakyll-init my-hakyll-site
+#+END_SRC
+
+#+BEGIN_SRC sh
+cd my-hakyll-site
+ghc --make site.hs
+#+END_SRC

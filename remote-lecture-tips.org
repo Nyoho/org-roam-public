@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       805AB12E-F214-4015-88D9-0D2A4AB59E9A
+:END:
+#+title: Remote Lecture Tips
+
+* 基本
+- [[https://oxon.hatenablog.com/entry/2020/03/24/234516][オンライン講義の経験談 - 宇宙線実験の覚え書き]]
+- [[https://paper.dropbox.com/doc/Zoom--Aw~FZD7yqhi7LwSgemZfwHenAg-h2JldxC1zZimKyP1aZbg8][Zoomでの面談方法について – Dropbox Paper]]
+- [[https://www.u-tokyo.ac.jp/ja/about/president/COVID-19-message.html][新型コロナウイルス感染症に関連する対応について 総長メッセージ | 東京大学]]
+- [[https://www.highedu.kyoto-u.ac.jp/connect/teachingonline/][Teaching Online | CONNECT 京都大学]]
+- [[https://www.media.hiroshima-u.ac.jp/services/communication/teams][広島大学の Microsoft Teams 説明ページ]]
+- 自宅に「ギガ」が無制限のネットワーク環境があるのかどうか
+- MOOCの終了率は数パーセント
+
+
+* 法律など
+- [[https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo4/043/siryo/__icsFiles/afieldfile/2018/09/10/1409011_6.pdf][大学における多様なメディアを高度に利用した授業について]]PDF
+  - 大学において、大学設置基準第二十五条第 一項に規定する面接授業に相当する教育効果を有すると認めたものであること。
+
+    - 同時かつ双方向に行われるものであって、かつ、授業を行う教室等以外の教室、研究室又はこれらに準ずる場所 (大学設置基準第三十一条第一項の規定により単位を授与する場合においては、企業の会議室等の職場又は住居に近 い場所を含む。)において履修させるもの
+
+    - 毎回の授業の実施に当たって、指導補助者が教室等以外の場所において学生等に対面することにより、又は当該 授業を行う教員若しくは指導補助者が当該授業の終了後すみやかにインターネットその他の適切な方法を利用する ことにより、設問解答、添削指導、質疑応答等による十分な指導を併せ行うものであって、かつ、当該授業に関す る学生の意見の交換の機会が確保されているもの
+- 同時双方向型
+- オンデマンド型
+
+** 改正著作権法関連
+- [[https://www.bunka.go.jp/seisaku/chosakuken/92169601.html?fbclid=IwAR1iEWkos74BYN_cb_WLzOgJfNEQAwvXRmBwZvLj6LK7itUZWaHK2mhFHww][授業目的公衆送信補償金制度の早期施行について | 文化庁]]
+- [[https://mainichi.jp/articles/20200406/k00/00m/040/186000c?fbclid=IwAR2kGdxvzYfPks1QTBLzdKENiENxrmqqBn6CIKdd05SC-N7mu1TqfsvXhKE][オンライン授業でも著作物利用可能に　文化庁、新型コロナで改正著作権法前倒しへ - 毎日新聞]]
+
+* オンラインでアンケートとか投票とかチャットとかするサービス
+
+- [[https://www.menti.com/][Mentimeter]]
+- [[https://www.sli.do/][Slido]]
+  - (紹介記事) [[https://qiita.com/anbhts/items/2b762fd313bc4fd22f16][少人数～大人数の勉強会には「sli.do」を！ - Qiita]]
+  - (紹介記事) [[http://mededu.jp/2019/09/14/%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0sli-do%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9/][オーディエンスレスポンスシステムsli.doの使い方 – 医学教育改善計画]]
+- [[https://www.polleverywhere.com/audience-response-system][Poll Everywhere]]
+- [[https://kahoot.com/][Kahoot!]]
+  - (紹介記事) [[https://ciqba.jp/3444][【オンライン授業にも】Kahootで授業をもっと面白く！ ICT授業導入にも最適 | ciQba（ちいくば）]]
+- [[https://offcha.com/][Offcha]]
+- [[https://presenter.ahaslides.com/][AhaSlides]]
+- [[https://ja.padlet.com/][Padlet]] 掲示板を作るツール
+   
+* Links
+- [[https://news.yahoo.co.jp/byline/ohmototakashi/20200406-00171691/][Zoomを安全に利用する4つのポイント。Zoom爆弾や情報漏えいへ対処する。(大元隆志) - 個人 - Yahoo!ニュース]]
+- [[https://www.math.sci.hokudai.ac.jp/~nami/note/a.html][オンライン授業あるいはオンライン研究会に関するリンク集 (by Takao NAMIKI 北海道大学)]]
+- [[http://www.math.sci.hokudai.ac.jp/~nami/note/a.html][オンライン授業あるいはオンライン研究会に関するリンク集 (北海道大学 Takao NAMIKI)]]
+- [[http://www.highedu.kyoto-u.ac.jp/course/][授業のデザイン・方法 | 京都大学高等教育研究開発推進センター]]
+  - [[https://www.highedu.kyoto-u.ac.jp/connect/teachingonline/hybrid.php][ハイブリッド型授業とは｜Teaching Online | CONNECT]]
+  - [[https://www.highedu.kyoto-u.ac.jp/connect/topics/kita01.php][コロナ禍下の経験から生まれた、iPadを用いたハイブリッド型授業｜Topics | CONNECT]]

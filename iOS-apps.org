@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       4FA30A32-8E10-45BC-8049-3FA9FD52B06F
+:END:
+
+iOS app memo
+
+* 画像系
+** 加工系
+*** LightX
+- チュートリアルがある
+- Blendが面白い
+
+*** Photoshop Mix
+- Blend効果が多彩
+
+*** Snapseed
+- Google製品
+- tone curve が使える
+- 射影変換しても足らないところを自動補完してくれる
+
+
+* 音楽系
+
+** もうない
+- RapMushi
+- ラップお父さん
+

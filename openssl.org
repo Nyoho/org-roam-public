@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       4736969F-EBC8-4E09-97CD-B760DF2AFD7B
+:END:
+#+title: OpenSSL
+#+date: <2019-11-17 14:03:05>
+
+OpenSSL tech
+https://www.openssl.org
+
+* Tips
+** 高負荷を与える
+なんと ~openssl~ コマンドを使ってCPUを全開にできる。
+
+#+begin_src fish
+openssl speed -multi (getconf _NPROCESSORS_ONLN)
+#+end_src

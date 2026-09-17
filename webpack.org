@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       8FB841DC-7395-40C0-942C-65DFA445088A
+:END:
+webpack
+
+[[https://webpack.github.io/][webpack]]
+
+- [[http://qiita.com/SatouRyou/items/6169800993587f4e6018][Yarnを利用して、Reactをwebpack と babel-loaderでビルドする方法 - Qiita]]

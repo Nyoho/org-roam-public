@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       622BB20A-B716-40B3-9F37-95B31DBE4894
+:END:
+#+title: projectors
+#+date: [2025-10-01 Wed 14:03]
+
+映像を投影するプロジェクタのメモ
+
+- [[https://www.apex106.com/projector/projector-faq.php][よくあるご質問 | プロジェクターの選び方]] ルーメン数から人数やスクリーンの目安

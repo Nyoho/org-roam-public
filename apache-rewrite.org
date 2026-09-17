@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       B4A8E389-96E8-43CF-AB83-978031333808
+:END:
+#+title: Apache rewrite
+
+Apache の rewrite のメモ
+
+* [L] そこで止まる。次のリダイレクトに行かない。
+
+* 最後の hoge/ や hoge/index.html を hoge にする方法
+ここで学んだ。
+[[http://stackoverflow.com/questions/10921456/htaccess-to-show-a-directory-index-html-without-a-trailing-slash][apache - .htaccess to show a directory index.html without a trailing slash - Stack Overflow]]
+
+* Cool URL
+
+#+begin_src conf
+redirectMatch 301 ^(.*)\.html $1
+#+end_src
+
+* 参考になるリンク
+- [[http://tech.bayashi.jp/archives/entry/techweb/2007/001981.html][mod_rewrite サンプル集/楽]]

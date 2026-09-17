@@ -1,0 +1,264 @@
+:PROPERTIES:
+:ID:       5D1F2D7A-7E94-4738-86D3-BB1D7D454408
+:END:
+#+TITLE: macOS
+#+TAG: OS X, Mac
+#+DATE: <2013-08-28 Wed>
+
+macOS (former OS X (former Mac OS X))
+
+* Change hibernation mode
+
+モードを 3 にするには
+
+: sudo pmset -a hibernatemode 3
+
+とする。
+
+** modes
+
+| mode |                     |
+|    0 | disable hibernation |
+|    3 | ノートっぽい        |
+
+など
+
+* macOS のディスクイメージの不要なところを削除する方法 
+: hdiutil compact TARGET.sparsebundle
+
+#+BEGIN_SRC 
+hdiutil: compact failed - 機能が実装されていません
+#+END_SRC
+というエラーが出た場合は =-batteryallowed= をつける。
+
+* OS の major version up のときのチェックリスト
+- [ ] TeX
+- [ ] Mathematica ([[http://support.apple.com/kb/DL1572?viewlocale%3Den_US][Java for OS X 2013-005]] が必要だった <2013-10-30 Wed>)
+- Safari
+- EasySIMBL
+  - SafariStand
+  - plugins for Terminal.app
+  - plugins for Yorufukurou
+- Emacs
+- Adobe Creative Cloud
+
+* Mavericks
+インストール前に dmg ファイルを確保
+#+BEGIN_SRC sh
+cp -a /Applications/Install\ OS\ X\ Mavericks.app/Contents/SharedSupport/InstallESD.dmg /path/to/somewhere/
+#+END_SRC
+
+参考: https://twitter.com/dankogai/statuses/392733296112963584
+
+* Safari の PDF 表示が Adobe Reader に取られた場合
+#+BEGIN_SRC sh
+/Library/Internet\ Plug-Ins/{AdobePDFViewer.plugin,AdobePDFViewerNPAPI.plugin}
+#+END_SRC
+
+を削除する。
+
+* macOS 上で Linux のインストール USB メモリを作成
+
+#+BEGIN_SRC sh
+diskutil unmount /dev/disk10s1
+hdiutil convert -format UDRW -o target.img some-linux-image.iso
+sudo dd if=target.img.dmg of=/dev/disk10 bs=1m
+#+END_SRC
+
+* pbcopy が 10.9 以降おかしいのは tmux-MacOSX-pasteboard で
+[[https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard][ChrisJohnsen/tmux-MacOSX-pasteboard]]
+#+BEGIN_SRC sh
+hogehoge | reattach-to-user-namespace pbcopy
+#+END_SRC
+ 
+* 削除していいフォルダのリスト
+空き容量を増やしたいです。
+#+BEGIN_SRC 
+~/Library/Application\ Support/Adobe/Common/
+~/Library/Caches/Adobe/After\ Effects
+~/Library/Caches/com.apple.dt.Xcode/Downloads
+~/Library/Developer/Xcode/iOS\ DeviceSupport/ のいらんバージョン
+~/Library/Developer/CoreSimulator/Devices # たぶんいらん
+#+END_SRC
+
+* ユーザ辞書関連
+=~/Library/Mobile\ Documents/com~apple~TextInput/= 
+にユーザ辞書の iCloud データ(のバックアップ?)がある。
+
+- やっとユーザ辞書同期問題が解決なの？：ちょっぴり！？ヲタクな日々：So-netブログ - http://pothi.blog.so-net.ne.jp/2014-09-30
+- mavericks & iOS7 - ユーザー辞書 - Hatena初心者さんのブログ - http://tomoshibi.hateblo.jp/entry/2014/06/01/175119
+- ゆっくり建てる Appleデバイス間のユーザー辞書同期問題を解決！ - http://yukkuritateru.blog92.fc2.com/blog-entry-1223.html
+- 【iCloud】 デバイス間でユーザ辞書を同期できない問題を直す - なんか いろいろ - http://misukou.blog84.fc2.com/blog-entry-2219.html
+- 直った！iOS 7でユーザー辞書が使えない人必見の治療方法！ - http://wayohoo.com/ios/troubles/how-to-fix-the-user-dictionary-function-of-ios-7.html
+- やっとユーザ辞書同期問題が解決なの？：ちょっぴり！？ヲタクな日々：So-netブログ - http://pothi.blog.so-net.ne.jp/2014-09-30
+
+* iCloud Drive
+=~/Library/Mobile Documents/com~apple~CloudDocs= にiCloudの Documents と Desktop のシンボリックリンクがある。
+
+* どのプロセスがどのファイルを使っているか
+#+BEGIN_SRC sh
+sudo fs_usage
+#+END_SRC
+
+* Terminal.app
+** 便利操作
+- URLを command + double click するとブラウザで開くよ。
+
+* タイムスタンプ変更
+作成時刻を変更
+: touch –t YYYYMMDDhhmm
+
+修正時刻を変更
+: touch –mt YYYYMMDDhhmm
+
+* MacでiPhone/iPadなどのiOS端末をウェブカメラにする
+Macに [[https://itunes.apple.com/jp/app/epoccam-iphone-webcam-viewer/id736008948?mt=12&ign-mpt=uo%253D4][EpocCam iPhone Webcam Viewer を Mac App Store で]]
+iOSに[[https://itunes.apple.com/jp/app/epoccam-wireless-computer/id449133483?mt=8&ign-mpt=uo%253D4][EpocCam Wireless Virtual Computer Webcamを App Store で]]
+を入れる。
+
+* CPU 表示
+: sysctl -n machdep.cpu.brand_string
+
+Core数などの情報を出すには、
+
+: system_profiler SPHardwareDataType
+
+* 温度表示
+Use ruby gem.
+
+#+begin_src sh
+gem i iStats
+
+istats
+#+end_src
+
+* Time Machine
+
+Time Machine のバックアップのリスト
+
+#+begin_src sh
+tmutil listbackups
+#+end_src
+
+
+前回のバックアップからの差分を表示してくれる。
+
+#+begin_src sh
+tmutil compare -s
+#+end_src
+
+#+begin_src sh
+tmutil compare /Volumes/DriveName/Backups.backupdb/diskname/2018-...
+#+end_src
+
+=listbackups= で取得したパスリストから
+
+#+begin_src sh
+tmutil compare /backup/path1 /backup/path2
+#+end_src
+
+と比較もできる。
+
+これで =/private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/0/com.apple.LaunchServices-***-v2.csstore= というでかいファイルを見つけた。
+
+
+ファイルの削除は =bypass= を用いる。
+
+#+begin_src sh
+sudo /System/Library/Extensions/TMSafetyNet.kext/Contents/Helpers/bypass rm -rfv /Volumes/GreatStore/Backups.backupdb/Foo/Latest/NanntokaSSD\ -\ Data/Applications/naninani*
+#+end_src
+
+* Spotlight
+Spotlight で  ExternalHDD のインデックスを止める
+#+begin_src sh
+mdutil -i off /Volumes/ExternalHDD
+#+end_src
+
+or
+
+#+begin_src sh
+touch /Volumes/ExternalHDD/.metadata_never_index
+#+end_src
+
+
+* FinderやSpotlightの検索
+- =kind:pdf= で種類をPDFにするなどできる。(よく =type:pdf= と書いてしまう。)
+- =name:foo= はファイル名に foo 含むもの
+
+* lsregister
+
+=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister=
+
+[[https://apple.stackexchange.com/questions/324783/huge-tm-backups-launchservices-csstore-file-too-big][time machine - Huge TM backups - LaunchServices csstore file too big? - Ask Different]]
+
+* Bluetooth
+リセット
+- Bluetooth上のアイコンを opt + shift + click → デバッグ → 「Bluetooth モジュールをリセット」
+
+* キーボードショートカット
+- ctrl + shift + eject :: ディスプレイをスリープ
+- cmd + opt + eject :: スリープ
+- cmd + ctrl + eject :: 再起動
+- cmd + ctrl + power :: 強制再起動
+- cmd + ctrl + opt + eject :: シャットダウン
+
+* 音声入力
+
+- コマンドを表示 :: 「音声入力コマンド」というパネルを出す
+
+「音声入力コマンド」にいろんなコマンドが書いてある。
+
+- 全て選択
+- 前の文を選択
+- それを削除
+
+など
+
+アクセシビリティの設定で個別にON/OFFできる。
+
+参考: [[https://support.apple.com/ja-jp/HT203085][音声入力コマンドで Mac に操作内容を伝える - Apple サポート]]
+
+* Voice Memos
+オーディオファイルは =~/Library/Application Support/com.apple.voicememos/Recordings= にある。
+
+
+* CPUのスペック
+~sysctl -a~ にいろいろ出てくる。
+=hw.optional.avx*=, =machdep.cpu.features= など。
+
+
+* iLife の効果音のありか
+iLife の効果音のありかは =/Library/Audio/Apple Loops/Apple/iLife Sound Effects= です。
+
+* nfs
+=/etc/nfs.conf= を ~nfs.server.nfsd_threads = 20~ としていたことがあった。
+
+* macOSのインストーラをUSBメモリに作る
+macOSのインストーラをUSBメモリに作るには
+まず、次で =/Applications/Install macOS nanntoka.app= を落としてくる。
+
+#+begin_src shell
+softwareupdate --fetch-full-installer --full-installer-version 13.0
+#+end_src
+
+バージョンによっては落とせない。
+
+その後で次を実行する。
+
+#+begin_src shell
+  sudo /Applications/Install\ macOS\ nanntoka.app/Contents/Resources/createinstallmedia --volume /Volumes/USBmemory-no-volume
+#+end_src
+
+* cron
+crontabで~/Library以下など特別なところにアクセスするには =/usr/sbin/cron= を System Preferences → Security & Privacy → Privacy → Full Disk Access  に入れる必要がある。
+
+* どのプロセスがボリュームを保持しているか調べる方法
+** lsof
+
+#+begin_src shell
+  sudo lsof +f -- /Volumes/...
+#+end_src
+
+** diskutil unmountDisk しようとする
+
+~diskutil unmountDisk ....~ しようとするとどのプロセスがつかんでいるか教えてくれる。

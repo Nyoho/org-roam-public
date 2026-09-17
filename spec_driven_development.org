@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       27F2DC71-BF04-45F9-B644-4B99D5D221BA
+:END:
+#+title: spec-driven development SDD 仕様駆動開発
+#+date: [2025-12-26 Fri 19:41]
+
+
+spec-driven development (SDD) 仕様駆動開発
+
+* ツール
+ツールが色々でている。
+
+** SpecKit
+- [[https://github.com/github/spec-kit][spec-kit]]
+- [[https://speakerdeck.com/leveragestech/speckitdedokomadedekiru-kosutohadorekurai][SpecKitでどこまでできる？ コストはどれくらい？ - Speaker Deck]]
+
+** KIRO
+[[https://kiro.dev/][Kiro: Agentic AI development from prototype to production]]
+
+
+** cc-sdd
+- [[https://github.com/gotalab/cc-sdd][gotalab/cc-sdd]]
+- [[https://zenn.dev/kokushing/articles/7468d5f195e54c][国産の仕様駆動開発ツール cc-sdd を推していきたい]]

@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       C67FF17D-F342-4BE8-BF5D-338E63974591
+:END:
+#+begin_html
+---
+title: 校正メモ
+tags: proofreading 校正
+date: <2014-03-05 Wed>
+---
+#+end_html
+
+校正に関するメモです。
+
+* PDFの差分を見る
+#+BEGIN_SRC sh
+mkdir a b c
+convert ver1.pdf a/ver1.jpg
+convert ver2.pdf b/ver2.jpg
+for f in `seq 0 499`         
+do              
+composite -compose difference a/ver1-$f.jpg b/ver2-$f.jpg c/$f.jpg
+done
+#+END_SRC

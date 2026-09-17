@@ -1,0 +1,141 @@
+:PROPERTIES:
+:ID:       4FF46F20-7DA9-4747-827D-FB67916EF50C
+:END:
+
+macOSのアプリケーションメモ
+
+* Trailer
+GitHub の issues などをメニューに表示
+
+* Digital Color Meter
+公式アプリ
+画面の色を便利。
+16進もコピーできる。
+
+* LanScan
+自分のネットワーク内のマシンのIPアドレス一覧がサクッと取得できる。
+便利。
+
+* Mathpix Snipping Tool
+画像スキャンしてLaTeXコードに。
+便利。
+
+* KeyCastr
+打ったキーを画面に表示する。
+
+* Highlighter
+画面に丸つけする。
+
+* ScreenBrush
+スクリーンに丸つけたりできる
+490円でフルバージョン
+
+* Milkeddit
+A Reddit reader
+
+* Sip
+画面の色を取得したり
+hexで貼り付けたりできる。
+
+* Monosnap
+画面キャプチャする。S3に投げたりいろいろできる。
+
+* AntConc
+A freeware corpus analysis toolkit for concordancing and text analysis.
+[[http://www.laurenceanthony.net/software.html][Laurence Anthony's Software]]
+
+* LiveQuartz
+[[http://www.rhapsoft.com/?menu=livequartz_video&lng=en][LiveQuartz - Simple Image Editing on Mac]]
+
+* Photos Duplicate Cleaner
+Photos.app の duplicate を clean してくれる。
+
+* OctotreeForSafari.app
+
+* 動画配信
+
+** OBS
+[[https://obsproject.com/][Open Broadcaster Software | Home]]
+
+* MenuMate
+Official [[https://zipzapmac.com/menumate][MenuMate - ZipZapMac]]
+
+マウスカーソルのあるところにメニューを出してくれる。
+
+* Easy Move + Resize 
+[[https://github.com/dmarcotte/easy-move-resize][dmarcotte/easy-move-resize: Adds "modifier key + mouse drag" move and resize to OSX]]
+
+* Affinity Designer
+[[https://affinity.serif.com/ja-jp/designer/][Affinity Designer - デスクトップとiPadで利用できるプロフェッショナル向けグラフィックデザインソフトウェア]]
+Illustrator の代替になるかも知れない。
+
+* Forecast
+mp3 のチャプタを入れるGUIアプリ
+
+* Amethyst
+タイル型ウィンドウマネジャ
+
+** Shortcuts
+- opt + shift + space :: Change layout
+- ctrl + opt + shift + t :: toggle enabled/disabled
+
+* FireAlpaca
+計量なお絵かきソフト
+
+* ベンチマーク
+- [[https://github.com/Gabriella439/bench][Gabriella439/bench: Command-line benchmark tool]]
+- [[https://github.com/sharkdp/hyperfine][sharkdp/hyperfine: A command-line benchmarking tool]]
+  
+* Older
+
+もうIntelでは動かなくなっていたもののメモ
+- Xbench
+- WP2TXT
+- Xyle scope
+- SuspendNow!
+- SuperTux
+- Stellarium
+- Startrail
+- SQLite Database Browser 2.0 b1
+- Songbird
+- Snowtape
+- RealOne Player
+- Rember
+- RMAC
+- Seashore
+- SFleX
+- Resolume Arena 4.1.3
+- Rail Maze
+- RBrowser
+- QFeeder
+- PureFTPd Manager
+- Porticus
+- PosteRazor
+- Picasa Web Albums Uploader
+- PicoPlay
+- Play Sound
+- GrandPerspective
+- Grid
+- HDRtist
+- Highlighter
+- iPhone Backup Extractor
+- iSquint
+- IRcat
+- iStars
+- iStumbler
+- Jawbone Updater
+- JellyBeans
+- KisMAC trunk r308
+- Leap Motion Orientation
+- LineIn
+- LiTaG_cocoa.app
+- Mac_SwapperDemon
+- Macfusion
+- MacTubes
+- Magical Finder
+- Magnifique
+- VirtualDJ Home
+- Thousand
+- SmillaEnlarger
+- Chicken of the VNC
+- 32- or 64-bit Kernel Startup Mode Selector

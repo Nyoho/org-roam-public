@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       1031DFF3-0D10-485A-8532-A3A6746B1C63
+:END:
+#+title: self-superviced learning
+#+date: [2023-05-04 Thu 08:20]
+
+自己教師あり学習について
+
+- [[https://arxiv.org/abs/2304.12210][[2304.12210] A Cookbook of Self-Supervised Learning]]

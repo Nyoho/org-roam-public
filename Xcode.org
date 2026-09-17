@@ -1,0 +1,62 @@
+:PROPERTIES:
+:ID:       21A85F77-3B4F-4398-A0A5-E76C2047008B
+:END:
+#+title: Xcode
+#+tags: Xcode
+#+date: <2013-10-04 Fri>
+
+* Shortcuts
+- command + ctrl + J, or command + click :: 定義にジャンプ
+- command + ctrl + E :: スコープ内のキーワード名を変換 (マウス hover でもできるが、それだとちょっと待たなければならないのでこっちの方がいい)
+- command + shift + J :: 現在のファイルをファイルツリーで開く (cmd + J で戻る)
+- command + opt + J :: filter in navigator
+- command + ctrl + R :: run without building
+
+* Code snippets
+=~/Library/Developer/Xcode/UserData/CodeSnippets= にある。
+
+* Archiving
+** とりあえず Xcode 5 で Archive したらビルドされたファイルを Finder で表示する Post-action
+: open "${ARCHIVE_PRODUCTS_PATH}${INSTALL_PATH}"
+
+http://t.co/AGsz5TYgh2
+http://twitter.com/hetima/status/385673408349892608
+
+* UI Automation
+** memo
+Xcode の =Open Developer Tool= -> =Instruments=
+で =Automation= を選ぶ。
+Create Script で、
+
+#+BEGIN_SRC javascript
+var target = UIATarget.localTarget();
+target.frontMostApp().logElementTree();
+
+var view = UIATarget.localTarget().frontMostApp().mainWindow();
+view.buttons()[0].tap();
+#+END_SRC
+
+などとする。
+* 古いiOSのためにビルドするには
+[[https://god48.com/xcode-could-not-locate-device-support-files][Xcodeの実機エラー”Could not locate device support files.” | kamiblog]] より。
+
+[[https://github.com/filsv/iOSDeviceSupport][filsv/iOSDeviceSupport: Xcode iPhoneOS DeviceSupport files (6.0 - 15.4)]] からそのファイルを持ってきて /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/ に入れる。
+
+* Tips
+
+** 手動インストール
+Mac App Store からではなく、[[https://developer.apple.com/download/more/][More Software Downloads - Apple Developer]] からインストールするという手があります。
+
+** =~/Library/Developer/CoreSimulator/Devices= にある要らないものを削除
+
+#+BEGIN_SRC sh
+xcrun simctl delete unavailable
+#+END_SRC
+
+cf. [[http://stackoverflow.com/questions/34910383/xcode-free-to-clear-devices-folder/34914591#34914591][ios - Xcode - free to clear devices folder? - Stack Overflow]]
+
+** 複数ターゲットで1つがビルドされるときに他のソースが変わっていてもビルドして欲しい
+
+Target Dependencies にそのターゲットを追加すればOK
+
+

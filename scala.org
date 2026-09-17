@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       CE100AFC-C303-46BC-A919-D3FEB43C26A0
+:END:
+Scala
+
+* 始め方
+#+BEGIN_SRC sh
+brew cask install java intellij-idea-ce
+brew install sbt
+#+END_SRC
+注意。エディタはIDEAでなくてもよい。
+

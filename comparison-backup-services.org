@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       60067C56-6794-4562-99F7-B66E057B2D7D
+:END:
+
+
+
+
+バックアップサービスの比較
+
+* PostgreSQLのローカルバックアップを完全に外にバックアップしたい。
+
+- [[https://aws.amazon.com/jp/ebs/][Amazon Elastic Block Store (EBS)]] (AWS)
+- [[https://aws.amazon.com/jp/s3/pricing/][Amazon S3]] (AWS)
+- [[https://aws.amazon.com/jp/s3/reduced-redundancy/][Amazon S3 低冗長化ストレージ]] (AWS)
+- [[https://dumper.io/][Dumper: Database Backup for Rails]]
+- [[https://cloud.google.com/storage/pricing?hl=ja][Google Cloud Storage (Google Cloud Platform)]]
+
+を比較する。
+
+容量に寄るけど1GBぐらい使ったとしたら
+
+|                   | EBS gp2 | EBS st1 | EBS sc1 |    S3 | Dumper | GCS 日本 |
+| 1GBあたり(米ドル) |     0.1 |   0.045 |   0.025 | 0.023 |    0.3 |    0.023 |
+
+
+- gp2 = General Purpose SSD
+- st1 = Throughput Optimized HDD
+- sc1 = Cold HDD
+- GCS 日本 = Google Cloud Storage 日本リージョン (asia-northeast1)
+
+[[https://aws.amazon.com/jp/rds/postgresql/][Amazon RDS for PostgreSQL]] はめちゃくちゃ便利だけど高いので却下した。
+
+
+Clourflare R2 が出た。 <2022-09-23 Fri>
+[[https://www.publickey1.jp/blog/22/s3cloudflare_r210gb.html][S3互換の「Cloudflare R2」が正式サービスに。データ転送料無料、10GBまで無料の分散型オブジェクトストレージ － Publickey]]
+1GBのデータ容量に対して月額0.015 (米ドル)
+100万回のライト（操作A）に対して4.5ドル、100万回のリード（操作B）に対して0.36ドル。

@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       3C492B02-78CD-43DF-A0B8-4C2DD497962C
+:END:
+#+title: Adobe Encore 関連
+#+tags: Encore
+#+date: <2015-04-30 Thu>
+
+Adobe Encore 関連
+
+- EncoreでのDynamic Linkの利用 | Learn Adobe Premiere Pro CS4 | Adobe TV - http://tv.adobe.com/jp/watch/307/4495/
+- Adobe Encore でメニューに戻れません 【OKWave】 - http://okwave.jp/qa/q7774168.html
+- [[http://hoshi-sano.hatenablog.com/entry/2014/02/14/083229][EncoreとPhotoshopでDVDのメニューを作る方法 - 雑念日記]]
+- [[https://forums.adobe.com/message/5646148][Encore CS6でのライブラリコンテンツの追加手順の解説 | Adobe Community]]
+- [[http://okwave.jp/qa/q5822402.html][Encoreで焼いたDVDをHDテレビで再生した時のジャギーの軽減 【OKWave】]]
+- Encore CS4 Root menu problem | Adobe Community - https://forums.adobe.com/thread/533428?start=0&tstart=0
+- Adobe Encore * リモコンを使用した操作 - http://help.adobe.com/ja_JP/encore/cs/using/WSbaf9cd7d26a2eabfe807401038582db29-7f7ca.html
+- Adobe Encore * Blu-ray ディスクの複数ページメニュー - http://help.adobe.com/ja_JP/encore/cs/using/WSf01dbd23413dda0e-3ea68760123ebe30b7c-7fff.html
+- [["https://forums.adobe.com/thread/533428?start%3D0&tstart%3D0][Encore CS4 Root menu problem | Adobe Community]]
+- [["http://tera-pro.blog.so-net.ne.jp/2013-03-10][Adobe Encore CS6の使い方10 ポップアップメニューと書出し：tera-pro.co.jp：So-netブログ]]
+

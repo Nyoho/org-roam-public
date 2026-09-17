@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       6F9792A2-34CC-4E12-8761-51DCF285CDD8
+:END:
+#+title: gourmet
+#+date: [2023-02-15 Wed 11:26]
+
+グルメ
+
+* 広島
+
+- [[https://tabelog.com/hiroshima/A3401/A340121/34028827/][四季彩 広島駅前店]]
+- 酔心
+- 芸州
+- [[https://tabelog.com/hiroshima/A3401/A340114/34002423/][酒菜処 きっすい]]
+- [[https://hachyahonten.owst.jp/][鉄焼酒房 蜂ヤ 本店【公式】]]
+- [[https://retty.me/area/PRE34/ARE152/SUB15201/100000448549/][にかいのおねぎや笹木(八丁堀/魚介・海鮮料理) - Retty]] 何食べてもうまい
+- [[https://tabelog.com/hiroshima/A3401/A340110/34018198/][牡蠣ひよっこ商店 - 胡町/居酒屋 | 食べログ]]
+- [[https://loco.yahoo.co.jp/place/g-HBHjpMaigfk/][酒と肴 堀川町 やまぐち(広島県広島市中区堀川町) - Yahoo!ロコ]]
+
+* 北海道
+- [[https://www.s-sandwich.com/][手作りサンドイッチの専門店 サンドリア]]

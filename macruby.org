@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       9618D673-82E1-4BBE-83D0-635013714E8C
+:END:
+#+title: MacRuby memo
+#+tags: Mac Ruby
+#+date: <2013-03-12 Tue>
+
+MacRuby に関するメモです。
+
+- [[http://hcg.drtoast.com/][HotCocoa::Graphics]]

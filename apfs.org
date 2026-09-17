@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       292AC0C5-6798-4DB9-8325-003DD84A89E8
+:END:
+#+title: APFS
+#+date: [2022-06-14 Tue 22:10]
+
+APFS. A filesystem by Apple.
+
+- [[https://applech2.com/archives/high-sierra-new-features-apfs-mobile-time-machine-using-tmutil.html][APFSのMacで「tmutil」コマンドを利用しローカルスナップショットを作成&Mobile Time Machineで復元する方法。 | AAPL Ch.]]
+- [[https://developer.apple.com/forums/thread/81171][APFS snapshots: where are they located? | Apple Developer Forums]]

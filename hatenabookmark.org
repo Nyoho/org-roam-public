@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       B7F84463-315D-477C-BB22-CB04FBCDB162
+:END:
+#+title: はてなブックマーク
+#+DATE: <2018-05-13 Sun>
+
+* REST API
+http://developer.hatena.ne.jp/ja/documents/bookmark/apis/rest
+
+* 検索API
+[[http://developer.hatena.ne.jp/ja/documents/bookmark/apis/fulltext_search][マイブックマーク全文検索API - Hatena Developer Center]]
+
+ログインした状態で GET https://b.hatena.ne.jp/my/search/json?q=%E5%85%AC%E5%AE%89
+
+* Tips
+** 特定の日付のブックマークを出す
+http://b.hatena.ne.jp/{username}/20180101
+
+
+いつからはてブを使っているのか調べるには、
+https://b.hatena.ne.jp/{username}/bookmark?of=総ブクマ数-1
+
+([[http://tt.hatenablog.com/entry/2013/11/16/215703][知らなくても困らない！はてなブックマークのアレな使い方 - tipos taronga]] より)
+
+** 全ブックマーク
+
+: curl https://b.hatena.ne.jp/Nyoho/search.data?timestamp=20180101|less
+
+https://b.hatena.ne.jp/Nyoho/search.data
+

@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       40D2EC59-D584-452B-85D2-F62FBDE14563
+:END:
+
+
+[[https://github.com/apple/turicreate][apple/turicreate]]
+
+* Tips
+** Segmentation fault になる
+[[https://github.com/apple/turicreate/issues/3003][One Shot Object Detection: Segmentation Fault · Issue #3003 · apple/turicreate]]
+tensorflow==2.1でバグっている。 tensorflow==2.0 を入れる。
+
+** Linux で GPU
+
+#+begin_src sh
+pip uninstall -y tensorflow
+pip install tensorflow-gpu==2.0
+#+end_src
+
+* Code reading
+- [[https://www.amazon.co.jp/%E3%82%A8%E3%82%AD%E3%82%B9%E3%83%91%E3%83%BC%E3%83%88Python%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E6%94%B9%E8%A8%822%E7%89%88-Michal-Jaworski/dp/4048930613][エキスパートPythonプログラミング改訂2版]]
+  - https://calil.jp/book/4048930613
+- [[https://www.oreilly.co.jp/books/9784873117270/][O'Reilly Japan - Cython]]
+- [[https://pycon.jp/2020/timetable/?id=202587][PyCon JP 2020 - PyCon JP 2020]]
+- [[https://www.slideshare.net/aodag/pyconjp2016-66284743][パッケージングを支える技術 pyconjp2016]]
+  
+* Links
+- [[https://developer.apple.com/documentation/vision/recognizing_objects_in_live_capture][Recognizing Objects in Live Capture]] Appleによるサンプルコード

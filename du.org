@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       FA6A3A2B-4739-43D2-831D-34495B2DED42
+:END:
+#+title: du
+#+date: [2025-12-08 Mon 13:36]
+
+コマンド du
+
+* Tips
+
+#+begin_src sh
+du -ahx | sort -rh
+#+end_src
+
+知らなかった!
+
+~du -h~はしたいけどこれだとソートできないとずっと思っていた!

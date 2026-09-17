@@ -1,0 +1,115 @@
+:PROPERTIES:
+:ID:       0CFF7D50-2CE6-40B0-8160-E357C9DA5264
+:END:
+#+title: Ruby on Rails メモ
+#+tags: Ruby, Rails
+#+date: <2013-03-14 Thu>
+
+* RailsGuides
+何はなくとも RailsGuides
+
+- [[http://guides.rubyonrails.org/][Ruby on Rails Guides]] top
+
+* 認証
+- [[http://naoty.hatenablog.com/entry/20111031/1320061306][production環境のみダイジェスト認証を有効にする - naoty.to_s]]
+
+* Heroku
+Asset Pipeline
+RAILS_ENV=production bundle exec rake assets:precompile 
+して git commit public/assets して push すれば OK
+
+- http://guides.rubyonrails.org/asset_pipeline.html
+- https://devcenter.heroku.com/articles/rails-asset-pipeline
+- https://devcenter.heroku.com/articles/getting-started-with-rails4
+
+new way!
+- http://blog.new-bamboo.co.uk/2013/07/18/deploying-rails-4-on-heroku
+
+* 勉強
+** http://japanese.railstutorial.org/
+
+** rails g scaffold
+** rails g model Classname hoge:string fuga:reference
+やり直しは
+rails destory Classname
+
+** Rails 4
+- [[http://d.hatena.ne.jp/inouetakuya/20130923/1379930345][Rails 4 へ移行してあらためて大切だと思ったこと + 役に立ったリンクを全力まとめ - 彼女からは、おいちゃんと呼ばれています]]
+
+** rails console で pry を使うには
+Gemfile で
+gem 'pry-rails', :group => :development
+をしておく。
+http://shirusu-ni-tarazu.hatenablog.jp/entry/2012/02/08/213947
+
+** migration
+rails g migration add_hoge_hogehoge hoge:string
+- [[http://railsdoc.com/references/rake%2520db:migrate][rake db:migrate - リファレンス - - Railsドキュメント]]
+- [[http://qiita.com/innocent_zero/items/9801dbd7c44c7826de65][Rails 3.2 migrationメモ - Qiita {キータ}]]
+
+** ActiveRecord
+絞り込み
+#+BEGIN_SRC ruby
+MyModel.where(["created_at < ?", Time.now - 1.year])
+#+END_SRC
+で1年前以前のものを出す
+
+** [[http://rosylilly.hatenablog.com/entry/2014/03/23/152748][1人でよいコードを書く - 鳩舎]]
+lint などを使う。
+
+* Sigh! Say! Soon!
+YouTube動画の再生回数がわし・・・気になります!! (きゅふぃーん
+メモ
+- Rails
+- Heroku + Rails
+- Heroku Scheduler
+  + cronいらず。
+  + 無料で使える。1時間、1日、など
+- Asset Pipeline
+- YouTube API
+- thumbnailとる?
+- グラフ
+  + chartkick http://ankane.github.io/chartkick/
+  + lazy_high_charts http://nishio.hateblo.jp/entry/2013/08/24/180112 http://www.highcharts.com/demo/spline-irregular-time
+  + Chart.js
+  + 他にも色々ある
+- erb, haml, slim
+- todo Backup
+
+done
+- 補完 interplolate
+- Rails で Compass
+- New Relic
+- FontAwesome
+
+presen
+- Keynote Tweet
+- Keynote template
+
+<% @video.thumbnails.each do |thumbnail| %>
+  <img src="<%= thumbnail %>" > 
+<% end%>
+
+* local で PostgreSQL
+config/database.yml が設定されている前提で、
+
+open /Applications/Postgres.app
+などとして PostgreSQL を起動しておいて、
+
+rake db:create:all
+
+bin/rake db:migrate RAILS_ENV=development
+
+これでOK
+
+* ActiveAdmin([[http://activeadmin.info/][‎activeadmin.info]])
+#+BEGIN_SRC sh
+rails g active_admin:install User
+# or
+rails g active_admin:install --skip-users
+#
+rails g active_admin:install
+rails db:seed RAILS_ENV=development          
+#+END_SRC
+
+- [[https://qiita.com/hkusu/items/3b0fb7f94a254e2ed6fd][Rails 4 ＆ Active Admin で、マスタCRUD系の管理画面を秒速で作る方法 - Qiita]]

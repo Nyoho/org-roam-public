@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       75FBA1B6-F257-44B1-AAAD-81A1EF333307
+:END:
+#+title: Magit
+#+date: <2019-01-04 07:30:47 +0900>
+#+filetags: emacs
+
+便利な magit のメモです。
+
+https://magit.vc
+
+* 操作
+- M-x magit-status か C-x m :: まずこれで始める。 =git status= みたい。
+- ファイルの上でTAB :: diffを見る
+- s :: staging する
+- S :: 全部 staging
+- c :: commit
+- f :: fetch
+- F :: pull (その後 =u= でorigin/mainなどが選べる)
+- P :: push
+- e :: ediff が起動する。便利。あとは p/n で前後移動し、a, b で a か b を選択していく
+
+* branch
+- b l :: ブランチを切り替える (checkout)
+- b c :: checkout new branch 新しく(どこかのブランチを指定してそこから)ブランチを作成する
+
+* rebase i
+- r i :: rebase -i に入る
+- r w :: コミット編集
+
+[[https://qiita.com/ShingoFukuyama/items/f30930daff47168ae97b][Emacs Magit2 Rebaseチュートリアル - Qiita]]
+
+* fixup
+- c F :: magit-commit-instant-fixup
+
+参考: https://magit.vc/manual/magit/Initiating-a-Commit.html
+
+* forge
+https://magit.vc/manual/forge/
+forgeを使うとGitHubやGitlabを使うときに便利。
+pull requestやissueを扱える。
+
+https://magit.vc/manual/ghub/Creating-and-Storing-a-Token.html
+これを見ながらGitHubのaccess tokenを設定した。
+
+- N f f :: で全てのトピックをfetch
+- N l p :: pull requestsのリスト
+  
+* Tips
+** 部分ステージング
+[[http://qiita.com/nishikawasasaki/items/f690ee08f6a32d9d03fa][Emacs - magit の部分 stage が便利で便利で - Qiita]]
+
+=magit-status= のときにファイル名の上で =M-s= して、hunk それぞれに =s= すると部分的に stage できる。
+
+tabキーで変更部分を出して、任意のリージョンを作ってから =s= をしても、そのリージョンのみを stage できる。
+** magit-refresh-verbose
+~magit-refresh-verbose~ を non-nil にセットしておくとmagit-refreshのときの各タスク (~magit-status-sections-hook~) のかかった時間を出してくれる。

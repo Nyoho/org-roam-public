@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       9A22959F-34B3-49B3-B521-BA915495BD33
+:END:
+#+title: Travis CI
+
+公式: https://travis-ci.org/
+
+* Tips
+** GitHub に push したら Travis CI 経由で heroku に自動デプロイ
+
+#+BEGIN_SRC yaml
+deploy:
+  provider: heroku
+  app: your-app-name # optional if it's the same as your repo name
+  api_key: "YOUR API TOKEN"
+#+END_SRC
+
+#+BEGIN_SRC sh
+gem install travis
+travis setup heroku
+#+END_SRC
+して、質問に答える。
+.travis.yml ができあがる。
+
+参考
+
+- [[http://about.travis-ci.org/blog/2013-07-09-introducing-continuous-deployment-to-heroku/][The Travis CI Blog: Introducing Continuous Deployment to Heroku]]
+- [[http://blog.notsobad.jp/post/59406378938/travis-heroku][TravisからHerokuへのデプロイ自動化が簡単すぎて感動した話。 - NOT SO BAD]]
+- [[http://qiita.com/soramugi/items/ec27e7637fef411e421f][TravisCI - travis ciでherokuにデプロイ - Qiita {キータ}]]
+- [[http://blog.ruedap.com/2013/09/25/continuous-deployment-to-heroku-from-travis-ci][Travis CIを使ってHerokuへのデプロイを自動化する - アインシュタインの電話番号]]
+
+** older information
+#+BEGIN_SRC sh
+travis encrypt -r Username/RepositoryName $(heroku auth:token) --add deploy.api_key
+#+END_SRC
+
+* Links
+- [[https://qiita.com/yysaki/items/adc586426f7118f517ec][GithubにpushしたらFirebaseにデプロイされるようにする - Qiita]]
+

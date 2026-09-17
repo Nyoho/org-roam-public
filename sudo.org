@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       186404BE-E1F0-4CE6-9248-141CC1195E67
+:END:
+#+title: sudo
+#+date: [2023-01-04 Wed 19:56]
+
+
+#+begin_src sh
+visudo /etc/sudoers.d/username
+#+end_src
+
+で =username  ALL=(ALL)  NOPASSWD:/usr/bin/rsync= と書いておくと
+そのマシンの /usr/bin/rsync のときは sudo したときのパスワードなしにできる。

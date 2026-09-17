@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       1AADFB8C-206A-483F-80C5-E668E7F420AD
+:END:
+
+[[https://github.com/junegunn/fzf][junegunn/fzf: A command-line fuzzy finder]]
+
+* Installation
+homebrew
+
+: brew install fzf
+
+
+#+BEGIN_SRC 
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+#+END_SRC

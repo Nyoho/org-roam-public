@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       333F1BDD-38EA-4FE8-9455-2E31C387E6D8
+:END:
+#+title: fastly
+#+date: [2022-03-02 Wed 13:53]
+
+Fastly memo
+
+https://www.fastly.com
+
+* Compute@Edge
+edgeで計算できる。RustやJavaScriptで[[https://developer.fastly.com/solutions/examples/][例が用意されている]]。
+
+- [[https://zenn.dev/jj/books/fastly-compute-at-edge-guide][Fastly Compute@Edge 使い方ガイド]]
+- [[https://zenn.dev/hrmsk66/articles/74e2e890726e99][Compute@Edge のはじめかた]]

@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       152A4A6A-99AF-4391-A62A-DE4F552A8717
+:END:
+
+Minecraft memo
+
+https://www.minecraft.net/
+
+* Memo
+- Save data は =~/Library/Application Support/minecraft/saves= にある
+
+* Server setup
+[[https://www.linode.com/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/][How to Set Up a Minecraft Server on Ubuntu or Debian]]
+
+[[https://www.minecraft.net/ja-jp/download/server/][Download server for Minecraft | Minecraft]] ここからserver.jarをダウンロードする。
+
+** forge servers
+installer.jar と universal.jar をゲットしてくる。
+#+begin_src sh
+/usr/lib64/jvm/java-1.8.0-openjdk-1.8.0/jre/bin/java -jar forge-version-installer.jar nogui --install
+#+end_src
+などと実行する。
+
+universal.jarを実行
+#+begin_src 
+/usr/lib64/jvm/java-1.8.0-openjdk-1.8.0/jre/bin/java -Xmx2048M -Xms1024M -jar forge-version.universal.jar nogui
+#+end_src
+
+* Mod
+Forgeを入れる
+
+- [[http://mine-friends.com/mod-server/][【1.12.2】図解解説！MODを入れられるサーバーを立てる方法！【マインクラフト】｜Minefriendsマイクラ攻略]]
+- [[https://www.kinacon-blog.work/entry/2018/09/17/133557][マインクラフト（Ubuntu版）に影mod「KUDA SHADERS」を導入 - Kinaconの技術ブログ]]
+
+** RealTrainMod (RTM)
+- [[https://realtrainmod.gamerch.com/%25E3%2581%25AF%25E3%2581%2598%25E3%2582%2581%25E3%2581%25A6%25E3%2581%25AERTM][はじめてのRTM -realtrainmodWiki - Gamerch]]
+- JR東海313系0番台 https://twitter.com/Toki_Yakumo/status/1110539987471069189
+
+* Switch
+Switchでやるには
+普通に売られている [[https://amzn.to/2YrchRK][Switch 用の Minecraft]] を購入したら、今は統合版のダウンロードができるようになっているらしい。 (<2019-12-07 Sat>現在)
+
+(Nintendo Switch はヨドバシで32,970円のようだ<2019-12-07 Sat>)
+

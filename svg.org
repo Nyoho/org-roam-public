@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       86E35388-831E-48E7-8525-295786851728
+:END:
+SVG
+
+* path
+- M :: moveto
+- L :: lineto
+- H x :: horizontal lineto
+- h dx :: 相対版
+- V y :: vertical lineto
+- v dy :: 相対版
+- C x1 y1, x2 y2, x y :: curveto 3次のbezier curve
+- S x2 y2, x y :: 3次のbezier curveだが前の制御点の反対を付けてくれる
+- s dx2 dy2, dx dy :: 相対版
+- Z :: closepath
+
+* accessibility
+
+From [[https://qiita.com/manabuyasuda/items/01a76204f97cd73ffc4e][SVGを使うときに知っておくといいことをまとめました - Qiita]]
+
+* Links
+- [[https://css-tricks.com/guide-svg-animations-smil/][A Guide to SVG Animations (SMIL) | CSS-Tricks]]
+- [[https://fronteers.nl/congres/2014/sessions/sara-soueidan-animating-svgs-with-css-and-smil][Sara Soueidan - Animating SVGs with CSS and SMIL · Fronteers]]
+- [[https://www.hongkiat.com/blog/svg-animations/][30 Awesome SVG Animation For Your Inspiration - Hongkiat]]

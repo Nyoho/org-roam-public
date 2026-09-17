@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       CB5ECB97-D8BD-430D-9992-D619CCD3F175
+:END:
+
+Micro Kubernetes
+
+#+begin_src sh
+microk8s.enable dns dashboard
+#+end_src

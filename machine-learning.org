@@ -1,0 +1,435 @@
+:PROPERTIES:
+:ID:       AF053124-A344-475A-A1C5-89F899FD52C0
+:ROAM_ALIASES: "machine learning"
+:END:
+#+TITLE: 機械学習の学習
+#+filetags: 機械学習
+#+date: <2021-07-15 18:46:57 +0900>
+
+* fast.ai
+** Lesson 1
+GPU借りるところ
+- crestle.com
+- paperspace.com
+
+** Swiftの
+[[https://www.fast.ai/2019/03/06/fastai-swift/][fast.ai Embracing Swift for Deep Learning · fast.ai]]
+
+Requirement: completion of [[https://course.fast.ai/][Practical Deep Learning for Coders, v3 | fast.ai course v3]]
+
+* Random forest
+ 
+* XGBoost
+
+* MCMC
+粒子をばらまき確率分布も同時に求める。
+Gibbs sampling
+update
+ちょっとずつ動かすと収束する(?)
+
+* Deep learning
+** activation functions
+- sigmoid
+- ReLU
+- Swish
+- Gelu
+- Mish [[https://github.com/digantamisra98/Mish][digantamisra98/Mish]]
+
+* NLP
+** fastText
+- [[https://github.com/facebookresearch/fastText][fastText]]
+- [[https://qiita.com/icoxfog417/items/42a95b279c0b7ad26589][FacebookのfastTextでFastに単語の分散表現を獲得する - Qiita]]
+
+** Wizard-of-Oz法
+トピック洗練に必要な操作
+
+HITL Tipic Modeling (2018)
+(human in the loop)
+
+** Transformers
+- [[http://jalammar.github.io/illustrated-gpt2/][The Illustrated GPT-2 (Visualizing Transformer Language Models) – Jay Alammar – Visualizing machine learning one concept at a time]]
+- [[https://jalammar.github.io/illustrated-transformer/][The Illustrated Transformer – Jay Alammar – Visualizing machine learning one concept at a time.]]
+- [[http://www.peterbloem.nl/blog/transformers][Transformers from scratch | Peter Bloem]] tutorial, PyTorch 実装
+- [[http://nlp.seas.harvard.edu/annotated-transformer/][The Annotated Transformer]] 詳細な解説付きのノートブック
+- [[https://arxiv.org/abs/2012.09164][[2012.09164] Point Transformer]] ([[https://github.com/lucidrains/point-transformer-pytorch][Implementation]])
+- [[https://arxiv.org/abs/2012.09688][[2012.09688] PCT: Point Cloud Transformer]] ([[https://github.com/MenghaoGuo/PCT][implementation]])
+- [[https://elyza-inc.hatenablog.com/entry/2021/03/25/160727][BERT以降の事前学習済みモデルのトレンドと主要モデルを紹介！ Part 1 学習方法編 - ELYZA Tech Blog]]
+- [[https://www.slideshare.net/cvpaperchallenge/transformer-247407256][Transformer メタサーベイ]] すごい
+- [[https://arxiv.org/abs/2105.03824][[2105.03824] FNet: Mixing Tokens with Fourier Transforms]]
+- [[https://arxiv.org/abs/2104.07652][[2104.07652] Geometry-Free View Synthesis: Transformers and no 3D Priors]]
+- [[https://qiita.com/birdwatcher/items/b3e4428f63f708db37b7][図で理解するTransformer - Qiita]]
+- [[https://arxiv.org/abs/2109.08668][[2109.08668] Primer: Searching for Efficient Transformers for Language Modeling]]
+- [[https://speakerdeck.com/himidev/vision-transformerfalsesikumi][Vision Transformerのしくみ - Speaker Deck]]
+- [[https://speakerdeck.com/butsugiri/yoriliang-itransformerwotukuru][より良いTransformerをつくる - Speaker Deck]]
+- [[https://jupyterbook.hnishi.com/language-models/fine_tune_jp_bert_part01.html][huggingface transformers を使って日本語 BERT モデルをファインチューニングして感情分析 (with google colab) part01 — ハンズオン資料]] BERTのfine tuningのチュートリアル
+- [[https://arxiv.org/abs/2009.06732][[2009.06732] Efficient Transformers: A Survey]]
+- [[https://github.com/facebookresearch/xformers][facebookresearch/xformers]]
+- [[https://www.youtube.com/watch?v=TrdevFK_am4][An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (Paper Explained) - YouTube]]
+- [[https://github.com/hppRC/bert-classification-tutorial][hppRC/bert-classification-tutorial: 【2023年版】BERTによるテキスト分類]]
+- [[https://qiita.com/birdwatcher/items/b3e4428f63f708db37b7][図で理解するTransformer - Qiita]]
+- [[https://sebastianraschka.com/blog/2023/llm-reading-list.html][Understanding Large Language Models -- A Transformative Reading List]]
+- [[https://arxiv.org/abs/2311.01906][[2311.01906] Simplifying Transformer Blocks]]
+
+** MLP系
+- [[https://arxiv.org/abs/2105.08050][[2105.08050] Pay Attention to MLPs]] MLPを使ったらTransformerなくてもいいという論文 [[https://github.com/lucidrains/g-mlp-pytorch][implementation in Pytorch]]
+  - [[https://arxiv.org/abs/2105.01601][[2105.01601] MLP-Mixer: An all-MLP Architecture for Vision]]
+  - [[https://github.com/lucidrains/mlp-mixer-pytorch][lucidrains/mlp-mixer-pytorch: An All-MLP solution for Vision, from Google AI]]
+  - [[https://wandb.ai/wandb_fc/pytorch-image-models/reports/Is-MLP-Mixer-a-CNN-in-Disguise---Vmlldzo4NDE1MTU][Is MLP-Mixer a CNN in Disguise? – Weights & Biases]]
+  
+** Flair
+[[https://github.com/flairNLP/flair][flair]] は PyTorch製のNLPフレームワーク。
+
+- [[https://yag-ays.github.io/project/swem_flair/][Flairを使ってSWEMによる文章埋め込みを計算する - Out-of-the-box]]
+
+** GPTなどの大規模言語モデル
+
+- [[https://jalammar.github.io/illustrated-gpt2/][The Illustrated GPT-2 (Visualizing Transformer Language Models) – Jay Alammar – Visualizing machine learning one concept at a time.]]
+- [[https://huggingface.co/EleutherAI/gpt-neo-2.7B][EleutherAI/gpt-neo-2.7B · Hugging Face]] Hugging FaceによるGPT-Neo
+- [[https://huggingface.co/spaces/flax-community/dalle-mini][DALL·E mini - a Hugging Face Space by flax-community]] dall·eのmini
+- [[https://jaykmody.com/blog/gpt-from-scratch/][GPT in 60 Lines of NumPy | Jay Mody]]
+- [[https://zenn.dev/turing_motors/articles/26e1f1be50c0b5][実践！大規模言語モデル / 1000億パラメータ越えモデルを動かすには？]] BLOOM, FlexGen, OPT-66B
+- [[https://github.com/microsoft/visual-chatgpt][Visual ChatGPT]]
+- [[https://arxiv.org/abs/2302.10866][[2302.10866] Hyena Hierarchy: Towards Larger Convolutional Language Models]] 100x faster at sequence length 64K
+  
+** CLIP
+
+- [[https://openai.com/blog/clip/][CLIP: Connecting Text and Images]]
+- [[https://data-analytics.fun/2021/03/24/understanding-openai-clip/][【論文解説】自然言語処理と画像処理の融合 – OpenAI 『CLIP』を理解する(1) | 楽しみながら理解するAI・機械学習入門]]
+
+** generate audio
+- [[https://github.com/suno-ai/bark][suno-ai/bark: 🔊 Text-Prompted Generative Audio Model]]
+
+** 一般
+- [[https://speakerdeck.com/verypluming/dong-jing-da-xue-shen-ceng-xue-xi-deep-learningji-chu-jiang-zuo-2022-shen-ceng-xue-xi-tozi-ran-yan-yu-chu-li][東京大学深層学習（Deep Learning基礎講座2022）深層学習と自然言語処理 - Speaker Deck]]
+  
+* Generative Adversarial Networks (GAN)
+- [[https://elix-tech.github.io/ja/2017/02/06/gan.html][はじめてのGAN]]
+- [[http://dena.com/intl/anime-generation/][Full-body high-resolution Anime Generation with Progressive Structure-conditional Generative Adversarial Networks | DeNA Co., Ltd.]] かわいい。
+- アニメキャラのモーフィング https://twitter.com/lark1115caster/status/1002542499087302658
+- [[https://github.com/shayneobrien/generative-models][shayneobrien/generative-models: Annotated, understandable, and visually interpretable PyTorch implementations of: VAE, BIRVAE, NSGAN, MMGAN, WGAN, WGANGP, LSGAN, DRAGAN, BEGAN, RaGAN, InfoGAN, fGAN, FisherGAN]]
+- [[https://simons.berkeley.edu/talks/yes-generative-models-are-new-sparsity][Yes, Generative Models Are The New Sparsity | Simons Institute for the Theory of Computing]]
+
+PGGAN
+- [[https://tsunotsuno.hatenablog.com/entry/2018/06/03/223849][【論文メモ:PGGAN】Progressive Growing of GANs for Improved Quality, Stability, and Variation - Re:ゼロから始めるML生活]]
+
+CycleGAN
+- [[https://junyanz.github.io/CycleGAN/][CycleGAN Project Page]]
+  - [[https://arxiv.org/abs/1703.10593][{1703.10593} Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks]] 論文
+  - [[https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix][junyanz/pytorch-CycleGAN-and-pix2pix: Image-to-image translation in PyTorch]] 著者による実装
+- [[https://github.com/ShangxuanWu/CycleGAN-Face-off][ShangxuanWu/CycleGAN-Face-off: Code for "CycleGAN Face-off" by Shangxuan Wu, Xiaohan Jin and Ye Qi.]]
+
+StyleGAN
+- [[https://arxiv.org/abs/1812.04948][{1812.04948} A Style-Based Generator Architecture for Generative Adversarial Networks]]
+- [[https://qiita.com/d-ogawa/items/d645509e3ccedc989680][A Style-Based Generator Architecture for Generative Adversarial Networks を読んだ - Qiita]]
+- [[https://github.com/lernapparat/lernapparat/blob/master/style_gan/pytorch_style_gan.ipynb][lernapparat/pytorch_style_gan]] PyTorch実装
+- [[https://arxiv.org/abs/2106.12423v4][[2106.12423v4] Alias-Free Generative Adversarial Networks]]
+- [[https://github.com/NVlabs/stylegan3][NVlabs/stylegan3: Official PyTorch implementation of StyleGAN3]]
+
+CLIP+GAN
+- [[https://arxiv.org/abs/2112.01573][[2112.01573] FuseDream: Training-Free Text-to-Image Generation with Improved CLIP+GAN Space Optimization]]
+  code [[https://github.com/gnobitab/FuseDream][gnobitab/FuseDream]]
+
+GFPGAN
+- [[https://github.com/TencentARC/GFPGAN][TencentARC/GFPGAN: GFPGAN aims at developing Practical Algorithms for Real-world Face Restoration.]]
+
+** 関連
+- [[https://arxiv.org/abs/2105.05233][[2105.05233] Diffusion Models Beat GANs on Image Synthesis]]
+- [[https://arxiv.org/abs/2209.00796v6][[2209.00796v6] Diffusion Models: A Comprehensive Survey of Methods and Applications]]
+
+** for NLP
+- [[https://arxiv.org/abs/1705.10929][{1705.10929} Adversarial Generation of Natural Language]]
+- [[https://www.quora.com/Can-one-use-generative-adversarial-networks-in-NLP-related-problems][Can one use generative adversarial networks in NLP related problems? - Quora]]
+- [[https://www.quora.com/Can-Generative-Adversarial-Networks-GANs-be-applied-to-text][Can Generative Adversarial Networks (GANs) be applied to text? - Quora]]
+
+** 音声
+- [[http://r9y9.github.io/blog/2017/10/05/ganvc/][【声質変換編】Statistical Parametric Speech Synthesis Incorporating Generative Adversarial Networks {arXiv:1709.08041} - LESS IS MORE]]
+- [[http://r9y9.github.io/blog/2017/10/09/gantts/][【音声合成編】Statistical Parametric Speech Synthesis Incorporating Generative Adversarial Networks {arXiv:1709.08041} - LESS IS MORE]]
+- [[https://r9y9.github.io/nnmnkwii/latest/][nnmnkwii (nanami) documentation — nnmnkwii 0.0.15+e9f07a3 documentation]]
+- [[https://nico-opendata.jp/ja/casestudy/2stack_voice_conversion/report.html][統計的声質変換を行うための知識と手法]]
+- [[https://qiita.com/KSRG_Miyabi/items/2a3b5bdca464ec1154d7][キズナアイとねこますの声を入れ替える機械学習をした - Qiita]]
+- [[https://arxiv.org/abs/2008.03648][[2008.03648] An Overview of Voice Conversion and its Challenges: From Statistical Modeling to Deep Learning]] 声質変換のサーベイ
+- [[https://github.com/resemble-ai/chatterbox][resemble-ai/chatterbox: SoTA open-source TTS]]
+
+** 音楽
+- [[https://github.com/microsoft/muzic][microsoft/muzic: Muzic: Music Understanding and Generation with Artificial Intelligence]] MusicBERT
+- [[https://storage.googleapis.com/music-synthesis-with-spectrogram-diffusion/index.html][Multi-instrument Music Synthesis with Spectrogram Diffusion]]
+
+** 点群
+- [[https://github.com/openai/point-e][openai/point-e: Point cloud diffusion for 3D model synthesis]]
+  
+* Generative Models
+** Diffusion models
+
+** Flow-based models
+- [[https://www.slideshare.net/DeepLearningJP2016/dlflowbased-deep-generative-models][[DL輪読会]Flow-based Deep Generative Models]]
+- [[https://qiita.com/shionhonda/items/0fb7f91a150dff604cc5][深層生成モデルを巡る旅(1): Flowベース生成モデル - Qiita]]
+  
+* 顔・頭・ポーズ
+
+** MediaPipe と TensorFlow.js
+- [[https://blog.tensorflow.org/2020/03/face-and-hand-tracking-in-browser-with-mediapipe-and-tensorflowjs.html?linkId=83996111&m=1][Face and hand tracking in the browser with MediaPipe and TensorFlow.js — The TensorFlow Blog]]
+- [[https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection][tfjs-models/face-landmarks-detection at master · tensorflow/tfjs-models]]
+- [[https://blog.tensorflow.org/2021/08/3d-pose-detection-with-mediapipe-blazepose-ghum-tfjs.html][3D Pose Detection with MediaPipe BlazePose GHUM and TensorFlow.js — The TensorFlow Blog]]
+  
+** Human Pose Estimation
+- [[http://stmind.hatenablog.com/entry/2018/05/23/234720][Deep Learning時代のPose Estimation研究 - stMind]]
+- [[https://github.com/anewell/pose-hg-train][anewell/pose-hg-train: Training and experimentation code used for "Stacked Hourglass Networks for Human Pose Estimation"]]
+- [[https://github.com/anewell/pose-hg-demo][anewell/pose-hg-demo: Code to test and use the model from "Stacked Hourglass Networks for Human Pose Estimation"]]
+- [[http://www.slideshare.net/plutoyang/mmlab-seminar-2016-deep-learning-for-human-pose-estimation][{Mmlab seminar 2016} deep learning for human pose estimation]]
+- [[https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5][Real-time Human Pose Estimation in the Browser with TensorFlow.js]] ([[https://github.com/tensorflow/tfjs-models/tree/master/posenet/demos][demo code]])
+- [[https://github.com/facebookresearch/DensePose][facebookresearch/DensePose: A real-time approach for mapping all human pixels of 2D RGB images to a 3D surface-based model of the body]]
+- [[https://github.com/t-takasaka/PoseNet-Unity][t-takasaka/PoseNet-Unity: PoseNet in Unity]]
+- [[https://github.com/SangbumChoi/MobileHumanPose][SangbumChoi/MobileHumanPose: This repo is official PyTorch implementation of MobileHumanPose: Toward real-time 3D human pose estimation in mobile devices(CVPRW 2021).]]
+- [[https://campar.in.tum.de/pub/huangc20133DV/huangc20133DV.pdf][Robust Human Body Shape and Pose Tracking https://campar.in.tum.de/pub/huangc20133DV/huangc20133DV.pdf]]
+
+** Deep Video
+- https://twitter.com/memotv/status/997758273314086918
+- https://www.youtube.com/watch?v=qc5P2bvfl44
+
+** Head Pose
+- [[https://github.com/Ascend-Research/HeadPoseEstimation-WHENet][Ascend-Research/HeadPoseEstimation-WHENet]]
+
+** 頭
+- [[https://arxiv.org/abs/2207.07621][[2207.07621] MegaPortraits: One-shot Megapixel Neural Head Avatars]]
+** hand
+- [[https://github.com/mks0601/Hand4Whole-plus-plus_RELEASE][mks0601/Hand4Whole-plus-plus_RELEASE: Official PyTorch implementation of "Enhancing Hands in 3D Whole-Body Pose Estimation with Conditional Hands Modulator", CVPR 2026.]]
+** 全身
+- [[https://github.com/NVlabs/SOMA-X][NVlabs/SOMA-X: SOMA: Unifying Parametric Human Body Models]] 2026
+
+* Databases
+** The Ryerson Audio-Visual Database of Emotional Speech and Song
+- https://twitter.com/RyersonSMARTLab/status/997267162153869312
+- [[http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0196391][The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS): A dynamic, multimodal set of facial and vocal expressions in North American English]]
+- [[https://zenodo.org/record/1188976#.WwNgWy_ANkY][The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS) | Zenodo]]
+
+* DNN
+一般
+
+- 層の数え方
+  [[https://datascience.stackexchange.com/questions/14027/counting-the-number-of-layers-in-a-neural-network][Counting the number of layers in a neural network - Data Science Stack Exchange]]
+
+** 活性化関数
+- [[https://arxiv.org/abs/2109.14545][A Comprehensive Survey and Performance Analysis of Activation Functions in Deep Learning]]
+  
+** RNN
+- [[https://mosko.tokyo/post/pytorch-rnn/][PyTorchでRNN入門 | moskomule log]]
+
+** Graph
+- [[https://qiita.com/shionhonda/items/d27b8f13f7e9232a4ae5][GNNまとめ(1): GCNの導入 - Qiita]]
+- [[https://github.com/pyg-team/pytorch_geometric][pyg-team/pytorch_geometric: Graph Neural Network Library for PyTorch]] PyTorchのGNNライブラリ
+- [[https://logmi.jp/tech/articles/321767][グラフ構造にまつわるサーベイ結果まとめ　GNNからApplicationsまで Part1 - ログミーTech]]
+- [[https://github.com/dair-ai/GNNs-Recipe][dair-ai/GNNs-Recipe: 🟠 A study guide to learn about Graph Neural Networks (GNNs)]] リンク集
+
+** Attention
+- [[https://www.slideshare.net/yutakikuchi927/deep-learning-nlp-attention][最近のDeep Learning (NLP) 界隈におけるAttention事情]]
+- [[https://arxiv.org/abs/2103.03206v1][[2103.03206v1] Perceiver: General Perception with Iterative Attention]] 動画や音声にも使われる。
+
+* 物体認識・物体検出
+- [[https://github.com/tensorflow/models/blob/2986bcafb9eaa8fed4d78f17a04c4c5afc8f6691/research/object_detection/g3doc/tf2_detection_zoo.md][tensorflow/models リポジトリに置いてある物体認識動物園]]
+- SSD
+  - [[https://github.com/qfgaohao/pytorch-ssd][qfgaohao/pytorch-ssd: MobileNetV1, MobileNetV2, VGG based SSD/SSD-lite implementation in Pytorch 1.0 / Pytorch 0.4. Out-of-box support for retraining on Open Images dataset. ONNX and Caffe2 support. Experiment Ideas like CoordConv.]]
+- SSD MobileNet
+  - [[https://github.com/PINTO0309/MobileNet-SSD][PINTO0309/MobileNet-SSD]]
+- [[https://pjreddie.com/darknet/yolo/][YOLO: Real-Time Object Detection]]
+  - [[https://github.com/DeNA/PyTorch_YOLOv3/][YOLOv3のPyTorch実装]]
+  - [[https://github.com/dog-qiuqiu/Yolo-Fastest][dog-qiuqiu/Yolo-Fastest]]
+- [[https://github.com/hoya012/deep_learning_object_detection][hoya012/deep_learning_object_detection: A paper list of object detection using deep learning.]] 論文リスト
+- PeLee (@NeurIPS 2018)
+  - [[https://arxiv.org/abs/1804.06882][{1804.06882} Pelee: A Real-Time Object Detection System on Mobile Devices]]
+  - [[https://github.com/Robert-JunWang/Pelee][Robert-JunWang/Pelee: Pelee: A Real-Time Object Detection System on Mobile Devices]]
+  - [[https://qiita.com/saneatsu/items/b372a2d71a33616f7355][【論文読み】 Pelee: A Real-Time Object Detection System on Mobile Devices - Qiita]]
+- [[https://arxiv.org/abs/1904.08189v2][{1904.08189v2} CenterNet: Keypoint Triplets for Object Detection]]
+- [[https://medium.com/nanonets/how-to-automate-surveillance-easily-with-deep-learning-4eb4fa0cd68d][How to Automate Surveillance Easily with Deep Learning]]
+- MobileNet V1
+  - paper [[https://arxiv.org/abs/1704.04861][MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications]]
+  - [[https://github.com/marvis/pytorch-mobilenet][marvis/pytorch-mobilenet]]
+- MobileNet V2
+  - paper [[https://arxiv.org/abs/1801.04381][MobileNetV2: Inverted Residuals and Linear Bottlenecks]]
+  - [[https://github.com/tonylins/pytorch-mobilenet-v2][tonylins/pytorch-mobilenet-v2]]
+  - [[https://github.com/d-li14/mobilenetv2.pytorch][d-li14/mobilenetv2.pytorch]]
+- MobileNet V3
+  - [[https://arxiv.org/abs/1905.02244][[1905.02244] Searching for MobileNetV3]]
+  - [[https://github.com/d-li14/mobilenetv3.pytorch][d-li14/mobilenetv3.pytorch]]
+  - [[https://github.com/xiaochus/MobileNetV3][xiaochus/MobileNetV3: A Keras implementation of MobileNetV3.]]
+  - [[https://qiita.com/shinmura0/items/402619822e026fa73e58][【精度対決】MobileNet V3 vs V2 - Qiita]]
+- CenterNet
+  - [[https://github.com/xingyizhou/CenterNet][xingyizhou/CenterNet: Object detection, 3D detection, and pose estimation using center point detection:]]
+- CornetNet
+  - [[https://opencv.org/latest-trends-in-object-detection-from-cornernet-to-centernet-explained-part-ii-cornernet-lite/][Latest Trends in Object Detection: From CornerNet to CenterNet Explained. Part II: CornerNet-Lite]]
+- SAN
+  - NLP の self-attention を画像認識に応用
+  - [[https://qiita.com/omiita/items/f4fad6371747e718310e][Self-Attentionを全面的に使った新時代の画像認識モデルを解説！ - Qiita]]
+- [[https://arxiv.org/abs/2109.10852][[2109.10852] Pix2seq: A Language Modeling Framework for Object Detection]]
+- [[https://arxiv.org/abs/2110.02178][[2110.02178] MobileViT: Light-weight, General-purpose, and Mobile-friendly Vision Transformer]] MobileViT
+- [[https://arxiv.org/abs/2206.02680][[2206.02680] Separable Self-attention for Mobile Vision Transformers]] MobileViT2
+- [[https://github.com/roboflow/supervision][roboflow/supervision: We write your reusable computer vision tools. 💜]]
+
+Survey系
+- [[https://www.slideshare.net/takanoriogata1121/ssd-single-shot-multibox-detector-eccv2016][SSD: Single Shot MultiBox Detector (ECCV2016)]]
+- [[https://www.slideshare.net/cvpaperchallenge/meta-study-group][物体検知（Meta Study Group 発表資料）]]
+- [[https://www.slideshare.net/ren4yu/single-shot][最近のSingle Shot系の物体検出のアーキテクチャまとめ]]
+- [[https://qiita.com/mshinoda88/items/9770ee671ea27f2c81a9][物体検出についての歴史まとめ - Qiita]]
+- [[https://www.slideshare.net/xyzw3/object-detection-190530][最近の物体検出 2019/05/30]]
+- [[https://arxiv.org/abs/2003.10152][SOLOv2]]
+- [[https://qiita.com/kazukiii/items/f5a35450a8dd02d3a266][物体検出のDeepLearning読むべき論文7選とポイントまとめ【EfficientDetまでの道筋】 - Qiita]]
+- [[https://arxiv.org/abs/2003.12263][[2003.12263] Weakly Supervised Dataset Collection for Robust Person Detection]]
+- [[https://github.com/PeixianChen/DFFT][PeixianChen/DFFT]] Efficient Decoder-free Object Detection with Transformers [[https://arxiv.org/abs/2206.06829][論文 2206.06829]]
+
+3次元
+- [[https://blog.albert2005.co.jp/2020/05/08/nerf/][三次元空間のニューラルな表現とNeRF | ALBERT Official Blog]]
+- [[https://mobile-nerf.github.io/][MobileNeRF]]
+- [[https://ueda0319.github.io/neddf/][Neural Density-Distance Fields - cvpaper.challenge]]
+- [[https://ldyang694.github.io/projects/pixal3d/][Pixal3D — Pixel-Aligned 3D Generation from Images]]
+- [[https://haoz19.github.io/world-tracing-page/][World Tracing — Generative Pixel-Aligned Geometry Beyond the Visible]] 2026
+
+* 音声
+- [[https://github.com/pytorch/fairseq/tree/master/examples/wav2vec][wav2vec の事前学習済みモデル in fairseq]]
+- 音声合成・声質変換
+  - [[http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/maskcyclegan-vc/index.html][MaskCycleGAN-VC]]
+  - VITS
+    - [[https://arxiv.org/abs/2106.06103][[2106.06103] Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech]]
+    - [[https://www.nicovideo.jp/watch/sm40189392][遅延時間約0.32秒のリアルタイムボイスチェンジャーを作ってみた - ニコニコ動画]]
+    - [[https://www.nicovideo.jp/watch/sm40230761][リアルタイムで自分の好きな声に変換できるボイスチェンジャーを作ってみた - ニコニコ動画]]
+- [[https://huggingface.co/learn/audio-course/chapter0/introduction][Hugging Face Audio Course]]
+- [[https://github.com/RVC-Boss/GPT-SoVITS][RVC-Boss/GPT-SoVITS: 1 min voice data can also be used to train a good TTS model! (few shot voice cloning)]]
+   
+* Video
+- [[http://chengao.vision/FGVC/][Flow-edge Guided Video Completion]]
+- [[https://www.youtube.com/user/keeroyz/videos][Two Minute Papers - YouTube]]
+
+* DSP
+- [[https://magenta.tensorflow.org/ddsp][DDSP: Differentiable Digital Signal Processing]]
+  - [[https://www.youtube.com/watch?v=LCTYRqW-ne8][Neural Rendering (CVPR 2020) - Morning Session - YouTube]]
+  - [[https://github.com/torchsynth/torchsynth][torchsynth]]
+    
+* 講義リスト
+- [[id:3FCC73D4-831F-4366-89A9-916D501C8A97][Coursera machine learning course]]
+- [[http://www.fast.ai/][fast.ai · Making neural nets uncool again]]
+- Stanford University
+  - [[http://cs231n.stanford.edu/][CS231n: Convolutional Neural Networks for Visual Recognition]]
+  - [[http://cs224d.stanford.edu/][CS224d: Deep Learning for Natural Language Processing]]
+  - [[http://web.stanford.edu/class/cs224n/][CS224n: Natural Language Processing with Deep Learning]]
+    - [[https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z][その YouTube]]
+    - [[https://web.stanford.edu/class/cs224n/slides/Jacob_Devlin_BERT.pdf][Contextual Word Representations with BERT and Other Pre-trained Language Models (PDF)]]
+  - [[https://www.youtube.com/playlist?list=PL3FW7Lu3i5Jsnh1rnUwq_TcylNr7EkRe6&app=desktop][Lecture Collection | Natural Language Processing with Deep Learning (Winter 2017) - YouTube]]
+  - [[http://cs230.stanford.edu/][CS230 Deep Learning]]
+- [[https://www.dataschool.io/15-hours-of-expert-machine-learning-videos/][In-depth introduction to machine learning in 15 hours of expert videos]] An Introduction to Statistical Learning with Applications in R のオンライン講義
+- [[http://www.cs.ucl.ac.uk/degrees/msc_ml/][MSc Machine Learning]]
+- [[https://www.ucl.ac.uk/prospective-students/graduate/taught/degrees/machine-learning-msc][Machine Learning MSc | UCL London's Global University]]
+- [[http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html][UCL Course on RL (Reinforcement Learning; 強化学習)]]
+- [[http://www.dataschool.io/15-hours-of-expert-machine-learning-videos/][In-depth introduction to machine learning in 15 hours of expert videos]]
+- [[https://chokkan.github.io/deeplearning/][Introduction to Deep Learning]] NLP, 東京工業大学 「理論と実装を一体化した「動く」学習帳 👨‍」
+- http://phontron.com/class/nn4nlp2019/
+  - https://www.youtube.com/playlist?list=PL8PYTP1V4I8Ajj7sY6sdtmjgkt7eo2VMs
+  - https://github.com/neubig/nn4nlp-code
+- [[http://introtodeeplearning.com/][MIT 6.S191: Introduction to Deep Learning]] MIT
+- [[https://atcold.github.io/pytorch-Deep-Learning/][Deep Learning]] Yann LeCun ニューヨーク大学, PyTorch [[https://atcold.github.io/pytorch-Deep-Learning/ja/][日本語版]]
+- [[https://www.kaggle.com/learn/intro-to-deep-learning][Learn Intro to Deep Learning Tutorials]] (Kaggle)
+- [[https://www.youtube.com/watch?v=WyWr-OKZ_0g&list=PLbtqZvaoOVPA-keirzqx2wzpujxE-fzyt&index=3][【Deep Learning研修（発展）】系列データモデリング (RNN / LSTM / Transformer)　第１回「イントロダクション」 - YouTube]]
+- [[https://www.youtube.com/playlist?list=PLbtqZvaoOVPB2WCoUt9VCsl7BQHRdhb8m][【Deep Learning研修（発展）】データ生成・変換のための機械学習 - YouTube]]
+- [[https://chokkan.github.io/mlnote/][機械学習帳]]
+- [[https://ocw.tsukuba.ac.jp/course/systeminformation/machine_learning/][機械学習 | 筑波大学オープンコースウェア｜TSUKUBA OCW]]
+- [[https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/][Cornell大学 CS4780]]
+- [[https://www.youtube.com/playlist?list=PL9t0xVFP90GD8hox0KipBkJcLX_C3ja67][Foundation Models - YouTube]]
+
+* 解説
+- [[http://stanford.edu/~shervine/][Shervine Amidi]] Stanford大学の人
+
+* Confidence Graph
+- https://twitter.com/MLWave/status/997686170346811393
+- [[http://mlwave.github.io/tda/confidence-graphs.html][Confidence Graph for a MLP trained on MNIST | KeplerMapper]]
+
+* Docker
+nvidia-docker
+
+* Datasets
+- NICAM 気象モデル
+- アプレイザル評価表現辞書
+  - 自動車の評価の感情など
+  - [[https://www.gsk.or.jp/catalog/gsk2011-c/][GSK2011-C 日本語アプレイザル評価表現辞書 （JAppraisal 辞書）～態度評価編～ | GSK]]
+- [[https://www.cs.uic.edu/~liub/publications/kdd04-revSummary.pdf][Minqing Hu and Bing Liu, Mining and Summarizing Customer Reviews (PDF)]]
+- [[https://skymind.ai/wiki/open-datasets][Open Datasets | Skymind]] いろんなデータセットのリンク
+- [[http://codh.rois.ac.jp/char-shape/][日本古典籍くずし字データセット | ROIS-DS人文学オープンデータ共同利用センター]]
+- [[http://codh.rois.ac.jp/kmnist/][KMNISTデータセット（機械学習用くずし字データセット） | ROIS-DS人文学オープンデータ共同利用センター]]
+- [[https://nihcc.app.box.com/v/ChestXray-NIHCC][CXR8 | Powered by Box]]
+- [[https://magenta.tensorflow.org/datasets/groove][Groove MIDI Dataset]]
+- [[https://ai.facebook.com/blog/ccmatrix-a-billion-scale-bitext-data-set-for-training-translation-models/][CCMatrix: A billion-scale bitext data set for training translation models]]
+- Sales
+  - [[https://www.kaggle.com/c/competitive-data-science-predict-future-sales][Predict Future Sales | Kaggle]]
+  - [[https://www.kaggle.com/c/walmart-recruiting-sales-in-stormy-weather/data][Walmart Recruiting II: Sales in Stormy Weather | Kaggle]]
+- [[https://github.com/joojs/fairface][joojs/fairface: FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age]]
+
+* Competitions, Conferences
+- ILSVRC (ImageNet Large Scale Visual Recognition Challenge)
+
+* News
+- [[https://us13.campaign-archive.com/home/?u=67bd06787e84d73db24fb0aa5&id=6c9d98ff2c][Import AI Newsletter]]
+- [[http://newsletter.ruder.io/][NLP News | Revue]]
+- [[https://www.deeplearning.ai/thebatch/][The Batch - deeplearning.ai]]
+* webservices
+- [[https://www.comet.ml/site/][Comet]]
+
+* モデル変換
+- [[https://qiita.com/lain21/items/9f9f9707ebad4bbc627d][PyTorchで学習したモデルをTFLiteモデルに変換して使う - Qiita]]
+
+* support vector machine (SVM)
+- [[https://satopirka.com/2018/12/theory-and-implementation-of-linear-support-vector-machine/][線形SVMの理論と実装]]
+- [[https://ja.wikipedia.org/wiki/%E4%BA%8C%E6%AC%A1%E8%A8%88%E7%94%BB%E6%B3%95][二次計画法 - Wikipedia]]
+- [[http://www.dais.is.tohoku.ac.jp/~shioura/teaching/mp12/][2012年度 数理計画法 ‎www.dais.is.tohoku.ac.jp/~shioura/teaching/mp12/]] 講義資料に「非線形計画」など
+- [[https://www.ism.ac.jp/~fukumizu/ISM_lecture_2010/Kernel_4_SVM.pdf][(PDF) サポートベクターマシン 正定値カーネルによるデータ解析 - カーネル法の基礎と展開 -福水健次 統計数理研究所/総合研究大学院大学]]
+- [[https://www.slideshare.net/sleepy_yoshi/smo-svm][SMO徹底入門 - SVMをちゃんと実装する]]
+
+* 最適化手法
+AdamW
+- [[https://arxiv.org/abs/1711.05101][[1711.05101] Decoupled Weight Decay Regularization]]
+- [[https://github.com/loshchil/AdamW-and-SGDW][loshchil/AdamW-and-SGDW: Decoupled Weight Decay Regularization (ICLR 2019)]]
+
+* 記事
+- [[https://dennybritz.com/blog/deep-learning-most-important-ideas/][Deep Learning's Most Important Ideas - A Brief Historical Review]]
+
+* Diffusion model
+
+Tutorials
+- [[https://arxiv.org/abs/2208.11970][[2208.11970] Understanding Diffusion Models: A Unified Perspective]]
+- [[https://arxiv.org/abs/2406.08929][[2406.08929] Step-by-Step Diffusion: An Elementary Tutorial]]
+
+* 生成モデル
+** 動画
+- [[https://github.com/Tencent/HunyuanVideo][Tencent/HunyuanVideo: HunyuanVideo: A Systematic Framework For Large Video Generation Model]]
+- [[https://blog.comfy.org/p/hunyuanvideo-native-support-in-comfyui?r=4z50rt&utm_campaign=post&utm_medium=web&triedRedirect=true][HunyuanVideo Native Support in ComfyUI - by Jo Zhang]]
+- CogVideoX
+  - [[https://gist.github.com/a-r-r-o-w/2c0de4593123342f0a1f1612c64d74db][All the essentials to play with CogVideoX!]]
+
+参考
+- [[https://huggingface.co/spaces/ArtificialAnalysis/Video-Generation-Arena-Leaderboard][Video Generation Leaderboard - a Hugging Face Space by ArtificialAnalysis]]
+
+** DeepSeek
+- [[https://www.leapleaper.jp/2025/02/06/researcher-explains-deepseek-ai-in-papers/][AIにその手があったか！DeepSeekの革新性を研究者が論文解説する-リープリーパー]]
+- [[https://zenn.dev/asap/articles/34237ad87f8511][DeepSeek-R1の論文読んだ？【勉強になるよ】]]
+
+* ノート
+- [[https://github.com/machine-perception-robotics-group/MPRGDeepLearningLectureNotebook?fbclid=IwAR34mgSoTvckLDrwabGSJlS5nQcpECAmHb-kH8Jlx4dWGGNgGVQAwHF1sWk][machine-perception-robotics-group/MPRGDeepLearningLectureNotebook]] GAN, GCNも。PyTorch。
+  
+* 本
+- [[https://arxiv.org/abs/2105.04026][[2105.04026] The Modern Mathematics of Deep Learning]]
+- [[https://github.com/Runnrairu/Machine-Learning-text][Runnrairu/Machine-Learning-text: 一般的な機械学習入門]]
+- [[https://hacarus.github.io/interpretable-ml-book-ja/][Interpretable Machine Learning]]
+- [[https://d2l.ai/][Dive into Deep Learning]]
+  - [[https://courses.d2l.ai/berkeley-stat-157/index.html][Introduction to Deep Learning — STAT 157, Spring 19 documentation]]
+
+* 未分類ンフォ
+- AlexNet
+  - [[http://revast-blog.com/top/?p=57][リバストのブログ Deep Learningの概要]]
+- [[https://products.sint.co.jp/aisia/blog/tag/ai_blog_basics][ブログ | AI技術をぱっと理解する（基礎編） | AI（人工知能）サービス AISIA]]
+- [[https://machinelearningmastery.com/deep-learning-models-for-human-activity-recognition/][Deep Learning Models for Human Activity Recognition]]
+- [[http://www.codingwoman.com/youtube-channels-for-deep-learning-and-computer-vision/][Ultimate List of Youtube Channels for Deep Learning and Computer Vision — Coding Woman]] 深層学習とコンピュータビジョンのYouTubeチャンネルのリスト
+- [[https://github.com/yoyoyo-yo/DeepLearningMugenKnock][ディープラーニング∞本ノック!! - yoyoyo-yo/DeepLearningMugenKnock]]
+- [[https://www.youtube.com/watch?v=0VH1Lim8gL8][Deep Learning State of the Art (2020) | MIT Deep Learning Series - YouTube]]
+- [[https://ai.googleblog.com/2021/09/toward-fast-and-accurate-neural.html][Google AI Blog: Toward Fast and Accurate Neural Networks for Image Recognition]] EfficientNetV2
+- [[https://github.com/huggingface/diffusion-models-class][huggingface/diffusion-models-class: Materials for the Hugging Face Diffusion Models Course]]
+- [[https://github.com/tanelp/tiny-diffusion][tanelp/tiny-diffusion: A minimal PyTorch implementation of probabilistic diffusion models for 2D datasets.]]
+- [[https://github.com/karpathy/minGPT][karpathy/minGPT: A minimal PyTorch re-implementation of the OpenAI GPT (Generative Pretrained Transformer) training]] GPTの小さな再実装
+- [[https://github.com/karpathy/nanoGPT][karpathy/nanoGPT: The simplest, fastest repository for training/finetuning medium-sized GPTs.]]
+- Open Interpreter
+  - [[https://generativeinfo365.com/?p=1785][Open Interpreterでアンケート分析をやってもらったら1時間以上かかる作業が一瞬で完了した。ヤバい｜Ainova]]
+- [[https://x.com/MIT_CSAIL/status/1837884837580959799][All major neural networks, in one chart]] (X)

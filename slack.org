@@ -1,0 +1,72 @@
+:PROPERTIES:
+:ID:       D9E0B183-F46D-4E87-A61B-58E40F5EDEBA
+:END:
+
+
+[[https://slack.com/][Slack]] memo
+
+* Tips
+** タイムラインでの操作
+#+BEGIN_SRC 
+/dnd for 15 mins
+/dnd for 15 mins
+#+END_SRC
+
+#+BEGIN_SRC 
+/topic お花見is 1日18時から 場所 https://example.org
+#+END_SRC
+
+#+BEGIN_SRC 
+/who
+#+END_SRC
+
+#+BEGIN_SRC 
+/feed list
+#+END_SRC
+
+- command + k :: チャンネルなど移動
+
+*** add reaction
+
+#+BEGIN_SRC 
++:+1:
+#+END_SRC
+
+- cmd + shift + \ :: add reaction
+
+
+** Token をゲット (legacy)
+https://api.slack.com/custom-integrations/legacy-tokens
+
+** Channel IDを取得する
+https://api.slack.com/methods/channels.list/test
+ここでボタンを押す。
+
+
+* Export/import
+- =(workspace hostname)/services/export=
+- =(workspace hostname)/services/import=
+
+でできる。
+
+インポートするときにユーザを選択することができる。ユーザを紐付けずに、単にテキスト内容だけインポートすることもできる。
+
+
+* messagesを全削除
+- [[https://github.com/sgratzl/slack-cleaner][sgratzl/slack-cleaner: delete slack message and files. An improved version is at: https://github.com/sgratzl/slack_cleaner2]]
+- [[https://note.com/frontendlifeinde/n/nebbc0129580c][【Slack, API】slack-cleanerでSlackのメッセージを一括削除/特定の日付以前を一括削除する｜Arisa｜note]]
+
+#+begin_src sh
+slack-cleaner --token YOUR TOKEN --message --channel general --user "*" --bot --as_user --before 20190101
+#+end_src
+
+本当に実行するときは ~--perform~ を付ける。
+
+
+* Links
+- [[http://qiita.com/yukihirai0505/items/b74425cb70dd7c045219][非エンジニアでもできるSlackbotの追加方法 - Qiita]]
+
+* emoji
+絵文字追加
+- [[https://github.com/decomoji/slack-reaction-decomoji][decomoji/slack-reaction-decomoji: Custom icon collection for slack reaction]]
+- [[https://zk-phi.github.io/MEGAMOJI/][MEGAMOJI - カスタム絵文字メーカー]]

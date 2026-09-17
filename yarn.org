@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       0E5C59DB-A63C-4767-AC4B-A635F5FAF438
+:END:
+hhe
+Yarn
+https://yarnpkg.com/
+
+=~/Library/Caches/Yarn= をきれいにする。
+
+: yarn cache clean

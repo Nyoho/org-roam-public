@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       E8E01E92-8EDC-4013-A447-01252D2FF39F
+:END:
+#+TITLE: GitHub Pages
+
+2016年、~/docs~ で公開出来るようになった。
+
+* 独自ドメイン
+
+- [[https://help.github.com/articles/setting-up-an-apex-domain/][Setting up an apex domain - User Documentation]]
+
+#+BEGIN_SRC
+example.com.   73  IN  A 192.30.252.153
+example.com.   73  IN  A 192.30.252.154
+#+END_SRC
+
+
+subdomain では CNAME にする。
+
+CNAME で subdomain.example.com. に nyoho.github.io. を。
+
+

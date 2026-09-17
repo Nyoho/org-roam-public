@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       2EEC85D0-4C15-48DC-89C5-4F034DB85BD5
+:END:
+
+
+Alamofire
+
+* Tips
+** progress 
+#+BEGIN_SRC swift
+  Alamofire.request("https://exampl.net", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
+    .downloadProgress { progress in
+        print("Download Progress: \(progress.fractionCompleted)")
+    }
+#+END_SRC

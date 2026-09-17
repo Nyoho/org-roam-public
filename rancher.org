@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       9580F680-E365-4ABF-8B0A-27933954BA11
+:END:
+#+title: Rancher Desktop
+#+date: [2023-08-08 Tue 20:09]
+
+
+Rancher Desktop について
+
+** volumesがpermission deniedになるバグ
+
+[[https://zenn.dev/jcc/articles/2c69fb4b4c924f][M1 MacでDocker DesktopからRancher Desktopに移行]] より
+
+~/Library/Application\ Support/rancher-desktop/lima/_config/override.yaml を次にするとのこと。
+
+  #+begin_src txt
+  mountType: 9p
+mounts:
+  - location: "~"
+    9p:
+      securityModel: mapped-xattr
+      cache: "mmap"
+  #+end_src
+
+- [[https://github.com/rancher-sandbox/rancher-desktop/issues/1209][chown error on bind mount when trying to launch postgres via docker compose · Issue #1209 · rancher-sandbox/rancher-desktop]]

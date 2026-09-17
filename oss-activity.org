@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       11808CD9-2BE4-44F5-A10A-34B55D850FD3
+:END:
+#+title: My OSS activity
+
+My OSS activity
+
+- [[https://github.com/tdiary/tdiary-core/pull/441][fix paths used in the 'tdiary' command by Nyoho · Pull Request #441 · tdiary/tdiary-core]]
+- [[https://github.com/tdiary/tdiary-core/issues/485][カテゴリプラグインが生成するURLにアクセスした際の表示が異なっている(と思います・・自信なし · Issue #485 · tdiary/tdiary-core]]
+- [[https://github.com/rack/rack/pull/781][Fix semicolons as separators for GET by Nyoho · Pull Request #781 · rack/rack]]

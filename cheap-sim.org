@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       453EE564-514F-423B-A984-ED7F3F99890E
+:END:
+#+TITLE: 安いSIM
+
+* SIM サービス
+
+- [[http://www.dmm.com/pr/mvno/002/?utm_campaign=admg_3130_4757_71308_71357&utm_content=mvno&utm_source=asp&utm_medium=asp][DMM mobile - DMM.com]]
+- [[https://rokemoba.com/][ロケットモバイル]]
+
+
+* 参考
+- [[http://sim-fan.mobile-runner.com/low-price/][月額料金が最安クラスの格安SIMカードを比較 | SIM-FAN]]

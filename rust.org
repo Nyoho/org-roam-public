@@ -1,0 +1,196 @@
+:PROPERTIES:
+:ID:       3423875B-DD8D-4D2C-9BCD-C5CC50354A57
+:END:
+#+title: Rust 
+#+date: <2020-08-23 20:03:00 +0900>
+
+* Installation
+
+#+BEGIN_SRC sh
+brew install rust
+#+END_SRC
+
+** rustup
+nightly にする
+#+BEGIN_SRC sh
+rustup override set nightly
+#+END_SRC
+
+その後は次でアップデートしていけばOK。
+
+: rustup update
+
+rustc も cargo も rust-docs も rustfmt も最新にしてくれる。
+
+** Cargo - Packages
+
+Example
+#+BEGIN_SRC sh
+cargo install cobalt-bin
+#+END_SRC
+
+#+BEGIN_SRC sh
+cargo run
+#+END_SRC
+
+コンパイルが通るかチェック。ビルドしないので高速。
+#+BEGIN_SRC sh
+cargo check
+#+END_SRC
+
+
+リリースビルド
+
+: cargo build --release
+
+** rustfmt
+
+: rustup component add rustfmt-preview
+
+* Cargo new プロジェクト
+
+#+begin_src sh
+cargo new hello_world --bin
+#+end_src
+
+* 学習メモ
+束縛
+
+関連関数 いわゆる static method のこと。
+
+Result型 便利そう
+
+シャドーイング 同名で隠すことができる。上書きではない。
+
+trait プロトコルみたいなもんだね。
+
+trait境界
+
+#+BEGIN_SRC rust
+foo<T: Trait1>
+
+foo<T: Trait1 + Trait2>
+#+END_SRC
+
+where節
+#+BEGIN_SRC rust
+foo<T: Hoge, H: Hoge + Fuga>(x: T, y: K)
+#+END_SRC
+は、
+#+BEGIN_SRC rust
+foo(x: T, y: K) where T: Hoge, H: Hoge + Fuga
+#+END_SRC
+と書ける。
+
+Drop trait デストラクタに使う。
+
+=std::sync::Mutex= 同期処理に使う
+
+=Vec<T>= は =vec![1, 2, 3]= のように使う。
+
+#+BEGIN_SRC rust
+thread::swawn( move || { }  )
+#+END_SRC
+
+'_' で始まる変数名は未使用警告を出さない。
+
+closure は ={ }= なしでいきなり書けちゃう。
+
+=move= 付きクロージャは外の参照は借用されずにコピってくれる。しかも自己独自スタックフレームを持つ。
+
+=if= は式。Rubyと同じだね。
+
+attributes
+#+BEGIN_SRC rust
+#[test]
+#+END_SRC
+などと関数定義の前に書いたりする。
+
+** イテレータを Vec に変換する
+~.collect::<Vec<_>>~
+
+** collection系
+- VecDeque
+- HashMap
+
+- [[https://qiita.com/garkimasera/items/a6df4d1cd99bc5010a5e#vecdeque][Rustのコレクション型まとめ (VecやHashMapなど) - Qiita]]
+
+** Macro
+- [[https://keens.github.io/blog/2018/02/17/makurokurabu_rustshibu/][マクロクラブ Rust支部 | κeenのHappy Hacκing Blog]]
+
+* エラー処理など
+- [[https://qiita.com/nirasan/items/321e7cc42e0e0f238254][Rust のエラーハンドリングはシンタックスシュガーが豊富で完全に初見殺しなので自信を持って使えるように整理してみたら完全に理解した - Qiita]]
+
+* Packages
+** 多倍長計算 RAMP
+[[https://github.com/Aatch/ramp][Aatch/ramp: RAMP - Rust Arithmetic in Multiple Precision]]
+
+#+BEGIN_SRC sh
+cargo install ramp
+#+END_SRC
+
+** Serde
+[[https://qiita.com/garkimasera/items/0442ee896403c6b78fb2][RustのSerdeの簡単な紹介 - Qiita]]
+
+* Communities
+- [[https://github.com/hirusthima][hirusthima]] 広島のRustコミュニティ
+
+* Emacsで
+** rust-mode
+いいねこれ。
+保存したら rustfmt も勝手にやってくれる。
+
+** racer-mode
+補完してくれる。
+
+- M-. :: 定義元ジャンプ
+- M-, :: ジャンプする前に戻る
+- M-x racer-describe :: rustdoc 表示
+
+** LSP
+rust-analyzer
+
+#+begin_src sh
+rustup component add rls rust-analysis rust-src
+#+end_src
+
+* 資料
+- [[https://rust-lang-ja.github.io/the-rust-programming-language-ja/1.6/book/README.html][プログラミング言語Rust]]
+- [[https://doc.rust-jp.rs/rust-by-example-ja/][Rust By Example 日本語版]]
+- [[http://keens.github.io/blog/2016/12/29/kizuitararustnokankyoukouchikugakanarirakuninatteta/][気付いたらRustの環境構築がかなり楽になってた | κeenのHappy Hacκing Blog]]
+- [[https://qiita.com/ksato9700/items/312be99d8264b553b193][Rustのメモリ管理って面白い - Qiita]]
+- [[https://www.youtube.com/watch?v=zF34dRivLOw][Rust Crash Course | Rustlang - YouTube]]
+- [[https://caddi.tech/archives/2381][Rust Cookbook for Beginners - CADDi Tech Blog]]
+- [[https://cfsamson.gitbook.io/green-threads-explained-in-200-lines-of-rust/][Introduction - Green Threads Explained in 200 Lines of Rust]]
+
+* 競技プログラミング
+- [[https://qiita.com/hatoo@github/items/fa14ad36a1b568d14f3e][Rustで競技プログラミング スターターキット - Qiita]]
+- [[https://qiita.com/tanakh/items/0ba42c7ca36cd29d0ac8][Rustで競技プログラミングの入力をスッキリ記述するマクロ - Qiita]]
+- [[https://qiita.com/vain0x/items/512784ff60ce599dccae][Rustで競プロするときのプラクティス {2018秋} - Qiita]]
+- [[https://qiita.com/tubo28/items/e6076e9040da57368845][AtCoder に登録したら解くべき精選過去問 10 問を Rust で解いてみた - Qiita]]
+- [[https://qiita.com/tanakh/items/73114d3c8402e90912b4][Rustで競技プログラミングの入出力を自動的にやるマクロ - Qiita]]
+
+* Documentation
+
+** rustbook
+[[https://github.com/rust-lang-ja/the-rust-programming-language-ja/wiki/rustbook%25E3%2581%25AE%25E3%2582%25A4%25E3%2583%25B3%25E3%2582%25B9%25E3%2583%2588%25E3%2583%25BC%25E3%2583%25AB%25E6%2596%25B9%25E6%25B3%2595][rustbookのインストール方法 · rust-lang-ja/the-rust-programming-language-ja Wiki]]
+
+#+BEGIN_SRC sh
+rustup run nightly cargo install --git https://github.com/rust-lang-ja/rustbook.git --branch master
+#+END_SRC
+
+#+BEGIN_SRC sh
+rustup run nightly $HOME/.cargo/bin/rustbook
+#+END_SRC
+
+* Rust製のソフトウェア
+- [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+- [[https://github.com/lotabout/skim][skim]] fzfみたいなの
+- [[https://kubo39.hatenablog.com/entry/2017/01/10/%25E3%2581%25B1%25E3%2581%25A3%25E3%2581%25A8%25E4%25BD%25BF%25E3%2581%2588%25E3%2581%259D%25E3%2581%2586%25E3%2581%25AARust%25E8%25A3%25BD%25E3%2581%25AE%25E3%2583%2584%25E3%2583%25BC%25E3%2583%25AB][ぱっと使えそうなRust製のツール - kubo39's blog]]
+
+* OS
+- [[https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials][rust-embedded/rust-raspberrypi-OS-tutorials: Learn to write an embedded OS in Rust]] RustでRaspberry PiのOSを書くチュートリアル
+* REPL
+[[https://github.com/google/evcxr][google/evcxr]] でREPLができる。
+* Links
+- [[https://news.mynavi.jp/techplus/article/rustalgorithm-11/][Rustで有名アルゴリズムに挑戦(11) Rustで再帰を使ってシダを描画しよう | TECH+（テックプラス）]]

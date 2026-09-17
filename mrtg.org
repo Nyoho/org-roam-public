@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       B920DEA3-9015-49B2-9BFB-8150E8702AE8
+:END:
+#+begin_html
+---
+title: mrtg メモ
+tags: mrtg, Linux
+#+date: <2013-01-09 15:45:21>
+---
+#+end_html
+
+なんか定義のエラーをこう直した。
+- [[http://oss.oetiker.ch/mrtg-trac/ticket/134][#134 (problem with Subroutine SNMP_Session::pack_sockaddr_in6 redefined) – mrtg Trac]]
+- [[http://tasos.pavta.com/myblog/2012/06/16/subroutine-snmp_sessionpack_sockaddr_in6-redefined/][Subroutine SNMP_Session::pack_sockaddr_in6 redefined | After School]]

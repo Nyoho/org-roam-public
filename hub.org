@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       97EB8DD0-B6C6-4CE6-BDB3-0DD8780196B8
+:END:
+#+title: GitHub 用の hub コマンド
+#+date: <2014-01-18 11:02:58>
+
+GitHub 用の hub コマンド
+
+[[https://github.com/github/hub][github/hub]]
+
+[[http://hub.github.com/][hub · the command-line wrapper for git]]
+
+自分のプロジェクト hoge を clone
+#+BEGIN_SRC sh
+hub clone hoge
+#+END_SRC
+
+他人 jony のプロジェクト hoge を clone
+#+BEGIN_SRC sh
+hub clone jony/hoge
+#+END_SRC
+

@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       EEC11404-67F6-4D7F-8F1C-0CE5B9749C0A
+:END:
+#+title: tmux
+#+tags: tmux
+#+date: <2013-02-02 Sat>
+
+ここでは [[https://github.com/tmux/tmux/wiki][tmux]] の勉強をします。
+
+* 基本操作
+GNU screen の操作に加えて覚えるものは特に pane の操作であろうか。
+
+- prefix ? :: とにかく迷ったらヘルプ
+- prefix | :: split-window
+- prefix space :: next-layout
+- prefix M-1 から M-5 :: pane のレイアウトをいろいろ変更する
+- prefix % :: 縦分割で新しい pane
+- prefix " :: 横分割で新しい pane
+- prefix C-o :: rotate panes
+- prefix o :: pane 移動する
+- prefix z :: resize-pane。zoom。一時的に全画面にするときに。
+- prefix ! :: break-pane 今いる pane をぽこっと外して新しい window とする。なかなかいいかも
+- prefix カーソルキー :: prefix の後すぐならカーソルキーで pane 移動も出来る。
+- prefix = :: choose-buffer
+- prefix M-Up :: resize-pane -U 5
+- prefix M-Down :: resize-pane -D 5
+- prefix :swap-window -s 2 -t 3 :: swap window 2 window 3
+- prefix < :: なんかメニューが出る
+- prefix > :: なんかメニューが出る
+- prefix . :: windowを別のセッションに放り投げることができる。
+- prefix s :: セッションを移動
+- prefix $ :: セッションの名前を付ける
+
+* コマンドでも操作
+コマンドラインからコマンドとして tmux [command name] も使うことがある。それもここにメモることとする。
+
+- tmux a :: アタッチします。わしは既に alias a='tmux a' してしまっていますけれども。
+- tmux detach -t tty004  :: tty004 を detach できる。
+- tmux ls :: list-sessions
+- tmux lsc :: list-clients
+- tmux rename-window :: そのウィンドウの名前を変更する
+- tmux a -d :: 全部 detach してアタッチ。これは便利。(参考: [[http://blog.64p.org/entry/2013/04/26/191706][tmux で画面の外に |----------------- ってでまくるときの対策 - tokuhirom's blog.]])
+* 同時操作
+ペインを複数作っておいて
+=prefix :setw sy= とすると複数のペインに対して同時操作ができる。
+
+参考文献
+- [[https://tech.naviplus.co.jp/2014/01/09/tmux%E3%81%A7%E8%A4%87%E6%95%B0%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E5%90%8C%E6%99%82%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/][tmuxで複数サーバの同時オペレーション – NaviPlus Engineers' Blog]]
+  
+* .tmux.conf
+=-r= がついていると、リピートできる。これは便利。リサイズとかに便利。
+
+* おまけ
+** Installation to ~/local
+#+begin_src sh
+CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" CXXFLAGS="-I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/lib" LIBEVENT_LIBS=$HOME/local/lib ./configure --prefix=$HOME/local
+#+end_src

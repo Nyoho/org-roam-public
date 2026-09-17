@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       269BD99A-EFFD-4108-B117-5D761E5BD1FD
+:END:
+#+title: Org-roam
+#+date: <2021-01-16 Sat>
+
+Org-roamの使い方メモ
+
+- https://www.orgroam.com/
+- https://www.orgroam.com/manual.html
+- https://org-roam.discourse.group
+
+IDがついていないファイルには =M-x org-id-get-create= でIDが付けられる。
+
+** 参考
+- [[https://en.wikipedia.org/wiki/Zettelkasten][Zettelkasten - Wikipedia]]

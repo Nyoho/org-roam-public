@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       0C54A634-89B3-4D1E-BC23-DB2D0DE9C50E
+:END:
+Trello
+
+* Tips
+
+** サイドメニューの「もっと見る」をもっと見る
+ラベルとか。

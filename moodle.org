@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       A05FBE83-5D54-4324-8FC1-54B08F2EE10C
+:END:
+#+title: Moodle
+#+tags: moodle e-learning LMS
+#+date: <2014-02-15 Sat>
+
+Moodle 公式サイト https://moodle.org
+
+** よくある対応
+- コース :: 1授業で1コース
+- トピック :: 1トピックが1回分の授業
+
+** 未分類
+*** アンケート
+#+BEGIN_SRC 
+0/text
+1/text
+2/text
+3/text
+#+END_SRC
+と書くと評定が "n/" のところで設定が出来る。
+
+*** 音声や動画を追加する方法
+リソース -> ページ 追加
+
+ページコンテンツのツールメニュー
+
+YouTube は HTML 貼り付けを使うのが簡単。

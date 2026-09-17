@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       5CA8650F-1496-4D7C-B676-404685E27835
+:END:
+#+title: FastAPI
+#+date: [2025-06-07 Sat 10:46]
+
+
+
+/docs
+
+便利
+
+/redoc
+
+便利

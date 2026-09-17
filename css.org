@@ -1,0 +1,88 @@
+:PROPERTIES:
+:ID:       8EF926A0-3D7D-4743-A809-98EAA8E93EF5
+:END:
+#+title: CSS 関連 sass, Compass
+#+tags: css sass scss compass
+#+date: <2013-08-13 Tue>
+
+* Tips
+** height
+
+#+BEGIN_SRC css
+height: 100%
+#+END_SRC
+
+のためには
+#+BEGIN_SRC css
+  html, body {
+      height: 100%;
+  }
+#+END_SRC
+をする。
+html が height: auto になっているため。
+
+** shape
+ハートマーク切り取りができる。
+
+#+begin_src css
+  clip-path: shape(from 50% 91%,line to 90% 50%,arc to 50% 9% of 1%,arc to 10% 50% of 1%);
+#+end_src
+
+from [[https://codepen.io/t_afif/pen/LEEbdrw][Heart shape using shape()]]
+
+** 3Dカード
+
+[[https://frontendmasters.com/blog/the-deep-card-conundrum/][The Deep Card Conundrum – Frontend Masters Blog]]
+
+おもしろい。
+
+** scroll-state
+- [[https://github.com/w3c/csswg-drafts/blob/a84830bb9f39f4b82ad0c91ad250a9393b9137f8/css-conditional-5/scroll_state_explainer.md?plain=1#L41][csswg-drafts/css-conditional-5/scroll_state_explainer.md at a84830bb9f39f4b82ad0c91ad250a9393b9137f8 · w3c/csswg-drafts]]
+- [[https://drafts.csswg.org/css-conditional-5/scroll_state_explainer][CSS Scroll State Container Queries Explainer]]
+- [[https://github.com/w3c/csswg-drafts][w3c/csswg-drafts: CSS Working Group Editor Drafts]]
+
+* sass
+#+BEGIN_SRC sh
+sass --watch scssdir:cssdir
+#+END_SRC
+
+ruby sass はメンテナンス終了されました。 =dart sass= を入れた(2019春)。
+#+begin_src sh
+brew install sass/sass/sass
+#+end_src
+
+** Compass
+
+#+begin_src sh
+compass create
+#+end_src
+で始める。
+
+#+begin_src sh
+compass watch
+#+end_src
+
+#+begin_src sh
+compass compile
+#+end_src
+
+
+config.rb に
+
+#+BEGIN_SRC ruby
+require 'compass-h5bp'
+# require 'html5-boilerplate'
+require 'susy'
+#+END_SRC
+
+を追加した。
+
+* 名前
+- OOCSS
+- BEM
+- SMACSS
+- FLOCSS
+
+* Links
+- [[https://coliss.com/articles/build-websites/operation/work/grainy-gradients.html][最近見かける、粒子の粗いグラデーション！ほんの少しのCSSとSVGで実装できるの知ってた？ | コリス]] 
+

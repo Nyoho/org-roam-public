@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       D2D67789-825F-42E9-ACED-0B32E82B0E5A
+:END:
+#+title: Vuforia
+#+date: <2020-08-30 11:07:55 +0900>
+
+* Unityに統合された
+** build-inはなくなった。2019
+Project Settingsの XR Plugin Management → Install XR Plugin Management
+ 
+** Unity 2017から。
+
+- [[http://nn-hokuson.hatenablog.com/entry/2018/08/28/192028][【Unity】Vuforiaを使ってARを表示する手順（2018年版） - おもちゃラボ]]
+
+* Vuforia (AR) with Unity
+参考: [[http://nvtrlab.jp/column/1-4][無料ライブラリ「Vuforia」でARアプリを作る！④【Unityで開発篇】 | 日本VTR実験室]]
+
+** 手順
+[[https://developer.vuforia.com/resources/dev-guide/step-2-compiling-simple-project][Step 2: Compiling a Simple Project | Vuforia Developer Portal]]
+
+1. [[https://developer.vuforia.com/downloads/sdk][SDK Download | Vuforia Developer Portal]] で vuforia-unity-5-5-9.unitypackage をゲット (vuforia-unity-android-ios-3-0-6.unitypackage を import する。)
+2. vuforia developer の Target Manager で独自の画像のターゲットを作成。
+   https://developer.vuforia.com/targetmanager/project/checkDeviceProjectsCreated?dataRequestedForUserId%3D
+3. 作成されたものの中から Download Selected Targets をする。(Unity Editor を選ぶと TargetName.unitypackage が落ちてくる)
+4. TargetName.unitypackage を Unity のプロジェクトに放り込む (名前が QCARTest だったら QCARTest.unitypackage となっている。)
+5. オブジェクトを置いていく
+   1) まず Main Camera を削除。
+   2) =Qualcomm Augmented Reality/Prefabs/= → =Vuforia/Prefabs= にあるオブジェクトの ARCamera を配置。Load Data Set TargetName と Active にチェックを入れる。
+   3) また同じプレハブから ImageTarget を配置。Image Target Behavior の中の Data Set を TargetName に設定。その下の Image Target プロパティも変わる。
+   4) ImageTarget の子として他のオブジェクトを入れる。
+   5) Directional light は ImageTarget の外にあればよい。
+6. AR に限らず Camera は Near に注意。カットされてしまって見えていないことがある。上のインポートや設定のミスかもと気付かず調べてしまう可能性がある。
+
+** memo
+- scripts
+  - input behaviour
+  - test mesh script.cs
+- Objects
+  - GraphSurface
+
+** 注意 <2014-09-24 Wed>
+Unity 4.5.4 Vuforia で EXC_BAD_ACCESS になるとき
+https://developer.vuforia.com/forum/unity-3-extension-technical-discussion/unity-454-and-vuforia-ios
+
+Info.plist に
+UIInterfaceOrientation というキーで UIInterfaceOrientationPortrait などの値の行を挿入
+
+** 注意 (2012年) たぶんもういらない 
+Xcode で次を変更。
+
+1. Change ((int)surface->w, (int)surface->h) to ((int)surface->targetW, (int)surface->targetH)
+2. Change (_curOrientation) to ((int)orientation)
+
+** License Key を入れるようになっていた。 2016/04
+[[https://developer.vuforia.com/targetmanager/licenseManager/licenseListing][License Manager]] でライセンスキーを出して、ARCamera の App Lisence Key のところにペーストする。
+
+help: [[https://developer.vuforia.com/library/articles/FAQ/License-Manager-FAQ#What%20is%20the%20License%20Manager?][License Manager | Vuforia Library Prod]]
+
+1) Import a custum package vuforia-unity-5-5-9.unitypackage
+

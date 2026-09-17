@@ -1,0 +1,93 @@
+:PROPERTIES:
+:ID:       8E618714-BD45-4EBD-8A0B-C91FE1220E71
+:END:
+#+title: Ollama
+#+date: [2024-05-20 Mon 15:12]
+
+* Installation
+Ollama https://ollama.com をダウンロード。インストール
+
+* Usage
+#+begin_src sh
+ollama run llama3
+#+end_src
+
+実行。しらばく待つ。
+
+llama3:70b はもっと大きいモデル。
+
+
+* モデルいろいろ
+
+#+begin_src sh
+ollama run hawkclaws/llama-3-youko-8b-instruct-chatvector
+#+end_src
+
+- [[https://ollama.com/hawkclaws/llama-3-youko-8b-instruct-chatvector][hawkclaws/llama-3-youko-8b-instruct-chatvector]]
+- [[https://ollama.com/library/gemma3][gemma3]]
+- [[https://ollama.com/library/qwq][qwq]]
+- [[https://ollama.com/library/deepseek-r1][deepseek-r1]]
+- [[https://ollama.com/library/llama3.3][llama3.3]]
+- [[https://ollama.com/library/phi4][phi4]]
+- [[https://ollama.com/library/mistral-small][mistral-small]]
+- [[https://ollama.com/library/mistral-small3.1][mistral-small3.1]]
+
+- kimi-k2.5:cloud
+- glm-4.7-flash:latest
+- lfm2.5-thinking:latest
+- gpt-oss:20b-cloud
+- gpt-oss:120b-cloud
+- gpt-oss:20b
+- qwen3:30b-a3b-q4_K_M
+- qwen3:4b
+- qwen3:1.7b
+- qwen3:0.6b
+- qwen3:8b  
+- mistral-small3.1:latest 
+- qwen2.5-coder:32b       
+- llama3.3:70b            
+- QwQ:32b
+
+古い                    
+- hf.co/mmnga/cyberagent-DeepSeek-R1-Distill-Qwen-14B-Japanese-gguf:latest    26e5cc1b03cd    9.0 GB    11 months ago
+- phi4:latest                                                                 ac896e5b8b34    9.1 GB    12 months ago
+- phi4:14b                                                                    ac896e5b8b34    9.1 GB    12 months ago
+- llama3.2:3b                                                                 a80c4f17acd5    2.0 GB    16 months ago
+- llama3.1:70b                                                                f9f6c437c417    39 GB     17 months ago
+- llama3.1:8b                                                                 91ab477bec9d    4.7 GB    17 months ago
+- command-r:35b                                                               b8cdfff0263c    20 GB     17 months ago
+- gemma2:27b-instruct-q4_K_S                                                  04e31e399ce4    15 GB     17 months ago
+- aya:35b-23-q4_K_S                                                           0bdc7e9883d8    20 GB     17 months ago
+- codestral:22b-v0.1-q4_K_S                                                   f8a1c37a980c    12 GB     17 months ago
+- gemma2:2b                                                                   8ccf136fdd52    1.6 GB    18 months ago
+- hawkclaws/llama-3-youko-8b-instruct-chatvector:latest                       4d3e156e3130    8.5 GB    20 months ago
+
+* MLX
+MLX <2026-03-30 Mon>
+#+begin_src sh
+ollama launch claude --model qwen3.5:35b-a3b-coding-nvfp4
+#+end_src
+
+* Codex
+Codexアプリも使えるようになった。
+
+: ollama launch codex-app
+
+* 参考
+- [[https://note.com/npaka/n/ndadbae6c6be5][Ollama で Elyza-7B を試す｜npaka]]
+- [[https://zenn.dev/yasuna/articles/284aa6bbf6124e][M1MacでOllamaを試したら爆速で驚いた]]
+- [[https://huggingface.co/rinna/llama-3-youko-8b][rinna/llama-3-youko-8b · Hugging Face]]
+
+* open-webui
+
+~OLLAMA_BASE_URL=http://127.0.0.1:11434~ だとうまくいかないときに ~OLLAMA_BASE_URL=http://host.docker.internal:11434~ とするとよいという[[https://github.com/open-webui/open-webui/discussions/803#discussioncomment-9176139][情報があった]]。
+
+#+begin_src sh
+docker run --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://host.docker.internal:11434 --name open-webui ghcr.io/open-webui/open-webui:main
+#+end_src
+
+Then open http://localhost:8080/ .
+
+- http://127.0.0.1:11434 OK
+- http://127.0.0.1:11434/api/tags OK
+

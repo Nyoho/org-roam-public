@@ -1,0 +1,7 @@
+#+title: ZFS
+
+ZFS
+
+* ZFSでNAS
+- [[https://eco.senritu.net/10%E4%B8%87%E5%86%86%E4%BB%A5%E5%86%85%E3%81%A7%E4%BD%9C%E3%82%8B18tb-raid-z2%E3%83%80%E3%83%96%E3%83%AB%E3%83%91%E3%83%AA%E3%83%86%E3%82%A3%E9%AB%98%E4%BF%A1%E9%A0%BC%E3%83%95%E3%82%A1%E3%82%A4/][10万円以内で作る18TB raid-z2(ダブルパリティ)高信頼ファイルサーバ – UbuntuによるEco Linuxサーバ構築記]]
+- [[https://kirishima.it/mt/2014/09/freenas_volume.html][FreeNAS のディスクはどう構成すればいいか (きりしま屋)]]

@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       3A6CE052-BB9A-402D-A828-67E03A06DE29
+:END:
+#+title: OSS Gate memo
+
+https://oss-gate.github.io
+
+- [[https://oss-gate.github.io/workshop/new-to-moderator.html][進行役スタートガイド]] kouさんが進行役やってる動画, 進行役を始めるガイド
+- [[https://github.com/oss-gate/oss-gate.github.io/blob/add-supporter-guide/workshop/supporter-guide.md][oss-gate.github.io/supporter-guide.md]] サポーターに必要なこと
+- [[https://oss-gate.github.io/announce/update/2018/05/17/workshop-hostting.html][OSS Gateを開催するには]]
+- [[https://oss-gate.github.io/sponsors/wanted.html][スポンサー募集]]
+- [[https://github.com/oss-gate/workshop/issues/1111][3月28(木)-29(金)に東京で夜にワークショップをやる準備をする · Issue #1111 · oss-gate/workshop]] 東京で夜にワークショップをやったときのissue

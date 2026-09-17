@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       934FE1C9-096D-43AB-B5C5-3721ABDB9B14
+:END:
+#+title: 3D format
+#+date: [2022-04-13 Wed 18:43]
+
+* USDZ
+- [[https://developer.apple.com/jp/augmented-reality/quick-look/][Quick Lookギャラリー - 拡張現実 - Apple Developer]]
+- [[https://www.itmedia.co.jp/news/articles/1806/14/news065.html][Appleが推進する3D/ARフォーマット「USDZ」とは何か？：WWDC 2018 - ITmedia NEWS]]
+  
+* 3DMF
+- [[https://kotobank.jp/word/3DMF-12913][3DMFとは - コトバンク]]
+  
+* STL
+- [[https://ja.wikipedia.org/wiki/Standard_Triangulated_Language][Standard Triangulated Language - Wikipedia]]

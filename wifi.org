@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       997AB1F2-2A78-4818-8E28-07E5F9AF85E7
+:END:
+#+title: Wi-Fi 情報
+#+date: <2019-02-14 11:38:45 +0900>
+
+* 普通のWi-Fiルータ
+- NEC [[https://www.aterm.jp/product/atermstation/product/warpstar/wx5400hp/][Aterm WX5400HP]] Wi-Fi 6 11ax 対応
+- Aterm WG2600HS2 PA-WG2600HS2
+- Aterm WG2600HP4 PA-WG2600HP4 (WG2600HS2のメッシュ対応版っぽい)
+- Aterm WG1200HS3 PA-WG1200HS3 安い
+
+* メッシュWi-Fi
+- [[https://amzn.to/2sav8kT][VELOP (LINKSYS)]]
+- [[https://tennojiac.wordpress.com/2018/11/10/belkin-velop-wifi/][メッシュ Wi-fi が来た！ | TAC（天王寺アップルクラブ）]]
+- [[https://tennojiac.wordpress.com/2018/12/15/velop-2/][Velop 導入後の Wi-Fi 環境 | TAC（天王寺アップルクラブ）]]
+- [[https://www.jp.netgear.com/orbi/][Orbi：どこにいても快適なWiFiを実現するシステム | NETGEAR]]

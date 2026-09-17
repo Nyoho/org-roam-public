@@ -1,0 +1,108 @@
+:PROPERTIES:
+:ID:       384DA93B-843A-4EEC-8E6E-1929C6C03360
+:END:
+#+title: Blender
+#+tags: Blender
+#+date: <2014-07-24 Thu>
+
+* 操作
+- Tab :: モード切替 (object mode ←→ edit mode)
+- 右クリック :: つかむ (選択)
+- Shift + 右クリック :: 追加選択
+- Shift + G :: コレクションを一括選択
+- Shift + B :: 選択範囲にズームフォーカス
+- 左クリック :: 確定
+- A :: 全選択/解除
+- B :: 範囲指定 (矩形選択)
+- C :: 円盤で選択
+- X :: 削除
+- G :: 移動
+- G X :: world coordinate のX方向に移動
+- G X X :: local coordinate のX方向に移動
+- S :: 拡大縮小
+- E :: 押し出し
+- E + [xyz] :: xyzの方向に押し出し(?)
+- Ctrl + Z :: Undo
+- Option + R :: 回転
+- N :: 右に properties panel を出す。
+- Ctrl + R :: ループカット
+- Shift + A :: context menu が出る。
+- Shift + D :: 複製
+- Ctrl + Alt + Q :: quad view
+- Fn + 0 :: Camera perspective
+- Fn + 1 :: front
+- Fn + 3 :: from left
+- Fn + 7 :: top view
+- Fn + 2,8 :: 15°回転 上下
+- Fn + 4,6 :: 15°回転 左右
+- Fn + 9 :: 逆側を見る
+- Fn + 5 :: 射影モード
+- I :: キーフレームを打つ
+
+視点移動
+- トラックパッドスクロール :: 視点回転
+- Shift + トラックパッドスクロール :: 視点平行移動
+- Ctrl + トラックパッドスクロール :: 視点拡大縮小
+
+数値指定操作 [[https://wiki.blender.org/index.php/Doc:JA/2.6/Manual/3D_interaction/Transform_Control/Numeric_Input][Doc:JA/2.6/Manual/3D interaction/Transform Control/Numeric Input - BlenderWiki]]
+
+** bone
+1. armatureを入れる。
+2. 関連付けたいメッシュを選択して、次に armature を shift + 右クリック。
+3. ctrl + p というか、Object Mode となっているところの Object menu から Parent -> Bone (-> Auto Weights) と選んだらうまくいった。
+4. Object Mode を Pose Mode にして、armature (bone) の一つを rotate してみたら、ちゃんと mesh がついてきた。
+
+- [[http://nn-hokuson.hatenablog.com/entry/2017/10/03/205639][【Blender】ボーンを入れる（リギング）ための基本手順 - おもちゃラボ]]
+
+なんと add-on の Rigify というので人型のボーンを一発作成できる: [[http://nn-hokuson.hatenablog.com/entry/2017/04/20/202447][【Unity】Blenderで人型のボーンを入れて、Animatorで走るアニメを再生する - おもちゃラボ]]
+
+* Video Sequencer
+https://docs.blender.org/manual/ja/3.0/editors/sequencer.html
+Video Editing
+
+* Tips
+** Smoothing
+- [[https://www.blender.org/manual/modeling/meshes/smoothing.html][Smoothing — Blender Reference Manual]] Decimate modifier を使う。
+
+** geometry node
+- [[https://docs.blender.org/manual/ja/dev/modeling/geometry_nodes/index.html][Geometry Nodes(ジオメトリノード) — Blender Manual]]
+- [[https://forest.watch.impress.co.jp/docs/serial/blenderwthing/1469889.html][「Blender」のジオメトリノードはこんなことまでできる！ 凄い作品たち - Blender ウォッチング - 窓の杜]]
+
+** Stable Diffusion
+- [[https://github.com/carson-katri/dream-textures][carson-katri/dream-textures: Stable Diffusion built-in to Blender]]
+
+* 参考サイト
+
+チュートリアル
+- [[http://nvtrlab.jp/column/2-1][初心者のための！作って学ぶBlenderの基礎：①基本操作とBlender紹介 | 日本VTR実験室]]
+- [[http://cg.xyamu.net/Blender/][Blender (「CG制作」)]]
+- [[http://www.blender.org/support/tutorials/][Tutorials - blender.org - Home of the Blender project - Free and Open 3D Creation Software]]
+- [[https://www.youtube.com/watch?v=ySyQsLD_7GM][Blender 2.71 Cloth Sew Tutorial - YouTube]]
+- [[https://www.youtube.com/watch?v=il7ajiCepus][Adding a Texture to a Plane Using Blender 2.61 - YouTube]]
+- [[https://note.com/matsuco2024/n/nef4c2085f45a][Blenderのショートカットが謎すぎたのでまとめました。｜松子]]
+- [[https://www.youtube.com/watch?v=OTvgtkBhcyg][Create A Glare or Glow Effect For Any Light In Blender - YouTube]] glare レンズフレアエフェクト
+
+ビデオ
+- [[https://www.youtube.com/playlist?list=PLCb1SyYljsLNW8_XRIu8XYhd3pPnUlmF6][Blender - YouTube]] すばらしいチュートリアル。
+- [[https://www.youtube.com/watch?v=c-0oBXJZwQE][Blender DVD training 8 : Humane Rigging Part 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=ssd4ZNNpY-s][Ivan Cappiello and Paolo Acampora - A Skeleton Animated Story - YouTube]]
+- [[https://www.youtube.com/watch?v=HomAZcKm3Jo][Sintel OFFICIAL | FULL MOVIE (2010) Blender open movie project - YouTube]]
+- [[https://www.youtube.com/watch?v=3GC5LoFL2x4&feature=youtu.be][Dr.プッツンコと３ＤＣＧをはじめよう！Blenderのダウンロードから基本操作 - YouTube]]
+- [[https://www.youtube.com/watch?v=EEzrLIXCtfs][【blender　チュートリアル】背景モデルの作り方　(blender3.0)（ゆっくりボイス） - YouTube]]
+- [[https://www.youtube.com/watch?v=nZyB30-xZFs][Blender 3.0 Grease Pencil Tutorial - Bakery Shop - YouTube]]
+
+操作メモ
+- [[http://momonga88.sakura.ne.jp/glacies/?p=60][Blender初歩の使い方まとめ１ – Gracies]]
+
+サンプルプロジェクト
+- ellie_animation
+- cupcakes
+
+素材
+- [[https://note.com/yutori_cg/n/n3eb7aaf98ff3][Blender初心者が知っておきたいアセットサイト4つ｜ゆとりCG｜Blender愛好家]]
+      
+2D
+- [[https://www.youtube.com/watch?v=SHpG-9BzWjc][Easiest way to animate | Blender Grease Pencil - YouTube]]
+
+[[https://krita.org][Krita]]を使う
+- [[https://www.youtube.com/watch?v=IOuBC1OeODc][Game-Changing Texture painting Trick for Blender - YouTube]]

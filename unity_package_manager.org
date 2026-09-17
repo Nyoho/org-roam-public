@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       B228BEC3-0DCD-4C98-9A29-A9A7AEB4A7DC
+:END:
+#+title: Unity Package Manager
+#+date: [2024-07-19 Fri 02:29]
+
+
+Tips
+
+package manager が error refreshing assets で何もアセットが読み込まれないとき
+Unity Hub と Unity.app を両方再起動した。
+そしたらmy assetsが出てくるようになった。
+
+

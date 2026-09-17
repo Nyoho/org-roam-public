@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       18401FF2-AC5F-4D6B-A412-A8A2925064F5
+:END:
+
+
+Capistrano 3.x で完全に変わった。
+
+- [[http://capistranorb.com/documentation/upgrading/][Upgrading from v2.x.x]]
+- 3.x Changelog
+

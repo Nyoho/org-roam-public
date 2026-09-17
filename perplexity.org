@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       98F14D4F-7582-4C62-B3EF-CD3CFA838645
+:END:
+#+title: Perplexity
+#+date: [2024-08-23 Fri 08:04]
+
+
+Perplexity
+
+https://www.perplexity.ai
+
+
+* 特殊文字列
+
+/filetype:pdf
+
+/site:x.com なーるほど・ザ・ワールド
+
+/lang:ja
+
+/before:2011-03-10 東北 大地震
+
+

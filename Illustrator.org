@@ -1,0 +1,87 @@
+:PROPERTIES:
+:ID:       1A54B063-564C-4C3A-A77B-DE477D0E92E9
+:END:
+#+title: Adobe Illustrator
+#+date: <2019-07-28 15:53:03 +0900>
+
+* ショートカット・キーボードコンビネーションクリック
+- cmd + +/- :: 拡大縮小
+- T :: 文字ツール
+- shift + T :: 文字タッチツール
+- opt + 左右, cmd + shfit + '['/']' :: カーニング 文字詰め
+- opt + 上下 :: 行間
+- ?cmd + shift + >,< :: 文字サイズ???
+- command + 2 :: ロック (選択したオブジェクトだけロックされる) 見ながら他を調整したいけど触りたくないときに使う。
+- command + option + 2 :: ロック解除
+- command + 3 :: 隠す 確定していて、見なくて他のオブジェクトを触りたいときに使う。
+- command + option + 3 :: 隠すを解除 
+
+レイヤーのパネルの
+- ロックをopt + click :: ロックされてなかったらそれ以外をロックする / 逆は逆
+- 目のアイコンをopt + click :: それだけを見る(のtoggle)
+
+- V :: 選択ツール
+- A :: anchor
+- M :: 矩形作成
+- L :: 円 (circLe)
+
+- P :: ペンツール (ベジエ曲線を作る)
+
+- X :: アクティブな色を「塗り」のものか「線」のものか切り替える
+- shift X :: 塗りと線の色を eXchange
+- D :: default のカラー (普通は白黒)
+
+- '<' と書いてあるけど ',' (comma) :: 普通の色
+- '>' と書いてあるけど '.' (period) :: gradationの色
+- / :: 色をなしにする
+
+- cmd + 7 :: クリッピングマスク作成
+- 「透明」パネルの「マスク作成」(不透明マスク)では、透明度のグラデーションが効いてくる
+
+- I :: スポイト
+- スポイト状態で shift + click :: 
+- スポイトツールダブルクリック :: スポイトするものを選べる
+
+- cmd + G :: グループ化
+- cmd + shift + G :: グループ化解除
+
+行揃え
+
+- command + shift + L :: 左揃え
+- command + shift + C :: 中央揃え
+- command + shift + R :: 右揃え
+
+- command + shift + B :: bounding box が消えたときはこれ
+
+参考
+- [[https://helpx.adobe.com/jp/illustrator/using/default-keyboard-shortcuts.html][Illustrator のデフォルトショートカットキー]]
+- [[https://www.dtp-transit.jp/adobe/illustrator/post_613.html][作業効率をアップするIllustratorのキーボードショートカット - DTP Transit]]
+  
+* Tips
+** テンプレート用途のプロファイルの保存場所
+テンプレート用途のプロファイルは
+#+BEGIN_SRC 
+$HOME/Library/Application\ Support/Adobe/Adobe\ Illustrator\ 20/ja_JP/New\ Document\ Profiles 
+#+END_SRC
+に保存しておけばよい。
+
+** 全角文字と半角文字の間に自動的にちょっと隙間が空く
+くっつけたいならば、「段落」の「文字組み」を「なし」にする。
+
+** 拡大縮小できなくなっているとき
+バウンディングボックスを出す (cmd + shift + B)。
+なんかの拍子に隠れていることがある。
+
+** グローバル編集オプション
+
+[[https://helpx.adobe.com/jp/illustrator/using/global-edit.html][グローバル編集]]
+
+類似オブジェクトを検索して編集できる。
+
+** scripting
+- cmmand + F12
+- SPAi
+- Keyboard Maestro
+
+* Links
+- [[https://blogs.adobe.com/japan/dtp-create-line-emoji/?trackingid=NLMHRDW4&mv=email][Adobe IllustratorでLINE絵文字を作る【テンプレートあり】 - Adobe Blog]]

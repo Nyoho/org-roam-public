@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       B6F01EEB-B778-49BF-848E-C6B1A51A8C3E
+:END:
+#+title: Re:VIEW
+
+Re:VIEW
+
+https://github.com/kmuto/review
+
+* 書き方
+https://github.com/kmuto/review/blob/master/doc/format.ja.md
+
+参考文献は =bib.re= に。
+
+#+begin_src review
+  //bibpaper[inyouid][キャプション]{
+  中身
+  //}
+#+end_src
+
+本文から =@<bib>{inyouid}= で参照する。
+
+* 索引を作る
+
+https://review-knowledge-ja.readthedocs.io/ja/latest/faq/faq-epub.html の「EPUB/Web で索引を使うにはどうしたらよいですか」に
+- https://github.com/kmuto/review-index-sample
+
+* その他
+- [[https://github.com/TechBooster/ReVIEW-build-artifact-action][TechBooster/ReVIEW-build-artifact-action: PDF / EPUB / HTML building action due to Re:VIEW( and Review-Template Repository)]]
+- [[https://github.com/vvakame/docker-review][vvakame/docker-review: Re:VIEW build container by docker]]
+- [[https://github.com/Nyoho/review-epub-generator-action][Nyoho/review-epub-generator-action]] ([[https://github.com/takahashim/review-pdf-generator-action][takahashim/review-pdf-generator-action]] をフォークした)

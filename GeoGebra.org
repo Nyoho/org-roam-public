@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       7F8F68EF-C431-40DE-8057-6EEF593CBC39
+:END:
+#+title: GeoGebra
+
+* 公式サイト
+https://www.geogebra.org
+
+* 基本操作
+1. メニューから図形を選んでポチポチする
+2. 「入力:」の欄で図形のコマンドや x^3 などを直接入力
+3. x^3 - a x と入力すると a が勝手にスライダにしてもらえる
+4. プロパティで、残像を出すこともできる
+
+* Objects
+- =Circle(point1, point2, point3)=
+- =Segment(point1, point2)=
+- =Pointin(point)=
+- =Angle(segment1, segment2)=
+- =IntersectPath(a, b)=
+
+* Functions
+- =SlopeField(x+y)=
+
+* JavaScript
+=ggbApplet=
+#+BEGIN_SRC javascript
+ggbApplet.evalCommand("A_1=(1,1)")
+#+END_SRC
+
+** Examples
+[[https://github.com/geogebra/math-apps-examples/tree/master/html][math-apps-examples/html at master · geogebra/math-apps-examples]]
+
+http://dev.geogebra.org/examples/html/example-exercise.html などにデプロイされている。
+
+* GeoGebra applet
+- https://wiki.geogebra.org/en/Reference:JavaScript
+
+* misc
+- [[https://wiki.geogebra.org/en/Reference:Math_Apps_Embedding][Reference:Math Apps Embedding - GeoGebra マニュアル]]
+

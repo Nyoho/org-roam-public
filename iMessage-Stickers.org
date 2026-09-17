@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       80948448-D4CD-491F-AD6E-E39C85D22585
+:END:
+iMessage の stickers 
+
+
+[[https://developer.apple.com/design/human-interface-guidelines/ios/extensions/messaging/][Messaging - Extensions - iOS - Human Interface Guidelines - Apple Developer]]
+
+| Small size   | 300px × 300px |
+| Regular size | 408px × 408px |
+| Large size   | 618px × 618px |
+
+* 参考文献
+- [[https://developer.apple.com/jp/stickers/][iMessage用ステッカーの作成 - Apple Developer]]
+- [[https://qiita.com/usayuki/items/88f24c58fa7129c6d7d2][ノンプログラミングでiMessageステッカーをリリースする - Qiita]]
+- [[http://tapjockey.com/archives/251/][LINEスタンプのついでにiMessage用のステッカーも作った（1.準備編） – TJ日記]]
+

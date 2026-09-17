@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       78328FFD-F592-4BFC-9137-0B3660ABB699
+:END:
+#+title: language model
+#+date: [2023-04-20 Thu 18:57]
+
+
+
+- [[https://github.com/facebookresearch/llama][LLaMA]]
+- [[https://github.com/Lightning-AI/lit-llama][Lightning-AI/lit-llama]]
+- [[https://minigpt-4.github.io/][Minigpt-4]]

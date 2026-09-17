@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       7F631B1C-F66D-44A2-89EC-6131F560133E
+:END:
+
+Mahara
+
+* MOF2017 memo
+<2017-09-04 Mon>
+
+- user :: mahara:sobatama-mofmof
+- db user :: mahara:udontama-mofmof
+
+Mahara 17.04.2
+- admin:mahara

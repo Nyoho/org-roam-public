@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       7F62653E-6849-4B77-A317-8DB39EFA5F98
+:END:
+#+title: monitor
+#+date: [2026-05-09 Sat 16:55]
+
+モニタ/ディスプレイ
+
+* 4Kモニタ
+
+* モバイルモニタ
+- [[https://www.lenovo.com/jp/ja/p/accessories-and-software/monitors/office/63aauar6jp][ThinkVision M14d(14型モバイル/2240×1400/IPS/USB-C) | 63AAUAR6JP | レノボ・ ジャパン]]

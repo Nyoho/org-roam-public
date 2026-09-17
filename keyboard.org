@@ -1,0 +1,88 @@
+:PROPERTIES:
+:ID:       53013FCC-987E-4809-96F5-246FB3F13B1D
+:END:
+#+TITLE: パソコンのキーボード関連
+
+* 自作キーボード
+
+** 軸
+| 赤軸 | 静かめ                                   |
+| 茶軸 | まあまあ音が大きい                       |
+| 青軸 | めちゃんこ音が大きい。チキチキいう感じ。 |
+
+* Kits
+
+** Helix
+格子配列
+- [[https://yushakobo.jp/shop/helix-keyboard-kit/][Helix キーボードキット | 遊舎工房]]
+- [[https://yushakobo.jp/shop/helixpico/][HelixPico キーボードキット | 遊舎工房]]
+- [[https://qiita.com/chesscommands/items/6bf774ee30d410995879][ごみHelixキーボードの作り方 - Qiita]]
+
+** Mint60
+[[https://lilakey.com/products/mint60-starter][Mint60スターターセット - 可愛いキーボードとキーキャップのお店「Lilakey」]]
+
+** Let's Split
+- [[http://riv-mk.hateblo.jp/entry/2017/03/05/164425][格子配列で左右分離型の超コンパクトなキーボード "Let's Split" を組み立てたよ - Voxel Highway]]
+
+** Ergo42
+
+** Nyquist
+
+** SHIROTRON
+[[https://protopedia.net/prototype/1022][銀翼のキーボード『SHIROTRON』 | ProtoPedia]]
+
+** Choco60
+HHKBを分割したような形。
+https://yushakobo.jp/shop/choco60/
+
+** crkbd
+[[https://github.com/foostan/crkbd/][foostan/crkbd: Corne keyboard, a split keyboard with 3x6 column staggered keys and 3 thumb keys.]]
+
+** Lily58 Pro
+[[https://shop.yushakobo.jp/products/lily58-pro][Lily58 Pro – 遊舎工房ショップ]]
+
+** ErgoDash
+[[https://shop.yushakobo.jp/products/ergodash][ErgoDash]]
+
+** ErgoDox EZ
+[[https://ergodox-ez.com/][ErgoDox EZ]]
+
+** Timothy
+[[https://geek-rabb1t.booth.pm/items/4213539][左右分離型自作キーボードキット - Timothy(チモシー) - うさきーぼー堂 - BOOTH]]
+
+** Ergo68
+2023年夏に出るらしい
+
+* 自作しまくるの
+Arduinoでコントロールする記事。
+- [[http://eucalyn.hatenadiary.jp/entry/original-keyboard-05?fbclid=IwAR2dmI0yivPWS7Gy9-ObCkEGkpqQAYKaNqhbba8zg6ghBJsGj7MOPST8EzU][オリジナルキーボードを作ってみる その5「とりあえず1キーキーボード」 - ゆかりメモ]]
+
+* Cherry MX Switch
+- [[https://learn.sparkfun.com/tutorials/cherry-mx-switch-breakout-hookup-guide?fbclid=IwAR37zPDmwQ8XWe9ZES2sVt6-ZL1-GK430WeqDKEaIkbx7ptliPK7GPoP0bc#][Cherry MX Switch Breakout Hookup Guide - learn.sparkfun.com]]
+- [[https://github.com/sparkfun/Cherry_MX_Switch_Breakout?fbclid=IwAR1HwdruMQIGOyRZkkXGoApI-LQHvoCjCFbF53WIXV97heZP4c-yYm0xWX4][sparkfun/Cherry_MX_Switch_Breakout: Breakout board for Cherry's MX-series keyswitches]]
+  
+* 工具など
+
+- 半田ごて FX600 3897円ぐらい
+- はんだ 250円ぐらい
+- こて台 633-01 1800円ぐらい
+- 吸い取り線 173円ぐらい
+- ニッパ 1370円ぐらい
+- 小手先 T18-C2 500円ぐらい
+- フラックス 30mL?
+- 逆作用ピンセット 600円ぐらい
+- エポキシ接着剤 500円ぐらい
+
+* Links
+- [[https://developer.feedforce.jp/entry/2018/11/15/153826][突撃！隣のキーボード 2018 - Feedforce Developer Blog]]
+- [[https://developers.freee.co.jp/entry/keyboards-2018][突撃！隣の自作キーボード - freee Developers Blog]]
+- [[https://salicylic-acid3.hatenablog.com/entry/2018/11/24/%E8%87%AA%E4%BD%9C%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%82%E3%81%AE#%E3%81%AF%E3%82%93%E3%81%A0%E3%81%94%E3%81%A6][自作キーボードを作るために必要なもの - 自作キーボード温泉街の歩き方]] 工具も網羅的に紹介されている。
+- [[https://salicylic-acid3.hatenablog.com/entry/key-layout][自作キーボードにおける様々なキーレイアウトの話 - 自作キーボード温泉街の歩き方]]
+- [[https://scrapbox.io/ruby-jp/PRK_Firmware%E3%81%8C%E4%BD%BF%E3%81%88%E3%82%8BDIY_keyboard_kit][PRK Firmwareが使えるDIY keyboard kit - ruby-jp]]
+- http://www.keyboard-layout-editor.com 便利
+- [[https://geekhack.org/index.php][geekhack - Index]]
+- [[https://kbd.news/][Keyboard Builders' Digest]]
+- [[https://scrapbox.io/self-made-kbds-ja/][Self-Made Keyboards in Japan]]
+- Reddit
+  - [[https://www.reddit.com/r/ErgoMechKeyboards/][ErgoMechBoards]]
+- [[https://scrapbox.io/self-made-kbds-ja/%E3%82%B3%E3%83%B3%E3%82%B9%E3%83%AB%E3%83%BC][コンスルー - Self-Made Keyboards in Japan]]

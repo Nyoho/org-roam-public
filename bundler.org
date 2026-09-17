@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       DFE0C5C0-F16E-4E7F-8B37-05AE4C5D3F3D
+:END:
+#+begin_html
+---
+title: bundler
+tags: bundler
+date: <2014-03-06 Thu>
+---
+
+Let's bundle install!
+
+#+end_html
+
+#+BEGIN_SRC sh
+bundle config --global jobs 8
+#+END_SRC
+すると、
+#+BEGIN_SRC sh
+> cat .bundle/config        
+BUNDLE_JOBS: '8'
+#+END_SRC

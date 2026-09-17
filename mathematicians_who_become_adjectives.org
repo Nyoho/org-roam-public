@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       2BEB1BFD-CDB0-4DBB-8386-DE53768A528B
+:END:
+#+title: Mathematicians who become adjectives
+#+date: [2022-11-08 Tue 08:47]
+
+形容詞になった数学者を集める。
+
+- abelian (Abelian)
+- noetherian (Noetherian)
+- Artinian
+- Lagrangian
+- Legendrian
+- Jacobian
+- Hermitian
+- Hamiltonian
+- Euclidean
+- Cartesian
+- Pythagorean
+- Fuchsian
+- boolean (Boolean)
+- Pfaffian
+- Riemannian
+- Gaussian
+- Grassmannian
+- Hessian
+- Wronskian
+- Beyesian

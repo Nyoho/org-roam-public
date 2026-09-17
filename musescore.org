@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       CD558E4D-8CA8-46F1-943A-9FA98F9C56E9
+:END:
+#+title: MuseScore
+#+date: [2026-07-26 Sun 20:14]
+
+* Tips
+
+[[https://musescore.org/ja/handbook/2/kihotoshiyotokatsuto][キーボードショートカット | MuseScore]]
+
+** 符幹の向きを直す
+
+標準の向きに一発で戻す。
+
+1. 戻したい音符を選択（Ctrl+Aで全選択でも可）
+2. プロパティパネルを開く
+3. Stem（符幹） → Stem direction を Auto に設定

@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       94C33E43-74C5-4773-ADCC-A2DADF4DA9ED
+:END:
+#+title: Gmail
+#+date: [2022-07-15 Fri 20:19]
+
+
+* 容量が多い添付ファイルを検索する
+
+has:attachment larger:10MB
+
+

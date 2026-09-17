@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       7D727244-7B2B-4334-BFCF-31E908E697A3
+:END:
+#+title: Idris
+#+date: [2023-03-03 Fri 06:11]
+
+
+Homebrewでインストール
+#+begin_src shell
+brew install idris
+#+end_src
+
+* 本
+- [[https://www.pdfdrive.com/type-driven-development-with-idris-e40349563.html][Type-Driven Development with Idris by Edwin Brady - PDF Drive]]
+  
+* Links
+- [[https://zenn.dev/blackenedgold/books/introduction-to-idris/viewer/what-is-idris#%E4%BE%9D%E5%AD%98%E5%9E%8B%E3%81%A8%E3%81%AF][Idrisってどんな言語？｜プログラング言語Idrisに入門させたい（v0.9）]]
+- [[https://keens.github.io/blog/2020/11/30/idristtedonnagengo_/][依存型のあるHaskellことIdrisってどんな言語？ | κeenのHappy Hacκing Blog]]
+- [[https://takezoe.hatenablog.com/entry/2017/06/15/140431][Idris + Atomによる型駆動開発入門 - たけぞう瀕死ブログ]]

@@ -1,0 +1,416 @@
+:PROPERTIES:
+:ID:       39DDAA30-92A1-4948-97CF-3F1833143224
+:END:
+#+title: Kubernetes
+#+DATE: <2018-06-08 Fri>
+
+* kubectl
+- kubectl version
+- kubectl get nodes
+- kubectl get componentstatuses
+- kubectl describe nodes
+- kubectl describe nodes <nodename>
+- kubectl get deployments --namespace=kube-system kubernetes-dashboard
+- kubectl get services --namespace=kube-system kubernetes-dashboard
+
+* openSUSE Tumbleweed でやってみる
+** 再チャレンジ
+<2020-03-09 Mon>
+
+#+begin_src sh
+kubeadm init --ignore-preflight-errors Swap
+#+end_src
+
+- [[https://github.com/kubernetes/kubeadm/issues/610][[ERROR Swap]: running with swap on is not supported. Please disable swap · Issue #610 · kubernetes/kubeadm]]
+
+
+** パッケージにあるものだとよくわからん
+#+BEGIN_SRC sh
+  zypper install kubernetes-client kubernetes-master kubernetes-node \
+         etcd etcdctl flannel \
+         kubernetes-dashboard kubernetes-dns kubernetes-extra \
+         kubernetes-kubeadm  kubernetes-kubelet
+#+END_SRC
+
+: etcdctl set /network/config '{ "Network": "172.19.0.0/16", "Backend": { "type": "host-gw"} }'
+
+#+BEGIN_SRC sh
+  systemctl start etcd \
+            kube-apiserver.service \
+            kube-controller-manager.service \
+            kubelet.service \
+            kube-proxy.service \
+            kube-scheduler.service
+#+END_SRC
+
+"etcd: serving insecure client requests on 127.0.0.1:2379, this is strongly discouraged!"
+って出ているので注意。
+
+- etcd server :2380
+- etcd client :2379
+
+Check
+
+: systemctl status "kube*" "docker"
+
+Flanneld configuration options
+
+#+BEGIN_SRC sh
+FLANNEL_ETCD_ENDPOINTS="http://k8snode1:2379,http://k8snode2:2379,http://k8snode3:2379"
+# systemctl start flanneld # systemctl start flanneld
+FLANNEL_ETCD_KEY="/network"
+FLANNEL_OPTIONS="-iface eth0"
+#+END_SRC
+ 
+Enable
+
+#+BEGIN_SRC sh
+systemctl enable docker.service kubelet.service
+#+END_SRC
+
+hyperkubeが起動していた。
+: kubeadm
+
+
+<2021-08-28 Sat> 再チャレンジ
+: systemctl status crio
+
+OK
+
+: kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket /var/run/crio/crio.sock
+
+
+** Vagrant
+[[https://qiita.com/awakia/items/fa054fd2a7c6329adac7][VagrantでKubernetesクラスタを立てる - Qiita]] ?
+
+[[https://qiita.com/Clip-glass/items/1eb61f983a69f22ac8e3][VagrantとCoreOSでkubernetesをMacで使ってみる　①環境構築編 - Qiita]] で「メンテナンスがよくされている」と紹介されていた [[https://github.com/pires/kubernetes-vagrant-coreos-cluster][pires/kubernetes-vagrant-coreos-cluster: Kubernetes cluster (for testing purposes) made easy with Vagrant and CoreOS.]] を用いる。
+
+先に vagrant plugin を
+vagrant-proxyconf
+vagrant-timezone
+vagrant-triggers
+と入れておいてからじゃないとうまくいかんかった。(Vagrantfileで無限ループになっちゃう)
+
+: g clone git://github.com/pires/kubernetes-vagrant-coreos-cluster.git
+
+して
+
+: vagrant up
+
+=~/.kube/config= もちゃんと設定してくれていた。
+
+
+Vagrantfile を、
+
+#+BEGIN_SRC diff
+-KUBERNETES_VERSION = ENV["KUBERNETES_VERSION"] || "1.10.5"
++KUBERNETES_VERSION = ENV["KUBERNETES_VERSION"] || "1.10.4"
+ 
+  config.vm.box_url = "#{upstream}/coreos_production_vagrant.json"
++ config.vm.box_download_insecure = true
+#+END_SRC
+
+とする?
+
+
+* GKEでやってみる
+[[https://qiita.com/apstndb/items/788f705e71e7660967a6][貧者の GKE / 無料枠だけでクラスタを作ろう - Qiita]] を見ながらやってみよう。
+
+: gcloud components install kubectl
+
+
+ノード数3で作成
+
+: gcloud container clusters create --zone=us-central1-a --machine-type=f1-micro --disk-size=30 --num-nodes=3 free-cluster
+
+
+ノードプール削除してまた1つ作る
+
+#+BEGIN_SRC sh
+gcloud container node-pools delete default-pool --zone=us-central1-a --cluster=free-cluster
+gcloud container node-pools create default-pool --cluster=free-cluster --disk-size=30 --machine-type=f1-micro --num-nodes=1 --zone=us-central1-a
+
+# 確認
+gcloud container clusters list
+#+END_SRC
+
+* Rancherでやってみる
+
+: sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+
+server
+: docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:v1.6.13
+
+[[https://qiita.com/miwato/items/9770a2a757d3f5e369a4][docker run実行時のiptablesエラー - Qiita]]
+
+* Ubuntu + conjure-up でやってみる
+/usr/bin/lxc query --wait -X GET /1.0
+
+#+BEGIN_SRC sh
+sudo snap install conjure-up --classic
+conjure-up kubernetes
+#+END_SRC
+
+: sudo snap refresh conjure-up --edge
+
+* 勉強会メモ
+** GCPUG Hiroshima #4 - GKE / k8s memo
+<2018-06-09 Sat>
+
+*** 宣言的
+「webサーバ: 3 」
+みたいに書く。
+
+命令的だったら「3.times { webサーバ立ち上げる }」というようなかんじ。
+
+*** 自己回復システム
+nodes, pods を自己解決してくれる。
+
+- 3台を下回ったら立ち上げ直してくれる。
+- 4台立ち上がったら消してくれる。
+
+*** Node
+master node と worker node がある。
+
+一旦 master node はない。
+
+*** Podとは
+pod の中にコンテナを1つ以上入れてまとめたもの。
+
+ちなみに pod は鯨の群れのこと。
+
+pod は node の中にあってディスクを共有できる。Volumeと呼ぶ。
+
+*** pod の設計
+
+- pod1: wordpress, db
+- pod2: wordpress, wordpress, wordpress
+- pod3: wordpress, wordpress, db
+
+など。
+同じポッドに入れるときは、
+
+- 必ず同じノードで動いてないいけないとき
+- スケーリングを同じようにしたいとき
+
+*** label, annotation
+
+*** Serivce
+name: alpaca-prod
+label: app=alpaca, env=prod
+
+podに alpaca-prod.default.svc.cluster.local という名前解決とクラスタIPアドレスがつく
+node port
+
+*** ReplicaSet
+レプリカ数: 4 とか書いておくと自動的にその数になるように調整される。
+
+*** DaemonSet
+全てのノードに必ずfluentdのpodを置きたいなど。
+
+=label: ssd=true= とすると ssd=true のnodeにだけデーモンが立ち上がる。
+
+*** Job
+ずっと動き続けるんじゃなくて一発動いて停止するpod
+
+#+BEGIN_SRC 
+completion: 1
+parallelism: 1
+#+END_SRC
+
+*** ConfigMap, Secret
+設定ファイル
+
+Secret はパスワードなどを入れる。
+
+*** Deployment
+ReplicaSetをうまいことコントロールする仕組み。
+無停止でデプロイするときなどに使う。
+
+Deployment戦略: Recreate
+
+停止してしまう。
+
+Deployment戦略: RollingUpdate
+
+=maxavailable: 1= とすると1つだけpodを残してpodを順番に更新されていく。
+
+StatefulSet
+
+普通はpodにはランダムな文字列がつくけど、StatefulSetの場合は0から始める通し番号が付く。
+
+*** PersistentVolume
+
+ネットワークストレージ。
+
+*** 情報源
+- Kubernetes in Action (本)
+- medium.com/google-cloud
+- slack.kubernetes.io
+- kubernetespodcast.com
+- Kubernetes Meetup Tokyo (日本語) k8sjp.connpass.com
+- KubeCon
+
+*** Google Kubernetes Engine (GKE)
+Kubernetes Engine自体の値段はない。
+立ち上げた Compute Engine の値段が課金される。
+
+Preemptible VM を使っても、24時間で必ずシャットダウンされるが、どうせKubernetesが再起動してくれる。
+
+プライベートコンテナイメージは Cloud Container Registry に置けばよい。
+
+途中でもインスタンスの数を変更できる。
+
+load balancer (LB) は internal, external 両方作れる。
+
+kubectl はGKEなら gcloud component install kubectl などで入る。
+
+Stackdriver logging にログが流れている。
+
+Firestoreで機械学習のpodを動かしてゲームの敵の動きを計算したりしている。
+
+certmanager で Let's Encrypt
+
+
+** GCPUG Hiroshima #05 memo
+<2018-11-10 Sat> 勉強会
+[[https://gcpug-hiroshima.connpass.com/event/103519/][GCPUG Hiroshima #05 - connpass]]
+
+[[https://github.com/iwanariy/gke-demo][iwanariy/gke-demo]]
+
+Projectを作る
+
+console で Kubernetes Engine を選択する。
+
+  - ?
+  - endpoint が service
+- クラスタを作成
+- asia-northeast1-b
+- 作成前に「高度な編集」をすると色々設定変更ができる
+
+Google Cloud Shell を起動する。(右上にアイコンがある)
+
+#+BEGIN_SRC sh
+export PROJECT_ID=$DEVSHELL_PROJECT_ID
+gcloud config set project ${PROJECT_ID}
+gcloud config set compute/zone asia-northeast1-b
+gcloud config set container/cluster your-first-cluster-1
+gcloud container clusters get-credentials your-first-cluster-1
+
+export PROJECT_ID=$DEVSHELL_PROJECT_ID
+gcloud config set project ${PROJECT_ID}
+gcloud config set compute/zone us-central1-a
+gcloud config set container/cluster standard-cluster-1
+gcloud container clusters get-credentials standard-cluster-1
+
+export PROJECT_ID=$DEVSHELL_PROJECT_ID
+gcloud config set project ${PROJECT_ID}
+gcloud config set compute/zone europe-west4-c
+gcloud config set container/cluster standard-cluster-2
+gcloud container clusters get-credentials standard-cluster-2
+#+END_SRC
+
+: kubectl get nodes
+
+: sudo pip install flask
+
+Cloud Shell の中で http://0.0.0.0:8080 をクリックするとウェブプレビューできる。
+
+: docker build -t asia.gcr.io/${PROJECT_ID}/web:v1 .
+
+asia.gcr.io は asia の Google Container Registry に push するという意味になっている。
+
+gcr.io にすればグローバルなレジストリになる。
+
+Google Container Registry に pushする
+
+#+BEGIN_SRC sh
+gcloud auth configure-docker
+docker push asia.gcr.io/${PROJECT_ID}/web:v1
+#+END_SRC
+
+
+Cloud Build を使うこともできる。
+
+: gcloud build submit --tag asia.gcr.io/${PROJECT_ID}/web:v1 .
+
+CI に便利。
+
+さらに GitHub 連携もできてきた。 =Dockerfile= or =cloudbuild.yaml= にしたがってビルド実行。
+
+
+Logging、stackdriver で export もできる。BigQuery に持っていって分析することもできる。
+
+
+port forward
+
+: kubectl get pods
+
+: kubectl portforward ...
+
+: kubectl apply -f web-deployment.yaml
+
+: kubectl apply -f web-service.yaml
+
+: kubectl scale deployment/web --replicas=1
+
+
+基本は yaml を書いて apply する。
+
+
+Kubernetes Engine のワークロードのところで、ちょっとデプロイとかしてぽちぽちできる。
+確かめるときに便利。
+
+でも基本は yaml。
+
+
+registry。お金ゲット、リージョンが同じなら要らない。
+pushは無料。
+
+クラウドでは「行きはよよい帰りは怖い。」
+
+
+
+ノードプールの実体「インスタンスグループ」
+
+ノードプールを複数(のマシンタイプで)作っておくと便利なことがある。node affinity でググる。[[https://qiita.com/sheepland/items/ed12b3dc4a8f1df7c4ec][Kubernetesのnode affinity, pod affinityについて - Qiita]]
+
+
+古いポッドを drain するときに
+"pod disruption budget" をやっておくと最低限。
+
+
+[[https://cloud.google.com/knative/?hl=ja][Knative]]
+
+- Build
+- Serving
+- Events (event-driven)
+- [[https://qiita.com/jacopen/items/d7f12703dcfa19242bcb][最強のServerlessプラットフォーム？ Knativeを動かしてみるぞい - Qiita]]
+
+sidecar container (design pattern)
+
+Cloud Registry に脆弱性機能 on にすると使える
+
+
+* Commands
+** kubeadm
+: kubeadm init
+
+: swapoff -a
+
+** kubectl
+
+: kubectl config use-context 文脈
+
+でコンテキストを切り替える。
+
+* kind
+[[https://kind.sigs.k8s.io/][kind]] (Kubernetes IN Docker)
+
+* memo
+
+- Colaboratory でも 環境変数を設定すると GCS にアクセスできた。川口さん
+- Katacoda
+
+* Links
+- [[https://qiita.com/t-kajihara/items/905791ba6cb1f079fda7][Kubernetes上でアプリケーションデプロイをサクッと試してみる(コマンドあり) - Qiita]]

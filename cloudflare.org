@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       D9B9B8A5-9BEA-49BF-AAF6-6C58FE95E8D3
+:END:
+#+title: Cloudflare
+#+date: [2025-12-14 Sun 22:22]
+
+
+* キャッシュ
+- Cache-Control: public, max-age=31536000
+- Cloudflare Cache Rules で /files/* を "Cache Everything"
+
+ミスがあった場合は個別に手動パージができる。
+
+Cloudflare ダッシュボードから手動でキャッシュをパージできる。
+
+Caching → Configuration → Custom Purge → URL指定
+
+Cloudflare Dashboard から手動パージする方法
+
+  1. Cloudflare Dashboard → 該当ドメインを選択
+  2. Caching → Configuration
+  3. Custom Purge → URL → URLを入力
+  4. Purge
+
+** どのぐらい転送量が節約できたかを知る方法
+
+Cloudflareのダッシュボードで、CDNのキャッシュ効果によってどれだけデータ転送量を節約できたかを知るには、
+Analytics -> Traffic で Bandwidth を選択。
+Cachedとかを見る。
+
+* Cloudflare Bandwidth Alliance
+Backblaze B2 などと Cloudflare の間で 転送料 (egress) が無料 になる提携ができる。
+
+Cloudflare で CNAME 設定
+
+foo.bar.example.com → f000.backblazeb2.com (または bucket-name.s3.us-west-000.backblazeb2.com)
+

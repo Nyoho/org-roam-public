@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       41B09B54-FAE6-492D-AABB-BFD8F65A8F28
+:END:
+#+title: SwiftUI
+#+date: <2021-05-13 13:38:09 +0900>
+
+
+- [[https://developer.apple.com/jp/xcode/swiftui/][SwiftUIの概要]]
+- [[https://developer.apple.com/tutorials/swiftui][SwiftUI Tutorials]] Apple公式のチュートリアル
+- [[https://developer.apple.com/tutorials/swiftui/creating-a-macos-app][Creating a macOS app — SwiftUI Tutorials | Apple Developer Documentation]]
+
+* アイコン
+
+簡易的にアイコンを出せる。
+
+#+begin_src swift
+  Image(systemName: "bookmark.fill")
+    .foregroundColor(.orange)
+#+end_src
+
+* Links
+- [[https://kean.blog/post/appkit-is-done][AppKit is Done | kean.blog]]
+- [[https://hirlab.net/nblog/category/programming/art_1375/][【第1回】日本語版SwiftUIチュートリアル【基本要素を学ぶ】 | HIRO LAB BLOG]]

@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       71BF5393-ED75-46FE-BCFB-117187C1340E
+:END:
+#+title: 数学の記号を書く
+
+* Unicodeを用いて数学の記号を書いてみる。
+
+[[https://en.wikipedia.org/wiki/Mathematical_operators_and_symbols_in_Unicode][Mathematical operators and symbols in Unicode - Wikipedia]]
+
+** [U+2070-209F] 上付き・下付き (Superscripts and Subscripts)
+[[https://en.wikipedia.org/wiki/Unicode_subscripts_and_superscripts][Unicode subscripts and superscripts - Wikipedia]]
+
+- x¹ $x^1$
+- x₁ $x_1$
+- oₚ $o_p$
+
+** [U+1D00-1D7F] 音声記号拡張 (Phonetic Extensions)
+
+- xᵏ $x^k$
+- xᵍ $x^g$
+
+

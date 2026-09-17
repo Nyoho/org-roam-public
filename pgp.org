@@ -1,0 +1,103 @@
+:PROPERTIES:
+:ID:       2B2CA1B6-273B-4D98-8D01-72965F7691D6
+:END:
+#+title: PGP memo
+#+tags: pgp gpg gnupg
+#+date: <2014-01-31 Fri>
+
+* PGP メモ
+pretty good privacy こと PGP に関する情報をメモっていきます。
+gnupg に関することが多いと思われる。
+
+** 自分の鍵を作成
+#+BEGIN_SRC sh
+gpg --gen-key
+#+END_SRC
+あとは対話的に、2016年ぐらいならRSA 2048 bitでまだいいんじゃないかなー。
+
+** 失効する
+#+BEGIN_SRC sh
+gpg -o washiwashi.revoke --gen-revoke nantoka@exampl.net
+#+END_SRC
+理由を述べたり、パスフレーズを入力したりする。
+これで執行証明書が出来た。
+これを import すると失効する。
+#+BEGIN_SRC sh
+gpg --import washiwashi.revoke
+#+END_SRC
+
+** gpg コマンドの使いかた
+- gpg -e filename :: filenameを対称暗号化
+- gpg -c :: これが対称暗号化か
+- gpg -e -r Nyohosama filename :: filename を Nyohosamaのために暗号化する
+- gpg filename.gpg :: 暗号化されたファイル filename.gpg をデコードする
+- gpg -a --export :: 公開鍵をはき出す
+- gpg --import someones-textfile.asc :: someones-textfile.asc に入っている公開鍵を自分に登録する
+- gpg --search-keys eiel :: eiel を公開鍵サーバから探す
+- gpg --list-keys :: 今持っている鍵のリストを表示する
+
+** 延長方法
+#+BEGIN_SRC sh
+gpg --edit-key hoge@xxxxxxxxxx
+#+END_SRC
+して ~expire~ コマンドで 4年なら ~4y~ とする。
+
+副鍵など、他にもあるなら ~key 1~ などとしてまた上をやる。
+
+~save~ コマンドでセーブして延長完了。
+
+http://www.re.soum.co.jp/~fukaumi/ml/netbsd/200907/msg00000.html
+
+http://homepage.mac.com/mio_rhapsody/gnupg/KeyManagement.html
+
+延長したら --send-keys すれば、延長されたものもそこに追加される。
+
+** メールアドレスの追加・削除
+#+BEGIN_SRC sh
+gpg --edit-key washi@hoge(省略可能)
+#+END_SRC
+して、複数のメールアドレスが登録されていることを確認し、その番号 (1など) を入力、return、
+=deluid= で削除。
+
+また、何もせずにすぐに =adduid= で追加ができる。
+
+=save= で抜ける。
+
+** keyserver
+
+*** 送る
+#+BEGIN_SRC sh
+gpg --keyserver pgp.mit.edu --send-keys KEY_ID_HERE
+#+END_SRC 
+
+*** ゲットする
+#+BEGIN_SRC sh
+gpg --search-keys nyoho
+#+END_SRC
+
+** gnupg 2.0.* とパスフレーズ入力
+mew や alpaca でパスフレーズ入力に失敗するのはプロンプトが異なってしまったためのようで ~/.gnupg/gpg-agent.conf の中に
+ pinentry-program /usr/bin/mew-pinentry
+と書き込むことで治った。
+
+macは
+brew install pinentry-mac
+として
+pinentry-program /usr/local/bin/pinentry-mac
+とする。
+
+** Trouble shooting
+#+BEGIN_SRC 
+gpg: **鍵, ID ***, 日付****-**-**に暗号化されました
+      "**"
+gpg: 公開鍵の復号に失敗しました: No pinentry
+gpg: 復号に失敗しました: No secret key
+#+END_SRC
+と出るとき、 =gpg-agent= をkillしたら治った。
+
+* links
+- 奥村先生の使い方のページ http://oku.edu.mie-u.ac.jp/~okumura/linux/?GnuPG
+- [[http://qiita.com/takayama/items/cb9a47d3a1f9fae8a205][gpg キーを更新した - Qiita]]
+- [[http://no-passwd.net/fst-01-gnuk-handbook/generating-2048-RSA-key.html][10. GnuPGでRSA 2048-bitの鍵を生成する — Gnuk handbook 1.1 documentation]]
+- [[http://security.stackexchange.com/questions/53290/gpg-encrypt-fails][encryption - gpg --encrypt fails - Information Security Stack Exchange]]
+- http://pgp.mit.edu

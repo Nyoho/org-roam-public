@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       672D51A3-792A-4331-B063-D95A5B67D71E
+:END:
+#+title: Github Copilot
+#+date: [2023-08-25 Fri 21:37]
+
+
+[[https://docs.github.com/ja/copilot/getting-started-with-github-copilot][GitHub Copilot の概要 - GitHub Docs]]
+
+* 学生・教職員
+- [[https://education.github.com/][GitHub Education]]
+- [[https://qiita.com/SNQ-2001/items/796dc5e794ac3f57a945][【GitHub】学生申請をして無料でGitHub Copilotを使う - Qiita]]
+
+* GitHub Copilot Chat
+
+プロジェクト全体を見て欲しいときは @workspace と呼びかける。
+
+

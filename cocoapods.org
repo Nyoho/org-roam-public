@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       4B739441-FEB0-45CD-B246-09E864B46B2F
+:END:
+#+begin_html
+---
+title: CocoaPods
+tags: CocoaPods Cocoa
+date: <2014-05-30 Fri>
+---
+#+end_html
+
+CocoaPods http://cocoapods.org
+
+Ruby でいう rubygems。
+
+* Installation
+Just
+#+BEGIN_SRC sh
+gem i cocoapods
+#+END_SRC
+
+And,
+#+BEGIN_SRC sh
+pod setup
+#+END_SRC
+
+* Usage
+Make =Podfile= in the same directory that contains the project *.xcodeproj.
+
+#+BEGIN_SRC ruby
+platform :ios, '7.0'
+use_frameworks!
+
+target "TargetName" do
+  pod 'JSONKit',       '~> 1.4'
+  pod 'Reachability',  '~> 3.0'
+end
+#+END_SRC
+
+And, execute
+#+BEGIN_SRC sh
+pod install
+#+END_SRC
+
+=App.xcworkspace= ができる。

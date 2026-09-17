@@ -1,0 +1,88 @@
+:PROPERTIES:
+:ID:       6678108A-F81F-443E-AA4E-BCA0772BE496
+:END:
+#+title: English
+
+* 長い単語
+extraordinary
+unsatisfactoriness
+floccinaucinihilipilification
+
+- [[http://www.akatsukinishisu.net/kanji/longword.html][長い英単語]]
+
+* リスニング教材
+- ellen show [[http://pearltea25.seesaa.net/article/437712564.html][The Ellen Show エレンの部屋 ブルーノ・マーズ編: One Day at a Time]]
+- [[http://pearltea25.seesaa.net/article/438657533.html][The Oprah Winfrey Show　ジャネットジャクソン: One Day at a Time]]
+- Jimmy Fallon [[https://www.youtube.com/user/latenight][The Tonight Show Starring Jimmy Fallon - YouTube]]
+- イギリスのトークショー [[https://www.youtube.com/watch?list=UU4PziMH5MvvsmqM0VCZTy-g&v=KLlENAlM06o][Lady Gaga Gets Her Bum Out - The Graham Norton Show - YouTube]]
+
+* 素晴らしい表現
+- excellent
+- awesome
+- amazing
+- brilliant
+- magnificent
+- superb
+- incredible
+- beautifule
+- epic
+- priceless
+- stunning
+- dazzling
+- exceptional
+- majestic
+- exceptional
+- majestic
+- exquisite
+- mesmerizing
+- sublime
+- spectacular
+- perfect
+- breathtaking
+- graceful
+- spellbinding
+- flawless
+
+(from https://twitter.com/806coco/status/852167394986532865)
+
+* 略語
+- f2f :: face to face 
+- TBD :: to be determined 追って通知
+- FYI :: for your information 参考までに
+- EOM/EOB :: end of month/business 月末
+- ETA :: estimate time of arrival 到着予定
+- Btw :: by the way ところで
+- KPI :: key performance indicator 業績目標
+
+From https://twitter.com/mitsumame_an/status/981137819912450048
+
+* 単語メモ
+mandatory > recommendation
+
+mandatoryは強制的な義務。
+
+duty, obligation
+
+* 発音
+** 英語喉
+
+メタルバンドLOUDNESSのヴォーカリスト二井原さんの英語の発音説明、これは完全に英語喉そのものじゃ。
+
+稲葉さんとの対談の動画を見ていたところ、いきなり英語喉の話になったYO! 二井原さんは「げろ声」と呼んでいる。
+
+51分3秒から
+https://youtu.be/4sohPoKyjPo?t=51m3s
+
+コメント欄を見たらEigonodoさんが書き込みしていてﾜﾗﾀwwww
+
+** 韓国語話者の英語発音
+
+子音で終わる発音につい母音を付けてしまうなど、日本人の英語発音に似ているが、異なるところもある。
+
+- 「ばー」が「ぱー」になる
+- ざがじゃになる
+  - いぐじゃんぷる、でぃばいじゃー、じぇろ
+
+* Tips
+- [[https://docs.google.com/document/d/1lQRFyluxffuyF2v937WWaXuE-9WRgeuE-L4ogPZ31oM/mobilebasic][日本人が間違いやすい英語]]
+- [[https://www.i-arrc.k.kyoto-u.ac.jp/english/tips/contents_jp][DELE英語学習のコツ（コンテンツ） | i-ARRC]]

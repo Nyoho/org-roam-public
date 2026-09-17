@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       460307B2-651A-408D-95B6-20F0E81C3C75
+:END:
+#+TITLE: Kindle Unlimitedで見られるものの注目
+#+date: <2016-08-09 19:41:00 +0900>
+
+* 雑誌
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=Mac+Fan&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:Mac+Fan&linkCode=sl2&linkId=5ca6893b45eb66fe18d7d50b3f211576][Mac Fan ]]
+- [[https://www.amazon.co.jp/s/ref=nb_sb_noss_2?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=search-alias%253Daps&field-keywords=Sound+%2526+Recording+Magazine&rh=i%253Aaps%252Ck%253ASound+%2526+Recording+Magazine][Sound & Recording Magazine]]
+- [[https://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=search-alias%253Daps&field-keywords=mdn&rh=i%253Aaps%252Ck%253Amdn][MdN]]
+- [[https://www.amazon.co.jp/s/ref=nb_sb_noss_2?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=search-alias%253Daps&field-keywords=CGWorld&rh=i%253Aaps%252Ck%253ACGWorld][CGWorld]]
+- [[https://www.amazon.co.jp/s?k=%E5%B0%86%E6%A3%8B%E4%B8%96%E7%95%8C&i=digital-text&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=18VMDRH8P12B2&sprefix=%E5%B0%86%E6%A3%8B%E4%B8%96%E7%95%8C+%2Cdigital-text%2C163&ref=nb_sb_noss][将棋世界]]
+- [[https://www.amazon.co.jp/s/ref=nb_sb_noss_2?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=search-alias%253Daps&field-keywords=LDK&rh=i%253Aaps%252Ck%253ALDK][LDK]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=DOS/V+POWER+REPORT&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:DOS/V+POWER+REPORT&linkCode=sl2&linkId=63ee4d4ad51ee78fa6ccdbf043a1fbc3][DOS/V POWER REPORT]]
+- [[https://www.amazon.co.jp/s?k=%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%82%AB%E3%83%A1%E3%83%A9%E3%83%9E%E3%82%AC%E3%82%B8%E3%83%B3&i=digital-text&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2NCSZKZ79A8VW&sprefix=%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E3%82%AB%E3%83%A1%E3%83%A9%E3%83%9E%E3%82%AC%E3%82%B8%E3%83%B3%2Cdigital-text%2C230&ref=nb_sb_noss][デジタルカメラマガジン]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=CAPA&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:CAPA&linkCode=sl2&linkId=05c48ae082ef0e32df9c27971f7c355d][CAPA]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=CAMERA+magazine&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:CAMERA+magazine&linkCode=sl2&linkId=a24789fab907dbf2e9effa729fc1cb7e][CAMERA magazine]]
+- [[https://www.amazon.co.jp/s?k=AV%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC&rh=n%3A4486610051&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A][AVレビュー]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=flick!+Digital&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:flick!+Digital&linkCode=sl2&linkId=6a0491a878d469bcab25d4276123b1da][flick! Digital]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=%25E9%2580%25B1%25E5%2588%258A%25E3%2583%258B%25E3%2583%25A5%25E3%2583%25BC%25E3%2582%25BA%25E3%2582%25A6%25E3%2582%25A3%25E3%2583%25BC%25E3%2582%25AF%25E6%2597%25A5%25E6%259C%25AC%25E7%2589%2588&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:%25E9%2580%25B1%25E5%2588%258A%25E3%2583%258B%25E3%2583%25A5%25E3%2583%25BC%25E3%2582%25BA%25E3%2582%25A6%25E3%2582%25A3%25E3%2583%25BC%25E3%2582%25AF%25E6%2597%25A5%25E6%259C%25AC%25E7%2589%2588&linkCode=sl2&linkId=c42fcd6e720aef397f18cdf4433d44a1][週刊ニューズウィーク日本版]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=ENGLISH+JOURNAL&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:ENGLISH+JOURNAL&linkCode=sl2&linkId=0104b02dc8f03eff9d1eda848529798b][ENGLISH JOURNAL]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=NHK%25E3%2583%25A9%25E3%2582%25B8%25E3%2582%25AA&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:NHK%25E3%2583%25A9%25E3%2582%25B8%25E3%2582%25AA&linkCode=sl2&linkId=10cee8e0b3da6dd985a54483b5c87669][NHKラジオ]]
+- [[https://www.amazon.co.jp/s/ref=as_li_ss_tl?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&url=node=4486610051&field-keywords=NHK%25E3%2583%2586%25E3%2583%25AC%25E3%2583%2593&rh=n:2250738051,n:!2250740051,n:!2275262051,n:4486610051,k:NHK%25E3%2583%2586%25E3%2583%25AC%25E3%2583%2593&linkCode=sl2&linkId=edbeaaa87b4c007d1e11fb8e955347ed][NHKテレビ]]
+- ファミ通
+   
+* 本
+- [[https://www.amazon.co.jp/%E4%BA%BA%E3%82%92%E4%BF%A1%E3%81%98%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84%E7%97%85-%E4%BF%A1%E9%A0%BC%E9%9A%9C%E5%AE%B3%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%82%A2%E3%83%87%E3%82%A3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-%E5%B0%8F%E6%9E%97-%E6%A1%9C%E5%85%90-ebook/dp/B01LBXWS4U][人を信じられない病---信頼障害としてのアディクション | 小林 桜児]]
+- [[https://www.amazon.co.jp/%E5%9B%B3%E8%A7%A3-%E4%BA%BA%E6%9D%90%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E5%85%A5%E9%96%80-%E4%BA%BA%E4%BA%8B%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%82%92%E3%82%BC%E3%83%AD%E3%81%8B%E3%82%89%E3%81%8A%E3%81%95%E3%81%88%E3%81%A6%E3%81%8A%E3%81%8D%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%80%8C%E7%90%86%E8%AB%96%E3%81%A8%E5%AE%9F%E8%B7%B5%E3%80%8D100%E3%81%AE%E3%83%84%E3%83%9C-%E5%9D%AA%E8%B0%B7%E9%82%A6%E7%94%9F-ebook/dp/B088BBW2GN][図解 人材マネジメント入門　人事の基礎をゼロからおさえておきたい人のための「理論と実践」100のツボ | 坪谷邦生]] リフロー型で綺麗に作られている。
+- [[https://www.amazon.co.jp/gp/product/B07MT7ZVXK/][東大の先生！ 文系の私に超わかりやすく数学を教えてください！ | 西成活裕]] 会話形式でリフロー型で2色刷っぽく作られている。
+- [[https://www.amazon.co.jp/gp/product/B00WVZNVJO/][Math on Kindle: How to make equations and figures look good on any Kindle device or app (English Edition) Lewis, Jack W.]] 数式に特化したKindleのpublishingの本
+- [[https://www.amazon.co.jp/%E6%96%B0-%E3%82%B3%E3%83%BC%E3%83%81%E3%83%B3%E3%82%B0%E3%81%8C%E4%BA%BA%E3%82%92%E6%B4%BB%E3%81%8B%E3%81%99-%E9%88%B4%E6%9C%A8%E7%BE%A9%E5%B9%B8-ebook/dp/B089GMQX97][新 コーチングが人を活かす | 鈴木義幸]]
+- [[https://www.amazon.co.jp/gp/product/B089QZ9DMB/][The Language of School Design: Design Patterns for 21st Century Schools (English Edition) 電子書籍: Nair, Prakash, Fielding, Randall, Lackney, Jeffery]]
+- [[https://www.amazon.co.jp/gp/product/B08XMC2PCN/][プロ絵師の技を完全マスター エフェクト上達術 決定版 CLIP STUDIO PAINT PRO/EX対応 | パルプライド]]
+- [[https://www.amazon.co.jp/gp/product/B08696CC2Q/][会計クイズを解くだけで財務３表がわかる　世界一楽しい決算書の読み方 | 大手町のランダムウォーカー, わかる]]
+- [[https://www.amazon.co.jp/gp/product/B09HQQQ8RB/][やる気に頼らず「すぐやる人」になる37のコツ]]
+- [[https://www.amazon.co.jp/gp/product/B009CTXQT2/][重力とは何か　アインシュタインから超弦理論へ、宇宙の謎に迫る (幻冬舎新書) | 大栗 博司]]
+- [[https://www.amazon.co.jp/gp/product/B08TW8X1R7/][自己肯定感を上げる OUTPUT読書術 | アバタロー]]
+- 大学4年間の金融学が10時間で学べる
+- [[https://www.amazon.co.jp/dp/B06XSHQN82][目からうろこの線形代数 (目からうろこの教科書) | 中村 純, 知念 寿和子, ホリグチイツ]]
+- [[https://www.amazon.co.jp/dp/B0CJVTJ1T9][目からうろこの機械学習 (目からうろこの教科書) | 北䑓 如法, 知念 寿和子, 中村 純, ホリグチイツ]]
+- [[https://www.amazon.co.jp/%E7%9B%AE%E3%81%8B%E3%82%89%E3%81%86%E3%82%8D%E3%81%93%E3%81%AE%E6%8A%80%E8%A1%93%E5%B7%A5%E4%BD%9C-%E7%9B%AE%E3%81%8B%E3%82%89%E3%81%86%E3%82%8D%E3%81%93%E3%81%AE%E6%95%99%E7%A7%91%E6%9B%B8-%E7%89%A7%E5%B1%B1-%E9%9A%86%E6%B4%8B-ebook/dp/B09N3T83TH][目からうろこの技術工作 (目からうろこの教科書) | 牧山 隆洋, 内海 優作, 中神 悠太, 続木 章三, 中村 純]]
+- 習慣化大全
+   
+** KDP writingなど
+- [[https://www.amazon.co.jp/Formatting-Publishing-Kindle-UPDATED-English-ebook/dp/B005ZWPRTM][eBook Formatting and Publishing Guide for Epub & Kindle Mobi Books using Sigil ebook editor (UPDATED 2013) (English Edition) [Kindle edition] by Parrott, Suzanne Fyhrie]]
+  
+** 将棋
+- そらさんの本
+  - [[https://www.amazon.co.jp/gp/product/B08XMXW7JQ/][【将棋】最新右四間飛車で攻め倒す本【対四間飛車編】]]
+  - [[https://www.amazon.co.jp/gp/product/B09B3XQG2Z/][【将棋】最新右四間飛車で攻め倒す本【対三間飛車　対石田流編】]]
+  - [[https://www.amazon.co.jp/gp/product/B08T9SKPF3/][THE 右四間飛車① 【対居飛車編】]]
+
+** 音楽
+- [[https://www.amazon.co.jp/gp/product/B085VLMVZZ/][実践コード・ワーク 完全版　理論編 | 篠田 元一]]
+- 高い声で歌える本
+
+** お絵描き
+- ストーリーが伝わる背景つきキャラクターイラスト
+- 絵がふつうに上手くなる本

@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       C9E07784-349F-4856-9698-AE793393B200
+:END:
+
+CUDA 7.5 を Mac に入れてみた。
+<2016-04-06 Wed>
+
+* files
+** Documents
+/Developer/NVIDIA/CUDA-7.5/doc/pdf/
+
+** Sample Codes
+/Developer/NVIDIA/CUDA-7.5/samples/
+
+* cuDNN
+macOSに <2018-05-21 Mon>
+
+#+BEGIN_SRC sh
+sudo mv -v cuda/include/cudnn.h /usr/local/cuda/include/
+sudo mv -v cuda/lib/libcudnn* /usr/local/cuda/lib/
+#+END_SRC
+
+https://developer.nvidia.com/rdp/cudnn-download

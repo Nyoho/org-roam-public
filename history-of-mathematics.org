@@ -1,0 +1,143 @@
+:PROPERTIES:
+:ID:       81DEDCD6-E972-4299-B456-61945DBCBEFB
+:END:
+#+title: 数学史
+#+date: <2021-06-13 09:06:33 +0900>
+
+* 40000年前
+人が何かを数えた痕跡
+
+* 古代バビロニア
+- 5000年前 数
+- 「2次方程式のために平方完成すればいいこと」は知られていた。
+
+
+* 紀元前6世紀ぐらい
+
+ピタゴラス (紀元前582〜507年頃)
+
+* 6世紀インド
+- 0の発見
+- 筆算
+
+* 9世紀
+アル＝フワーリズミー الخوارزمي al-Khuwārizmī (830年頃)
+(algorithmの語源)
+
+"インド人たちの計算の書" を執筆。「Dixit Algorizmi」 (アル=フワーリズミーは語った)
+
+* カルダノ 数学勝負 フェラーリ
+
+3次方程式、4次方程式の解の公式
+
+* 16世紀
+ヴィエト Vi'eta 代数的な記法
+
+* 17世紀
+
+** John Wallis (1616--1703)
+- 代数的記法
+- [[https://en.wikipedia.org/wiki/John_Wallis][Wikipedia (English)]], [[https://ja.wikipedia.org/wiki/%25E3%2582%25B8%25E3%2583%25A7%25E3%2583%25B3%25E3%2583%25BB%25E3%2582%25A6%25E3%2582%25A9%25E3%2583%25AA%25E3%2582%25B9][Wikipedia (日本語)]]
+- [[http://lhldigital.lindahall.org/cdm/ref/collection/math/id/11231][Treatise of algebra- History of Mathematics]]
+- [[https://history-of-mathematics.org/Algebra.html][History of Mathematics Project | Algebra]]
+  - [[https://history-of-mathematics.org/artifacts/wallis-treatise-of-algebra][History of Mathematics Project | Wallis's Treatise of Algebra]]
+
+** ガリレオ・ガリレイ (イタリア)
+
+** Fermat, Descartes
+解析幾何・代数幾何
+
+- [[https://en.wikipedia.org/wiki/Ren%25C3%25A9_Descartes][René Descartes]] (1596--1650)
+- Cartesian coordinate (Descartes coordinate) in [[https://ja.wikipedia.org/wiki/%25E6%2596%25B9%25E6%25B3%2595%25E5%25BA%258F%25E8%25AA%25AC][方法序説 - Wikipedia]] (1637) Discours de la méthode
+
+学校でやるのはもっと後 (19世紀)
+
+** 微分積分
+Newton, Leibniz
+
+Newton, Leibniz 以前にホイヘンスのサイクロイドなどの研究があった。
+
+Newtonのもの
+- 流量 (fluent) の変化 流率 (flexion)
+- 瞬間的な流量の究極の比の概念を幾何学的に正当化すること
+
+Leibnizのもの
+- dx, dy を無限小の2辺に持つ特性三角形
+- それが計算的に合理的なものであること
+
+* 18世紀
+** Cauchy (1789–1857)
+[[https://en.wikipedia.org/wiki/Augustin-Louis_Cauchy][Augustin-Louis Cauchy - Wikipedia]]
+Cauchy はかなり厳密にやろうとした。ただ、まだまだ現代数学の視点では厳密ではなかった。
+
+** Euler
+無限小
+
+** Lagrange (1736--1813)
+
+** 確率論
+
+* 19世紀
+注意: 1800年ごろにナポレオンのおかげで学問が変わり始めた。大学が好き放題やっていたのが変わった。
+
+Gauss ガウス
+
+アーベル
+ガロア
+方程式論
+群論
+
+コーシー
+リーマン
+
+カントール
+集合論
+
+ヒルベルト
+
+- ポアンカレ
+  - アインシュタインの発見した数式をほとんど発見していた。
+
+1882 リンデマンの定理
+
+* 20世紀
+
+ラマヌジャン
+
+ゲーデル
+
+Grothendieck
+
+Wiles
+
+
+* 21世紀
+
+* 注意
+
+** 『関数とは何か』より
+- 歴史的由来を探ることの難しさ
+- わかりやすい回答を用意した途端に先入観の誤謬の罠にはまってしまうことが多い。
+- 歴史を評価することの大切さと難しさ
+
+
+* 記号の歴史
+- [[https://en.wikipedia.org/wiki/Table_of_mathematical_symbols_by_introduction_date][Table of mathematical symbols by introduction date - Wikipedia]]
+- [[https://en.wikipedia.org/wiki/History_of_mathematical_notation][History of mathematical notation - Wikipedia]]
+- [[http://jeff560.tripod.com/set.html][Earliest Uses of Symbols of Set Theory and Logic]]
+
+- 集合の要素 $\in$ :: Peano, 1984
+- $\cap$, $\cup$ :: Peano, 1888
+- 集合の $\{\}$ :: Cantor, 1895
+- $\emptyset$ :: Andre Weil, 1939
+
+* 概念の歴史
+** 微分形式
+- [[https://www.sciencedirect.com/science/article/pii/0315086081900276?via%253Dihub][The history of differential forms from Clairaut to Poincaré - ScienceDirect]]
+- [[https://link.springer.com/article/10.1007%252FBF00348587][Differential forms — Cartan to de rham | SpringerLink]]
+- [[http://www.numdam.org/item/?id=ASENS_1899_3_16__239_0][Sur certaines expressions différentielles et le problème de Pfaff]]
+
+** ベクトル
+- [[http://dyna.geo.kyushu-u.ac.jp/~yoshida/japanese/lecture/math-exercise/vector-analysis-v_8_0.pdf][ベクトルの歴史 (PDF)]]
+** 代数学
+- [[https://en.wikipedia.org/wiki/History_of_algebra][History of algebra - Wikipedia]]

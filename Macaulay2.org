@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       9C7101F0-D606-4B3C-8ECB-F2C99E6047EC
+:END:
+#+title: Macaulay2
+
+
+* 公式サイト
+[[https://faculty.math.illinois.edu/Macaulay2/][Macaulay2]]
+
+* Packages
+** InvariantRing
+https://github.com/galettof/InvariantRing
+
+Demo.m2がある。
+
+* Links
+- [[https://arxiv.org/abs/2105.04494][[2105.04494] Numerical Schubert Calculus in Macaulay2]]

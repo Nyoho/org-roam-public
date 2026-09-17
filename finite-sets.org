@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       3078B69C-9DA0-40D2-A189-597607AEB80B
+:END:
+
+
+有限集合
+
+HF '|=' ZF
+
+極限順序数
+
+極限順序数αの共終数 (cofinality) とは、写像β->αの値域がαの中で非有界 (すべてのγ<αに対してそれより大きいimageの元がある) になっているようなものが存在するような最小のβのこと。
+cf(α)で表す。
+
+ZF - infinity
+
+[[http://math.stackexchange.com/questions/1729506/prove-axiom-of-infinity-from-zf-infinity-zermelos-version-of-infinity][set theory - Prove axiom of infinity from ZF$-$Infinity +Zermelo's version of infinity - Mathematics Stack Exchange]]
+
+2 = {0,1}
+
+A^n := { f | f is a function, dom(f)=n, range(f) sub A }
+
+
+* 概念リスト
+function
+f が function であるとは
+(any x in f, exist y, z s.t. x in <y,z>) and (any y, z, z', <y,z> in f and <y,z'> in f => z = z')
+
+formula
+
+proper class
+
+replacement
+
+ZF - infinity replacement
+
+[[https://en.wikipedia.org/wiki/Zermelo%25E2%2580%2593Fraenkel_set_theory][Zermelo–Fraenkel set theory - Wikipedia]]
+
+遺伝的有限集合 [[https://en.wikipedia.org/wiki/Hereditarily_finite_set][Hereditarily finite set - Wikipedia]]
+HF

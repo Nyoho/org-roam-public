@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       D39BE58C-C15E-4E02-BD82-9F13369630E8
+:END:
+
+
+WWDC 2015 メモ
+
+* [[https://developer.apple.com/videos/play/wwdc2015-218/][Mysteries of Auto Layout, Part 1 - WWDC 2015 - Videos - Apple Developer]]
+- Stack View
+  - Alignment
+  - Distribution: fill, fill equally, fill proportionally, equal spacing
+  - 5:55- Demo
+
+- Mystery #4 Self-Sizing Table View Cells
+
+

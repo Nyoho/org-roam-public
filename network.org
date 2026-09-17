@@ -1,0 +1,107 @@
+:PROPERTIES:
+:ID:       2E10CA13-320C-4434-8888-00A7ED33DE17
+:END:
+#+title: network
+#+date: <2021-05-12 15:50:38 +0900>
+
+networking memo
+
+* Private network IP address
+- 10.0.0.0 – 10.255.255.255 mask: 10.0.0.0/8, 24ビット
+- 172.16.0.0 – 172.31.255.255 mask: 172.16.0.0/12, 20ビット
+- 192.168.0.0 – 192.168.255.255 mask: 192.168.0.0/16, 16ビット
+
+* Network monitoring
+- bmon 量だけ見るならこれがいいな
+- iftop どこと通信しているかがわかりやすい。
+- nload
+- nethogs
+- fiptraf
+- [[id:98DEF0E4-BFD2-405D-967B-98B1736108AE][vnstat]]
+
+* DNS
+
+digコマンドで TXT レコードを見るには
+
+#+begin_src 
+dig -t txt domain
+#+end_src
+
+または
+
+#+begin_src 
+dig domain txt
+#+end_src
+
+コンテナなどで nslookup も dig もないときは
+=getent hosts= を使うとよい。
+
+* nc
+nc コマンド。A telnet alternative。
+
+#+begin_src sh
+nc -v example.com 80
+#+end_src
+
+=z= オプションでlisten状態をスキャンするだけにすることもできる。
+
+#+begin_src sh
+nc -vz example.com 80
+#+end_src
+
+* どこにアクセスポイントがあるか調べる
+#+begin_src sh
+  localaddr=10.10.10
+  for f in `seq 1 50`
+  do
+      echo $localaddr.$f
+      curl -m 0.2 http://$localaddr.$f
+  done
+#+end_src
+
+* hwinfo
+=hwinfo= で network card の情報だけ出す。
+
+#+begin_src sh
+hwinfo --netcard
+#+end_src
+
+* Packet filtering (dnctl, pfctl)
+
+[[https://spin.atomicobject.com/2016/01/05/simulating-poor-network-connectivity-mac-osx/][Simulating Poor Network Connectivity on Mac OSX]]
+
+=man pf.conf= を見ると文法が書いてある。
+
+- host は「! address」のように否定を書ける。
+- block :: パケットはブロックされる。
+
+~pfctl -sa~ や ~pfctl -si~ で状態確認できる。
+
+~pfctl -e~ で有効化する。
+
+終わったら
+
+#+begin_src sh
+sudo pfctl -f /etc/pf.conf
+#+end_src
+
+で設定を元に戻して、
+~pfctl -d~ で disabled に。
+
+#+begin_src sh
+echo "block drop from any to ! api.twitter.com" | sudo pfctl -f -
+#+end_src
+
+#+begin_src sh
+echo "block drop from ! 104.244.42.0/24 to ! 104.244.42.0/24" | sudo pfctl -f -
+#+end_src
+
+* 調べる系
+- [[https://pentest-tools.com/website-vulnerability-scanning/website-scanner][Comprehensive Web Vulnerability Scanner]]
+
+
+#+begin_src sh
+dscacheutil -q host -a name www.example.com
+#+end_src
+
+from: [[https://stackoverflow.com/questions/42257228/mac-osx-changing-etc-hosts-has-no-effect-even-after-killing-mdnsresolver][macos - Mac OSX changing /etc/hosts has no effect even after killing mDNSResolver - Stack Overflow]]

@@ -1,0 +1,93 @@
+:PROPERTIES:
+:ID:       EB7A4D09-5377-417E-8CE6-FD9BC6B4889B
+:END:
+#+title: AZIK
+#+date: <2018-04-11 13:27:12 +0900>
+
+便利な AZIK に手を慣らす。
+
+[[https://note.com/actbemu/n/n74f1c04c9a2e][AZIK総合解説書]]
+
+* 練習
+- うぃん wk
+- うぉん wl
+- うぉ wso
+- fp ふぉー
+- てぃtgi
+- sfwf さいわい
+- さい sf
+- せい ss
+- ぜい ざ ざい zx zc zv
+  - ぜいきん ざこう ざいむ
+- き kf
+  - きききりん
+- む mf
+  - むこうです
+- ぬ nf
+  - ぬきです
+- ゆ yf
+  - ゆきのり
+- じゅ jf
+  - じゅもん
+- ぽん pf
+  - あじぽんです
+- われわれ wrwr
+- きました kf ma st
+- かんがえられる rrru られる
+- にち nt 
+- 100にち (100nt)
+- こと kt
+- すること。(srkt.)
+- もの mn
+  - 簡単なもの (kntnnamn)
+- よる yr
+  - 場合による。
+
+* 特殊拡張
+KT こと ST した TT たち HT ひと
+WT わた MN もの MS ます DS です
+KM かも TM ため DM でも KR から
+SR する TR たら NR なる YR よる
+RR られ ZR ざる MT また TB たび
+NB ねば BT びと GR がら GT ごと
+NT にち DT だち WR われ
+
+
+うぃん wk うぉん wl
+うぉ wso
+fp ふぉー
+sfwf さいわいさいわい
+さいsf せい ss
+ぜいざざい zx zc zv
+き kf
+む mf
+ぬ nf
+ゆ yf
+じゅ jf
+ぽん pf
+われわれ wrwr きました kf ma st
+かんがえられる
+
+* AZIK for ATOK for Mac
+2011年、ATOK for Mac のために作った。 -> [[https://nyoho.jp/wiki/?ATOKdeAZIK][ワタタツのウィッ記 - ATOKdeAZIK]]
+
+=~/Library/Preferences/ATOK??/Styles/= に入れるか、
+
+1. キー・ローマ字カスタマイザ」を立ち上げる。
+2. なんでもいいから自分のスタイルを新規作成 (+)
+3. 「ローマ字設定」から「他のスタイルから読み込み」を探し出してこのファイルを指定する
+
+** 追加 <2018-04-11 Wed>
+ミス。
+
+- わん wz がなかった。
+
+独自追加。
+
+- う゛ぁん vz
+- う゛ぁん vn
+- う゛ぃん vk
+- う゛ん vj
+- う゛ぇん vd
+- う゛ぉん vl
+

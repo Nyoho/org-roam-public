@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       C76B6994-E8DF-4069-B27E-38851D7C1E03
+:END:
+#+title: GitHub
+#+date: <2019-09-05 17:43:24 +0900>
+
+* review
+- [[https://docs.github.com/ja/github/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request][プルリクエストで提案された変更をレビューする - GitHub Docs]]
+- [[https://qiita.com/tonkotsuboy_com/items/cb64223737aff286111a][GitHubでのコードレビューが爆速になる新機能review requestsの使い方 - Qiita]]
+
+* GitHub Actions
+使い始めるには https://github.com/features/actions/ でサインアップする。
+
+** 便利な使い方
+(from ruby-jp Slack)
+
+- (on pull_request で) 特定のディレクトリ以下が変更されたら対応するラベルを付ける（monorepoなので変更コンポーネントがひと目で分かる嬉しさ）
+- (pull_request で) [[https://github.com/danger/danger][danger/danger]]
+- イシューに特定のラベルがついたら Slack 通知
+
+* Container registry
+https://docs.github.com/ja/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+「GitHub Packages では、personal access token (classic)を使用した認証のみがサポートされています。」
+
+https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens

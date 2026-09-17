@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       DF122C77-15FA-4EB9-92CF-79F893900523
+:END:
+#+title: App Store Connect
+#+date: [2026-08-08 Sat 16:45]
+
+Appleの App Store Connectでアプリ申請や公開やβテスト
+
+* 準備
+
+1. 実機署名
+   - Xcodeで MyAppName.xcodeproj を開く。
+   - Target MyAppName → Signing & Capabilities
+   - Automatically manage signing をON。
+   - Teamが自分のDeveloper Teamになっているか確認。
+   - Bundle IDは今の com.myid.MyAppName でApp Store Connectにも同じものを使う。
+   - App/Info.plist のマイク用途文言は設定済みなので維持。
+   - App iconをAsset Catalogに入れる。Apple公式でも、Xcode側のAsset Catalogへ追加してビルドをアップロードする流れですわ。
+   - 参照: Add an app icon
+
+2. Archive upload
+   - MARKETING_VERSION: 例 1.0
+   - CURRENT_PROJECT_VERSION: 初回なら 1、再アップロードごとに 2, 3 と増やす。
+   - Xcode上部の実行先を Any iOS Device にする。
+   - Product > Archive
+   - Organizerで Distribute App
+   - App Store Connect → Upload
+   - 外部TestFlightに使うので、もし TestFlight Internal Only のような選択肢が出たら選ばないこと。内部専用ビルドは外部テスターグループに追加できませんわ。
+   - アップロード後、[[https://appstoreconnect.apple.com/apps][App Store Connect]]に反映されるまで待つ。Apple側の処理完了メールが来ます。
+

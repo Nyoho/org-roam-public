@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       7AAF64FA-0044-4981-9B72-89037A4976F1
+:END:
+#+title: exo
+#+date: [2025-01-21 Tue 08:20]
+
+exo
+
+[[https://github.com/exo-explore/exo][exo-explore/exo: Run frontier AI locally.]]
+
+機械学習を走らせるときに複数の計算機を束ねられるとのこと。
+

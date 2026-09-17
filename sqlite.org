@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       A75E8837-A132-4964-A566-BD94BF0BBA4D
+:END:
+#+title: SQLite
+
+[[https://www.sqlite.org/index.html][SQLite Home Page]]
+
+* Basic usage
+
+As an interpreter
+#+BEGIN_SRC sh
+sqlite3 db.sqlite3
+#+END_SRC
+
+Just execute an SQL-sentense
+#+BEGIN_SRC sh
+sqlite3 db.sqlite3 [SQL-sentense]
+#+END_SRC
+
+commands
+- .show :: show
+- .table :: show tables
+- .schema table-name :: show the schema of table-name
+
+
+* Tips
+** テーブルのカラム名の一覧
+=.schema テーブル名= とするとテーブルの定義が出てくるのでこれでcolumn名も取得できる。
+
+=PRAGMA table_info(テーブル名)= とかもあり。

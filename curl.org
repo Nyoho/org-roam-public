@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       0F864460-6A78-4710-A2A8-9CC9166855C2
+:END:
+
+
+それにつけてもウェブアクセスはcurl♪
+
+* Tips
+
+** realm を見る
+#+BEGIN_SRC sh
+curl -X POST -D- http://docs.tdiary.org/ja/
+#+END_SRC
+
+cf. https://twitter.com/tdtds/status/813300942158196737

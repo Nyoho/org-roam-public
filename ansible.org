@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       91134E7A-D46F-4494-B38E-D36F800CC052
+:END:
+#+begin_html
+---
+title: Ansible
+tags: ansible
+date: <2014-01-01 Mon>
+---
+#+end_html
+
+* Install
+#+BEGIN_SRC sh
+sudo easy_install pip
+pip install ansible
+#+END_SRC
+もいいけど
+Homebrew なら
+#+BEGIN_SRC sh
+brew install ansible
+#+END_SRC
+で一発
+
+* playbook
+
+: become: yes
+
+としているときには sudo のパスワードを入力するように =--ask-become-pass= を使用する。
+
+: ansible-playbook -i hosts hoge.yml --ask-become-pass 
+
+* Links
+- [[http://yteraoka.github.io/ansible-tutorial/][Ansible チュートリアル | Ansible Tutorial in Japanese]]
+- https://github.com/annict/ansible-playbooks Annictのもの。参考になる。

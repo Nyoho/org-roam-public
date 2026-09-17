@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       A2A34201-0145-40DE-BBAF-64947551BFD7
+:END:
+#+title: bayesian deep learning
+#+date: [2022-10-16 Sun 16:52]
+
+
+ベイズ的深層学習
+
+- [[https://arxiv.org/abs/1604.01662][[1604.01662] A Survey on Bayesian Deep Learning]]
+- [[https://jorisbaan.nl/2021/03/02/introduction-to-bayesian-deep-learning.html][A Comprehensive Introduction to Bayesian Deep Learning - Joris Baan]]
+- [[https://www.slideshare.net/yutakashino/ss-79165738][ベイジアンディープニューラルネット]]

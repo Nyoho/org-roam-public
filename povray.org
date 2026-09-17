@@ -1,0 +1,114 @@
+:PROPERTIES:
+:ID:       761B6831-3A0D-4702-8387-0BBD03A74805
+:END:
+#+begin_html
+---
+title: POV-Ray
+tags: POV-Ray, 3DCG
+date: <2012-12-23 Sun>
+published: <2012-12-23 Sun>
+---
+#+end_html
+
+* POV-Ray 3.7.0
+OS X
+準備
+#+BEGIN_SRC sh
+brew install boost libpng jpeg libtiff
+#+END_SRC
+
+#+BEGIN_SRC sh
+git clone https://github.com/Nyoho/povray.git
+git checkout osx
+cd unix
+./prebuild.sh
+cd ..
+./configure --with-boost=/usr/local --with-boost-libdir=/usr/local/lib --with-boost-thread=boost_thread-mt COMPILED_BY="Name <nobody@example.net>" LDFLAGS="-lboost_filesystem-mt -lboost_system-mt"
+#+END_SRC
+
+shard_ptr の問題を直す。
+source/backend/control/renderbackend.h
+に
+  using boost::shared_ptr;
+をつけたら
+
+
+* boost
+# boost を makeする
+#+begin_src sh
+./bootstrap.sh
+./b2 --prefix=/usr/local
+./b2 --prefix=/usr/local --build-type=complete --layout=versioned # これでOK
+#+end_src
+
+* POV-Ray 3.7.0 RC6 - configure
+これで configure の変なところが通った。
+#+begin_src sh
+g++  -o conftest -D_THREAD_SAFE -pthread -I/usr/local/include -L/usr/local/lib btest.cpp -lboost_thread-xgcc42-mt-d-1_50 -lboost_filesystem -lboost_system -D_THREAD_SAVE
+#+end_src
+from http://stackoverflow.com/questions/10079287/attempting-to-use-boost-filesystem-however-it-doesnt-seem-to-link
+
+というわけでこれで configure (古い)
+#+begin_src sh
+./configure --with-libpng=/usr/local/lib --with-boost=/usr/local --with-boost-libdir=/usr/local/lib --with-boost-thread=boost_thread-xgcc42-mt-d-1_50 COMPILED_BY="Name <nobody@example.net>" LDFLAGS="-lboost_filesystem -lboost_system"
+#+end_src
+
+Gentoo の boost では
+emerge boost libpng jpeg tiff
+してから
+#+begin_src sh
+./configure --with-boost=$EPREFIX --with-boost-libdir=$EPREFIX/lib --with-boost-thread=boost_thread COMPILED_BY="Name <nobody@example.net>" LDFLAGS="-lboost_filesystem -lboost_system"
+#+end_src
+
+* patching
+** vfe修正
+(news.povray http://news.povray.org/povray.beta-test/thread/%3Cweb.4d091fcd62af24a47800993b0%40news.povray.org%3E/?ttop=372466&toff=50&mtop=363443&moff=10 から)
+#+begin_src sh
+in vfe/unix/syspovconfig.h remove lines 174-177 (#defines regarding
+THREAD_LOCAL_PTR)
+in vfe/unix/vfeplatform.h add #include <sys/types.h> before #include
+<boost/shared_ptr.hpp>
+in vfe/vfesession.h add #include <sys/types.h> before #include <queue>
+in source/base/image/image.cpp replace all occurrences of lseek64 with lseek
+#+end_src
+
+** TIME_UTC を TIME_UTC_ とする
+#+BEGIN_SRC C
++#if BOOST_VERSION >= 105000
++          xtime_get(&xt, TIME_UTC_);
++#else
+           xtime_get(&xt, TIME_UTC);
++#endif
+#+END_SRC
+cf. https://github.com/vpython/visual/issues/3
+
+#+BEGIN_SRC sh
+source/backend/scene/view.cpp
+vfe/vfesession.cpp
+vfe/vfepovms.cpp
+#+END_SRC
+
+** making a patch
+#+begin_src sh
+diff -u -r -x '*~' povray-3.7.0.RC6 povray-3.7.0.RC6-osx
+#+end_src
+
+* Gentoo prefix
+emerge libpng jpeg tiff
+
+* Glow patch
+[[http://news.povray.org/povray.unofficial.patches/thread/%253Cweb.4e9f4d82d61f5b2877e50e540@news.povray.org%253E/][POV-Ray: Newsgroups: povray.unofficial.patches: Glow patch code location?]] の通りにやればできる(らしい)。
+
+* Blender -> FreeCAD -> .pov
+Blender で .obj や .dae を export
+
+FreeCAD で import 
+
+Part モードにして「メッシュから形状を作成」
+
+* Texture
+** sandy
+[[http://news.povray.org/povray.binaries.images/thread/%253Cweb.4450ffd4fe18178f76ba2c900@news.povray.org%253E/][POV-Ray: Newsgroups: povray.binaries.images: Sandstone blocks]]
+
+* Isosurfaces
+例: [[http://www.povray.org/documentation/view/3.6.1/73/][POV-Ray: Documentation: 1.3.3.3 Isosurface Object]]

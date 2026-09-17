@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       992A52D8-209D-4F1B-91AB-94D705B44AEF
+:END:
+#+title: Teams
+#+date: [2022-07-29 Fri 13:27]
+
+Microsoft Teamsのメモ
+
+** Microsoft Teams 会議に ID で参加するには
+https://www.microsoft.com/ja-jp/microsoft-teams/join-a-meeting
+ここに入力するとできる。

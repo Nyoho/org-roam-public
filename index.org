@@ -1,0 +1,156 @@
+ニョートへようこそ。
+
+Nyoho's notes. それがNyotes.
+
+- [[id:AF053124-A344-475A-A1C5-89F899FD52C0][機械学習の学習]]
+
+pre になる予定:
+
+: foo
+: bar
+
+* 数学 数式テスト
+,options に =^:{}= と書いておくと
+
+a^b a_b a^{b} a_{b}
+
+* 箇条書き
+読めますか?
+- [ ] 読める
+- [ ] 読めない
+
+他にも
++ aa
++ bbb
+  * cccc
+  * ddddd
+
+ordered list
+1) First, ...
+2) Second, ...
+3) Third, ...
+
+** todo and tags
+- DONE [#A] Yes
+- TODO [#A] Yes [2024-11-08 Fri 10:10] <2024-11-08 Fri 10:12>
+   
+** Level 2
+aaa
+*** aaa
+*** bbb
+*** ccc
+
+* source codeなどのbegin_end_系のテスト
+
+#+begin_src emacs-lisp
+  (defun my-hoge ()
+    "My hoge function"
+    (interactive)
+    (message "I would like to say long long long line line long line long line long line.")
+    (message "I would like to say hoge hoge."))
+#+end_src
+
+#+begin_src ruby
+  variable = 1
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+ (message "hoge")
+#+end_src
+
+#+begin_src c
+  int plus_one(int x) {
+    return x + 1;
+  }
+#+end_src
+
+#+BEGIN_VERSE
+Great clouds overhead
+Tiny black birds rise and fall
+Snow covers Emacs
+
+-- AlexSchroeder
+#+END_VERSE
+
+#+BEGIN_QUOTE
+blockquoteになるらしい。
+Everything should be made as simple as possible,
+but not any simpler -- Albert Einstein
+#+END_QUOTE
+
+#+BEGIN_CENTER
+Everything should be made as simple as possible, \\
+but not any simpler
+#+END_CENTER
+
+- ~code~
+- *bold* *ボールド*
+- _underline_
+- =verbatim=
+- +strike-through+
+
+dt 
+- ~clone-indirect-buffer-other-window~ :: foobar and ~clone~
+  - link [[http://localhost:5173/emacs][nyotes]] :: aaa
+
+* washi
+わしじゃよわしわい
+
+#+attr_html: width 64
+hello!
+
+: (require 'org-tempo)
+
+* 画像イメージ埋め込み
+
+[[https://www.google.com][file:test.png]]
+=C-c C-x C-v= でインライン画像表示。
+
+* org-toggle-latex-fragment (C-c C-x C-l)
+Let $X$ be a scheme over $k$.
+<2020-09-12 Sat>
+
+* org-fragtog is better
+https://github.com/io12/org-fragtog
+$\{ a_n \}$ $X$ 
+
+=M-x org-fragtog-mode= で起動する。
+
+* MathJaxを使ったmath-preview
+https://gitlab.com/matsievskiysv/math-preview
+これもある。
+el+npm
+
+* Table
+| time           | hoge |    123 |
+| 2022-02-25 Fri |    1 | -123.1 |
+| もしもし       |      |      0 |
+
+* 日数計算
+ <2020-11-03 Tue>--<2022-04-09 Sat> の上で =C-c C-y= で日数計算
+
+ <2024-08-23 Fri>--<2024-09-18 Wed> の上で =C-c C-y= で日数計算
+
+ <2023-12-25 Mon>--<2024-12-03 Tue> の上で =C-c C-y= で日数計算
+
+* 日付
+<2023-02-15 Wed>
+[2023-02-15 Wed]
+
+<2023-02-14 Tue 12:34>
+[2023-02-16 Thu 12:34]
+
+* Geo  URI with osm.el
+[[https://github.com/minad/osm?tab=readme-ov-file][minad/osm]] これは便利。
+
+[[geo:43.644026,16.918945;z=12;s=opentopomap]] (Croatia)
+
+[[geo:41.869560826994544,12.45849609375;z=6;s=opentopomap][Italia, 41.87° 12.46° OpenTopoMap]]
+[[geo:51.48950698022105,-0.144195556640625;z=11][London, England, 51.49° -0.14°]]
+[[geo:55.686875255964424,12.569732666015625;z=12;s=cyclosm][København, Danmark, 55.69° 12.57° CyclOSM]]
+[[geo:27.961656050984658,86.89224243164062;z=13;s=opentopomap][Mount Everest, 27.96° 86.89° OpenTopoMap]]
+<geo:Tour Eiffel, Av. Gustave Eiffel, Paris> (Address link)
+

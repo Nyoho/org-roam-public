@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       41A805C6-851E-4CAE-914C-733706089AC7
+:END:
+#+begin_html
+---
+title: Chef
+tags: chef
+date: <2013-08-07 Wed>
+---
+#+end_html
+
+* 公式サイト
+http://www.opscode.com
+https://learnchef.opscode.com
+
+* 利用
+[[http://dotinstall.com/lessons/basic_chef][Chef入門 (全14回) - プログラミングならドットインストール]] で勉強する。
+
+** Vagrant で準備
+Vagrant で centos64 を扱えるようにしておく。
+1. =gem install chef=
+2. =gem install knife-solo=
+3. =knife configure= (適当に default にする)
+4. =vagrant init centos64=
+5. =vagrant up=
+6. =vagrant ssh-config --host hostname >> ~/.ssh/config= しておくと ssh hostnameでいけるようにすると便利。
+
+** 実際にレポジトリを作る
+1. =knife solo init chef-repo= (chef-repo という名前のレポジトリを作る)
+2. =knife solo prepare hostname=
+3. =knife cookbook create hoge -o site-cookbooks/= (hoge という cookbook が site-cookbooks/ の下にできる)
+4. recipes/default.rb に入れるものなどを書く。(hoge/ の中にある recipes にかく)
+5. =knife solo cook hostname= で実行
+
+recipes を書くヒントは公式を見る
+[[http://docs.opscode.com/chef/resources.html][Resources and Providers Reference — Chef]]
+
+** templates
+hostname.json
+をいじるといろんな変数の値を作れて
+templates/ に突っ込んだらファイルの一部を例えば erb で書き換えたものを vm におくことができたりする。
+
+=ohai= コマンドで最初からある node[:platform] などがわかる。

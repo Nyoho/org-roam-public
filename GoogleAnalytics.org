@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       197DE84F-C260-4FE1-A2D2-64913B2FF118
+:END:
+#+title: Google Analytics memo
+#+date: <2019-05-09 21:30:53 +0900>
+
+* 検索からの流入など
+
+「集客」→「すべてのトラフィック」→「チャネル」
+
+* 検索キーワードを調べる
+「集客」 → 「キャンペーン」 → 「オーガニック検索キーワード」
+
+* ページごとのアクセス数
+
+エンゲージメント → ページとスクリーン
+
+* Search Console
+Search Console
+ (webmaster toolという名前が変わった)
+
+* Google Analytics 4 (GA4)になった
+- [[https://support.google.com/analytics/answer/11583528?utm_source=awfe&utm_medium=email&utm_campaign=20301313#export&zippy=%2Chow-can-i-export-data-from-my-universal-analytics-property%2C%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB-%E3%82%A2%E3%83%8A%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AF%E3%82%B9-%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%81%8B%E3%82%89%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%82%88%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B][ユニバーサル アナリティクスは Google アナリティクス 4 に置き換わりました - アナリティクス ヘルプ]]
+- [[https://support.google.com/analytics/answer/1038573?sjid=2308689648379857174-AP][[UA] レポートのエクスポートと共有 - アナリティクス ヘルプ]]
+- [[https://support.google.com/analytics/answer/3437618?utm_source=awfe&utm_medium=email&utm_campaign=20301313][[UA] アナリティクスの BigQuery Export - アナリティクス ヘルプ]]
+
+* 外部リンククリックを探索でみる
+Google公式が案内している「外部サイトへのクリックを確認する」方法
+外部リンククリックは click イベントとして自動取得され、リンク先は「リンクURL」「リンクドメイン」に入るため、次の方法で取れる。
+
+1. GA4 左メニュー「探索」→「空白」
+2. 「リンクURL」と「イベント数」を追加。左側の「変数」にある ディメンションの「＋」 検索欄で「リンク」と検索して、 ~リンク URL~ 、 ~リンクドメイン~ をにチェック
+3. 次に「指標」の「＋」を押して ~イベント数~ インポート
+4. GA4の拡張計測が有効なら表を作る。
+   - 右側の「設定」で
+   - 行 →「リンク URL」
+   - 値 →「イベント数」
+
+* click event
+管理 →データの表示 → イベント
+
+「イベントを作成」→「作成」
+
+その他のオプション を選んで、
+
+- event_name = click
+- link_url を ~正規表現に一致~ で次に設定。 ~*.example.com~ なら。
+
+#+begin_quote
+^https?://([^.]+\.)?example\.com/.*$
+#+end_quote

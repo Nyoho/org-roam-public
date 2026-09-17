@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       8354F18E-3186-48DA-B7E4-03B12514574C
+:END:
+#+title: 8th wall
+#+date: [2025-09-21 Sun 13:28]
+
+
+[[https://www.8thwall.com][8th Wall]]
+
+動画解説
+
+VPSを使うとセンチメートル単位で合わせられるとのこと。未確認。
+
+- [[https://www.youtube.com/watch?v=AY47_A6MsqU][クイックガイド：ウェブ用VPS - YouTube]]
+

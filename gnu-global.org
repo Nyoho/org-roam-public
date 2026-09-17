@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       062CBE40-0698-4E5F-A130-4B939F3E08F1
+:END:
+#+title: GNU Global
+#+tags: global gtags
+#+date: <2013-02-20 Wed>
+
+tag 生成
+#+begin_src sh
+gtags -v
+#+end_src
+
+HTMLを出力する。
+#+begin_src sh
+htags -v
+#+end_src
+
+#+begin_src emacs-lisp
+(setq gtags-prefix-key "\C-c")
+(require 'gtags)
+(require 'anything-gtags)
+(setq gtags-mode-hook
+      '(lambda ()
+         (define-key gtags-mode-map "\C-cs" 'gtags-find-symbol)
+         (define-key gtags-mode-map "\C-cr" 'gtags-find-rtag)
+         (define-key gtags-mode-map "\C-ct" 'gtags-find-tag)
+         (define-key gtags-mode-map "\C-cf" 'gtags-parse-file)))
+(add-hook 'c-mode-common-hook
+          '(lambda()
+             (gtags-mode 1)))
+#+end_src
+
+ここを参考にして anything-gtags も設定
+[[http://shibayu36.hatenablog.com/entry/20101229/1293625186][anything-gtags.elを導入してみた - $shibayu36->blog;]]
+
+* コマンド
+- gtags-find-rtag :: 参照にジャンプ
+- gtags-find-tag :: 定義にジャンプ
+

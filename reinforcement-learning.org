@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       B48440FF-FEC2-4003-85D8-80D4A77AEEAF
+:ROAM_ALIASES: "reinforcement learning"
+:END:
+#+title: 強化学習
+
+機械学習の強化学習についてのメモ
+
+分散ツール
+- [[https://deepmind.com/research/open-source/launchpad?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter][Launchpad: a programming model for distributed machine learning research | DeepMind]]
+
+* Q-learning
+- [[http://neuro-educator.com/rl1/][CartPoleでQ学習（Q-learning）を実装・解説【Phythonで強化学習：第1回】]]
+- [[https://qiita.com/sugulu_Ogawa_ISID/items/10ac7ce53de40d4c8891][【強化学習中級者向け】実装例から学ぶ優先順位付き経験再生 prioritized experience replay DQN 【CartPoleで棒立て：1ファイルで完結】 - Qiita]]
+- [[https://www.tcom242242.net/entry/ai-2/%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92/%E3%80%90%E5%BC%B7%E5%8C%96%E5%AD%A6%E7%BF%92%E3%80%81%E5%85%A5%E9%96%80%E3%80%91q%E5%AD%A6%E7%BF%92_%E8%BF%B7%E8%B7%AF%E3%82%92%E4%BE%8B%E3%81%AB/][【入門】Q学習の解説とpythonでの実装 〜シンプルな迷路問題を例に〜]]
+
+* モンテカルロ木探索
+- [[https://lib-arts.hatenablog.com/entry/rl_MCTS_basic][モンテカルロ木探索(MCTS; Monte Carlo Tree Search)の概要 - Liberal Art’s diary]]
+- [[https://blog.brainpad.co.jp/entry/2018/04/05/163000][強化学習入門 Part3 － AlphaGoZeroでも重要な技術要素！ モンテカルロ木探索の入門 － - Platinum Data Blog by BrainPad]]
+- [[https://zenn.dev/ganariya/articles/python-monte-carlo-tree-search][モンテカルロ木探索を Python で実装する]]
+
+* AlphaGoなど
+- [[https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html][Google AI Blog: AlphaGo: Mastering the ancient game of Go with Machine Learning]]
+- [[https://www.nature.com/articles/nature24270][Mastering the game of Go without human knowledge | Nature]] AlphaGo Zero
+- [[https://arxiv.org/abs/1712.01815][[1712.01815] Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm]] AlphaZero
+  
+解説
+- [[https://hypertree.blog.ss-blog.jp/2016-06-17][No.180 - アルファ碁の着手決定ロジック（１）：クラバートの樹：SSブログ]]
+- [[https://hypertree.blog.ss-blog.jp/2016-06-24][No.181 - アルファ碁の着手決定ロジック（２）：クラバートの樹：SSブログ]]
+
+* 学習手法
+** proximal policy optimization (PPO)
+[[https://en.wikipedia.org/wiki/Proximal_policy_optimization][Proximal policy optimization - Wikipedia]]
+
+* Links
+- [[https://speakerdeck.com/aiueola/offline-reinforcement-learning][Offline Reinforcement Learning - Speaker Deck]]
+- [[https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html][Reinforcement Learning (DQN) Tutorial — PyTorch Tutorials 1.9.0+cu102 documentation]]
+- [[https://www.jstage.jst.go.jp/article/sicejl/58/3/58_182/_article/-char/ja/][制御工学者のための強化学習入門]]
+  
+* 書籍
+- [[https://rltheorybook.github.io/][Reinforcement Learning: Theory and Algorithms]] (PDF)

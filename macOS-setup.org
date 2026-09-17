@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       A2A38E0E-0246-4EA3-8254-5266A0083D89
+:END:
+osx-setup
+
+* Install
+1. [[http://qsapp.com/download.php][Quicksilver — Download]]
+2. [[https://pqrs.org/macosx/keyremap4macbook/index.html.ja][KeyRemap4MacBook - OS X用のソフトウェア]]
+3. homebrew or Gentoo Prefix
+4. homebrew を使わない場合は http://www.emacsformacosx.com
+5. Dropbox
+6. symbolic links
+6. rbenv + ruby-build
+
+→ このやり方はもう古いな。パッケージのインストールだけなら [[https://github.com/Nyoho/Brewfile][Brewfile で brew bundle で一発の世の中]]になったわ。
+
+→ そしたら brew bundle もなくなってしまった。
+
+* Karabiner (旧 KeyRemap4MacBook)
+設定を =192.168.0.9= を移す。
+
+#+BEGIN_SRC sh
+DEST=$HOME/Dropbox/Dotfiles/
+cp -pr ~/Library/Preferences/org.pqrs.Karabiner* $DEST
+cp -pr ~/Library/Application\ Support/Karabiner $DEST
+
+cp -pr $DEST/org.pqrs.Karabiner.plist ~/Library/Preferences/
+cp -pr $DEST/Karabiner ~/Library/Application\ Support/
+
+cp -pr /tmp/KeyRemap4MacBook to ~/Library/Application\ Support/
+#+END_SRC
+
+これだとdirectoryがあったらコピーされない。
+設定を =192.168.0.9= を移す。
+
+#+BEGIN_SRC sh
+REMOTE_HOST=192.168.0.9
+scp -pr ~/Library/Preferences/org.pqrs.Karabiner* $REMOTE_HOST:Library/Preferences/
+scp -pr ~/Library/Application\ Support/Karabiner/private.xml $REMOTE_HOST:/tmp
+
+cp -pr /tmp/KeyRemap4MacBook to ~/Library/Application\ Support/
+#+END_SRC
+
+これだとdirectoryがあったらコピーされない。
+
+** private.xml
+~/Library/Application\ Support/KeyRemap4MacBook/private.xml
+にある。

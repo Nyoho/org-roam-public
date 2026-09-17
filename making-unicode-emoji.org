@@ -1,0 +1,123 @@
+:PROPERTIES:
+:ID:       63B98013-398F-4926-BBD7-CCE667B039EF
+:END:
+#+title: Unicode emoji
+#+date: <2018-10-21 11:20:31>
+
+UNICODEを巧みに利用した顔文字を作りたい。
+
+* UNICODEの絵文字を作るリソース
+
+- [[http://www.shurey.com/js/works/unicode.html][Unicode一覧表]] ただの一覧だけでなく、文字列を放り込んで「検査」が出来る。
+- [[https://instafonts.io/different-fonts/welcome%20!]['Welcome !' in Different Fonts (𝗰𝗼𝗽𝘆 αɳԃ 𝕡𝕒𝕤𝕥𝕖)]] いろんなUNICODE文字で英数字を変換
+- [[https://appllio.com/Instagram-special-character][アプリオ]]
+- [[https://lingojam.com/FancyTextGenerator][LingoJam]]
+- [[https://www.shapoco.net/plainstyle/][PlainStyle]]
+   
+* 文字のメモ
+** 中点
+
+| ·  | U+B7   | Middle Dot                    |
+| ・ | U+30FB | Katakana Middle Dot           |
+| ･  | U+FF65 | Halfwidth Katakana Middle Dot |
+| •  | U+2022 | Bullet                        |
+ 
+** Bullets
+https://www.compart.com/en/unicode/search?q=bullet
+
+| •  | U+2022  | Bullet                               |
+| ‣  | U+2023  | Triangular Bullet                    |
+| ⁃  | U+2043  | Hyphen Bullet                        |
+| ⁌  | U+204C  | Black Leftwards Bullet               |
+| ⁍  | U+204D  | Black Rightwards Bullet              |
+| ∙  | U+2219  | Bullet Operator                      |
+| ◘  | U+25D8  | Inverse Bullet                       |
+| ◦  | U+25E6  | White Bullet                         |
+| ☙  | U+2619  | Reversed Rotated Floral Heart Bullet |
+| ⦾  | U+29BE  | Circled White Bullet                 |
+| ⦿  | U+29BF  | Circled Bullet                       |
+| 🚅 | U+1F685 | High-Speed Train with Bullet Nose    |
+
+** 四角いもの
+| ▍ | U+258D | LEFT THREE EIGHTHS BLOCK |
+| ▌ | U+258C | left half block          |
+
+** 合成できる
+
+U+20D0-20FF にまるに入れたりできる記号がある。
+
+** 顔
+- ⸚ 単独で顔
+  
+** space
+- "⁠" word joiner U+2060
+- "​​" zero width space U+200B
+
+** exclamation mark
+.ᐟ 組み合わせで擬似的にexclamation mark
+
+** 鉛筆
+- ✎
+- ☡✍
+
+* 数学
+絵文字ではないけど
+
+- ²³⁻ は[U+0080-00FF] ラテン1補助 (Latin-1 Supplement)
+- ⁰ ⁱ ⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉ は [U+2070-209F] 上付き・下付き (Superscripts and Subscripts)
+- 上付きの ʸ ʷ ʲ ʰ が「前進を伴う修飾文字」にある
+- ℤ, ℕ, ℝ,
+- subscripts aᵢ (U+1D62) aⱼ (U+2C7C)
+- 𝓐𝓑𝓒𝓓𝓔𝓕𝓖
+- 𝔄𝔅ℭ𝔇𝔈𝔉𝔊
+- ∀∃∂∈∉∊∋∌≡
+  ∩
+
+⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ᐟ⁼⁽⁾ᵃᵇᶜᵈᵉᶠᶢʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ
+₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ
+ℕℤℚℝℂ𝔽ℙ∑∏⊕⊗
+𝔞𝔟𝔥𝔤𝔪𝔫𝔬
+℘
+
+̂
+̃
+̌
+̅
+** links  
+- [[https://en.wikipedia.org/wiki/List_of_logic_symbols][List of logic symbols - Wikipedia]]
+
+* memo
+
+✌(๑˃̶͈̀◡˂̶͈́๑)✌ 
+
+(๑˃̶͈̀o˂̶͈́๑)
+
+٩( ᐛ )و
+
+( ᐛ )و
+
+(੭•̀ᴗ•̀)੭
+
+(・-・) (真顔)
+
+( °̥̥̥̥̥̥̥̥-°̥̥̥̥̥̥̥̥)
+
+🏍=͟͟͞͞
+🏍=͟͟͞͞=
+-͟͟͞͞=
+🏍
+.͟͟͞͞=
+
+
+߷ ハンドスピナー
+
+࠽ 毛利
+
+
+
+* 参考リンク
+
+- [[https://nyoho.jp/diary/?date=20120302#p01][最近の Unicode 顔文字「ˉ̞̭ ( ›◡ु‹ ) ˄̻ ̊」について調べてみた - ワタタツの日記!(2012-03-02)]]
+- [[http://www.unicode.org/emoji/charts/emoji-candidates.html][Emoji Candidates]]
+- [[http://juggly.cn/archives/173087.html][Unicode 9.0に追加される新しい絵文字の候補が発表 | juggly.cn]]
+- [[http://kaomoji.n-at.me/][TLで集めた顔文字とか2275個1/12ページ目。]]

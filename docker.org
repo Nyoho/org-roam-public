@@ -1,0 +1,337 @@
+:PROPERTIES:
+:ID:       3F90200B-33F7-4C90-AEE3-FB78D9640135
+:END:
+#+Title: Docker
+#+Tags: docker
+#+Date: <2013-11-24 Sun>
+
+* Installation
+** Ubuntu 13.10
+see [[http://docs.docker.io/en/latest/installation/ubuntulinux/#ubuntu-raring][Requirements and Installation on Ubuntu Linux - Docker Documentation]]
+#+begin_src sh
+  sudo sh -c "wget -qO- https://get.docker.io/gpg | apt-key add -"
+  sudo sh -c "echo deb http://get.docker.io/ubuntu docker main\
+  > /etc/apt/sources.list.d/docker.list"
+  sudo apt-get update
+  sudo apt-get install lxc-docker
+#+end_src
+
+** openSUSE
+: zypper install docker
+
+docker-compose も入れるなら、
+
+: zypper install docker-compose
+
+** docker-machine 
+例 sore という名前の docker-machine を VMware Fusion に作る。
+#+BEGIN_SRC sh
+docker-machine create --driver vmwarefusion sore
+#+END_SRC
+
+壊すときは、
+#+BEGIN_SRC sh
+docker-machine rm sore
+#+END_SRC
+
+** ユーザを追加
+#+begin_src sh
+  sudo usermod -aG docker $(whoami)
+#+end_src
+
+#+begin_quote
+docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.
+#+end_quote
+のように出た場合は newgrp docker すると動く。
+
+* Commands
+- search :: コンテナを探す
+- pull :: コンテナを持ってくる
+- run <name> <command...> :: 
+- ps :: 動いているコンテナのリスト
+- ps -a :: 全てのコンテナのリスト
+- logs <container ID> ::
+- start <container ID> ::
+- stop <container ID> ::
+- attach <container ID> ::
+- logs <container ID> :: 
+- -e :: 環境変数を指定する
+- status :: CPUやメモリの使用量などがtopのように監視できる
+
+docker-vm起動
+
+#+begin_src sh
+docker-machine env docker-vm
+#+end_src
+
+#+BEGIN_SRC sh
+docker ps -a
+#+END_SRC
+
+** docker run
+~-d~ は daemon モードで起動の意味。
+#+BEGIN_SRC sh
+docker run -d nyoho/hogehoge /bin/bash
+#+END_SRC
+
+#+BEGIN_SRC sh
+docker run someone/imagename command command_option1 option2_hoge -a -b
+#+END_SRC
+
+~-s num~ で num 秒ごとに実行
+#+BEGIN_SRC sh
+docker run -d nyoho/hogehoge free -s 5
+#+END_SRC
+(~docker ps -a~ で出る)
+
+<id> に attach してみる。 ~--sig-proxy=false~ しておくと ctrl + C で抜けたときに終了しない。
+#+BEGIN_SRC sh
+docker attach --sig-proxy=false <id>
+#+END_SRC
+
+daemon モードのものを終了させるには ~kill~ 。
+#+BEGIN_SRC sh
+docker kill <id>
+#+END_SRC
+また再開するには =start=
+#+BEGIN_SRC sh
+docker start <id>
+#+END_SRC
+
+コンテナの中で作業するには
+- =-i= で interactive mode に
+- =-t= で terminal に接続
+- =-it= で両方できる。
+
+#+BEGIN_SRC sh
+docker run -i -t image /bin/bash
+#+END_SRC
+
+作業して
+exit するとコンテナから抜けてコンテナも終了
+
+commit
+#+BEGIN_SRC sh
+docker commit <id> username/imagename
+#+END_SRC
+
+** 削除系
+1.13から prune が使えるようになっていた。
+#+begin_src sh
+docker system prune
+docker image prune
+docker volume prune
+#+end_src
+
+#+begin_src fish
+docker rmi (d images -a|awk '{print $3}')
+#+end_src
+
+
+不要なイメージを削除する
+#+BEGIN_SRC sh
+docker rmi $(docker images | awk '/^<none>/ { print $3 }')
+#+END_SRC
+
+#+BEGIN_SRC fish
+docker rmi (docker images | awk '/^<none>/ { print $3 }')
+#+END_SRC
+
+
+使ってないコンテナを削除
+#+BEGIN_SRC sh
+docker rm `docker ps -a -q`
+#+END_SRC
+
+or
+
+#+BEGIN_SRC sh
+docker rm $(docker ps -aq)
+#+END_SRC
+
+Exitedと書いてあるコンテナを削除
+#+BEGIN_SRC sh
+docker rm `docker ps -a | grep Exited | awk '{print $1}'`
+#+END_SRC
+
+
+- 全コンテナ停止 :: docker stop $(docker ps -q)
+- 全コンテナ削除 :: docker rm $(docker ps -q -a)
+- 全イメージ削除 :: docker rmi $(docker images -q)
+
+From [[https://qiita.com/shisama/items/48e2eaf1dc356568b0d7][一発ですべてのDockerコンテナを停止・削除、イメージの削除をする - Qiita]]
+
+
+不要なボリュームを削除
+#+begin_src sh
+docker system prune -a --volumes
+#+end_src
+
+* Dockerfile
+Dockerfile を書いて
+#+BEGIN_SRC sh
+sudo docker build -t someone/name .
+#+END_SRC
+とすると Dockerfile を元にコンテナを作ってくれる。
+あとは run すればよい。
+
+** 例
+参考: http://docs.docker.jp/engine/reference/builder.html
+
+#+BEGIN_SRC dockerfile
+FROM ubuntu
+MAINTAINER John Kitadai <hoge@example.net>
+
+# comment
+RUN echo "start!"
+# CMD: run
+CMD ["echo", "yeah, yeah, ..."]
+#+END_SRC
+
+#+BEGIN_SRC dockerfile
+EXPOSE <port> [<port>...]
+
+ADD <ソース>... <送信先>
+
+ENTRYPOINT ["実行可能なもの", "パラメータ１", "パラメータ２"] （ exec 形式、推奨）
+
+# WORKDIR は cd っぽい
+WORKDIR /path/to/workdir
+#+END_SRC
+
+** Links
+- [[https://www.forcia.com/blog/002273.html][社内のDockerfileのベストプラクティスを公開します│FORCIA CUBE│フォルシア株式会社]]
+
+* Data-only container pattern
+参考: [[http://qiita.com/mopemope/items/b05ff7f603a5ad74bf55][Docker でデータのポータビリティをあげ永続化しよう - Qiita]]
+
+アプリとデータを分離してさらにコンテナ度合いを高める。
+
+* docker-compose
+
+#+BEGIN_SRC sh
+docker-compose up
+docker-compose down
+
+docker-compose start
+docker-compose stop
+
+docker-compose ps
+#+END_SRC
+
+
+これでビルドも up もバックグラウンド実行も一発
+
+: docker-compose up --build -d
+
+* Docker Machine
+- [[http://docs.docker.jp/machine/overview.html][Docker Machine 概要 — Docker-docs-ja 19.03 ドキュメント]]
+- [[https://qiita.com/momotaro98/items/5b902afea3530b6f0b93][Docker MachineでMacからVPS上のDockerへアプリをデプロイしよう - Qiita]]
+
+* docker compose
+- [[https://zenn.dev/skanehira/articles/2021-06-03-new-docker-compose][新しい docker compose]]
+
+* Docker Hub
+#+begin_src shell
+  docker tag imagename username/imagename
+  docker push username/imagename
+#+end_src
+
+* CoreOS で試す
+CoreOS ならすぐ試せる。
+
+[[http://inokara.hateblo.jp/entry/2013/09/27/074428][CoreOS を使って docker を体験した - ようへいの日々精進]]
+
+* dokku
+[[http://dokku.viewdocs.io/dokku/][Dokku - The smallest PaaS implementation you've ever seen]]
+Heroku みたいなのを自分で作れるやつ。
+
+* VMware Fusion で Docker for Mac
+コマンドラインVMの中で、
+#+BEGIN_SRC sh
+vmware-toolbox-cmd disk shrink /mnt/sda1/var/lib/docker/aufs
+#+END_SRC
+で disk が shrink できた。
+
+参考: [[https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2033583][Shrinking a virtual disk using scripts in VMware Fusion (2033583) | VMware KB]]
+
+* rootless docker
+
+openSUSE
+
+#+begin_src shell
+  zypper in fuse-overlayfs slirp4netns
+  sudo modprobe ip_tables iptable_mangle iptable_nat iptable_filter
+#+end_src
+export XDG_RUNTIME_DIR=$HOME/.docker/run                    
+export XDG_RUNTIME_DIR=/run/user/$UID
+export DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/docker.sock"
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+* バックアップ
+- [[https://stackoverflow.com/questions/21597463/how-to-port-data-only-volumes-from-one-host-to-another?noredirect=1&lq=1][docker - How to port data-only volumes from one host to another? - Stack Overflow]]
+- [[https://stackoverflow.com/questions/26331651/how-can-i-backup-a-docker-container-with-its-data-volumes][How can I backup a Docker-container with its data-volumes? - Stack Overflow]]
+
+** Docker volume plugins
+- [[https://docs.docker.com/engine/extend/plugins_volume/][Docker volume plugins | Docker Documentation]]
+- [[https://matsuand.github.io/docs.docker.jp.onthefly/engine/extend/plugins_volume/][Docker ボリュームプラグイン | Docker ドキュメント]]
+- [[https://docs.docker.jp/v19.03/engine/extend/plugins_volume.html][ボリューム・プラグインの記述 — Docker-docs-ja 19.03 ドキュメント]]
+  
+* 未分類
+** dotinstall で Docker の勉強
+*** 05
+
+#+BEGIN_SRC sh
+docker images
+#+END_SRC
+
+コンテナ指定
+
+repo:latest
+":" 以下を略すと :latest を指定したことになる。
+
+コンテナIDは一意に決まればいいので最初の数文字で良い。
+
+=docker rmi= イメージの削除
+
+*** 06
+#+BEGIN_SRC sh
+docker run centos echo "hoge"
+docker ps -a
+#+END_SRC
+
+最新5つのみ表示したいとき
+#+BEGIN_SRC sh
+docker ps -a -n=5
+#+END_SRC
+
+run のときに
+=-p 8080:80= とすると、ホストの 8080 をコンテナの 80 に接続してくれる。
+
+** Install Latest Docker and Docker-compose on Ubuntu
+https://gist.github.com/wdullaer/f1af16bd7e970389bad3
+
+** <2016-05-22 Sun> k2works
+docker inspect
+*** volume option
+~-v $(pwd)/src/webapp:/opt/webapp~
+
+*** data volume container
+: docker create -v /dbdata --name pg_dbstore postgres /bin/true
+
+: docker ps -a
+
+で見てみる。
+
+: docker run -d --volumes-from pg_dbstore --name pg_db1 postgres
+
+バックアップするには --volumes-from で ubuntu にマウントしておいてそこで tar などするとよい。
+
+docker-compose を使うアプローチ
+
+** <2016-05-22 Sun> d_abe
+
+: eval (docker-machine env)
+
+: docker images
+

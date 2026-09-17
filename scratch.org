@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       CB16A95C-0B88-4427-B829-B97EFEC1E82B
+:END:
+#+title: Scratch
+#+date: <2021-04-17 11:21:35 +0900>
+
+Scratch
+
+https://scratch.mit.edu
+
+* Tips
+** クリックしたところの色を取る
+https://scratch.mit.edu/projects/10941245/editor/
+なるほど
+
+** 横スクロール
+- [[https://scratch.mit.edu/projects/414350003/][スクロールプラットフォーマーのチュートリアル（素材） on Scratch]]
+
+** 物理エンジン
+[[https://en.scratch-wiki.info/wiki/How_to_Make_a_Physics_Engine][How to Make a Physics Engine - Scratch Wiki]]
+
+* Intro
+Introという文化がある。
+
+Introがうまいユーザ
+
+- [[https://scratch.mit.edu/users/omowaka/][omowaka]]
+- [[https://scratch.mit.edu/users/kirbyzaz/][kirbyzaz]]
+- [[https://scratch.mit.edu/users/Crystal-25/][Crystal-25]]
+- [[https://scratch.mit.edu/users/Kuro_Code/][Kuro_Code]]
+- [[https://scratch.mit.edu/users/nyahahanohahaha/][nyahahanohahaha]]
+
+* Scratchでニューラルネットワーク
+Scratchでニューラルネットワークを書かれている手羽先11 ([[https://scratch.mit.edu/users/Teba_eleven/][@Teba_eleven]]) さん
+- [[https://scratch.mit.edu/projects/564599222/][ニューラルネットワークによる手書き数字認識 on Scratch]]
+  - [[https://www.chickensblog.com/scratch-neural-network-no-library/][Scratchで拡張機能などを一切使わずにニューラルネットワークを作ってみた【スクラッチ】 | チキンズブログ！]]
+- [[https://zenn.dev/teba_eleven][手羽先さんの記事一覧 | Zenn]]
+  - [[https://zenn.dev/teba_eleven/articles/b00ec37e6dca6d][AIとは結局なんなのか？]]
+  - [[https://zenn.dev/teba_eleven/articles/00a1eae31c5a6f][Scratch3.0で数値微分＋勾配降下法をやってみた]]
+- [[https://qiita.com/Teba_eleven][Teba_eleven - Qiita]]
+
+* Forum
+- [[https://scratch.mit.edu/discuss/topic/396541/][Advertising and Follow-for-Follow (f4f) - Discuss Scratch]]

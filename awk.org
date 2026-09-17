@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       EAA95EF4-2219-444F-8617-E958A20E673B
+:END:
+#+TITLE: awk便利tips
+#+date: <2018-08-05 16:26:13 +0900>
+
+awkの便利なtipsを述べる。
+
+* 容量食っているのをチェック
+
+#+begin_src shell
+sudo du -g -x -d 5 / | awk '$1 >=5{print}'
+#+end_src
+
+
+* カンマ区切りで1個目だけ取り出す
+
+#+begin_src shell
+cat sometext | awk -F ',' '{print $1}'
+#+end_src

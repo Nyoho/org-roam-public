@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       5A0CF4DD-F352-41FD-82D2-086FDF8C4369
+:END:
+
+* SOCKS
+ssh -D 10080 example.net
+(-f -N)
+などとしておいて
+
+localhost:10080
+を SOCKS プロキシに設定する。
+

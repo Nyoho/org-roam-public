@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       30BC8A66-9B5D-43E3-9CAB-2539FD776A12
+:END:
+#+title: Trumpet
+#+tags: trumpet
+#+date: <2013-03-03 Sun>
+
+* 筋肉のばてと強化
+
+- 疲労した筋肉には乳酸がたまる。乳酸を分散させるようにマッサージを行います。筋肉をもむ、叩く、等を繰り返し行い、痛みを感じる点を中心に。
+- 筋肉強化は１日おきに該当の部位の筋肉に高負荷を与える
+  - 負荷により、筋肉繊維が傷つく。これが復旧するのに約２日かかる。
+  - 復旧した筋肉を再度傷つけるとより強い繊維が生まれる。
+- 口輪筋を鍛える。
+  - パタカラ という器具があるらしい。
+- 休みの時に楽器から口を離す
+
+** 参考文献
+
+- [[https://www.google.co.jp/search?client%3Dsafari&rls%3Den&q%3D%25E7%25AD%258B%25E8%2582%2589%2B%25E6%2588%2590%25E9%2595%25B7&ie%3DUTF-8&oe%3DUTF-8&redir_esc%3D&ei%3DnxcyUde4CsnFkQXQtoCYBg#hl%3Dja&safe%3Doff&client%3Dsafari&rls%3Den&sclient%3Dpsy-ab&q%3D%25E7%25AD%258B%25E8%2582%2589%2B%25E5%259B%259E%25E5%25BE%25A9%2B%25E3%2583%2588%25E3%2583%25A9%25E3%2583%25B3%25E3%2583%259A%25E3%2583%2583%25E3%2583%2588&oq%3D%25E7%25AD%258B%25E8%2582%2589%2B%25E5%259B%259E%25E5%25BE%25A9%2B%25E3%2583%2588%25E3%2583%25A9%25E3%2583%25B3%25E3%2583%259A%25E3%2583%2583%25E3%2583%2588&gs_l%3Dserp.3...1979.9322.0.9725.21.11.10.0.0.1.173.1182.6j5.11.0...0.0...1c.4.5.psy-ab.AG61s-934ak&pbx%3D1&bav%3Don.2,or.r_gc.r_pw.r_cp.r_qf.&fp%3D26cb0538146d0acc&biw%3D1224&bih%3D899][筋肉 回復 トランペット - Google 検索]]
+- [[http://okwave.jp/qa/q3282055.html][筋肉の疲労を効率よく回復させるには？ | その他(スポーツ)のQ&A【OKWave】]]
+- [[http://sooda.jp/qa/39185][トランペットの口のバテの素早い回復法ってありますか？もしくはバテないようにするコツなどあれば教えてください。２０年ぶりに...|質問・相談が会員登録不要のQ&AサイトSooda!(ソーダ)]]
+- [[http://www.trumpet-joho.net/batenai.html][バテない工夫--トランペット情報ネット]]
+
+* マウスピース
+- Bach
+- Marcinkiewicz
+- [[https://masaki-music.jp/products/%E3%83%88%E3%83%A9%E3%83%B3%E3%83%9A%E3%83%83%E3%83%88%E3%83%9E%E3%82%A6%E3%82%B9%E3%83%94%E3%83%BC%E3%82%B9?variant=47172586995944][田口管楽器工房]]
+
+* 人
+- Moris Andre
+- Chet Baker
+- Freddie Hubbard
+- Kenny Dorham

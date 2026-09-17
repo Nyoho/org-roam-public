@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       38BC09A4-52CB-4C28-B548-BDCF25504ED2
+:END:
+#+title: AngularJS
+#+tags: AngularJS JavaScript
+#+date: <2013-12-11 Wed>
+
+以下は古い。AngularJS (version 1)のもの。
+
+公式サイト https://angularjs.org
+
+[[http://dotinstall.com/lessons/basic_angularjs][AngularJS入門 (全12回) (ドットインストール)]] 勉強メモ
+
+* 便利コード片
+** filter, ng-repeat
+#+BEGIN_SRC html
+<div ng-init="items=['a','b','c','d','e','x']">
+  <input placeholder="filter" ng-model="f" />
+  <div ng-repeat="item in items | filter:f" class="repeat-item">
+    {{item}}
+  </div>
+</div>
+#+END_SRC
+
+* MVW (Model-View-Whatever)
+[[http://qiita.com/zoetro/items/a45dbc18bb2b22e944b2][AngularJSのMVWパターンを理解する - Qiita {キータ}]] を読みながらまとめたい。
+
+> 「MV*について議論するのは時間の無駄だから、そんな暇があったらコードを書け。MV*の*の部分なんて"Whatever"でいいんだ。」
+
+** プレゼンテーションとドメインの分離
+
+*** View
+- layout -> HTML で
+- presentation logic -> Directive に押し込める
+
+*** Controller & scope
+
+状態の保持を scope で。
+
+DOM は画面描画のためだけに。
+
+Controller は cope をセットアップする。
+

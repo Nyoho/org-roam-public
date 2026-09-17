@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       8E973DC8-9EE5-40C5-8AD7-5AF3FA476243
+:END:
+#+title: 数学関連の集まり・ミートアップ
+#+date: <2019-10-28 Mon>
+
+数学関連の集まり・ミートアップを集める。
+
+- ロマンティック数学ナイト
+- [[http://kansaimath.tenasaku.com/][関西すうがく徒のつどい | 数学を愛する人たちのための交流会兼勉強会]]
+- [[https://saitama-sangaku.connpass.com/event/152118/][数学デーin埼玉]]
+

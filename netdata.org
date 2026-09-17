@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       7053FA52-65C0-4DE4-BFAD-5E7FC34C9EB2
+:END:
+#+title: netdata
+#+date: <2016-12-16 16:30:20 +0900>
+
+[[https://my-netdata.io/][NetData]] というものを入れてみる。長年 mrtg を使ってきたが、そろそろ重い腰を上げて別のものにしてみたいと長年思ってきた。長年とは。
+
+
+* インストール
+https://github.com/firehol/netdata/wiki/Installation
+に沿ってやればOK。
+準備パッケージを入れてくれるスクリプトも用意されている。
+
+本格的にインストール
+
+#+BEGIN_SRC sh
+git clone https://github.com/firehol/netdata.git --depth=1
+cd netdata
+sudo ./netdata-installer.sh
+#+END_SRC
+
+そしたら http://localhost:19999 でアクセスできるようになっている。
+簡単だった。

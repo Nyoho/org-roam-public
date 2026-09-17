@@ -1,0 +1,638 @@
+:PROPERTIES:
+:ID:       BE7412A3-813A-424A-A891-7581D2CCDA18
+:END:
+#+title: Emacs
+#+tags: Emacs
+#+date: <2013-02-21 Thu>
+
+Emacs のメモです。
+
+* ソースコード
+- [[https://savannah.gnu.org/git/?group=emacs][emacs - Git Repositories [Savannah]​]]
+- https://git.savannah.gnu.org/cgit/emacs.git/
+  
+* 操作メモ
+- C-x C-x :: カーソル位置へ移動。またやったら元に戻る
+- C-x = :: カーソル位置の情報
+- C-u C-x = :: カーソル位置の情報の詳細。よく使う。
+- M-s :: anything-c-moccur-occur-by-moccur
+- C-g C-_ :: redo after a undo 
+- anything-read-string-mode :: 補完をanythingインターフェースにするマイナーモード
+- M-x name-last-kbd-macro :: keyboard macro に名前をつける。(load-library "kmacro")
+- M-x insert-kbd-macro :: lisp をはき出す
+- M-x delete-trailing-whitespace :: 改行コードが誤認識され、各行末に '^M' がずらりといあるときになどに、ざくっと削除できる。
+- C-q :: 検索や置換をするときにコントロールコードを入力したいとき、その前に打つ。例: C-q C-j で改行コードが入力できる。
+- M-: :: ミニバッファ内で lisp を eval できる。
+- M-. :: xref-find-definitions (定義へジャンプ)
+- C-M-a :: beginning-of-defun (塊の前へ移動)
+- C-M-e :: end-of-defun (塊の後ろへ移動)
+- C-M-p :: 対応する開き括弧へジャンプ
+- C-M-n :: 対応する閉じ括弧へジャンプ
+- C-u C-SPC :: 過去のマーク位置に飛ぶ
+- C-h f ... (TAB) :: describe function 
+- C-h v ... (TAB) :: describe variable
+- C-h l :: (view-lossage) 「あれ今何を押してこれが出たんじゃろ」というときに使う。
+- C-x C-k :: ~bs-cycle-next~ が結構使える
+- C-M-x :: defface は評価 (eval) しても変更されないが、 C-M-x (= eval-defun) (S式の先頭で。途中でもできた)すると変更できる。
+- C-x + :: (balance-windows) ウインドウの等分ができる。
+- F1 + k :: このあとに入力すると何がEmacsに渡されているかが調査できる。
+
+** 文字入力
+
+- C-x 8 RET ??? :: ???の部分にニックネームか Unicode の16進数コードを入れるとその文字が入力できる。
+- C-x 8 <RET> left single quotation mark <RET> (cf. [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Inserting-Text.html][Inserting Text - GNU Emacs Manual]])
+- C-x 8 <RET> left sin <TAB> <RET>
+- C-x 8 <RET> 2018 <RET> (文字コードで入力)
+- C-x 8 e :: 絵文字入力 <2021-11-07 Sun> [[https://emba.gnu.org/emacs/emacs/-/commit/6b706b1a7d40faa10989ea3419e5cda0067ef82a][絵文字入力が入ったコミット]]
+
+** 矩形操作
+
+- C-x r t :: 矩形で文字列置換
+- C-x r o :: 矩形でスペース挿入
+- C-x r k :: 矩形カット
+- C-x r c :: 矩形コピー
+- C-x r y :: 矩形yank
+
+** Frame操作
+
+- C-x 5 2 :: Make a new frame
+- C-x 5 0 :: Delete this frame
+- M-f10 :: toggle-frame-maximized
+
+** narrowing
+- C-x n n :: リージョンをnarrowing
+- C-x n e :: 要素をnarrowing (org-narrow-to-element)
+- C-x n w :: widen で元に戻す
+- C-x n d :: narrow-to-defun
+- ~clone-indirect-buffer-other-window~ :: narrowing中に[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Indirect-Buffers.html][indirect buffer]]でクローンしてくれて便利 
+
+* Tips
+** sudo して開く
+=/sudo::/path=
+
+** Native profiler 
+[[https://masutaka.net/chalow/2014-04-02-1.html][Emacs-24.3からネイティブプロファイラが使えてた / マスタカの ChangeLog メモ]] より。
+
+1. =M-x profiler-start= する。CPU だけでもOK。
+2. 操作する
+3. =M-x profiler-report= でレポートが出る
+
+** カレントディレクトリをFinderで開く
+: M-! open .
+「Finder で開きたいだけならば， M-! でミニバッファに open . と打ち込むだけです．」 (from [[https://github.com/takaxp/emacs.d/blob/master/utility.org][emacs.d/utility.org at master · takaxp/emacs.d]])
+確かに!
+
+** list-process系
+- helm-list-emacs-process
+- counsel-list-processes
+
+Emacsの中で動かしているプロセスを一覧してサクッとkillできる。便利。
+
+** 局所変数をファイルに追記する
+=M-x add-file-local-variable RET 変数名 RET 値=
+とやると自動追記してくれる。
+
+** 今の major mode, minor modes 一覧
+~M-x describe-mode~ で出る。
+
+#+BEGIN_SRC emacs-lisp
+(mapcar #'car minor-mode-alist)
+#+END_SRC
+で monor modes が出る。
+
+** Debugging
+=trace-function=
+nop関数を作ってから状態などを引数で渡す。
+https://twitter.com/knu/status/1041627131682336768
+
+** tccd が暴走するのを防ぐ
+open や browse-url がちょっと遅くなる問題は、
+[[https://qiita.com/takaxp/items/2a0abaa6e5f1a7a9c440][野良ビルドした Emacs で tccd が暴走するのを防ぐ（Mojave） - Qiita]] より
+
+署名を作っておいて、
+
+#+begin_src sh
+codesign --force --deep --sign "myApp" Emacs.app
+#+end_src
+
+とする。
+
+** global-set-key
+global-set-key を =M-x= で実行すると「今だけの」君だけのオリジナルキーバインドが設定できるぞ!
+
+** 全角記号を半角にする
+~japanese-hankaku-region~ だと仮名も半角になってしまう。
+
+~(ucs-normalize-NFKC-string "あいうえおＡＢＣＤＥカキクケコ")~
+または、
+文字列を選択して =M-x ucs-normalize-NFKC-region= 
+
+** 複数ファイルで置換
+便利
+- =project-find-regexp=
+
+** ウインドウのバーを取る
+
+#+begin_src emacs-lisp
+(push '(undecorated . t) default-frame-alist)
+#+end_src
+
+* Packages
+
+** visual-line-mode
+長い行を折り返すか折り返さないか
+
+** dired
+- R :: 移動 (まあrenameだけどね)
+- m でマークして R :: 複数ファイルの移動
+- M-x dired-omit-mode :: バックアップファイルなどを非表示に
+- M-x dired-diff :: 便利だな
+- C-x d (ワイルドカード付き文字列) :: 普通にディレクトリを表示するだけでなくワイルドカードを付けていれば最初から絞り込んで dired できる。
+- ( :: ファイル名だけの表示に
+- C :: コピー (このときなんと =M-n= で元のファイル名を持ってこられる! cf.[[https://emacs.stackexchange.com/questions/8308/default-name-for-dired-copy-and-rename][ Default name for dired copy and rename - Emacs Stack Exchange]])
+- 0 w :: pathをコピー
+
+** dired-filter
+- /d :: ディレクトリに
+- /n :: ファイルに
+- /. :: 拡張子でフィルタ
+- /! :: 直前のフィルタ条件の反転でフィルタ
+- /p :: 直前のフィルタ条件を削除
+- // :: 全フィルタ削除
+- /o :: !omit (これが標準状態)
+- /? :: help
+
+** helm
+migemo https://github.com/rubikitch/helm/commit/3153f304ea71f3e84c0ecfb8304671c7ada8d4f2#diff-26fb96990df63300aa7098250d773103L3696
+
+- C-z :: helm を閉じずに persistent action を実行
+- helm-find-file 中 に C-z :: 通常の find-file の TAB 補完のようなもの
+- C-SPC で複数選択 :: 複数選択したものに action を実行
+
+** ag
+*** [[https://github.com/Wilfred/ag.el][ag.el]]
+M-x ag
+で単純に検索できる。next-error/previous-error で移動も出来る。
+
+*** helm-ag
+M-x helm-ag して hoge . で . にあるファイルの hoge を ag で検索し、helm で絞り込む。
+
+- [[http://d.hatena.ne.jp/syohex/20130302/1362182193][helm-agを書きました - Life is very short]]
+
+*** agg
+helm ではない agg という ag を使うのもある。
+https://github.com/willnet/agg
+
+** multiple-cursors.el / smartrep.el
+
+参考: [[http://qiita.com/scalper/items/b9e357b3af071c930777][Emacs - multiple-cursors.elとsmartrep.elでまとめて一気に編集 - Qiita]]
+
+** markdown-mode
+- C-c C-o :: markdown-follow-thing-at-point リンクだったらそこにジャンプしてくれる。
+
+** 未分類 el-get packages メモ
+#+begin_src 
+ac-math
+anything
+anything-gtags
+anything-yaetags
+auctex
+auto-complete
+auto-complete-clang
+auto-complete-css
+auto-complete-emacs-lisp
+auto-complete-etags
+auto-complete-extension
+auto-complete-latex
+auto-complete-ruby
+auto-dictionary
+auto-install
+cl-lib
+coffee-mode
+egg
+el-get
+el-get.old
+emacs-w3m
+flymake-cursor
+flymake-easy
+flymake-ruby
+fuzzy
+git-gutter
+gtags
+haml-mode
+jekyll-el
+js2-mode
+magit
+org-jekyll
+org-mode
+package
+popup
+popwin
+predictive
+rinari
+ruby-mode-trunk-head
+sass-mode
+slim-mode
+web-mode
+yaml-mode
+yasnippet
+yasnippet-config
+zencoding-mode
+#+end_src
+
+** haskell-mode
+run-haskell で GHCi
+
+** elscreen
+- C-z C-c :: new elscreen
+- C-z C-k :: delete the current screen
+- C-z C-n :: next screen
+- C-z C-p :: previous screen
+- C-z C-a :: 前回選択していたscreen
+
+** flycheck
+http://www.flycheck.org
+
+[[http://umi-uyura.hatenablog.com/entry/2015/11/09/235351][FlycheckでESLintの設定を育てるときのメモ - Umi Uyuraのブログ]]
+
+- C-c ! l :: flycheck-list-errors エラー一覧
+- C-c ! C-w :: flycheck-copy-erros-as-kill killringにエラーをコピー
+
+** Projectile
+- C-c p f :: projectile の find-file
+- C-c p s g :: projectile の grep
+- C-c p e :: projectile の recentf
+
+projectileでdir-localを編集しておけばそのプロジェクトごとにrun command (=projectile-project-run-cmd=)を設定しておける。
+
+** webkit-katex-render
+[[https://github.com/fuxialexander/emacs-webkit-katex-render][fuxialexander/emacs-webkit-katex-render: An instant latex previewer for Emacs, based on xwidget and child-frame]]
+
+** ansi-term
+terminalが使えるやつの一つ。aaronが使っていた。
+
+** diminish
+minor mode を表示しないようにできるもの。
+
+参考
+
+- [[https://qiita.com/tadsan/items/c859c5c04724cbda75fc][指定したマイナーモードを表示しない(diminish篇) - Qiita]]
+
+** Swiper
+swiper して =M-n= すると =symbol-at-point= 相当。
+
+** counsel
+ドキュメント https://oremacs.com/swiper/
+
+便利そうなもの
+
+- M-i :: ivy-insert-current
+- C-r :: ivy-reverse-i-search 
+- C-o :: hydra-ivy/body これは楽だ。follow (f) を押していく。
+  
+** counsel-ag counsel-rg
+- counsel-ag 中に =C-o C-o= (=ivy-occur=)
+- =C-x C-q= (=ivy-wgrep-change-to-wgrep-mode=)
+- =C-c C-c= (=wgrep-finish-edit=)
+
+** general
+
+[[https://github.com/noctuid/general.el][noctuid/general.el: More convenient key definitions in emacs]]
+
+** consult.el
+https://github.com/minad/consult
+[[id:7101C9B4-0CEC-4014-AE70-DC60BC262DCA][consult.el]]
+
+** embark
+- [[https://github.com/oantolin/embark][oantolin/embark: Emacs Mini-Buffer Actions Rooted in Keymaps]]
+- [[https://www.reddit.com/r/emacs/comments/osx5t9/recent_embark_developments_detailed_action/][Recent Embark Developments: Detailed Action Indicator, Highlighting and Cycling the Target at Point : emacs]] <2021-08-05 Thu>
+
+** puni
+#+begin_src text
+  [tako|ika]
+  | point
+  M-x puni-split
+  [tako][ika]
+  になる。
+
+  [tako,uni]
+  |[ikura,tamago]
+  | point位置が行頭時のみ、
+  M-x puni-transpose で、
+  [ikura,tamago]
+  [tako,uni]
+  上の行と入れ替わる。
+
+  |tako
+  | point 位置が行頭時
+  M-x puni-wrap-round で、
+  (tako)
+  ta|ko
+  | point 位置が文字途中の場合
+  M-x puni-wrap-round で、
+  ta(ko)
+  pointとその後ろまでを、() で括ってくれる
+#+end_src
+
+** 使わなくなった
+- vline
+- reveal-next
+- ruby-block
+- icicles
+- col-highlight
+- auto-install
+- synonyms
+- anything
+
+* Build
+ビルドのコンフィギュレーションは =system-configuration-features= を見ればわかる。
+
+これに =NATIVE_COMP= が入っていればいわゆる GCC Emacs になっている。
+
+=RSVG= があればSVGが表示できるようにコンパイルされていることがわかる。
+
+コマンドラインで確認するには例えば次。
+
+#+begin_src shell
+  emacs --batch --eval "(message system-configuration-features)" 
+#+end_src
+
+** macOS
+libxml2 のエラーが出るときは、
+
+: xcode-select --install
+
+する。
+
+** Linux
+ホームへ。
+
+#+BEGIN_SRC sh
+./configure --prefix=$HOME/.local --without-x --with-gnutls=no --with-mailutils
+
+./configure --prefix=$HOME/.local --without-x --without-pop
+#+END_SRC
+
+など。
+
+* 勉強用リンク
+- [[http://shibayu36.hatenablog.com/entry/2013/12/30/190354][自分が入れたEmacs便利拡張・設定集 (2013年版) - $shibayu36->blog;]]
+- [[http://qiita.com/pogin503/items/01005402dc7cfd375b55][Emacsのモダンなライブラリ4+1選 - Qiita]]
+
+** Videos
+- [[https://www.youtube.com/watch?v=6INMXmsCCC8][Spin Your Own Spacemacs-lite - YouTube]]
+
+* distnoted 問題
+
+これで distnoted はおさまるが
+https://gist.github.com/anonymous/8553178/raw/c0ddb67b6e92da35a815d3465c633e036df1a105/emacs.memory.leak.aka.distnoted.patch.diff
+
+しかし、popup (NSPanel) のボタンをクリックしても戻れない問題が出る。
+
+しかし、これでOK。
+#+BEGIN_SRC elisp
+(setq use-dialog-box nil)
+#+END_SRC
+<2014-02-18 Tue>
+
+* Linux build memo
+#+BEGIN_SRC sh
+wget -O- http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.xz | tar xJf -
+cd emacs-24.5
+./configure --disable-largefile --with-x-toolkit=motif --without-toolkit-scroll-bars --without-xaw3d --without-xim --without-sound --without-pop --without-xpm --without-tiff --without-rsvg --without-gconf --without-gsettings --without-selinux --without-gpm --without-makeinfo --with-x --with-x-toolkit=no --with-gif=no
+#+END_SRC
+
+* 人の .emacs.d/ リンク集
+- [[https://github.com/takaxp/emacs.d][takaxpさん]]
+
+* Testing
+hoge.elだけ読み込んで起動する方法
+#+BEGIN_SRC sh
+emacs -Q -l hoge.el
+#+END_SRC
+
+* serverとdaemon起動
+
+- =--fg-daemon= で起動する方法がある。
+- これでGUIでも起動できそう。
+
+Emacs.app を使い、かつ別のinitを使う場合:
+
+#+begin_src sh
+/Applications/Emacs.app/Contents/MacOS/Emacs --fg-daemon --init-directory=$HOME/.emacs.d/foobar/
+#+end_src
+
+** 参考文献
+- [[https://wikemacs.org/wiki/Emacs_server][Emacs server - WikEmacs]]
+- [[https://apribase.net/2024/06/20/emacs-as-daemon/][Emacs as Daemon は初期化処理の罠が多すぎる ||| Apribase]]
+
+* web browsing
+** w3m
+w3m は長らくお世話になりました。
+
+** eww
+最近は eww も結構使える。
+
+* Hooks
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Standard-Hooks.html][Standard Hooks - GNU Emacs Lisp Reference Manual]]
+
+- after-init-hook
+- before-init-hook
+- emacs-startup-hook
+- window-setup-hook
+
+** window-configuration-change-hook
+window-configuration-change-hook
+フレームのウィンドウ構成が変更されるたびに実行される [[https://ayatakesi.github.io/lispref/26.1/html/Window-Hooks.html][GNU Emacs Lisp Reference Manual: Window Hooks]]
+
+* Editing
+** smartparens
+https://github.com/Fuco1/smartparens
+
+=M-x sp-cheat-sheet= でチートシート!
+
+いろんなモードで括弧をいい具合に補助してくれる。
+
+** easy-kill, easy-mark
+https://github.com/leoliu/easy-kill
+
+便利そう
+
+* Mode-line
+** Ivy
+- ~ivy-mode~ :: [[https://github.com/abo-abo/swiper][abo-abo/swiper: Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!]]
+
+* Books
+
+入門用
+
+- [[https://www.amazon.co.jp/%25E3%2583%25AA%25E3%2582%25B9%25E3%2583%2588%25E9%2581%258A%25E3%2581%25B3%25E2%2580%2595Emacs%25E3%2581%25A7%25E5%25AD%25A6%25E3%2581%25B6Lisp%25E3%2581%25AE%25E4%25B8%2596%25E7%2595%258C-ASCII-SOFTWARE-SCIENCE-Language/dp/4756134424][リスト遊び―Emacsで学ぶLispの世界 (ASCII SOFTWARE SCIENCE Language) | 山本 和彦]]
+- [[https://www.amazon.co.jp/%25E3%2582%2584%25E3%2581%2595%25E3%2581%2597%25E3%2581%2584Emacs%25E2%2580%2590Lisp%25E8%25AC%259B%25E5%25BA%25A7-%25E5%25BA%2583%25E7%2580%25AC-%25E9%259B%2584%25E4%25BA%258C/dp/4877832718/ref=sr_1_1?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&keywords=%25E3%2582%2584%25E3%2581%2595%25E3%2581%2597%25E3%2581%2584Emacs%25E2%2580%2590Lisp%25E8%25AC%259B%25E5%25BA%25A7&qid=1554263924&s=books&sr=1-1][やさしいEmacs-Lisp講座 | 広瀬 雄二]]
+- [[https://www.amazon.co.jp/GNU-Emacs%25E6%258B%25A1%25E5%25BC%25B5%25E3%2582%25AC%25E3%2582%25A4%25E3%2583%2589%25E2%2580%2595Emacs-Lisp%25E3%2583%2597%25E3%2583%25AD%25E3%2582%25B0%25E3%2583%25A9%25E3%2583%259F%25E3%2583%25B3%25E3%2582%25B0-%25E3%2583%259C%25E3%2583%2596-%25E3%2582%25B0%25E3%2583%25AA%25E3%2583%2583%25E3%2582%25AF%25E3%2582%25B9%25E3%2583%2586%25E3%2582%25A4%25E3%2583%25B3/dp/4900900192/ref=sr_1_fkmrnull_1?__mk_ja_JP=%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A&keywords=GNU+Emacs%25E6%258B%25A1%25E5%25BC%25B5%25E3%2582%25AC%25E3%2582%25A4%25E3%2583%2589&qid=1554263955&s=books&sr=1-1-fkmrnull][GNU Emacs拡張ガイド―Emacs Lispプログラミング | ボブ グリックステイン, Bob Glickstein, 榎並 嗣智]]
+
+* MELPA
+
+- MELPAはバージョン番号の付いたリリースなわけじゃなくて、masterのHEADがパッケージングされる。
+- タグを付けたコミットでビルドされるのはMELPA-Stable
+- MELPA-Stableはpurcellさんも使ってない
+
+https://github.com/melpa/melpa#melpa-stable
+https://github.com/melpa/melpa/commit/88c44fe81f36144c697c93ef0f0ee7577ef6fe58
+
+#+begin_quote
+Most users should prefer MELPA over MELPA Stable.
+Note that the MELPA maintainers do not use MELPA Stable themselves, and do not particularly recommend its use.
+#+end_quote
+
+* indirect buffer
+[[https://ayatakesi.github.io/emacs/26.1/html/Indirect-Buffers.html][Indirect Buffers (GNU Emacs Manual (Japanese Translation))]]
+
+* LSP
+- [[https://github.com/emacs-lsp/lsp-mode/][emacs-lsp/lsp-mode: Emacs client/library for the Language Server Protocol]] まずはこれ
+- [[https://emacs-lsp.github.io/lsp-mode/page/performance/][Perfomance - LSP Mode - LSP support for Emacs]]
+- [[https://github.com/emacs-lsp/lsp-ivy/][emacs-lsp/lsp-ivy]]
+
+* Overlay
+[[https://ayatakesi.github.io/lispref/26.1/html/Overlay-Properties.html#Overlay-Properties][Overlay Properties (GNU Emacs Lisp Reference Manual)]]
+データはテキストだけどその部分を見た目は違うものにするのに使う。
+
+* 起動スピード
+
+- [[https://blog.d46.us/advanced-emacs-startup/][Advanced Techniques for Reducing Emacs Startup Time]]
+  - [[https://github.com/jschaf/esup][esup]]
+
+* Face
+
+: (frame-parameter nil 'background-mode)
+
+すると今の背景色が light なのか dark なのかがわかる。
+
+** 色の設定
+
+背景の明暗によって色を変更するには
+(class color) の (backround dark) と (backround light) を用いる。
+
+#+begin_src emacs-lisp
+  ((((class color)
+      (background dark))
+     ;;(:background "dark state gray"))
+     (:background "gray10"
+                  :underline "gray24"))
+    (((class color)
+      (background light))
+     (:background "khaki" ;"ForestGreen"
+                  :underline nil))
+    (t ()))
+#+end_src
+
+* performace
+#+begin_src emacs-lisp
+  post-command-hook
+  (yas--post-command-handler jit-lock--antiblink-post-command eldoc-schedule-timer company-post-command t)
+
+  pre-command-hook
+  (eldoc-pre-command-refresh-echo-area company-pre-command t)
+
+  before-change-functions
+  (t syntax-ppss-flush-cache)
+
+  after-change-functions
+  (jit-lock-after-change t)
+
+  post-self-insert-hooks
+  なし
+
+  c--unsafe-post-self-insert-hook-functions
+  (electric-pair-post-self-insert-function)
+#+end_src
+
+=(buffer-local-value 'post-command-hook (get-buffer "*scratch*"))=
+
+* LLM
+- [[https://github.com/copilot-emacs/copilot.el][copilot-emacs/copilot.el: An unofficial Copilot plugin for Emacs.]]
+- [[https://github.com/Exafunction/codeium.el][Exafunction/codeium.el: Free, ultrafast Copilot alternative for Emacs]]
+* 未分類 Emacs memo
+** 基本キー
+- M-r :: 「真ん中・下・上」の移動
+- C-x C-v :: find-alternate-file これは便利
+
+** jaunte.el ショートカットキー
+こう設定してみた。
+#+BEGIN_SRC elisp
+(global-set-key (kbd "C-c C-j") 'jaunte)
+#+END_SRC
+
+** zencoding-mode
+- C-j zencoding-expand-line :: プレビューしながらどんどんかく。
+- C-RET :: いきなり確定
+
+** emmet-mode
+[[https://github.com/smihica/emmet-mode][smihica/emmet-mode: emmet's support for emacs.]]
+zencoding の fork.
+
+** TeX のときの横表示
+- reftex?
+
+** moccur, moccur-edit
+- M-x moccur-grep-find してディレクトリを指定する。
+- マッチさせる表現 ファイルマスク (example: printf .m$)
+- ファイルマスクを指定しないと引っかかりすぎるかも知れないですね。
+- r を押すと wdired のように編集モードに入る。置換などが終わったら C-x C-s
+- ミスったときは C-x k でキャンセルできる。
+** occur
+- [[https://www.youtube.com/watch?v=S2GjvZFLQts][All you need to know about the Emacs OCCUR command in 4 minutes - YouTube]]
+   
+** rg でも edit
+rg.el は中で wgrep を利用した編集機能が付いている。
+
+** wdired
+dired で r を押すと wdired モードに入る。普通に編集するとファイル名変更。
+C-x C-s で保存するかのように終了。
+
+** tramp
+find-file して =/sshx:hostname.example.net:path/to/yourfile.file= とするとホスト hostname.example.net 上のファイル path/to/yourfile.file が開かれる。
+
+sshx: のところは scp: などもある。
+
+20022 番ポートならば =#= を使い、 =#20022= と指定する。 =/sshx:localhost#20022:/= など。
+
+** el-get
+なんか get するには: M-x el-get-list-packages
+el-get のupdate: M-x el-get-self-update
+インストールしているもの全てのアップデート: M-x el-get-update-all
+
+** revert
+http://www.bookshelf.jp/soft/meadow_24.html
+この M-x auto-revert-mode は今表示しているバッファのみ有効ですが，すべての バッファで有効にするためには，M-x global-auto-revert-mode とします．こうし ておくと，すべてのファイルバッファで同様のことをしてくれます．
+
+** Skimで自動リロードする
+#+BEGIN_SRC sh
+defaults write -app Skim SKAutoReloadFileUpdate -boolean true
+#+END_SRC
+
+** mew
+#+BEGIN_SRC lisp
+(setq mew-use-master-passwd t) ;; GnuPG で暗号化できる。
+#+END_SRC
+
+=M-x mew-summary-from-local-to-imap= でローカルのフォルダから IMAP アカウントへコピーできる。
+
+=C-u Z= すると .mew-folder-alist などが再生成される。
+
+** tree
+*** direx
+direx:jump-to-directory
+
+*** dirtree
+
+*** neotree
+[[https://github.com/jaypei/emacs-neotree/][jaypei/emacs-neotree: A emacs tree plugin like NerdTree for Vim.]]
+
+*** speedbar and sr-speedbar
+[[http://emacs.rubikitch.com/sr-speedbar/][sr-speedbar.el : speedbarを同一フレームに表示して関数・変数・ファイルを一覧する]]
+
+** tab化
+*** navbar
+[[https://github.com/papaeye/emacs-navbar][papaeye/emacs-navbar: Navigation bar for Emacs]]
+** tree-sitter
+language が not-found になった場合は ~M-x treesit-install-language-grammar~ を実行する。

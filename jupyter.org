@@ -1,0 +1,112 @@
+:PROPERTIES:
+:ID:       1EBB8D24-284B-4449-B3A8-2C7F730F9593
+:END:
+#+title: Jupyter
+
+Jupyter notebookなど
+
+* Install
+#+begin_src sh
+pip install jupyter
+pip install notebook
+#+end_src
+
+** pyenvの環境を入れる
+
+#+begin_src shell
+jupyter kernelspec list  
+#+end_src
+
+で今のカーネルのリストをチェック。
+
+#+begin_src sh
+python -m ipykernel install --user --name=miniconda3-latest --display-name=miniconda3-latest
+#+end_src
+
+とすると miniconda3-latest という名前のカーネルがインストールされる。
+
+* JupyterLab install
+#+begin_src sh
+pip install jupyterlab
+jupyter labextension install @jupyterlab/toc
+#+end_src
+
+* Tips
+** Key binding
+- ESC :: edit mode から command mode へ
+- RET :: command mode から edit mode へ
+- h :: 困ったらとにかくヘルプ
+- ctrl + shift + '-' :: cell 分割
+- ctrl + return :: exec the cell
+- shift + return :: exec the cell and move next
+- TAB :: 補完
+- shift + TAB :: 引数のヘルプ
+- r y :: (command modeで) 出力だけ削除する
+
+
+*** Command mode で
+- m :: cell を markdown に
+- a :: cell を上に追加
+- b :: cell を下に追加
+- x :: cut
+- c :: copy
+- v :: paste
+- r :: Delete outputs and formatting?
+- y :: Format?
+
+** Pythonのとき
+
+- ?? :: 定義を調べる
+
+** Debug
+
+エラーのあとに空セルを作って、
+
+#+begin_src jupyter
+%debug
+#+end_src
+
+** nbextensions を入れる
+
+: conda update -n base conda
+
+: conda install -c conda-forge jupyter_contrib_nbextensions
+
+: jupyter contrib nbextension install --user
+
+** インタラクティブに
+ipywidgets
+- [[https://kivantium.net/python-ipywidgets][ipywidgetsの使い方]]
+
+** remote で使う
+[[https://qiita.com/syo_cream/items/05553b41277523a131fd][リモートサーバでjupyter notebookを起動させローカル環境で使う - Qiita]]
+
+リモートサーバ上の ~ipython~ で
+
+#+begin_src python
+from notebook.auth import passwd
+passwd()
+#+end_src
+
+としてパスワードを sha1 したのを得る。
+
+=~/.jupyter/jupyter_notebook_config.py= に
+#+begin_src python
+c = get_config()
+
+c.IPKernelApp.pylab = 'inline'
+c.NotebookApp.ip = '*'
+c.NotebookApp.password = 'sha1:[上でsha1ハッシュされたパスワード]'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = [接続ポート]
+#+end_src
+
+** jupytext
+
+#+begin_src shell
+pip install jupytext
+#+end_src
+
+** jupyterlab-lsp
+
+[[https://github.com/aws-sagemaker-jp/awesome-studio-lab-jp/blob/main/README_usage.md][awesome-studio-lab-jp/README_usage.md at main · aws-sagemaker-jp/awesome-studio-lab-jp]]

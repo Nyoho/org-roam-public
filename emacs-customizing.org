@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       8E838EEA-CA3B-4596-8E17-50255D8B53D8
+:END:
+#+title: Emacs customizing
+#+tags: Emacs
+#+date: <2014-06-15 Sun>
+
+Emacs のカスタマイズのメモです。
+
+* dash-at-point
+  便利。 =C-c d= に設定した。

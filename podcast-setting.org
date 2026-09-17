@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       114334B8-1792-4272-8AC3-E552ABBAB86F
+:END:
+Podcastの設定
+
+<2016-08-01 Mon>
+
+* Skypeゲストを呼ぶときの設定
+1. Soundflower
+   1. 2ch を built-in output
+   2. 64ch を none (off)
+2. LadioCast (as a mixer)
+   1. input 1 をマイクや外部マイク (自分の声となるもの) に
+   2. input 2 を Soundflower (2ch) に (Skypeの声を入れる)
+   3. output 1 を Soundflower (2ch)  に (64ch?)
+3. Skype
+   1. マイク(音声)と呼び出し音を Soundflower (2ch) に流し込む。
+4. QuickTime Player で
+   * *** を録音ソースにして新規オーディオ収録すると両方が録音できる。
+   * *** を録音ソースにして新規オーディオ収録すると自分の声だけが録音できる。
+
+
+* 音量
+FFmpeg を用いて音量調整をする。
+
+まず確認
+
+: ffmpeg -nostats -i filename -filter_complex ebur128 -f null -
+
+これで確認して
+
+: ffmpeg -i test.mp3 -af loudnorm=I=-14:TP=-3:LRA=11:print_format=json -f null -
+
+その値から変更するには
+
+#+begin_src shell
+ffmpeg -i input -af "loudnorm=I=-14:TP=-3:LRA=4:measured_I=-8.18:measured_TP=1.1:measured_LRA=4.4:measured_thresh=-18.22:offset=-0.56:print_format=json,channelmap=channel_layout=stereo,aresample=48000:resampler=soxr" -c:v copy -c:a aac output.mkv
+#+end_src
+
+-18 LUFSにする
+#+begin_src shell
+ffmpeg -i inputfile.m4v -af "loudnorm=I=-18:TP=-3:LRA=4" -c:v copy -c:a aac output.mkv
+#+end_src
+
+参考
+
+- [[https://nico-lab.net/loudnorm_with_ffmpeg/][任意のラウドネス値に音量を調整する loudnorm | ニコラボ]]
+  
+* links
+- [[https://note.com/bass2416/n/n5897e308f1dd][音楽講師なら知っておきたいzoomミーティングアプリをオンラインレッスンに使用する場合の設定方法と機材のまとめ（Mac版）｜津田藤宏（2416）｜note]]
+  
+

@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       6D3FDEA4-B937-4C0B-8910-33C51FC84461
+:END:
+#+title: ドラクエウォーク
+#+date: [2022-07-25 Mon 22:13]
+
+[[https://www.dragonquest.jp/walk/][ドラゴンクエストウォーク]]についてメモるところ
+
+* おわかれの仕方
+
+- [[https://gamewith.jp/dq-walk/article/show/317751][お別れのおすすめ基準と効率的な方法 (GameWith)]]
+
+* 武器と防具
+
+- [[https://gamewith.jp/dq-walk/article/show/166329][武器評価一覧 (GameWith)]]
+- [[https://gamewith.jp/dq-walk/article/show/166330][防具評価一覧 (GameWith)]]
+- [[https://gamewith.jp/dq-walk/article/show/166147][ガチャ(ふくびき) 引くべき]]
+
+* Links
+- [[https://app.famitsu.com/article/202501/30679][【ドラクエウォーク攻略】魔人でほこら攻略が超簡単に!? 魔人＋魔刃＋スキル“根絶やし”でほこらの敵を一撃で倒す戦いかたを解説 | ファミ通App【スマホゲーム情報サイト】]]

@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       9FCBBBC9-B8BB-4942-95CE-18BDA28E6B0C
+:END:
+#+title: React
+#+date: <2019-01-18 09:54:26 +0900>
+
+React
+
+* Links
+- [[https://github.com/mars/create-react-app-buildpack][mars/create-react-app-buildpack: ⚛️ Heroku Buildpack for create-react-app: static hosting for React.js web apps]]
+- [[https://zenn.dev/jojojo/articles/568e8522cce340][react-transition-groupを使ってページ遷移にスライドアニメーションをつける方法]]
+  
+* Animation
+- [[https://reactjs.org/docs/animation.html][Animation Add-Ons – React]]
+- [[https://react-spring.io/][react-spring]]
+
+* TypeScript
+
+propの型のつけ方
+[[https://zenn.dev/ogakuzuko/articles/react-typescript-for-beginner][【初心者】React × TypeScript 基本の型定義]]
+
+* 状態管理ライブラリ
+- [[https://recoiljs.org/][Recoil]]
+- [[https://zustand-demo.pmnd.rs/][Zustand]] / [[https://github.com/pmndrs/zustand][pmndrs/zustand: 🐻 Bear necessities for state management in React]]
+  - [[https://reffect.co.jp/react/zustand][Reactで状態管理 初心者でも簡単Zustandの設定方法 | アールエフェクト]]
+
+* SWR
+
+- [[https://swr.vercel.app][SWR]]
+- [[https://zenn.dev/uttk/articles/b3bcbedbc1fd00#revalidateonfocus][そうです。わたしがReactをシンプルにするSWRです。]]
+- [[https://zenn.dev/karamage/articles/12da0f44624707][useSWRInfiniteを使うとページング(無限スクロール)の処理がシンプルに書けて気持ちいい！]]
+- [[https://zenn.dev/purenium/articles/nextjs-sg-use-swr-strong-consistency][【 Next.js 】Static Generation + useSWR で、データ更新、最新のデータ表示を可能にする。]]
+
+* Suspense
+- [[https://ja.reactjs.org/docs/concurrent-mode-suspense.html][サスペンスを使ったデータ取得（実験的機能） – React]]
+
+  
+* Context
+- [[https://reactician.com/articles/sharing-state-between-nextjs-page-navigations-using-react-contexts][Sharing state between Next.js page navigations using React Contexts - Reactician]]
+
+* Reactのテスト
+参考になりそう https://github.com/FormidableLabs/urql/blob/main/packages/next-urql/src/__tests__/with-urql-client.spec.ts
+
+* Framer-motion
+
+- [[https://dev.classmethod.jp/articles/play-framer-motion-basic/][【遊んでみた】framer-motion基本のき | DevelopersIO]]

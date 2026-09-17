@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       6EE59F11-F853-4294-A248-77342897AA8E
+:END:
+#+title: launchd
+#+date: [2026-05-08 Fri 13:50]
+
+launchdの使い方をメモります。
+
+コマンドは ~launchctl~
+
+* plist ファイルの場所
+
+定期実行や自動起動をするために plist ファイルをここに配備する。
+
+- ユーザ   ~~/Library/LaunchAgents/~  ログイン時に起動
+- システム全体  ~/Library/LaunchAgents/~  全ユーザーで起動
+- システム    ~/Library/LaunchDaemons/~  システム起動時
+
+* ジョブの登録・操作（操作・把握）
+  
+登録
+  
+: launchctl load ~/Library/LaunchAgents/com.yourname.myjob.plist
+
+有効化
+  
+: launchctl enable user/$(id -u)/com.yourname.myjob
+
+手動で今すぐ実行
+  
+: launchctl start com.yourname.myjob
+
+停止
+  
+: launchctl stop com.yourname.myjob
+
+削除
+  
+: launchctl unload ~/Library/LaunchAgents/com.yourname.myjob.plist

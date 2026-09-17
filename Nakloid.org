@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       6B40D36B-F04D-4608-AE33-303623C2E75A
+:END:
+#+title: Nakloid
+#+tags: music
+#+date: <2013-02-12 Tue>
+
+オープンソースの音声合成ソフトウェア [[https://github.com/acknak/Nakloid][Nakloid]] のメモ。
+
+* build
+OS X + Gentoo Prefix 環境で、
+=$EPREFIX/usr/lib/libboost_system-mt.dylib=
+を末尾に直接つけたらビルドが通った。

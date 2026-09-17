@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       167825C9-EB8D-4B0A-9014-FEAB9E20B357
+:END:
+
+Carthage
+
+[[https://github.com/Carthage/Carthage][Carthage/Carthage: A simple, decentralized dependency manager for Cocoa]]
+
+
+- Xcode プロジェクトのフォルダと同じところに Cartfile を作る
+
+
+* carthage checkout
+- =--use-submodules= :: プロジェクトを git submobule として追加する。
+- =--no-use-binaries= :: binaries
+

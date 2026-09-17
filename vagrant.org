@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       4FDD3D7F-163C-46AD-ADF1-3025DADD80E0
+:END:
+#+begin_html
+---
+title: Vagrant
+tags: vagrant
+date: <2013-11-26 Tue>
+---
+#+end_html
+
+* 便利 plugins
+** vbguest
+#+begin_src sh
+vagrant plugin install vagrant-vbguest
+#+end_src
+参考: [[http://kashewnuts.bitbucket.org/2013/08/25/vagrantvbguest.html][Vagrant で共有フォルダが使用できなくなったので解決メモ — kashew_nuts-blog]]
+
+** sahara
+#+BEGIN_SRC sh
+vagrant plugin install sahara
+#+END_SRC
+しておく。
+
+#+BEGIN_SRC sh
+vagrant sandbox on
+vagrant sandbox status
+#+END_SRC
+
+** dotenv
+Dotenv.load
+.env ファイルにローカルな環境設定
+
+* vagrant ssh
+-- とするとその後に ssh の通常のオプションが入る。
+#+BEGIN_SRC 
+vagrant ssh -- -l username
+#+END_SRC

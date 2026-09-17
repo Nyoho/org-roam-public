@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       57FBC9B1-2529-4FF9-821D-02BAB724B280
+:END:
+#+title: serverspec
+#+tags: serverspec, rspec
+#+date: <2013-08-09 Fri>
+
+serverspec
+
+#+begin_src sh
+gem i serverspec
+mkdir hoge
+cd hoge
+serverspec-init
+#+end_src
+
+#+begin_src sh
+rake spec 
+#+end_src
+
+vagrant みたいなんじゃなくて sudo するパスワードがいるときは訪ねさせることができる。
+環境変数を =ASK_SUDO_PASSWORD=1= とする。
+#+begin_src sh
+ASK_SUDO_PASSWORD=1 rake spec 
+#+end_src

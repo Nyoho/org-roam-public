@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       EA44C7F1-17DB-4A7F-AB38-95EA280F532B
+:END:
+VMware Fusion
+
+* ディスクを圧縮 
+参考: [[http://gendosu.jp/archives/1952][VMwareのゲストOSが肥大化してきたな、と思った時に出来る事 | GENDOSU@NET]]
+
+Windows の場合
+
+cmd と打ち込んで ctrl + shift + enter すると管理者権限でコマンドプロンプトが立ち上がる。
+
+#+BEGIN_SRC 
+C:\Program Files\VMware\VMware Tools&gt;VMwareToolboxCmd.exe disk list
+C:\
+#+END_SRC
+
+と出たら
+
+#+BEGIN_SRC 
+C:\Program Files\VMware\VMware Tools&gt;VMwareToolboxCmd.exe disk shrink C:\
+#+END_SRC

@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       01D8B3AA-5678-4C61-8004-92ACAAD8D12B
+:END:
+#+begin_html
+---
+title: Ustream
+tags: Ustream, CamTwist
+date: <2013-05-31 Fri>
+---
+#+end_html
+
+* tips
+[[http://gihyo.jp/lifestyle/serial/01/event-streaming/0002?page%3D2][第2回　WebカメラとCamTwistを使ってUstream配信をする：エンジニアのためのイベント映像活用方法｜gihyo.jp … 技術評論社]]

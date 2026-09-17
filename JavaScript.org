@@ -1,0 +1,75 @@
+:PROPERTIES:
+:ID:       1483740E-6D10-4B67-A229-A6005728CE7A
+:END:
+#+title: JavaScript
+#+filetags: JavaScript
+#+date: <2014-03-06 Thu>
+
+* Testing framework
+- QUnit https://qunitjs.com/
+- Mocha http://visionmedia.github.io/mocha/
+- Jasmine http://jasmine.github.io
+
+* 学習
+- [[http://d.hatena.ne.jp/language_and_engineering/20080912/1221297779][JavaScriptの動かないコード　　(JavaScriptエラー集) - 主に言語とシステム開発に関して]]
+- [[http://0-9.sakura.ne.jp/pub/lt/JSGirls/start.html][JavaScript second step]]
+- [[https://speakerdeck.com/tacamy/js-girls-tokyo-number-1][はじめてのJavaScript / JS Girls Tokyo #1 // Speaker Deck]]
+- [[http://blog.codeship.io/2014/01/22/testing-frontend-javascript-code-using-mocha-chai-and-sinon.html][Testing your Frontend JavaScript code using Mocha, Chai and Sinon | via @codeship]]
+- [[http://andyshora.com/unit-testing-best-practices-angularjs.html][Unit Testing Best Practices in AngularJS]]
+- [[http://efcl.info/2016/10/11/array-patterns/][JavaScriptの配列のパターン | Web Scratch]] すばらしい Array のまとめ
+- [[https://aligach.net/diary/2020/0908/][JavaScriptでバックグラウンドで処理してもらうのはPromiseをawaitしなければよいだけだった (2020-09-08) | あーありがち]]
+  
+** ES6 (ES2015)
+
+arrow
+#+BEGIN_SRC 
+[0,1,2].filter(n => n % 2 == 0).forEach(n => console.log(n))
+#+END_SRC
+
+template literal
+#+BEGIN_SRC js
+`My name is  ${name}.`;
+#+END_SRC
+
+- =export=
+- =import=
+
+* Tips
+** viewport のないページに viewport をつける
+
+#+BEGIN_SRC javascript
+var metaTag=document.createElement('meta');
+metaTag.name = "viewport";
+metaTag.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0";
+document.getElementsByTagName('head')[0].appendChild(metaTag);
+#+END_SRC
+
+#+BEGIN_SRC javascript
+var metaTag=document.createElement('meta'); metaTag.name = "viewport"; metaTag.content = "width=device-width, initial-scale=1"; document.getElementsByTagName('head')[0].appendChild(metaTag);
+#+END_SRC
+
+元々あれば、
+#+BEGIN_SRC javascript
+viewport = document.querySelector("meta[name=viewport]");
+viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+#+END_SRC
+参考: [[http://stackoverflow.com/questions/3588628/can-i-change-the-viewport-meta-tag-in-mobile-safari-on-the-fly][javascript - Can I change the viewport meta tag in mobile safari on the fly? - Stack Overflow]]
+** copy to clipboard
+[[https://gist.github.com/Chalarangelo/65320a1953388d0042829ac1fb989e33#file-copytoclipboard-js][copyToClipboard.js]]
+
+#+BEGIN_SRC js
+const copyToClipboard = str => {
+  const el = document.createElement('textarea');
+  el.value = str;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+#+END_SRC
+
+** video タグで早回しする
+
+#+begin_src js
+document.querySelector('video').playbackRate = 1.5
+#+end_src

@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       FD162978-8D99-4723-8154-488C7483A3D2
+:END:
+#+title: DTM
+#+date: <2017-03-14 09:19:17 +0900>
+
+* compressor
+
+DeeComp [[freshlive.tv/dtmstationplus/88005][DTMステーションPlus! 第76回]]のメモ
+
+- 3を規準に。3から深くしたりする
+- アタックは10msから上下する
+- リリースは80msから上下する
+
+DeeTrim で均一化する。
+
+まずは無音部分は丁寧に削除する。
+
+* 音源
+- [[https://www.amplesound.net/en/download.asp][Ample Sound]] freeのAmple Guitar M Liteなどがある。
+
+* 音声データからMIDIファイル
+
+[[https://qiita.com/ranngeruhannsuto/items/3769e7d1cbe762f3fd9a][音源データ「.mp3」をcolabで「MIDI」へ変換する方法 #Python - Qiita]]
+
+~piano_transcription_inference~ を使うらしい。
+
+* 音響合成
+- [[https://supercollider.github.io/][SuperCollider]]
+- [[https://foxdot.org/][FoxDot]]
+- [[https://github.com/Qirky/FoxDot][Qirky/FoxDot]]

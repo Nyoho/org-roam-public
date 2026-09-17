@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       78867CAC-57EB-4955-A476-D18ABA4AFE07
+:END:
+#+title: Steve Jobs
+#+date: [2023-05-25 Thu 15:42]
+
+video
+[[https://www.youtube.com/watch?v=KRBIH0CA7ZU][Steve Jobs - NeXT marketing strategy video 1991 - YouTube]]

@@ -1,0 +1,68 @@
+:PROPERTIES:
+:ID:       1F9554BD-6041-47F2-AC39-D4F05DC3FB0C
+:END:
+#+title: tDiary
+#+filetags: tDiary
+#+date: <2013-12-02 Mon>
+
+tDiary memo
+
+* tdiary.conf の変更
+tdiary-contrib を追加する。
+#+begin_src ruby
+@options['sp.path'] = [
+        'misc/plugin',
+        "#{TDiary::PATH}/misc/plugin", "#{TDiary::PATH}/../tdiary-contrib/plugin"
+]
+#+end_src
+
+* tDiary の gem
+- Note taken on [2016-12-30 Fri 15:14]
+master から gem を作る。
+#+BEGIN_SRC sh
+bundle exec rake build && gem install `ls -1t pkg/*.gem|head -1`
+#+END_SRC
+
+In fish, 
+#+BEGIN_SRC fish
+bundle exec rake build; and gem install (ls -1t pkg/*.gem|head -1)
+#+END_SRC
+
+* setup
+wy というディレクトリに tDiary rack アプリを作る。
+
+#+BEGIN_SRC sh
+tdiary new wy
+(...)
+cd wy
+bundle exec tdiary wy -p 8080
+#+END_SRC
+
+* transition memo
+<2015-01-07 Wed>
+- YouTube の幅がおかしい http://nyoho.jp/diary/?date=20090202
+
+* plugin
+** temporarily remove
+- comment_emoji_autocomplete.rb
+- category_autocomplete.rb
+- title-webgltest.rb
+- category.rb
+- category-show-frequently-used.rb
+
+* puma
+#+BEGIN_SRC sh
+bundle exec puma -p 8080 -t 0:32 -w 2 config.ru
+#+END_SRC
+
+* v8 and therubyracer
+[[https://qiita.com/kay-adamof/items/59c8a5dd8816660fc02d][Rails の bundle install 時に出会った therubyracer のエラーと、その解決方法 - Qiita]]
+#+begin_src shell
+  brew install v8@3.15
+  
+  bundle config --local build.libv8 --with-system-v8
+  bundle config --local build.therubyracer --with-v8-dir=/usr/local/opt/v8@3.15
+#+end_src
+とした。
+
+

@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       EB0861D6-F69C-4758-BD21-B4B645FDCE4F
+:END:
+#+title: gcc
+#+date: <2021-07-11 11:23:23 +0900>
+
+* build
+
+次は =$HOME/.local= に入れる場合
+
+#+begin_src sh
+./contrib/download_prerequisites
+mkdir build
+cd build
+../configure --enable-languages=c,c++ --prefix=$HOME/.local --disable-bootstrap --disable-multilib
+make
+make install
+#+end_src
+
+
+下は古い。 =./contrib/download_prerequisites= を知らんかった。これで gmp, mpfr, mpc を全部取ってきてビルドしてくれる。
+
+ローカル (=$HOME/local=) にインストールする方法
+
+gmp を入れる。
+
+mpfr を入れる。
+
+mpc を入れる。
+
+: ./configure --prefix=$HOME/local --with-gmp=$HOME/local --with-mpfr=$HOME/local
+
+いよいよ gcc を。
+
+#+begin_src sh
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+./configure --prefix=$HOME/local --with-gmp=$HOME/local --with-mpfr=$HOME/local --disable-multilib
+#+end_src

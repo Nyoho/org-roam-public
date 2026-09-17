@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       5007825E-7C42-4751-A790-8F751B4955DC
+:END:
+#+title: Systemd
+#+date: <2019-10-27 23:21:52 +0900>
+
+#+BEGIN_SRC sh
+systemctl status service-name
+#+END_SRC
+
+有効化する
+#+BEGIN_SRC sh
+systemctl enable /etc/systemd/system/hogehoge.service
+#+END_SRC
+
+enable/disabled を確認する
+#+begin_src sh
+systemctl list-unit-files
+#+end_src
+
+hogehoge.service がうまく動かないときに
+
+#+begin_src sh
+systemd-analyze verify hogehoge.service
+#+end_src
+
+* Tips
+- systemctl list-dependencies :: 依存関係の表示
+

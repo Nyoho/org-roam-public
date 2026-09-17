@@ -1,0 +1,167 @@
+:PROPERTIES:
+:ID:       1FAF8022-B028-4F4F-9D49-B38010187EAC
+:END:
+#+title: UNIX関係・コマンドなど
+#+date: <2021-05-30 22:02:29 +0900>
+
+* Tips
+** default shell を知るには
+chsh するときなどに、あれ、今は何が default shell なんだっけと思ったら、$SHELL を見ればよい。
+
+** watch
+watch コマンド便利。
+
+** ファイルの共通部分を削除した情報を知るには
+
+: awk 'NR==FNR{a[$0]=1;next}!a[$0]' file2 file1
+
+: grep -vFf file2 file1
+
+From [[https://stackoverflow.com/questions/24324350/how-to-remove-common-lines-between-two-files-without-sorting][bash - How to remove common lines between two files without sorting? - Stack Overflow]]
+
+** ポートを使っている人を調べる
+: lsof -n -i :80
+
+80を使っているプロセスがわかる。
+
+** find コマンド
+*** =-mtime=
+=-mtime= はすごく便利。
+例えば、
+
+: find PATH -type f -mtime +3 -exec rm -f {} \; > /dev/null
+
+だと3日より古いものを削除する。
+
+*** =-exec=
+そもそも =-exec= がとても便利。
+
+#+begin_src sh
+\;
+#+end_src
+
+ は
+
+#+begin_src sh
+ ";"
+#+end_src
+
+でも同じです。
+
+エスケープ不要な ~+~ を使ってもいいので
+
+#+begin_src sh
+-exec {} +
+#+end_src
+
+でもOK。
+
+速いという情報もあります。[[https://qiita.com/ko1nksm/items/9ff1f212255e8520070c][ POSIX 準拠のシェルスクリプトでは find | xargs よりも find -exec {} + を使うべき！ - Qiita]]
+
+** xxd
+16進ダンプしてくれる。しかもC言語のコードにしてくれる。
+
+: xxd -i filename
+
+** ファイルが多いディレクトリを探す
+#+begin_src sh
+find . -xdev -type f | cut -d "/" -f 2 | sort | uniq -c | sort -n
+#+end_src
+
+** tr
+=textfile= の改行を削除したものを得るには tr を使うと便利。
+
+#+begin_src sh
+tr --delete '\n' < textfile
+#+end_src
+
+** diff
+
+ディレクトリごと比較するとき
+#+begin_src shell
+  diff -r dir1 dir2
+#+end_src
+
+ディレクトリごと比較するけど、各ファイルが同じかどうかだけ知りたいとき
+
+#+begin_src shell
+  diff -rq dir1 dir2
+#+end_src
+
+* cron
+
+#+BEGIN_SRC 
+@monthly command 
+#+END_SRC
+などと書けるらしい。知らなかった。
+その他の書き方は [[https://help.ubuntu.com/community/CronHowto][CronHowto - Community Help Wiki]] を見る。
+
+
+* netstatはもう古い
+[[http://tsuchinoko.dmmlabs.com/?p=1387][今までありがとう「ifconfig」 | ツチノコブログ]] に書いてあった。
+
+| net-tools        | iproute2                 |
+|------------------+--------------------------|
+| ifconfig         | ip l (ip link)           |
+| ifconfig -a      | ip a show (ip addr show) |
+| ifconfig eth0 up | ip link set eth0 up      |
+| netstat          | ss                       |
+| netstat -i       | ip -s link               |
+| netstat -l       | ss -l                    |
+| netstat -r       | ip r (ip route)          |
+| route [add/del]  | ip route [add/del]       |
+| route -n         | ip route show            |
+| arp -n           | ip n (ip neighbor)       |
+
+* tracerouteはもう古い
+=mtr= を使う。
+
+* nc でnetwork通信ができるかチェックする
+
+: nc -kl 8001
+
+とするとサーバが 8001 で立ち上がる。
+
+サーバのホストが servername-or-ipaddr だとすると、
+クライアントで
+
+: nc servername-or-ipaddr 8001
+
+とすると、通信ができる。aaなどと打ってリターンして送信されていれば成功である。
+
+
+
+* suspend
+プロセスを Ctrl-Z ではなくプロセスIDでサスペンドするには、
+
+#+begin_src sh
+kill -s SIGSTOP プロセスID
+#+end_src
+
+とする。再開するには、
+
+#+begin_src sh
+kill -s SIGCONT プロセスID
+#+end_src
+
+* パスワードの有効期限
+
+#+begin_src sh
+chage --list username
+#+end_src
+でアカウント名 =username= の有効期限がわかる。
+
+* fswatch
+https://github.com/emcrisostomo/fswatch 
+fswatchというコマンドで簡易的に「監視して実行」ができる。
+
+#+begin_src shell
+  fswatch -o path | xargs -n1 -I{} ls
+#+end_src
+
+
+- [[https://qiita.com/yusanish/items/24075e5b2fb5536ae7c1][fswatchの使い方覚書 ＋ fswatchでフォルダを監視して自動commitする - Qiita]]
+
+* ベンチマークアプリ
+
+sysbench とか

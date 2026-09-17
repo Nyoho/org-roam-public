@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       AE408EC6-0484-4FB7-966D-E039986B2B2B
+:END:
+#+title: Kalman filter
+#+date: <2021-07-16 23:58:17 +0900>
+
+* Links
+
+- [[https://www.youtube.com/watch?v=N6HFAJq3vUQ][【カルマンフィルター入門】Part 1: カルマンフィルターが選ばれる理由 - YouTube]]
+- [[https://www.youtube.com/watch?v=0HI3Tk6PKMw][【カルマンフィルター入門】Part 2: 状態推定器 - YouTube]]
+- [[https://qiita.com/s-yonekura/items/7cdc99ba444cdbd4e880][カルマンフィルターについて - Qiita]] Juliaでの実装がある
+- [[https://logics-of-blue.com/book-guide-time-series-analysis/][時系列分析のためのブックガイド | Logics of Blue]] 時系列分析・状態空間モデルに関する書籍のリスト
+- [[https://tech.tier4.jp/entry/2021/08/04/160000][カルマンフィルターが自動運転の自己位置推定で使われるまで - Tier IV Tech Blog]]
+- [[https://cocalc.com/share/public_paths/7557a5ac1c870f1ec8f01271959b16b49df9d087][CoCalc -- Kalman-and-Bayesian-Filters-in-Python]]
+
+
+* 関連
+** 粒子フィルタ
+- [[https://ja.wikipedia.org/wiki/%E7%B2%92%E5%AD%90%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF][粒子フィルタ - Wikipedia]]

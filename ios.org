@@ -1,0 +1,85 @@
+:PROPERTIES:
+:ID:       E59EF73B-8366-427E-9689-6C816B90F588
+:END:
+
+* Testing
+- [[https://speakerdeck.com/orgachem/ios-detesutorong-yi-nashe-ji-wo-shi-xian-surutamefalsedezainpatan][iOS でテスト容易な設計を 実現するためのデザインパターン - Speaker Deck]]
+
+* Core Audio
+** 資料
+- [[https://www.youtube.com/watch?v=W9qvGurjfNk][iPhone Dev Sapporo勉強会 May, 2018 - YouTube]]
+
+* マナーモード中でも音を鳴らすには
+#+BEGIN_SRC objc
+[[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+#+END_SRC
+
+* CALayer
+#+BEGIN_SRC objc
+  CATransform3D t = CATransform3DIdentity;
+  CGFloat s = size.width;
+  t = CATransform3DConcat(t, CATransform3DMakeScale(1.0f/s, 1.0f/s, 1.0f/s));
+  t = CATransform3DConcat(t, perspectiveMatrix);
+  t = CATransform3DConcat(t, CATransform3DMakeScale(s, s, s));
+  CATransform3D perspectiveMatrix = CATransform3DIdentity;
+  layer.transform = t;
+#+END_SRC
+CALayer.transform はポイントが単位なので行列をポイントが座標の単位になるように設計しないといけない。じゃないとめちゃんこでかくなる。
+-0.5〜+0.5 ではない。
+
+* Camera関係
+** (iOS 10から?)
+Info.plistに
+
+NSCameraUsageDescription
+NSMicrophoneUsageDescription
+
+* UserDefaults
+
+bool の例
+#+BEGIN_SRC swift
+guard !UserDefaults.standard.bool(forKey: "hasHoge") else { return }
+UserDefaults.standard.set(true, forKey: "hasHoge")
+#+END_SRC
+
+* ARKit
+** Examples
+- https://github.com/kidap/ARKitEarth
+
+* Wi-Fi の強度を取る
+
+[[https://stackoverflow.com/questions/47564350/a-way-to-calculate-or-get-wifi-strength-on-swift-on-ios-11][A way to calculate or get wifi strength on Swift on iOS 11 - Stack Overflow]]
+
+#+BEGIN_SRC swift
+  if let statusBarDataNetworkItemView = NSClassFromString("UIStatusBarDataNetworkItemView"), view .isKind(of: statusBarDataNetworkItemView) {
+      if let val = view.value(forKey: "wifiStrengthRaw") as? Int {
+          //print("rssi: \(val)")
+          rssi = val
+          break
+      }
+  }
+#+END_SRC
+
+* Core Audio
+Swift で Audio Unit
+- [[https://qiita.com/ruikanase/items/e89b6e7e45302f7236f2][iOSでサイン波を鳴らす (Swift4 × AudioUnit) - Qiita]]
+- [[https://www.pebblewind.com/entry/2017/09/23/094603][swift3でCoreAudioを使う 録音編 - Pebble Coding]]
+
+* Vision Framework など
+- [[https://heartbeat.fritz.ai/advancements-in-apples-vision-framework-2019-year-in-review-4c9d3ad5b138][Advancements in Apple’s Vision Framework: 2019 Year-in-Review]]
+- [[https://heartbeat.fritz.ai/face-recognition-and-detection-on-ios-using-native-swift-code-core-ml-and-arkit-feed10c468da][Face Recognition and Detection on iOS Using Native Swift Code, Core ML, and ARKit]]
+
+* 便利ライブラリ
+** グラフィック
+- Macaw [[https://github.com/exyte/macaw][exyte/Macaw: Powerful and easy-to-use vector graphics Swift library with SVG support]]
+- Macawのサンプル [[https://github.com/exyte/macaw-examples][exyte/Macaw-Examples: Various usages of the Macaw library]]
+- [[https://github.com/UrbanApps/UAProgressView][UrbanApps/UAProgressView: UAProgressView is a simple and lightweight, yet powerful animated circular progress view]]
+
+* 便利サンプルコード
+- [[https://github.com/banjun/PhotoStudioPlayer][banjun/PhotoStudioPlayer: iOS screen capture player for macOS with chroma key filter for starlight stage]] これは素晴らしい。iOS画面をライトニングケーブル経由でmacOSに表示、するだけならQuickTime Playerでもできるが、クロマキー合成もできる。
+
+* 動画など
+- [[https://www.youtube.com/watch?v=mavniHTe_Xw&t=7m57s][iOSDC Reject Conference 2018 Day2 Track C - YouTube]] Tests Live Coding すごい。
+  - [[https://speakerdeck.com/orgachem/iosdc-reject-conference-tests-live-coding-days-2][Slide]]
+  - [[https://github.com/fromkk/iOSDCRC][fromkk/iOSDCRC: OSS Conference application for iOS.]]
+- [[https://medium.com/mixi-developers/2021-ios-mixi-training-d981b62e680f][ミクシィのiOS新卒研修資料を公開しました - mixi developers - Medium]] 2021年度の新卒研修。SwiftUI。

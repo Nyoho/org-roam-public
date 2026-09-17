@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       82818FE4-0F0C-42F8-9097-1BD7D1894A51
+:END:
+#+title: text to speech
+#+date: [2025-08-26 Tue 11:08]
+
+
+* OpenAudio
+[[https://speech.fish.audio/ja/][OpenAudio]] (旧 Fish-Speech)
+
+* Qwen-TTS
+
+https://github.com/QwenLM/Qwen3-TTS
+#+begin_src sh
+  uv run qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign --device mps --no-flash-attn
+  uv run qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-Base --port 8000 --device mps --no-flash-attn
+#+end_src
+
+* Irodori-TTS
+- [[https://github.com/Aratako/Irodori-TTS][Aratako/Irodori-TTS: A Flow Matching-based Text-to-Speech Model with Emoji-driven Style Control]]
+- [[https://huggingface.co/Aratako/Irodori-TTS-500M-v2-VoiceDesign][Aratako/Irodori-TTS-500M-v2-VoiceDesign · Hugging Face]]
+
+* pocket-tts
+
+[[https://github.com/kyutai-labs/pocket-tts?tab=readme-ov-file][kyutai-labs/pocket-tts: A TTS that fits in your CPU (and pocket)]]
+
+* sarashina2.2
+[[https://huggingface.co/sbintuitions/sarashina2.2-tts][sbintuitions/sarashina2.2-tts · Hugging Face]]
+
+* mlx-audio
+[[https://github.com/Blaizzy/mlx-audio][Blaizzy/mlx-audio: A text-to-speech (TTS), speech-to-text (STT) and speech-to-speech (STS) library built on Apple's MLX framework, providing efficient speech analysis on Apple Silicon.]]
+
+> providing efficient speech analysis on Apple Silicon.
+
+* Fish Speech
+Fish Speech。[[https://speech.fish.audio/][Fish Audio]]。
+
+[[https://zenn.dev/megyo9/scraps/164aa5b73814d6][生成AI系の環境構築メモ]] に書いてありました。
+
+* Qwen-Audio-3.0-TTS
+
+[[https://zenn.dev/kun432/scraps/04ff5d177b1cc4][「Qwen-Audio-3.0-TTS」を試す]]
+
+* 参考
+- [[https://zenn.dev/megyo9/articles/192bf143acb106][ローカルで動かせる日本語TTSをいろいろ試す]]
+- [[https://zenn.dev/megyo9/scraps/164aa5b73814d6][生成AI系の環境構築メモ]]

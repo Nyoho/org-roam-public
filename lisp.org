@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       51D6B868-7E4D-4BFD-909C-DB4350C2918B
+:END:
+#+title: lisp
+#+date: [2022-08-11 Thu 09:57]
+
+Lispについて
+
+* LISP処理系を書く
+https://github.com/kanaka/mal
+
+The Make-A-Lisp Process
+https://github.com/kanaka/mal/blob/master/process/guide.md

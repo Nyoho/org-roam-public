@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       DE3AAC5F-42FE-4DC4-AF4C-FF00B92C276A
+:END:
+#+title: 英辞郎
+#+DATE: <2018-08-15 Wed>
+
+
+[[https://eow.alc.co.jp/][英辞郎 on the WEB]] の活用
+
+* Tips
+[[https://readingmonkey.blog.fc2.com/blog-entry-586.html][意外と知らない英辞郎で必要な英文／和訳を素早く探す４つの基本技 読書猿Classic: between / beyond readers]] に書いてあったもの。
+
+「または」
+
+: ( A | B | C )
+
+Minus
+
+: foo -bar
+
+二重引用符
+
+: "of mine|yours"
+
+
+活用 (角括弧で包んだ部分は変化してくれる) -> 今は付けなくてもそうしてくれているっぽい。
+
+: you [go] away 
+
+間の語数指定ワイルドカード
+
+: as {1} as {1} can
+
+={1,2}= みたいなのはもうできないみたい。
+

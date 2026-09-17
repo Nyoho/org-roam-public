@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       DA0596E2-24C1-4E3B-A9F7-9F3ECC7A8F4A
+:END:
+データ同化
+
+* カルマンフィルタ
+- [[https://qiita.com/komi1230/items/5f48e58f380eaadd3308][機械学習としてのカルマンフィルター - Qiita]]

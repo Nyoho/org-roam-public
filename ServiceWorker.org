@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       0EA0FD28-D243-44D1-9744-CDD647D936C5
+:END:
+#+title: Service Worker
+
+やり方
+
+#+BEGIN_SRC js
+navigator.serviceWorker.register('/service-worker.js');
+#+END_SRC
+

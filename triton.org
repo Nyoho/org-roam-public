@@ -1,0 +1,8 @@
+#+title: Triton
+#+date: <2021-07-30 Fri>
+
+OpenAIから出た。<2021-07-30 Fri> GPUプログラミング言語。
+
+- [[https://github.com/openai/triton][openai/triton: Development repository for the Triton language and compiler]] source code repository (GitHub)
+- [[https://www.openai.com/blog/triton/][Introducing Triton: Open-Source GPU Programming for Neural Networks]]
+  

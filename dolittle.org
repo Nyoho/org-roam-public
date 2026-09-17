@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       D260C30E-4B0F-4DC2-B20E-C238E1B2D324
+:END:
+
+ドリトル
+
+- [[https://dolittle.eplang.jp/][start {プログラミング言語「ドリトル」}]]
+- [[https://dolittle.eplang.jp/ch_common_object][標準オブジェクト]]
+- [[https://dolittle.eplang.jp/manualjs][manualjs オンライン版マニュアル]]
+
+* コード片のメモ
+
+#+begin_src 
+かめた＝タートル! 作る。
+かめた:x = 123。
+かめた:x = かめた:x + 2。
+
+かめた:走る＝「|ｘ|かめた! (ｘ)歩く」。
+かめた:method＝「|y| x = x + 1」。
+
+かめた! 100 走る。
+かめた! 0 method.
+
+ラベル! (かめた:x) 作る。
+何か = ボタン! 作る。
+何か:x = 1。
+ラベル! (何か:x) 作る。
+何か:x=何か:x + 1。
+ラベル! (何か:x) 作る。
+
+
+並び＝配列！123　456　789　作る。
+ラベル！（並び！3　読む）作る。
+#+end_src
+
+#+begin_src dolittle
+かめた＝タートル！作る （青） 線の色 ゆっくり動く。
+
+挨拶する（） は
+    「こんにちは」を表示する
+を実行する
+
+なにか（str） は
+    strを表示する
+を実行する
+
+あ(x)は
+    x*2 を返す
+を実行する
+#+end_src
+
+* 関数定義
+「次のように定義することで、関数に戻り値を設定できます。」
+https://dolittle.eplang.jp/dncl_reference

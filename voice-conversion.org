@@ -1,0 +1,8 @@
+#+title: Voice conversion
+#+date: <2021-08-26 Thu>
+
+声質変換について
+
+* Links
+- [[https://www.jstage.jst.go.jp/article/transinf/E104.D/7/E104.D_2020EDP7252/_article/-char/ja/][Real-Time Full-Band Voice Conversion with Sub-Band Modeling and Data-Driven Phase Estimation of Spectral Differentials]]
+- [[https://arxiv.org/abs/2008.03648][[2008.03648] An Overview of Voice Conversion and its Challenges: From Statistical Modeling to Deep Learning]] サーベイ

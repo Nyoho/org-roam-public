@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       9DAF3607-59A0-4119-BC19-3B425ADF4411
+:END:
+slideshow という slide show 作成用の gem
+
+テーマ (テンプレート) をインストール
+#+BEGIN_SRC sh
+slideshow install shower
+#+END_SRC
+
+index.md を作りつつ、
+#+BEGIN_SRC sh
+slideshow build index -t shower
+#+END_SRC
+

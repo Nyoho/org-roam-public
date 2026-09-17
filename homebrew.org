@@ -1,0 +1,114 @@
+:PROPERTIES:
+:ID:       538F67CB-227F-4CA1-8F0A-937EF168742A
+:END:
+#+title: Homebrew
+#+tags: homebrew, brew
+#+date: <2013-10-25 Fri>
+
+Homebrew memo
+
+公式: https://brew.sh
+
+* Install
+#+BEGIN_SRC sh
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+#+END_SRC
+
+* Packages - memo
+** Standard
+#+BEGIN_SRC sh
+brew install zsh git tmux w3m wget cmigemo binutils coreutils findutils lv ag z gnupg stunnel hub class-dump
+brew install scons ntl
+brew install --cocoa emacs
+#+END_SRC
+
+** VM
+#+BEGIN_SRC sh
+brew tap phinze/homebrew-cask
+brew install brew-cask
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install quicksilver
+#+END_SRC
+
+↓もう =--cask= でできる
+#+BEGIN_SRC sh
+brew install --cask virtualbox
+brew install --cask vagrant
+brew install --cask quicksilver
+#+END_SRC
+
+** MeCab
+#+BEGIN_SRC sh
+brew install mecab
+brew link mecab
+brew install mecab-ipadic
+#+END_SRC
+
+** PostgreSQL
+[[file:postgresql.org::Homebrew で入れる PostgreSQL][Homebrew で入れる postgresql]] に移動
+
+** ffmpeg
+#+BEGIN_SRC sh
+brew install ffmpeg
+#+END_SRC
+
+** sqlite3
+#+begin_src sh
+    LDFLAGS:  -L/usr/local/opt/sqlite/lib
+    CPPFLAGS: -I/usr/local/opt/sqlite/include
+#+end_src
+
+** Brewfile
+こんな感じで書けるらしい。でももうやめた。
+#+BEGIN_SRC 
+update
+upgrade
+
+tap phinze/homebrew-cask || true
+tap homebrew/binary || true
+
+install zsh
+install git
+
+install brew-cask
+
+cask install virtualbox
+cask install vagrant
+
+cleanup
+#+END_SRC
+
+* COMMAND USAGE
+** 検索
+#+begin_src sh
+brew search hoge
+#+end_src
+
+** EMACS.APP など
+/APPLICATIONS に .app をリンクする。x
+#+BEGIN_SRC sh
+brew linkapps
+#+END_SRC
+
+** 過去のバージョン
+#+BEGIN_SRC 
+brew info hoge
+# 0.9.4.6 などが見つかる
+brew switch hoge 0.9.4.6
+#+END_SRC
+
+** outdated
+#+BEGIN_SRC sh
+brew outdated
+brew update && echo --- && brew outdated
+#+END_SRC
+
+* formula
+/usr/local/Library/Formula に格納される
+
+my formulae
+https://github.com/Nyoho/brew-formulae
+#+BEGIN_SRC sh
+brew install emacs.rb --srgb --japanese --cocoa --with-gnutls --keep-ctags
+#+END_SRC

@@ -1,0 +1,82 @@
+:PROPERTIES:
+:ID:       9E45A40E-B290-4F12-9BDB-B5A0AE5F96AB
+:END:
+#+title: Safari
+#+date: <2020-04-15 13:40:28 +0900>
+
+* 拡張
+拡張の設定は =~/Library/Preferences/com.apple.Safari.Extensions.plist= に保存されている。最近は =~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.Extensions.plist= に変更されている。
+
+** Tips
+plistについては、
+
+: /usr/libexec/PlistBuddy -c 'print' ~/Library/Preferences/com.apple.Safari.Extensions.plist
+
+とやると整形して見せてくれる。
+
+
+** Safari Extensionリスト
+2018年前半ごろ、Safari 12 によって 古い Safari Extension が使えなくなった。それでも使えるもの。
+
+- octotree for Safari
+- Tampermonkey (Greasemonkey のようにユーザスクリプトを動かすもの)
+
+2019年中盤 Safari 13 によってまた古い Safari Extension が使えなくなった。
+それでも使えるもの。
+
+- octotree for Safari
+
+Tampermonkeyはもう少し https://github.com/Tampermonkey/tampermonkey/issues/558#issuecomment-536183545 <2019-10-01 Tue> -> [[https://apps.apple.com/us/app/tampermonkey/id1482490089][公開された]] <2019-10-16 Wed>
+
+* Safari
+2018年前半ごろ、Safari 12 によって 古い Safari Extension が使えなくなってしまって、
+Extension に設定していたものが見えなくなってしまった。
+そこで、データをサルベージする。
+
+=~/Library/Safari/LocalStorage/safari-extension_hogehoge.localstorage= に sqlite3 データベースとして Safari Extension のデータがセーブしてある。
+
+例えば NinjaKit は
+safari-extension_net.os0x.ninjakit-nankamojiretu.localstorage というファイルになっていた。
+
+
+* Tips
+** delete キーで戻る
+
+: defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
+
+
+要確認: <2019-10-17 Thu>
+
+: defaults write com.apple.Safari WebKitPreferences.backspaceKeyNavigationEnabled -bool true
+
+** safariWebKitDNSPrefetchingEnabled
+: defaults write com.apple.safariWebKitDNSPrefetchingEnabled –boolean false
+
+** faviconの保存場所
+=~/Library/Safari/Favicon\ Cache=
+
+うまく更新されないときはキャッシュを削除してみる。
+
+: rm -rf ~/Library/Safari/Favicon\ Cache
+
+#+begin_src shell
+  cd ~/Library/Safari/Favicon\ Cache
+  sqlite3 favicons.db
+#+end_src
+
+そして SQLite3 の中で hogehoge を含むURLのfaviconキャッシュを消す。
+#+begin_src sqlite
+  delete from rejected_resources where page_url LIKE '%hogehoge%';
+#+end_src
+  
+** pinned iconの保存場所
+
+=~/Library/Safari/Template Icons=
+
+うまく更新されないときはキャッシュを削除してみる。
+
+: rm -rf ~/Library/Safari/Template\ Icons
+
+** 最後のセッションの場所
+
+=~/Library/Safari/LastSession.plist=

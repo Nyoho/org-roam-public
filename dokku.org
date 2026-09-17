@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       C6FC050F-5A56-4855-A4C9-88453A048626
+:END:
+#+begin_html
+---
+title: dokku
+tags: dokku
+date: <2014-06-28 Sat>
+---
+#+end_html
+
+https://github.com/progrium/dokku
+
+- [[https://github.com/progrium/dokku#requirements][Requirements]]
+
+- [[http://blog.coiney.com/2013/08/10/create-my-own-heroku/][dokku + VirtualBoxで自分のHerokuを作る]]
+- [[http://blog.n-z.jp/blog/2013-11-15-dokku.html][VirtualBoxでdokkuを試した - @znz blog]]
+- [[https://www.digitalocean.com/community/tutorials/how-to-use-the-dokku-one-click-digitalocean-image-to-run-a-php-app][How To Use the Dokku One-Click DigitalOcean Image to Run a PHP App | DigitalOcean]]

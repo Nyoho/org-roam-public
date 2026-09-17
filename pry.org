@@ -1,0 +1,73 @@
+:PROPERTIES:
+:ID:       A9369DF8-EB62-4422-BCBA-CACD7587C51C
+:END:
+#+begin_html
+---
+title: pry
+tags: pry ruby debug
+date: <2013-08-12 Mon>
+---
+#+end_html
+
+ruby のデバッグにとても便利な pry。
+
+#+BEGIN_SRC sh
+gem install pry
+#+END_SRC
+
+* pry で日本語が化けるとき
+日本語が文字化けするとき: [[http://qiita.com/hikaruna/items/eb1e667c5c55e0b4b265][Ruby - mac rbenv でirb日本語が化ける問題こんなかんじで解決しました - Qiita]]
+
+readline を入れる。
+#+BEGIN_SRC sh
+brew install readline
+brew install openssl
+brew link readline --force
+brew link openssl --force
+
+CONFIGURE_OPTS="--enable-bundled-libyaml --with-readline-dir=$(brew --prefix readline) --with-openssl-dir=$(brew --prefix openssl)" rbenv install 2.1.1
+#+END_SRC
+
+* pry-debugger
+
+* ソース実行時にデバッグ
+#+BEGIN_SRC ruby
+require 'pry'
+#+END_SRC
+としておいて、好きなところで
+#+BEGIN_SRC ruby
+binding.pry
+#+END_SRC
+と書くとそこで止まってくれる。
+
+* 例 org-ruby をデバッグ
+git clone org-ruby
+#+begin_src sh
+  pry -r './lib/org-ruby.rb'  ;;(ref:load)
+#+end_src
+[[(load)][library loading]].
+
+#+begin_src ruby :eval never :comments org
+  s= "* a\n\n#+begin_src sh\nhoge\n#+end_src"       ;;(ref:substitution-string)
+  Orgmode::Parser.new(s).to_html            ;;(ref:generate)
+#+end_src
+
+[[(substitution-string)][代入]]して[[(generate)][html出力]]する。
+
+* pry-remote
+unicorn がバックグラウンドで動いているときなどのように、標準入出力で触れないときに使う。
+Gemfile で
+#+begin_src ruby
+gem "pry-remote"
+#+end_src
+としておいて、pryしたいソースの箇所に
+#+begin_src ruby
+binding.remote_pry
+#+end_src
+と書く。
+処理がそこに来たら、druby://127.0.0.1:9876 のようなところが開く。
+すかさず
+#+begin_src ruby
+bundle exec pry-remote
+#+end_src
+とする。

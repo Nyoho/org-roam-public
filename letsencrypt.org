@@ -1,0 +1,83 @@
+:PROPERTIES:
+:ID:       CA279BA1-4004-40D9-8A39-A9C2A2B54243
+:END:
+Let's Encrypt する
+
+* Installation
+
+#+BEGIN_SRC sh
+wget https://dl.eff.org/certbot-auto
+chmod a+x certbot-auto
+#+END_SRC
+
+* Commands
+- letsencrypt certificates :: certificates やその有効期間などの一覧
+
+* Nginx に Let's Encrypt
+[[http://qiita.com/sak_2/items/ff835b669c0a7e110b09][光の速さのWEBサーバー(nginx)をlet's encryptでSSL化及びHTTP/2化。ついでにセキュリティ評価をA＋にする。 - Qiita]] にしたがってやってみる。
+
+https://www.ssllabs.com/ssltest/ でA+を取ることを目標とする。
+
+** Setup
+
+#+BEGIN_SRC sh
+  TARGET_HOSTNAME=nyoho.jp
+  TARGET_DIR=/var/www/nyoho.jp
+  sudo git clone https://github.com/letsencrypt/letsencrypt /some/working/dir/for/letsencrypt
+  cd /some/working/dir/for/letsencrypt
+  ./letsencrypt-auto --help
+  # ./letsencrypt-auto certonly -a standalone --webroot -w /var/www/nyoho.jp nyoho.jp -d nyoho.jp
+  sudo service nginx stop
+  # /usr/local/share/letsencrypt/env/bin/letsencrypt certonly -a standalone -w /var/www/marupokesearch -d marupokesearch.nyoho.jp
+  ./letsencrypt-auto certonly -a standalone -w $TARGET_DIR -d $TARGET_HOSTNAME
+  # IMPORTANT NOTES:  
+  # - Congratulations! Your certificate and chain have been saved at
+  #   /etc/letsencrypt/live/target_hostname/fullchain.pem. Your cert will expire
+  # on 2016-06-17. To obtain a new version of the certificate in the
+  # future, simply run Let's Encrypt again.
+#+END_SRC
+
+ /etc/letsencrypt/live/$TARGET_HOSTNAME の中にpemたちのシンボリックリンクが出来ている。
+
+** 更新
+
+#+BEGIN_SRC sh
+sudo su -
+cd /path/to/letsencrypt
+export DOMAIN="nyoho.jp"
+
+service nginx stop
+./letsencrypt-auto certonly --standalone --renew-by-default -w /var/www/$DOMAIN -d $DOMAIN
+service nginx start
+#+END_SRC
+
+** 評価を上げる
+評価は A+ になったものの、まだ、
+「Chrome で Let's Encrypt Authority X1 がこのウェブサイトの証明書を発行したことを確認しました。証明書の透明性に関する情報はサーバーから提供されませんでした。」
+や、
+「nyoho.jp への接続は古い暗号スイートにより暗号化されています。」
+が出ている。
+
+** さらに評価を上げる
+[[http://postd.cc/secure-web-deployment-with-lets-encrypt-and-nginx/][Let’s EncryptとNginx : セキュアなWebデプロイメントの現状 | インフラ・ミドルウェア | POSTD]]
+にしたがって、設定を追加した。
+https://securityheaders.io/
+でAを獲得した。
+
+* Apache
+今は (<2016-10-11 Tue> 記述) certbot になったんだね。
+
+** --apache を使う。
+
+#+BEGIN_SRC sh
+./certbot-auto --apache certonly -w /srv/www/htdocs -d kita.dix.asia
+#+END_SRC
+
+** renew
+#+BEGIN_SRC sh
+./certbot-auto --apache certonly -w /srv/www/htdocs -d kita.dix.asia
+#+END_SRC
+
+#+BEGIN_SRC sh
+systemctl stop apache2.service && /path/to/certbot-auto renew && systemctl start apache2.service
+#+END_SRC

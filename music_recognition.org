@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       F310A810-A692-4949-9927-5880E2D5D251
+:END:
+#+title: music recognition
+#+date: [2026-06-10 Wed 01:38]
+
+- [[https://github.com/BreezeWhite/oemer][BreezeWhite/oemer: End-to-end Optical Music Recognition (OMR) system. Transcribe phone-taken music sheet image into MusicXML, which can be edited and converted to MIDI.]]

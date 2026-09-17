@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       F5F14A55-EEC8-481E-98C9-A0B04F0E9893
+:END:
+#+begin_html
+---
+title: The Silver Searcher
+tags: the_silver_searcher ag
+date: <2014-06-07 Sat>
+---
+#+end_html
+
+
+https://github.com/ggreer/the_silver_searcher
+
+高速な (=ack= より) grep のようなもの。
+でもコマンド名は =ag=
+
+* ファイルタイプを制限
+#+BEGIN_SRC sh
+ag --elisp setq
+#+END_SRC
+で .el のみ検索になる。
+file type は
+#+BEGIN_SRC sh
+ag --list-file-types
+#+END_SRC
+で出ます。他にも =--html= などいろいろ。

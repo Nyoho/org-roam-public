@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       FBF9EDC0-5231-4EE4-B51B-21419D3069F4
+:END:
+#+title: accessibility
+date: <2021-09-18 Sat>
+
+* web
+- 「ここをクリック」などでリンクしない
+- keyboard focusが消えないように注意
+- form の input タグに aria-label 属性を付けるか、inputタグの前に label タグを入れる。
+
+* 色
+- [[https://gihyo.jp/article/2023/08/apca-02][第2回　WCAG3のコントラスト基準APCAの考え方と実例 | gihyo.jp]]
+- [[https://note.com/infocom_ux/n/n4e181b44ebde][WCAG2.2 & APCA比較｜コントラスト比の不足する要因と対処法｜infocom_UX]]
+
+** Checkers
+- [[https://4ptgrid.netlify.app/tools/apca-color-contrast-checker][APCA Accessible Colour Contrast Checker]]

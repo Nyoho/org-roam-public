@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       B55F0A0C-33A3-476F-9738-48E4EF0D7A5F
+:ROAM_ALIASES: statistics
+:END:
+#+title: 統計
+#+filetags: 統計 statistics math
+#+date: <2013-08-20 Tue>
+
+* 項目反応理論
+コンフォート理論
+
+| # of parameters | 必要人数 |
+|               1 | 40人     |
+|               2 | 400人    |
+|               3 | 1000人   |
+
+* R
+- [[http://www.kkaneko.com/rinkou/r/rprinc.html][R を用いた主成分分析]]
+
+* 機械学習関連
+- [[http://jubat.us/ja/tutorial.html#classifier-api-train-classify][チュートリアル — Jubatus]]
+
+* Kullback-Leibler 情報量
+
+  
+* ベイズ推測
+- [[https://chijan.hatenablog.jp/entry/2018/11/02/%E3%83%99%E3%82%A4%E3%82%BA%E7%B5%B1%E8%A8%88%E5%AD%A6%E3%81%AE%E9%80%86%E6%B8%A9%E5%BA%A6%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF][ベイズ統計学の逆温度パラメータ - カイヤン雑記帳]]
+
+* 講義
+- [[https://www.udemy.com/course/computervision/][ベイズ推定とグラフィカルモデル：コンピュータビジョン基礎1 | Udemy]] Toru Tamaki先生のコース
+- [[https://ocwx.ocw.u-tokyo.ac.jp/course_11416/][数理手法Ⅶ Mathematical Method VII | UTokyo OCWx]] 東京大学の講義。時系列解析・状態空間モデル

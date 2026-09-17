@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       C3D80B22-0EB2-474A-AD14-430D742C7AF5
+:END:
+
+./configure --without-debug --enable-widec

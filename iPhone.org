@@ -1,0 +1,12 @@
+#+title: iPhone memo
+#+date: <2021-08-09 Mon>
+
+A14 Bionic
+- iPhone 12など
+- Neural Engine 11 TOPS
+
+A13
+- Neural Engine 6 TOPS
+
+A11
+- Neural Engine600 GOPS

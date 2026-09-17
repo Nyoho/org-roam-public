@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       FA4B45CF-86E6-468E-A3B0-0EA27EBF035D
+:END:
+#+begin_html
+---
+title: 日本語
+tags: 日本語 Japanese language 言語
+date: <2013-10-14 Mon>
+---
+#+end_html
+
+** 「ます」の語源
+参らする
+-> まらする
+-> まする
+-> ます
+
+参考:
+http://twitter.com/NeXTSTEP2OSX/status/389224572559441920
+http://twitter.com/kaw2940/status/389256978842652672
+http://twitter.com/kaw2940/status/389310536006922240
+http://twitter.com/kaw2940/status/389370399735037952
+http://twitter.com/kaw2940/status/389527147158585345
+
+* 校正メモ
+という設定を行います。
+-> と設定します。
+
+設定することが出来ます。
+-> 設定できます。
+
+

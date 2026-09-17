@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       CC6134DA-0600-49BF-99B4-05930ADFE445
+:ROAM_ALIASES: "category theory"
+:END:
+#+title: 圏論
+#+date: <2016-06-06 17:46:36 +0900>
+
+Category theory
+
+- [[https://arxiv.org/abs/0908.3347][[0908.3347] A survey of graphical languages for monoidal categories]]
+- [[https://ncatlab.org/nlab/show/Kleisli+category][Kleisli category in nLab]]
+- [[https://www.youtube.com/watch?v=uWST7UivqeM][圏論勉強会 第1回 - YouTube]]
+- [[https://www.logicmatters.net/categories/][Category theory: online lecture notes, etc. - Logic Matters]]
+
+
+量子力学と圏論
+
+- [[https://www.amazon.co.jp/-/en/Bob-Coecke/dp/110710422X][Picturing Quantum Processes: A First Course in Quantum Theory and Diagrammatic Reasoning | Coecke, Bob, Kissinger, Aleks | Quantum Theory]]
+- [[https://arxiv.org/abs/0908.3347][[0908.3347] A survey of graphical languages for monoidal categories]]
+- [[https://note.com/morikita/n/ndffbd340073c][箱と線で量子論をつくる――【近刊紹介】『圏論的量子力学入門』（ボブ・クック、アレクス・キッシンジャー 著）｜森北出版]]
+
+
+[[https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%81%E3%82%AA%E3%83%BB%E3%82%AB%E3%82%AF][ミチオ・カク - Wikipedia]] 日系アメリカ人の理論物理学者、作家。専門は素粒子論、とくに超弦理論

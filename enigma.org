@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       29142BE4-B14D-432D-BC54-82D6BEB5B582
+:END:
+
+- [[https://en.wikipedia.org/wiki/Enigma_rotor_details][Enigma rotor details - Wikipedia]]
+- [[https://www.slideshare.net/thorikawa/ss-46363626][エニグマ暗号とは何だったのか]]
+- [[http://wwwf.imperial.ac.uk/~rbellovi/writings/enigma.pdf][‎wwwf.imperial.ac.uk/~rbellovi/writings/enigma.pdf]] (PDF)

@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       093543EB-E7F5-43EC-A324-928665364BBA
+:END:
+
+地図関連サービスのメモ
+
+- [[https://stackoverflow.com/questions/9644452/verify-if-a-point-is-land-or-water-in-google-maps][javascript - Verify if a point is Land or Water in Google Maps - Stack Overflow]]
+- [[https://koordinates.com/layer/1298-world-coastline-110-million/webservices/?request.preventCache=1509597320422][World Coastline (1:10 million) Web Services and API Availability | Koordinates]]
+- [[https://geojson-maps.ash.ms/][GeoJSON Maps of the globe]] 世界地図データを GeoJSON 形式で
+- [[https://github.com/johan/world.geo.json][johan/world.geo.json: Annotated geo-json geometry files for the world]]
+- [[http://geojson.xyz/][geojson.xyz]] いろんな GeoJSON
+- [[http://openlayers.org/][OpenLayers]]
+
+* 資料
+- [[http://s.kitazaki.name/docs/geojson-spec-ja.html][GeoJSON フォーマット仕様]]
