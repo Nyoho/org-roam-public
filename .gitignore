@@ -1,0 +1,15 @@
+ltximg/
+ltxpng/
+
+# Emacs
+*~
+\#*#
+.#*
+
+# macOS
+.DS_Store
+._*
+
+# Sync conflict copies
+*競合コピー*
+*問題のあるコピー*
