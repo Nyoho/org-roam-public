@@ -1,0 +1,34 @@
+#+title: org-roam-public
+
+公開している org-roam のノート集。
+
+* 方針
+
+このリポジトリは、単独で clone しても成り立つようにしてある。
+ノートからのリンクや参照は、すべてこのリポジトリの中で完結させる。
+
+- =id:= リンクの行き先は、このリポジトリ内のノードに限る
+- =file:= リンク、=#+INCLUDE=、=#+SETUPFILE=、画像の参照は、リポジトリの外 (=../=、=~/=、絶対パス) を指さない
+- 画像などの添付物も、このリポジトリの中に置く
+
+* リンクの検査
+
+=tools/check-public-links.py= が上の方針を検査する。
+違反があればファイル名と行番号を表示し、終了コード 1 で終わる。
+
+#+begin_src sh
+python3 tools/check-public-links.py
+#+end_src
+
+検査の対象外:
+- =#+begin_src=、=#+begin_example=、=#+begin_export= ブロックの中 (リンクとして働かないため)
+- =http:=、=https:= などの外部 URL
+
+** pre-commit hook
+
+違反があるときに commit を止める hook が =tools/hooks/pre-commit= にある。
+clone したら一度だけ次を実行して有効にする。
+
+#+begin_src sh
+git config core.hooksPath tools/hooks
+#+end_src
